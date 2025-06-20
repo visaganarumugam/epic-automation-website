@@ -9,6 +9,7 @@ import productsImage from '../assets/images/products.jpg';
 import designImage from '../assets/images/design.jpg';
 import solutionsImage from '../assets/images/solutions.jpg';
 import { Link as RouterLink } from 'react-router-dom';
+import { PlaceholdersAndVanishInput } from '../components/ui/placeholders-and-vanish-input';
 
 
 const languageOptions = [
@@ -23,6 +24,18 @@ const navLinks = [
   { name: 'Development', dropdown: true, img: solutionsImage, teams: ['Developers', 'QA', 'DevOps', 'Product Managers', 'Testers'], decks: ['API Docs', 'Release Notes', 'Sprint Decks', 'Tech Demos', 'Integration Guides'] },
   { name: 'About', dropdown: false },
   { name: 'Career', dropdown: false },
+];
+
+const roboticsPlaceholders = [
+  "Search robotics kits...",
+  "Find automation solutions...",
+  "Explore AI projects...",
+  "How to build a line follower robot?",
+  "What is ROS (Robot Operating System)?",
+  "Best sensors for obstacle avoidance",
+  "Latest in humanoid robotics",
+  "Get started with Arduino robots",
+  "How to join a robotics competition?",
 ];
 
 function LanguageSelector() {
@@ -139,6 +152,17 @@ export default function TopNavbar() {
     }, 120);
   };
 
+  const searchDropdownRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (searchDropdownRef.current && !searchDropdownRef.current.contains(e.target as Node)) {
+        setSearchOpen(false);
+      }
+    }
+    if (searchOpen) document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [searchOpen]);
+
   return (
     <Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} isBordered isBlurred={false} className="py-2 px-2" maxWidth="full">
       <NavbarContent>
@@ -188,7 +212,7 @@ export default function TopNavbar() {
               ${searchOpen ? 'border-[#F56E0F] text-[#F56E0F]' : 'border-[#323333] text-white'}
               hover:bg-[#242424] hover:text-[#F56E0F] focus:border-[#F56E0F] focus:text-[#F56E0F]`
             }
-            onClick={() => setSearchOpen(true)}
+            onClick={() => setSearchOpen((v) => !v)}
             aria-label="Search"
           >
             <FiSearch className="w-5 h-5" />
@@ -197,13 +221,20 @@ export default function TopNavbar() {
         
         {/* Search Dropdown */}
         {searchOpen && (
-          <div className="absolute left-0 top-full mt-2 w-full bg-[#18171a] border border-[#232323] rounded-xl shadow-2xl flex items-center px-1 py-1 animate-fadeIn z-40">
+          <div
+            ref={searchDropdownRef}
+            className="absolute left-0 top-full mt-2 w-full bg-[#18171a] border border-[#232323] focus-within:border-orange-500 transition-colors rounded-xl shadow-2xl flex items-center px-1 py-1 animate-fadeIn z-40"
+          >
             <div className="relative flex-1">
-              <input
-                ref={searchInputRef}
-                type="text"
-                placeholder="Search Epic Automations"
-                className="w-full bg-transparent outline-none text-white text-lg px-4 py-3 rounded-xl border border-[#232323] focus:border-orange-400 transition-all duration-200 pr-12"
+              <PlaceholdersAndVanishInput
+                placeholders={roboticsPlaceholders}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  console.log(e.target.value);
+                }}
+                onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+                  e.preventDefault();
+                  console.log('submitted');
+                }}
               />
               <button
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-2xl text-gray-400 hover:text-orange-400 transition-colors"
@@ -263,13 +294,21 @@ export default function TopNavbar() {
       
       <NavbarContent justify="end" className="gap-2 items-center">
           <NavbarItem className="flex md:hidden flex-1">
-            <div className="relative w-full">
-              <input
-                type="text"
-                placeholder="Search Epic Automa..."
-                className="w-full bg-[#18171a] border border-[#323222] rounded-xl text-white px-4 py-[11px] focus:border-[#F56E0F] focus:outline-none"
+            <div className="relative w-full border border-[#323222] focus-within:border-orange-500 transition-colors rounded-xl">
+              <PlaceholdersAndVanishInput
+                placeholders={roboticsPlaceholders}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  console.log(e.target.value);
+                }}
+                onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+                  e.preventDefault();
+                  console.log('submitted');
+                }}
               />
-              <FiSearch className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" />
+              <FiSearch
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer"
+                onClick={() => setSearchOpen((v) => !v)}
+              />
             </div>
           </NavbarItem>
         {/* Language Selector */}
