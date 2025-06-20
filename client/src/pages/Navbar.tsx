@@ -8,6 +8,7 @@ import logo from '../assets/images/logo.png';
 import productsImage from '../assets/images/products.jpg';
 import designImage from '../assets/images/design.jpg';
 import solutionsImage from '../assets/images/solutions.jpg';
+import { Link as RouterLink } from 'react-router-dom';
 
 
 const languageOptions = [
@@ -142,29 +143,42 @@ export default function TopNavbar() {
     <Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} isBordered isBlurred={false} className="py-2 px-2" maxWidth="full">
       <NavbarContent>
         <NavbarBrand>
-          <img src={logo} alt="Logo" className="h-10 w-auto mr-2" />
+          <RouterLink to="/">
+            <img src={logo} alt="Logo" className="h-10 w-auto mr-2" />
+          </RouterLink>
+          
         </NavbarBrand>
       </NavbarContent>
       <NavbarContent className="hidden text-white pl-8 pr-6 py-2 bg-[#18171a] border rounded-xl border-[#323333] md:flex gap-2 relative" justify="center">
         {navLinks.map(link => (
           <NavbarItem key={link.name}>
-            <button
-              className={`
-                flex items-center gap-1 font-medium text-white
-                transition-colors duration-200 py-2 rounded-lg px-2
-                ${openDropdown === link.name ? 'text-[#F56E0F]' : 'text-white'}
-                hover:text-[#F56E0F]
-              `}
-              onClick={() => link.dropdown && handleTabClick(link)}
-              onMouseEnter={() => link.dropdown && handleDropdownMouseEnter(link)}
-              onMouseLeave={() => link.dropdown && handleDropdownMouseLeave()}
-              type="button"
-            >
-              {link.name}
-              {link.dropdown && (
-                <FiChevronDown className={`transition-transform duration-200 ${openDropdown === link.name ? 'rotate-180' : ''}`} />
-              )}
-            </button>
+            {['About', 'Career'].includes(link.name) ? (
+              <RouterLink
+                to={`/${link.name.toLowerCase()}`}
+                className={`flex items-center gap-1 font-medium text-white transition-colors duration-200 py-2 rounded-lg px-2 ${openDropdown === link.name ? 'text-[#F56E0F]' : 'text-white'} hover:text-[#F56E0F]`}
+                style={{ textDecoration: 'none' }}
+              >
+                {link.name}
+              </RouterLink>
+            ) : (
+              <button
+                className={`
+                  flex items-center gap-1 font-medium text-white
+                  transition-colors duration-200 py-2 rounded-lg px-2
+                  ${openDropdown === link.name ? 'text-[#F56E0F]' : 'text-white'}
+                  hover:text-[#F56E0F]
+                `}
+                onClick={() => link.dropdown && handleTabClick(link)}
+                onMouseEnter={() => link.dropdown && handleDropdownMouseEnter(link)}
+                onMouseLeave={() => link.dropdown && handleDropdownMouseLeave()}
+                type="button"
+              >
+                {link.name}
+                {link.dropdown && (
+                  <FiChevronDown className={`transition-transform duration-200 ${openDropdown === link.name ? 'rotate-180' : ''}`} />
+                )}
+              </button>
+            )}
           </NavbarItem>
         ))}
         {/* Search Icon and Search Bar */}
@@ -215,7 +229,14 @@ export default function TopNavbar() {
               if (!link) return null;
               return <>
                 <div className="flex flex-col items-center border-r-4 border-[#F56E0F] p-6 min-w-[200px] max-w-[320px]">
-                  <div className="text-xl font-bold text-white text-center mb-2">{link.name}</div>
+                  <RouterLink
+                    to={`/${link.name.toLowerCase()}`}
+                    className="text-xl font-bold text-white text-center mb-2 hover:text-[#F56E0F] transition-colors"
+                    style={{ textDecoration: 'none' }}
+                    onClick={() => setTimeout(() => setOpenDropdown(null), 100)}
+                  >
+                    {link.name}
+                  </RouterLink>
                   <img src={link.img} alt={link.name} className="w-[180px] h-[110px] object-cover rounded-lg mt-2" />
                 </div>
                 <div className="flex-1 flex items-start justify-center p-6">
@@ -257,23 +278,27 @@ export default function TopNavbar() {
         </NavbarItem>
         {/* Help Center Icon */}
         <NavbarItem className="hidden md:flex">
-          <button
-            className={`size-12 flex justify-center items-center rounded-xl bg-[#18171a] border transition-colors duration-200
-              border-[#323333] text-white hover:bg-[#242424] hover:text-[#F56E0F] focus:border-[#F56E0F] focus:text-[#F56E0F]`
-            }
-            aria-label="Help Center"
-          >
-            <MdSupportAgent className="w-5 h-5" />
-          </button>
+          <RouterLink to="/help-center" style={{ textDecoration: 'none' }}>
+            <button
+              className={`size-12 flex justify-center items-center rounded-xl bg-[#18171a] border transition-colors duration-200
+                border-[#323333] text-white hover:bg-[#242424] hover:text-[#F56E0F] focus:border-[#F56E0F] focus:text-[#F56E0F]`
+              }
+              aria-label="Help Center"
+            >
+              <MdSupportAgent className="w-5 h-5" />
+            </button>
+          </RouterLink>
         </NavbarItem>
         {/* Sign Up Button */}
         <NavbarItem className="hidden md:flex">
-          <button className="relative inline-flex h-12 overflow-hidden rounded-xl p-[1px] focus:outline-none focus:ring-1 focus:ring-orange-500 focus:ring-offset-1 focus:ring-offset-orange-100">
-            <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#FFE5B4_0%,#FF8C00_50%,#FFE5B4_100%)]" />
-            <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-xl  bg-slate-950 px-5 py-1 text-sm font-medium text-white backdrop-blur-3xl">
-              Sign Up
-            </span>
-          </button>
+          <RouterLink to="/signup" style={{ textDecoration: 'none' }}>
+            <button className="relative inline-flex h-12 overflow-hidden rounded-xl p-[1px] focus:outline-none focus:ring-1 focus:ring-orange-500 focus:ring-offset-1 focus:ring-offset-orange-100">
+              <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#FFE5B4_0%,#FF8C00_50%,#FFE5B4_100%)]" />
+              <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-xl  bg-slate-950 px-5 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+                Sign Up
+              </span>
+            </button>
+          </RouterLink>
         </NavbarItem>
         {/* Hamburger Menu Toggle */}
         <NavbarItem className="md:hidden bg-[#18171a] border border-[#323333] text-white hover:bg-[#242424] hover:text-[#F56E0F] focus:border-[#F56E0F] focus:text-[#F56E0F] rounded-xl">
@@ -292,27 +317,38 @@ export default function TopNavbar() {
               </button>
             </div>
             <div className="flex flex-col gap-2 mb-6">
-              {navLinks.map((item, index) => (
-                <Link
+              {navLinks.map((item) => (
+                <RouterLink
                   key={item.name}
-                  href="#"
+                  to={`/${item.name.toLowerCase()}`}
                   className="w-full text-lg text-white py-2 px-3 rounded-lg hover:bg-[#232323] transition-colors text-left"
+                  style={{ textDecoration: 'none' }}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
-                </Link>
+                </RouterLink>
               ))}
             </div>
             <div className="flex flex-col gap-2 mt-auto">
-              <button className="w-full flex items-center gap-2 py-3 px-3 rounded-lg hover:bg-[#242424] hover:text-[#F56E0F] bg-[#18171a] cursor-pointer border border-[#323333] text-white text-base font-medium mb-2">
+              <RouterLink
+                to="/help-center"
+                className="w-full flex items-center gap-2 py-3 px-3 rounded-lg hover:bg-[#242424] hover:text-[#F56E0F] bg-[#18171a] cursor-pointer border border-[#323333] text-white text-base font-medium mb-2"
+                style={{ textDecoration: 'none' }}
+                onClick={() => setIsMenuOpen(false)}
+              >
                 <MdSupportAgent className="w-5 h-5" /> Help Center
-              </button>
-              <button className="relative inline-flex h-12 overflow-hidden rounded-xl p-[1px] focus:outline-none focus:ring-1 focus:ring-orange-500 focus:ring-offset-1 focus:ring-offset-orange-100">
-            <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#FFE5B4_0%,#FF8C00_50%,#FFE5B4_100%)]" />
-            <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-xl  bg-[#18171a] px-5 py-1 text-sm font-medium text-white backdrop-blur-3xl">
-              Sign Up
-            </span>
-          </button>
+              </RouterLink>
+              <RouterLink
+                to="/signup"
+                style={{ textDecoration: 'none' }}
+                onClick={() => setIsMenuOpen(false)}
+                className="relative inline-flex h-12 overflow-hidden rounded-xl p-[1px] focus:outline-none focus:ring-1 focus:ring-orange-500 focus:ring-offset-1 focus:ring-offset-orange-100"
+              >
+                <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#FFE5B4_0%,#FF8C00_50%,#FFE5B4_100%)]" />
+                <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-xl  bg-[#18171a] px-5 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+                  Sign Up
+                </span>
+              </RouterLink>
             </div>
           </nav>
         </>
