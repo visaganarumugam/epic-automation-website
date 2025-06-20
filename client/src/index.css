@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('./assets/font/Gilroy-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: url('./assets/font/Gilroy-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: url('./assets/font/Gilroy-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+body, html, * {
+  font-family: 'Gilroy', sans-serif;
+  
+}
+
+body, html, #root {
+  background-color: #111012 !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes sidebarIn {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.menu-sidebar {
+  animation: sidebarIn 0.3s cubic-bezier(0.4,0,0.2,1);
+  background: #18171a;
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+  width: 90vw;
+  max-width: 340px;
+  min-height: 100vh;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+}
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 40;
+}
+
+.nav-gradient-bg {
+  background: linear-gradient(90deg, #FFE5B4 0%, #FF8C00 50%, #FFE5B4 100%);
+}
+
+.nav-glass-bg {
+  position: relative;
+  background: rgba(15, 15, 20, 0.7);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 2.5px solid transparent;
+  box-shadow: 0 4px 32px 0 rgba(0,0,0,0.18);
+}
+.nav-glass-bg::before {
+  content: '';
+  position: absolute;
+  inset: -2.5px;
+  border-radius: inherit;
+  padding: 0;
+  z-index: 0;
+  background: conic-gradient(from 90deg at 50% 50%, #FFE5B4 0%, #FF8C00 50%, #FFE5B4 100%);
+  opacity: 0.9;
+  pointer-events: none;
+}
+.nav-glass-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+
