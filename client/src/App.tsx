@@ -1,6 +1,6 @@
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import TopNavbar from "./pages/Navbar";
+
 import Products from "./pages/Products";
 import Design from "./pages/Design";
 import Development from "./pages/Development";
@@ -16,7 +16,7 @@ import Homepage from "./pages/Homepage";
 export default function App() {
   return (
     <Router>
-      <TopNavbar />
+      {/* <TopNavbar /> */}
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/products" element={<Products />} />
