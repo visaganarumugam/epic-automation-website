@@ -5,9 +5,6 @@ import { FiSearch, FiX, FiChevronDown, FiArrowRight } from 'react-icons/fi';
 import ReactCountryFlag from 'react-country-flag';
 import { useState, useRef, useEffect } from 'react';
 import logo from '../assets/images/logo.png';
-import productsImage from '../assets/images/products.jpg';
-import designImage from '../assets/images/design.jpg';
-import solutionsImage from '../assets/images/solutions.jpg';
 import { Link as RouterLink } from 'react-router-dom';
 import { PlaceholdersAndVanishInput } from '../components/ui/placeholders-and-vanish-input';
 
@@ -503,9 +500,9 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
     <Navbar 
       isMenuOpen={isMenuOpen} 
       onMenuOpenChange={setIsMenuOpen} 
-      isBordered 
+      isBordered={false} 
       isBlurred={false} 
-      className={`w-[98vw] fixed top-1 left-1/2 -translate-x-1/2 py-2  px-2 rounded-xl transition-all duration-300 z-50 ${isScrolled ? 'bg-black/50 backdrop-blur-md' : 'bg-transparent'}`} 
+      className={`w-[98vw] ml-3 fixed top-1  py-2 px-2 rounded-xl transition-all duration-300 z-50 ${isScrolled ? 'bg-black/50 backdrop-blur-md' : 'bg-transparent'}`} 
       maxWidth="full"
     >
       <NavbarContent>
@@ -516,6 +513,7 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
           
         </NavbarBrand>
       </NavbarContent>
+
       <NavbarContent className="hidden ml-10 text-white pl-8 pr-6 py-2 bg-[#18171a]/60 backdrop-blur-md border rounded-xl border-[#323333] md:flex gap-2 relative" justify="center">
         {navLinks.map(link => (
           <NavbarItem key={link.name}>

@@ -1,6 +1,5 @@
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import { useState , useEffect } from "react";
 import Products from "./pages/Products";
 import Design from "./pages/Design";
 import Development from "./pages/Development";
@@ -11,12 +10,23 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile";
-import Homepage from "./pages/Homepage";
+import Homepage from "./pages/Homepage/Homepage";
+import Footer from "./components/Footer";
+import TopNavbar from "./pages/Navbar";
 
 export default function App() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   return (
     <Router>
-      {/* <TopNavbar /> */}
+      <TopNavbar isScrolled={scrolled} />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/products" element={<Products />} />
@@ -30,6 +40,7 @@ export default function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

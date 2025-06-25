@@ -234,7 +234,7 @@ body, html, #root {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-white text-foreground;
   }
 }
 
@@ -252,5 +252,20 @@ body, html, #root {
 .animate-rise-up {
   animation: rise-up 0.8s ease-out forwards;
   opacity: 0; /* Start hidden */
+}
+
+@keyframes logo-row {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes logo-row-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.animate-logo-row {
+  animation: logo-row linear infinite;
+}
+.animate-logo-row-reverse {
+  animation: logo-row-reverse linear infinite;
 }
 
