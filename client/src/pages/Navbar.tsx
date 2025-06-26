@@ -4,7 +4,7 @@ import { MdSupportAgent } from 'react-icons/md';
 import { FiSearch, FiX, FiChevronDown, FiArrowRight } from 'react-icons/fi';
 import ReactCountryFlag from 'react-country-flag';
 import { useState, useRef, useEffect } from 'react';
-import logo from '../assets/images/logo.png';
+import logo from '/images/logo.png';
 import { Link as RouterLink } from 'react-router-dom';
 import { PlaceholdersAndVanishInput } from '../components/ui/placeholders-and-vanish-input';
 

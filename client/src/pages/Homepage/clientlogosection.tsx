@@ -7,34 +7,34 @@ interface Logo {
 }
 
 const row1: Logo[] = [
-  { name: 'Skyline', img: '/src/assets/images/logos/logo-skyline-250x250.webp' },
-  { name: 'ABB', img: '/src/assets/images/logos/png-transparent-abb-automation-gmbh-abb-group-logo-manufacturing-industry-disney-miscellaneous-company.png' },
-  { name: 'Colgate', img: '/src/assets/images/logos/colgate-smile-logo-image-png-7017516947731572dolemtldl.png' },
-  { name: 'Berger', img: '/src/assets/images/logos/100-years-of-brilliance-berger-unveils-a-colourful-tapestry-of-success.webp' },
-  { name: 'Parc Robotic', img: '/src/assets/images/logos/parc_robotic_systems_pvt_ltd_logo.jpeg.jpg' },
-  { name: 'Skyline Automation', img: '/src/assets/images/logos/skyline_automation_cover.jpeg.jpg' },
-  { name: 'Dabur', img: '/src/assets/images/logos/Dabur_Logo.svg.png' },
-  { name: 'Download', img: '/src/assets/images/logos/download (2).png' },
+  { name: 'Skyline', img: '/images/logos/logo-skyline-250x250.webp' },
+  { name: 'ABB', img: '/images/logos/png-transparent-abb-automation-gmbh-abb-group-logo-manufacturing-industry-disney-miscellaneous-company.png' },
+  { name: 'Colgate', img: '/images/logos/colgate-smile-logo-image-png-7017516947731572dolemtldl.png' },
+  { name: 'Berger', img: '/images/logos/100-years-of-brilliance-berger-unveils-a-colourful-tapestry-of-success.webp' },
+  { name: 'Parc Robotic', img: '/images/logos/parc_robotic_systems_pvt_ltd_logo.jpeg.jpg' },
+  { name: 'Skyline Automation', img: '/images/logos/skyline_automation_cover.jpeg.jpg' },
+  { name: 'Dabur', img: '/images/logos/Dabur_Logo.svg.png' },
+  { name: 'Download', img: '/images/logos/download (2).png' },
 ];
 const row2: Logo[] = [
-  { name: '1630614290262', img: '/src/assets/images/logos/1630614290262.jpeg.jpg' },
-  { name: '1709892254646', img: '/src/assets/images/logos/1709892254646.jpeg.jpg' },
-  { name: 'Hi Tech Automation', img: '/src/assets/images/logos/hi_tech_automation_ltd_logo.jpeg.jpg' },
-  { name: 'EC2B6CD', img: '/src/assets/images/logos/ec2b6cdce1f7600edbd6654e8be8b462.jpg' },
-  { name: 'Images', img: '/src/assets/images/logos/1630614290262.jpeg.jpg' },
-  { name: '462970656', img: '/src/assets/images/logos/462970656_3997027903956050_6514022596159937322_n.png' },
-  { name: '80', img: '/src/assets/images/logos/80.png' },
-  { name: 'Products', img: '/src/assets/images/logos/1630614290262.jpeg.jpg' },
+  { name: '1630614290262', img: '/images/logos/1630614290262.jpeg.jpg' },
+  { name: '1709892254646', img: '/images/logos/1709892254646.jpeg.jpg' },
+  { name: 'Hi Tech Automation', img: '/images/logos/hi_tech_automation_ltd_logo.jpeg.jpg' },
+  { name: 'EC2B6CD', img: '/images/logos/ec2b6cdce1f7600edbd6654e8be8b462.jpg' },
+  { name: 'Images', img: '/images/logos/1630614290262.jpeg.jpg' },
+  { name: '462970656', img: '/images/logos/462970656_3997027903956050_6514022596159937322_n.png' },
+  { name: '80', img: '/images/logos/80.png' },
+  { name: 'Products', img: '/images/logos/1630614290262.jpeg.jpg' },
 ];
 const row3: Logo[] = [
-  { name: 'Kit', img: '/src/assets/images/logos/1630614290262.jpeg.jpg' },
-  { name: 'Design', img: '/src/assets/images/logos/1630614290262.jpeg.jpg' },
-  { name: 'Solutions', img: '/src/assets/images/logos/1630614290262.jpeg.jpg' },
-  { name: 'Logo', img: '/src/assets/images/logos/1630614290262.jpeg.jpg' },
-  { name: '1630614290262', img: '/src/assets/images/logos/1630614290262.jpeg.jpg' },
-  { name: '1709892254646', img: '/src/assets/images/logos/1709892254646.jpeg.jpg' },
-  { name: 'Hi Tech Automation', img: '/src/assets/images/logos/hi_tech_automation_ltd_logo.jpeg.jpg' },
-  { name: 'EC2B6CD', img: '/src/assets/images/logos/ec2b6cdce1f7600edbd6654e8be8b462.jpg' },
+  { name: 'Kit', img: '/images/logos/1630614290262.jpeg.jpg' },
+  { name: 'Design', img: '/images/logos/1630614290262.jpeg.jpg' },
+  { name: 'Solutions', img: '/images/logos/1630614290262.jpeg.jpg' },
+  { name: 'Logo', img: '/images/logos/1630614290262.jpeg.jpg' },
+  { name: '1630614290262', img: '/images/logos/1630614290262.jpeg.jpg' },
+  { name: '1709892254646', img: '/images/logos/1709892254646.jpeg.jpg' },
+  { name: 'Hi Tech Automation', img: '/images/logos/hi_tech_automation_ltd_logo.jpeg.jpg' },
+  { name: 'EC2B6CD', img: '/images/logos/ec2b6cdce1f7600edbd6654e8be8b462.jpg' },
 ];
 
 function LogoSliderRow({ logos, toRight = false, duration = 20 }: { logos: Logo[]; toRight?: boolean; duration?: number }) {
