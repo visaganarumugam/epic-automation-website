@@ -1,4 +1,4 @@
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link} from "@heroui/react";
+import {Navbar, NavbarBrand, NavbarContent, NavbarItem} from "@heroui/react";
 import { Sling as Hamburger } from 'hamburger-react';
 import { MdSupportAgent } from 'react-icons/md';
 import { FiSearch, FiX, FiChevronDown, FiArrowRight } from 'react-icons/fi';

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { InteractiveHoverButton } from '../../components/ui_components/interactive-hover-button';
 // UpCount component for animated counting
 // Accepts a 'start' prop to control when to start counting
