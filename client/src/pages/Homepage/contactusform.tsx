@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { IconMail, IconPhone, IconMapPin, IconArrowUpRight } from '@tabler/icons-react';
 
 const contactInfo = [

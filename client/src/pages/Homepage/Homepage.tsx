@@ -3,7 +3,6 @@ import ClientlogoSection from './clientlogosection'
 import WhyEpic from './whyepic'
 import YourBenefits from './yourbenefits'
 import Newsletter from './newletter'
-import ContactUsForm from './contactusform'
 import WhatURGoodAt from './whaturgoodat'
 
 const Homepage = () => {
@@ -11,7 +10,8 @@ const Homepage = () => {
     <div className='overflow-hidden '>
       <HeroSection />
       <WhyEpic />
-      {/* <WhatURGoodAt/> */}
+      <WhatURGoodAt/>
+      <Newsletter/>
       <YourBenefits/>
       <ClientlogoSection />
       
