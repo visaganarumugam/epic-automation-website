@@ -68,24 +68,24 @@ export default function ContactUsForm() {
           <input
             type="text"
             placeholder="Name"
-            className="bg-white/25 backdrop-blur-[15px] border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 py-4 text-white placeholder-gray-400 focus:outline-none focus:border-[#0feaf5] transition-all"
+            className="bg-white/25 backdrop-blur-[15px] border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 py-4 text-white placeholder-gray-800 focus:outline-none focus:border-[#0feaf5] transition-all"
             style={{fontFamily: 'Gilroy'}}
           />
           <input
             type="email"
             placeholder="Email"
-            className="bg-white/25 backdrop-blur-[15px] border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 py-4 text-white placeholder-gray-400 focus:outline-none focus:border-[#0feaf5] transition-all"
+            className="bg-white/25 backdrop-blur-[15px] border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 py-4 text-white placeholder-gray-800 focus:outline-none focus:border-[#0feaf5] transition-all"
             style={{fontFamily: 'Gilroy'}}
           />
           <textarea
             placeholder="Message"
             rows={6}
-            className=" h-[70%] bg-white/25 backdrop-blur-[15px] border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 py-4 text-white placeholder-gray-400 focus:outline-none focus:border-[#0feaf5] transition-all resize-none"
+            className=" h-[70%] bg-white/25 backdrop-blur-[15px] border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 py-4 text-white placeholder-gray-800 focus:outline-none focus:border-[#0feaf5] transition-all resize-none"
             style={{fontFamily: 'Gilroy'}}
           />
           <button
             type="submit"
-            className="w-full bg-white text-black font-semibold text-lg py-4 rounded-xl shadow hover:bg-[#0feaf5] hover:text-black transition-all mt-2"
+            className="w-full bg-black text-white font-semibold text-lg py-4 rounded-xl shadow hover:bg-[#0feaf5] hover:text-black transition-all mt-2"
             style={{fontFamily: 'Gilroy'}}
           >
             Submit

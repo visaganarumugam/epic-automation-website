@@ -29,7 +29,9 @@ function UpCount({ end, duration = 1200, className = '', start = false }: UpCoun
 
 export default function WhyEpic() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [statsVisible, setStatsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new window.IntersectionObserver(
@@ -47,12 +49,62 @@ export default function WhyEpic() {
     return () => observer.disconnect();
   }, []);
 
+  // IntersectionObserver for stats grid
+  useEffect(() => {
+    const statsObserver = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStatsVisible(true);
+          statsObserver.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    if (statsRef.current) {
+      statsObserver.observe(statsRef.current);
+    }
+    return () => statsObserver.disconnect();
+  }, []);
+
+  const stats = [
+    {
+      end: 500,
+      title: 'Total Rated By Clients',
+      desc: 'We are proud to have received 500+ positive reviews from our clients, reflecting our commitment to delivering exceptional service and quality.',
+    },
+    {
+      end: 200,
+      title: 'Total Machines Delivered',
+      desc: 'We have delivered more than 200 machines to our clients, helping them automate their processes and improve their productivity.',
+    },
+    {
+      end: 9,
+      title: 'Years of Experience',
+      desc: 'We have been in the business for more than 9 years, helping our clients automate their processes and improve their productivity.',
+    },
+    {
+      end: 6,
+      title: 'Key Industries Across The Globe',
+      desc: 'We have worked with clients across various industries, helping them automate their processes and improve their productivity.',
+    },
+    {
+      end: 120,
+      title: 'Robotic Systems Installed',
+      desc: 'Over 120 advanced robotic systems installed, streamlining manufacturing and logistics for our partners.',
+    },
+    {
+      end: 35,
+      title: 'Patents & Innovations',
+      desc: '35+ patents and proprietary innovations in robotics and automation, driving industry progress.',
+    },
+  ];
+
   return (
     <section ref={sectionRef} className="w-full bg-gradient-to-br from-[#EAF6FF] via-[#90B2D8] to-[#0077b3] py-16 flex flex-col items-center justify-center">
       <div className="w-full  max-w-full flex flex-col md:flex-row items-center justify-between px-10 md:px-10">
         {/* Left Column */}
         <div className={`flex flex-col items-start w-full md:w-1/3 gap-50 ${isVisible ? 'animate-rise-up' : ''}`} style={{ animationDelay: isVisible ? '0.1s' : undefined }}>
-          <span className="text-[#333333] text-3xl font-bold tracking-wide mb-2">Why Choose Us</span>
+          <span className="text-[#333333] text-3xl font-bold  mb-2">Why Choose Us</span>
           <button className={`border border-[#222] rounded-full text-lg font-semibold flex items-center gap-2 hover:bg-[#f5f5f5] transition ${isVisible ? 'animate-rise-up' : ''}`} style={{ animationDelay: isVisible ? '0.2s' : undefined }}>
           <InteractiveHoverButton>About Epic Automations</InteractiveHoverButton>
           </button>
@@ -78,49 +130,21 @@ export default function WhyEpic() {
         </div>
       </div>
       {/* stats */}
-      <div className="w-full px-10 mt-12 flex flex-col gap-6">
-        <div className={`bg-white/25 backdrop-blur-[15px] border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-xl flex flex-col md:flex-row w-full items-center justify-between px-8 py-6  ${isVisible ? 'animate-rise-up' : ''}`} style={{ animationDelay: isVisible ? '0.4s' : undefined }}>
-          <div className="flex items-center justify-between w-full">
-            <div className="flex items-center gap-2">
-              <UpCount end={500} className="text-5xl md:text-6xl font-bold text-[#1B1B1B]" start={isVisible} />
-              <span className="text-6xl text-[#1b1b1b] font-normal ml-1">+</span>
+      <div ref={statsRef} className="w-full px-10 mt-22 grid grid-cols-1 md:grid-cols-3 gap-8 ">
+        {stats.map((stat, idx) => (
+          <div key={stat.title} className={`bg-white/25 backdrop-blur-[15px] border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-xl flex flex-col items-center justify-between px-8 py-8 min-h-[220px] ${statsVisible ? 'animate-rise-up' : ''}`} style={{ animationDelay: statsVisible ? `${0.2 + idx * 0.1}s` : undefined }}>
+            {/* Top: Number and Title */}
+            <div className="flex flex-col items-center w-full mb-4">
+              <div className="flex items-center gap-2">
+                <UpCount end={stat.end} className="text-5xl md:text-6xl font-bold text-[#1B1B1B]" start={statsVisible} />
+                <span className="text-4xl md:text-5xl text-[#1b1b1b] font-normal ml-1">+</span>
+              </div>
+              <div className="text-[#1B1B1B] text-2xl md:text-3xl font-semibold text-center mt-2">{stat.title}</div>
             </div>
-            <div className="flex-1 flex items-center justify-center">
-              <div className="text-[#1B1B1B] text-3xl font-semibold text-center">Total Rated By Clients</div>
-            </div>
-            <div className="text-black text-sm font-normal max-w-xs ml-8">We are proud to have received 500+ positive reviews from our clients, reflecting our commitment to delivering exceptional service and quality.</div>
+            {/* Bottom: Description */}
+            <div className="text-black text-sm font-normal max-w-xs text-center">{stat.desc}</div>
           </div>
-        </div>
-        <div className={`bg-white/25 backdrop-blur-[15px] border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-xl flex flex-col md:flex-row items-center justify-between px-8 py-6  ${isVisible ? 'animate-rise-up' : ''}`} style={{ animationDelay: isVisible ? '0.5s' : undefined }}>
-          <div className="flex items-center gap-2">
-            <UpCount end={200} className="text-5xl md:text-6xl font-bold text-[#1B1B1B]" start={isVisible} />
-            <span className="text-6xl text-[#1b1b1b] font-normal ml-1">+</span>
-          </div>
-          <div className="flex-1 flex items-center justify-center">
-            <div className="text-[#1B1B1B] text-3xl font-semibold text-center">Total Machines Delivered</div>
-          </div>
-          <div className="text-black text-sm font-normal max-w-xs ml-8">We have delivered more than 200 machines to our clients, helping them automate their processes and improve their productivity.</div>
-        </div>
-        <div className={`bg-white/25 backdrop-blur-[15px] border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-xl flex flex-col md:flex-row items-center justify-between px-8 py-6 ${isVisible ? 'animate-rise-up' : ''}`} style={{ animationDelay: isVisible ? '0.6s' : undefined }}>
-          <div className="flex items-center gap-2">
-            <UpCount end={9} className="text-5xl md:text-6xl font-bold text-[#1B1B1B]" start={isVisible} />
-            <span className="text-6xl text-[#1b1b1b] font-normal ml-1">+</span>
-          </div>
-          <div className="flex-1 flex items-center justify-center">
-            <div className="text-[#1B1B1B] text-3xl font-semibold pl-16 text-center">Years of Experience</div>
-          </div>
-          <div className="text-black text-sm font-normal max-w-xs ml-8">We have been in the business for more than 9 years, helping our clients automate their processes and improve their productivity.</div>
-        </div>
-        <div className={`bg-white/25 backdrop-blur-[15px] border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-xl flex flex-col md:flex-row items-center justify-between px-8 py-6 ${isVisible ? 'animate-rise-up' : ''}`} style={{ animationDelay: isVisible ? '0.7s' : undefined }}>
-          <div className="flex items-center gap-2">
-            <UpCount end={6} className="text-5xl md:text-6xl font-bold text-[#1B1B1B]" start={isVisible} />
-            <span className="text-6xl text-[#1b1b1b] font-normal ml-1">+</span>
-          </div>
-          <div className="flex-1 flex items-center justify-center">
-            <div className="text-[#1B1B1B] text-3xl font-semibold pl-16 text-center">Key Industries Across The Globe</div>
-          </div>
-          <div className="text-black text-sm font-normal max-w-xs ml-8">We have worked with clients across various industries, helping them automate their processes and improve their productivity.</div>
-        </div>
+        ))}
       </div>
     </section>
   );
