@@ -1,4 +1,3 @@
-
 import { IconMail, IconPhone, IconMapPin, IconArrowUpRight } from '@tabler/icons-react';
 
 const contactInfo = [
@@ -39,7 +38,7 @@ export default function ContactUsForm() {
           <h2 className="text-4xl md:text-6xl font-bold text-black">Get in touch</h2>
           <p className="text-gray-700 text-xl font-semibold max-w-md mb-4">Have questions or ready to transform your business with AI automation?</p>
           <div className="flex flex-col gap-4">
-            {contactInfo.map((item, idx) => (
+            {contactInfo.map((item, _) => (
               <a
                 key={item.label}
                 href={item.href}

@@ -25,10 +25,10 @@ export default function HeroSection() {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full opacity-90 object-cover p-  max-w-full max-h-full"
+          className="absolute inset-0 w-full h-full opacity-90 object-cover  max-w-full max-h-full"
           style={{ boxSizing: 'border-box' }}
         >
-          <source src="/src/assets/videos/hero2.mp4"  type="video/mp4" />
+          <source src="/src/assets/videos/hero1.mp4"  type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         {/* Overlay for better text readability */}

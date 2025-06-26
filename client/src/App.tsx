@@ -28,7 +28,7 @@ export default function App() {
     <Router>
       <TopNavbar isScrolled={scrolled} />
       <Routes>
-        <Route path="/Robotocs_co_website/tree/main/client" element={<Homepage />} />
+        <Route path="/" element={<Homepage />} />
         <Route path="/products" element={<Products />} />
         <Route path="/design" element={<Design />} />
         <Route path="/development" element={<Development />} />

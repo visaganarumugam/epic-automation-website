@@ -453,7 +453,7 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
 
   // Close dropdowns on outside click
   useEffect(() => {
-    function handleClick(e: MouseEvent) {
+    function handleClick(_: MouseEvent) {
       setOpenDropdown(null);
     }
     if (openDropdown) {
