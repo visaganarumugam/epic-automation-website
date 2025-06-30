@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { useState , useEffect } from "react";
 import Products from "./pages/Products";
 import Design from "./pages/Design";
@@ -14,8 +14,9 @@ import Homepage from "./pages/Homepage/Homepage";
 import Footer from "./components/Footer";
 import TopNavbar from "./pages/Navbar";
 
-export default function App() {
+function AppContent() {
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,9 +25,13 @@ export default function App() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Hide Navbar and Footer on /signup
+  const hideNavAndFooter = location.pathname === "/signup";
+
   return (
-    <Router>
-      <TopNavbar isScrolled={scrolled} />
+    <>
+      {!hideNavAndFooter && <TopNavbar isScrolled={scrolled} />}
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/products" element={<Products />} />
@@ -40,7 +45,15 @@ export default function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
-      <Footer />
+      {!hideNavAndFooter && <Footer />}
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }

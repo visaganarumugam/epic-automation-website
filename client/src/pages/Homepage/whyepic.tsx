@@ -84,7 +84,7 @@ export default function WhyEpic() {
     },
     {
       end: 6,
-      title: 'Key Industries Across The Globe',
+      title: 'Key Industries Across Globe',
       desc: 'We have worked with clients across various industries, helping them automate their processes and improve their productivity.',
     },
     {
@@ -95,7 +95,7 @@ export default function WhyEpic() {
     {
       end: 35,
       title: 'Patents & Innovations',
-      desc: '35+ patents and proprietary innovations in robotics and automation, driving industry progress.',
+      desc: 'Thirty-five patents and innovations in robotics automation driving industry progress and technological advancement.',
     },
   ];
 
@@ -134,7 +134,7 @@ export default function WhyEpic() {
         {stats.map((stat, idx) => (
           <div key={stat.title} className={`bg-white/25 backdrop-blur-[15px] border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-xl flex flex-col items-center justify-between px-8 py-8 min-h-[220px] ${statsVisible ? 'animate-rise-up' : ''}`} style={{ animationDelay: statsVisible ? `${0.2 + idx * 0.1}s` : undefined }}>
             {/* Top: Number and Title */}
-            <div className="flex flex-col items-center w-full mb-4">
+            <div className="flex flex-col items-center w-full mb-2">
               <div className="flex items-center gap-2">
                 <UpCount end={stat.end} className="text-5xl md:text-6xl font-bold text-[#1B1B1B]" start={statsVisible} />
                 <span className="text-4xl md:text-5xl text-[#1b1b1b] font-normal ml-1">+</span>
@@ -142,7 +142,7 @@ export default function WhyEpic() {
               <div className="text-[#1B1B1B] text-2xl md:text-3xl font-semibold text-center mt-2">{stat.title}</div>
             </div>
             {/* Bottom: Description */}
-            <div className="text-black text-sm font-normal max-w-xs text-center">{stat.desc}</div>
+            <div className="text-black text-lg font-normal max-w-md text-center">{stat.desc}</div>
           </div>
         ))}
       </div>

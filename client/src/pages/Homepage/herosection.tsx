@@ -17,10 +17,11 @@ export default function HeroSection() {
 
   return (
     <div>
-      <div className="min-h-[100vh] max-h-[100vh] my-auto mx-auto w-full max-w-[100vw] flex flex-col items-center relative overflow-hidden p-2 ">
+      <div className="w-[100vw] h-[100vh] my-auto mx-auto flex flex-col items-center relative overflow-hidden p-2 ">
 
         {/* Background Video */}
-        <video
+        <img src="/images/bg.jpg" alt="Hero Background" className="absolute inset-0 w-full h-full object-fill" />
+        {/* <video
           autoPlay
           loop
           muted
@@ -30,7 +31,7 @@ export default function HeroSection() {
         >
           <source src="/videos/Hero1.mp4"  type="video/mp4" />
           Your browser does not support the video tag.
-        </video>
+        </video> */}
         {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-black/60 -z-5 pointer-events-none rounded-2xl p-2" style={{ boxSizing: 'border-box' }}></div>
         {/* Title, Description, and CTA */}

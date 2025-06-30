@@ -21,20 +21,20 @@ const row2: Logo[] = [
   { name: '1709892254646', img: '/images/logos/1709892254646.jpeg.jpg' },
   { name: 'Hi Tech Automation', img: '/images/logos/hi_tech_automation_ltd_logo.jpeg.jpg' },
   { name: 'EC2B6CD', img: '/images/logos/ec2b6cdce1f7600edbd6654e8be8b462.jpg' },
-  { name: 'Images', img: '/images/logos/1630614290262.jpeg.jpg' },
+  { name: 'Images', img: '/images/logos/images.png' },
   { name: '462970656', img: '/images/logos/462970656_3997027903956050_6514022596159937322_n.png' },
   { name: '80', img: '/images/logos/80.png' },
-  { name: 'Products', img: '/images/logos/1630614290262.jpeg.jpg' },
+  { name: 'Download', img: '/images/logos/download (2).png' },
 ];
 const row3: Logo[] = [
-  { name: 'Kit', img: '/images/logos/1630614290262.jpeg.jpg' },
-  { name: 'Design', img: '/images/logos/1630614290262.jpeg.jpg' },
-  { name: 'Solutions', img: '/images/logos/1630614290262.jpeg.jpg' },
-  { name: 'Logo', img: '/images/logos/1630614290262.jpeg.jpg' },
   { name: '1630614290262', img: '/images/logos/1630614290262.jpeg.jpg' },
   { name: '1709892254646', img: '/images/logos/1709892254646.jpeg.jpg' },
   { name: 'Hi Tech Automation', img: '/images/logos/hi_tech_automation_ltd_logo.jpeg.jpg' },
   { name: 'EC2B6CD', img: '/images/logos/ec2b6cdce1f7600edbd6654e8be8b462.jpg' },
+  { name: 'Images', img: '/images/logos/images.png' },
+  { name: '462970656', img: '/images/logos/462970656_3997027903956050_6514022596159937322_n.png' },
+  { name: '80', img: '/images/logos/80.png' },
+  { name: 'Download', img: '/images/logos/download (2).png' },
 ];
 
 function LogoSliderRow({ logos, toRight = false, duration = 20 }: { logos: Logo[]; toRight?: boolean; duration?: number }) {
@@ -52,7 +52,7 @@ function LogoSliderRow({ logos, toRight = false, duration = 20 }: { logos: Logo[
         {logosToShow.map((logo: Logo, idx: number) => (
           <Slider.Slide key={idx}>
             <div
-              className={`flex items-center justify-center bg-white rounded-xl shadow h-20 w-40 ${logo.faded ? 'opacity-40 grayscale' : ''}`}
+              className={`flex items-center justify-center bg-white/35 backdrop-blur-[15px] border border-white/20  rounded-xl  h-20 w-40 ${logo.faded ? 'opacity-40 grayscale' : ''}`}
               style={{ marginLeft: 30 }}
             >
               <img src={logo.img} alt={logo.name} className="h-10 object-contain" />
@@ -70,9 +70,9 @@ export default function ClientlogoSection() {
     <section className="w-full  flex flex-col md:flex-row items-center justify-start  py-16 gap-20 bg-transparent">
       {/* Left: 3-row infinite logo slider (70%) from-[#EAF6FF] via-[#90B2D8] to-[#0077b3] */}
       <div className="w-full md:w-full flex flex-col gap-8 relative">
-        <LogoSliderRow logos={row1} toRight={false} duration={90} />
-        <LogoSliderRow logos={row2} toRight={false} duration={100} />
-        <LogoSliderRow logos={row3} toRight={false} duration={70} />
+        <LogoSliderRow logos={row1} toRight={false} duration={100} />
+        <LogoSliderRow logos={row2} toRight={false} duration={120} />
+        <LogoSliderRow logos={row3} toRight={false} duration={100} />
       </div>
       {/* Right: Content (30%) */}
       {/* <div className="w-full md:w-[40%] flex flex-col items-start justify-center ml-0 md:ml-1 mt-10 md:mt-0 max-w-md">
