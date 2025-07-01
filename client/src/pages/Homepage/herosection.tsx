@@ -1,16 +1,16 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 
-import { InteractiveHoverButton } from '../../components/ui_components/interactive-hover-button';
+// import { InteractiveHoverButton } from '../../components/ui_components/interactive-hover-button';
 
-interface AIFeature {
-  id: number;
-  title: string;
-  image: string;
-  statTitle: string;
-  statPercentage: number;
-  statLabel: string;
-  highlighted: { [key: string]: string };
-}
+// interface AIFeature {
+//   id: number;
+//   title: string;
+//   image: string;
+//   statTitle: string;
+//   statPercentage: number;
+//   statLabel: string;
+//   highlighted: { [key: string]: string };
+// }
 
 export default function HeroSection() {
   
