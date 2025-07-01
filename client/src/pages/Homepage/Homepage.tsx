@@ -2,8 +2,9 @@ import HeroSection from './herosection'
 import ClientlogoSection from './clientlogosection'
 import WhyEpic from './whyepic'
 import YourBenefits from './yourbenefits'
-import Newsletter from './newletter'
+
 import WhatURGoodAt from './whaturgoodat'
+import ProjectCarousel from './projectcarousel'
 
 const Homepage = () => {
   return (
@@ -11,7 +12,8 @@ const Homepage = () => {
       <HeroSection />
       <WhyEpic />
       <WhatURGoodAt/>
-      <Newsletter/>
+      <ProjectCarousel/>
+      {/* <Newsletter/> */}
       <YourBenefits/>
       <ClientlogoSection />
       

@@ -72,18 +72,22 @@ export default function WhatUrGoodAt() {
         {/* Steps */}
         <div className="w-full flex flex-row justify-between items-end relative z-10 gap-0">
           {steps.map((step, idx) => (
-            <div
-              key={idx}
-              className={`flex flex-col items-center w-1/4 text-center transition-transform duration-500 ${visibleSteps[idx] ? 'animate-popup' : 'opacity-0 scale-75'}`}
-              style={{ animationDelay: `${0.1 + idx * 0.15}s` }}
-            >
-              <div className="mb-2">
-                <h3 className="text-white text-lg md:text-2xl font-bold mb-1">{step.title}</h3>
-                <p className="text-[#e0e0e0] text-xs md:text-base font-medium max-w-[250px] mx-auto">{step.desc}</p>
+            <div key={idx} className="flex flex-col items-center w-1/4 text-center">
+              {/* Animated content (title, desc, line) */}
+              <div
+                className={`w-full flex flex-col items-center ${visibleSteps[idx] ? '' : 'opacity-0 translate-y-12'}`}
+                style={visibleSteps[idx] ? { animation: `riseup 1s cubic-bezier(0.23, 1, 0.32, 1) forwards`, animationDelay: `${0.1 + idx * 0.15}s` } : {}}
+              >
+                <div className="mb-2">
+                  <h3 className="text-white text-lg md:text-2xl font-bold mb-1">{step.title}</h3>
+                  <p className="text-[#e0e0e0] text-xs md:text-base font-medium max-w-[250px] mx-auto">{step.desc}</p>
+                </div>
+                <div className={`${step.lineHeight} w-0.5 bg-gradient-to-b from-orange-500 to-transparent mb-1`}></div>
               </div>
-              <div className={`${step.lineHeight} w-0.5 bg-gradient-to-b from-orange-500 to-transparent mb-1`}></div>
+              {/* time (no transition) */}
               <div className="flex items-center justify-center relative z-10 mt-1">
-                <div className="flex items-center bg-white/20 backdrop-blur-xs rounded-lg px-7 py-3 shadow-lg border border-[#2d1800]">
+                {/* time */}
+                <div className="flex items-center bg-black/20 backdrop-blur-xl rounded-lg px-7 py-3 shadow-lg border border-[#2d1800]">
                   <span className="text-white text-base font-semibold">{step.time}</span>
                   <span className="ml-3 w-5 h-5 rounded-md bg-orange-500 flex items-center justify-center shadow-lg"></span>
                 </div>
@@ -92,6 +96,22 @@ export default function WhatUrGoodAt() {
           ))}
         </div>
       </div>
+      {/* Custom keyframes for riseup animation */}
+      <style>{`
+        @keyframes riseup {
+          0% {
+            opacity: 0;
+            transform: translateY(48px) scale(0.95);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+        .animate-riseup {
+          animation: riseup 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+      `}</style>
     </section>
   );
 }

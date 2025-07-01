@@ -21,17 +21,7 @@ export default function HeroSection() {
 
         {/* Background Video */}
         <img src="/images/bg.jpg" alt="Hero Background" className="absolute inset-0 w-full h-full object-fill" />
-        {/* <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full opacity-90 object-cover  max-w-full max-h-full"
-          style={{ boxSizing: 'border-box' }}
-        >
-          <source src="/videos/Hero1.mp4"  type="video/mp4" />
-          Your browser does not support the video tag.
-        </video> */}
+        
         {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-black/60 -z-5 pointer-events-none rounded-2xl p-2" style={{ boxSizing: 'border-box' }}></div>
         {/* Title, Description, and CTA */}
@@ -56,11 +46,11 @@ export default function HeroSection() {
                   </button>
                   </div>
                 </div>
-                <div className="animate-rise-up backdrop-blur-2xl " style={{ animationDelay: '0.8s' }}>
+                {/* <div className="animate-rise-up backdrop-blur-2xl " style={{ animationDelay: '0.8s' }}>
                   <AI_Features_Section />
-                </div>
+                </div> */}
             </div>
-            {/* Right side content */}
+            {/* Right side content
             <div className="hidden md:flex flex-col gap-4">
               <div className="animate-rise-up" style={{ animationDelay: '1s' }}>
                 <JobCard />
@@ -68,7 +58,7 @@ export default function HeroSection() {
               <div className="animate-rise-up" style={{ animationDelay: '1.2s' }}>
                 <QuickLinks />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         
