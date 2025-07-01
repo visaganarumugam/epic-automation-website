@@ -1,4 +1,4 @@
-import  { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const images = [
   { src: '/images/products.jpg', desc: 'Product Launch Project' },
@@ -96,8 +96,6 @@ const ProjectCarousel: React.FC = () => {
           {getVisibleIndices().map((idx, i) => {
             const style = slotStyles[i];
             const { src, desc } = images[idx];
-            // Animation: scale up center image slightly during transition
-            const isCenter = i === 2;
             return (
               <div
                 key={idx}
@@ -108,13 +106,11 @@ const ProjectCarousel: React.FC = () => {
                   marginLeft: style.marginLeft,
                   marginRight: style.marginRight,
                   zIndex: style.zIndex,
-                  transition: isCenter
-                    ? 'all 0.9s cubic-bezier(0.22, 1, 0.36, 1)'
-                    : 'all 0.9s cubic-bezier(0.22, 1, 0.36, 1)',
+                  transition: 'all 0.6s cubic-bezier(.4,2,.6,1)',
                   opacity: style.opacity,
                   borderRadius: 40,
                   boxShadow: style.zIndex === 2
-                    ? '0 12px 40px 0 rgba(0,0,0,0.22)'
+                    ? '0 8px 32px rgba(0,0,0,0.18)'
                     : style.zIndex === 1
                     ? '0 2px 8px rgba(0,0,0,0.10)'
                     : 'none',
@@ -123,7 +119,6 @@ const ProjectCarousel: React.FC = () => {
                   filter: style.zIndex === 0 ? 'blur(0.5px)' : 'none',
                   display: 'flex',
                   alignItems: 'flex-end',
-                  transform: isCenter ? 'scale(1.04)' : 'scale(1)',
                 }}
               >
                 <img
@@ -137,7 +132,6 @@ const ProjectCarousel: React.FC = () => {
                     position: 'absolute',
                     left: 0,
                     top: 0,
-                    transition: 'all 0.9s cubic-bezier(0.22, 1, 0.36, 1)',
                   }}
                 />
                 {/* Description overlay */}
