@@ -37,19 +37,19 @@ const dropdownContent: DropdownContent = {
           {
             title: "ADAM",
             description: "Generate revenue with this friendly, two-armed productivity robot.",
-            image: "https://www.richtechrobotics.com/wp-content/uploads/2023/11/ADAM-clean-no-tray-1-768x733.png",
+            image: "/images/products.jpg",
             href: "/products/adam",
           },
           {
             title: "Scorpion",
             description: "AI powered robot bartender that provides strikingly good beverage service.",
-            image: "https://www.richtechrobotics.com/wp-content/uploads/2023/11/Scorpion-clean-768x722.png",
+            image: "/images/products.jpg",
             href: "/products/scorpion",
           },
           {
             title: "Explore rental options",
             description: "",
-            image: "https://images.unsplash.com/photo-1620712943543-959636834a5f?q=80&w=2070&auto=format&fit=crop",
+            image: "/images/products.jpg",
             href: "/rentals",
             isPromo: true,
           },
@@ -61,13 +61,13 @@ const dropdownContent: DropdownContent = {
           {
             title: "Wally",
             description: "Automated point-to-point delivery robot for indoor environments.",
-            image: "https://www.richtechrobotics.com/wp-content/uploads/2023/11/Wally-clean-no-tray-768x722.png",
+            image: "/images/products.jpg",
             href: "/products/wally",
           },
           {
             title: "Rover",
             description: "All-terrain delivery bot for last-mile logistics and outdoor tasks.",
-            image: "https://images.unsplash.com/photo-1629984538878-995ce508e730?q=80&w=1932&auto=format&fit=crop",
+            image: "/images/products.jpg",
             href: "/products/rover",
           },
         ] 
@@ -78,13 +78,13 @@ const dropdownContent: DropdownContent = {
            {
             title: "NeatBot",
             description: "Commercial-grade autonomous floor scrubbing for large spaces.",
-            image: "https://images.unsplash.com/photo-1611689103323-3f1de92794a3?q=80&w=1974&auto=format&fit=crop",
+            image: "/images/products.jpg",
             href: "/products/neatbot",
           },
           {
             title: "Tidy",
             description: "Compact cleaning bot perfect for small offices and retail spaces.",
-            image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2070&auto=format&fit=crop",
+            image: "/images/products.jpg",
             href: "/products/tidy",
           },
         ] 
@@ -95,7 +95,7 @@ const dropdownContent: DropdownContent = {
           {
             title: "Discover Our Full Robotic Lineup",
             description: "Explore our complete range of automation solutions.",
-            image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1932&auto=format&fit=crop",
+            image: "/images/products.jpg",
             href: "/products",
             isPromo: true,
           },
@@ -107,7 +107,7 @@ const dropdownContent: DropdownContent = {
           {
             title: "Flexible Robotics on Demand",
             description: "Get the automation you need, for as long as you need it.",
-            image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=2020&auto=format&fit=crop",
+            image: "/images/products.jpg",
             href: "/rentals",
             isPromo: true,
           },
@@ -123,13 +123,13 @@ const dropdownContent: DropdownContent = {
             {
               title: "Design System",
               description: "Build consistent and scalable designs with our automated tools.",
-              image: "https://images.unsplash.com/photo-1558655146-364adaf1fcc9?q=80&w=1983&auto=format&fit=crop",
+              image: "/images/products.jpg",
               href: "/design/system",
             },
             {
               title: "UX Research Bot",
               description: "Automate user research and gather insights with our AI-powered bot.",
-              image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=2070&auto=format&fit=crop",
+              image: "/images/products.jpg",
               href: "/design/research",
             },
           ],
@@ -140,13 +140,13 @@ const dropdownContent: DropdownContent = {
             {
               title: "LogoBot",
               description: "AI-powered logo and brand identity generator for a quick start.",
-              image: "https://images.unsplash.com/photo-1608999718493-215a7ea223b2?q=80&w=1974&auto=format&fit=crop",
+              image: "/images/products.jpg",
               href: "/design/logobot",
             },
             {
               title: "StyleScout",
               description: "Generate complete brand style guides, from colors to fonts.",
-              image: "https://images.unsplash.com/photo-1541462608143-67571c6738dd?q=80&w=2070&auto=format&fit=crop",
+              image: "/images/products.jpg",
               href: "/design/stylescout",
             },
           ] 
@@ -157,7 +157,7 @@ const dropdownContent: DropdownContent = {
             {
               title: "Artisan AI",
               description: "Create stunning, production-ready illustrations from text prompts.",
-              image: "https://images.unsplash.com/photo-1634403196235-15b8a658746b?q=80&w=1964&auto=format&fit=crop",
+              image: "/images/products.jpg",
               href: "/design/artisan-ai",
             },
           ]
@@ -172,19 +172,19 @@ const dropdownContent: DropdownContent = {
             {
               title: "Code Assistant Bot",
               description: "Your AI pair programmer for higher productivity and fewer bugs.",
-              image: "https://images.unsplash.com/photo-1593068297352-05451a3ff142?q=80&w=2070&auto=format&fit=crop",
+              image: "/images/products.jpg",
               href: "/dev/code-assistant",
             },
             {
               title: "QA Bot",
               description: "Automated testing with our intelligent QA bot to ensure quality.",
-              image: "https://images.unsplash.com/photo-1518349619113-03114f06ac3a?q=80&w=2070&auto=format&fit=crop",
+              image: "/images/products.jpg",
               href: "/dev/qa-bot",
             },
              {
               title: "Explore our APIs",
               description: "",
-              image: "https://images.unsplash.com/photo-1555949963-ff98082e3e03?q=80&w=1935&auto=format&fit=crop",
+              image: "/images/products.jpg",
               href: "/developers/api",
               isPromo: true,
             },
@@ -196,13 +196,13 @@ const dropdownContent: DropdownContent = {
             {
               title: "BugHunter",
               description: "Autonomous testing bot that finds and reports bugs before they ship.",
-              image: "https://images.unsplash.com/photo-1555952494-035b91b7d56a?q=80&w=2070&auto=format&fit=crop",
+              image: "/images/products.jpg",
               href: "/dev/bughunter",
             },
             {
               title: "TestGrid",
               description: "Run thousands of parallel tests on our distributed bot network.",
-              image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1934&auto=format&fit=crop",
+              image: "/images/products.jpg",
               href: "/dev/testgrid",
             },
           ]
@@ -213,7 +213,7 @@ const dropdownContent: DropdownContent = {
             {
               title: "ConnectAPI",
               description: "Seamlessly integrate our robots with your existing software stack.",
-              image: "https://images.unsplash.com/photo-1542626991-a2f571614533?q=80&w=2070&auto=format&fit=crop",
+              image: "/images/products.jpg",
               href: "/dev/connect-api",
             },
           ]
@@ -228,19 +228,19 @@ const dropdownContent: DropdownContent = {
             {
               title: "Manufacturing",
               description: "Automate your production line with our precision robots.",
-              image: "https://images.unsplash.com/photo-1633483188368-c68e7b39b3e1?q=80&w=2070&auto=format&fit=crop",
+              image: "/images/products.jpg",
               href: "/solutions/manufacturing",
             },
             {
               title: "Logistics & Warehousing",
               description: "Streamline your supply chain with our autonomous delivery bots.",
-              image: "https://images.unsplash.com/photo-1578575437130-5278ce682623?q=80&w=2070&auto=format&fit=crop",
+              image: "/images/products.jpg",
               href: "/solutions/logistics",
             },
             {
               title: "Explore All Industries",
               description: "",
-              image: "https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?q=80&w=2070&auto=format&fit=crop",
+              image: "/images/products.jpg",
               href: "/solutions/industries",
               isPromo: true,
             },
@@ -252,13 +252,13 @@ const dropdownContent: DropdownContent = {
             {
               title: "Material Handling",
               description: "Automated transport of goods within your facility.",
-              image: "https://images.unsplash.com/photo-1518798399766-34717a6152a5?q=80&w=2070&auto=format&fit=crop",
+              image: "/images/products.jpg",
               href: "/solutions/material-handling",
             },
             {
               title: "Inspection & Monitoring",
               description: "High-precision robots for quality control and surveillance.",
-              image: "https://images.unsplash.com/photo-1611606024823-52370a22e1ac?q=80&w=1968&auto=format&fit=crop",
+              image: "/images/products.jpg",
               href: "/solutions/inspection",
             },
           ] 
@@ -269,13 +269,13 @@ const dropdownContent: DropdownContent = {
             {
               title: "AI & Machine Learning",
               description: "The core intelligence driving our autonomous systems.",
-              image: "https://images.unsplash.com/photo-1620712943543-959636834a5f?q=80&w=2070&auto=format&fit=crop",
+              image: "/images/products.jpg",
               href: "/technology/ai-ml",
             },
             {
               title: "Computer Vision",
               description: "Enabling robots to perceive and understand the world.",
-              image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2069&auto=format&fit=crop",
+              image: "/images/products.jpg",
               href: "/technology/computer-vision",
             },
           ] 
@@ -290,13 +290,13 @@ const dropdownContent: DropdownContent = {
             {
               title: "Our Core Operating System",
               description: "The powerful, scalable, and secure OS for our entire fleet.",
-              image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop",
+              image: "/images/products.jpg",
               href: "/platform/os",
             },
             {
               title: "Real-time Kernel",
               description: "Ensuring microsecond precision for critical operations.",
-              image: "https://images.unsplash.com/photo-1545987796-20916962325b?q=80&w=2070&auto=format&fit=crop",
+              image: "/images/products.jpg",
               href: "/platform/os-kernel",
             },
           ],
@@ -307,13 +307,13 @@ const dropdownContent: DropdownContent = {
             {
               title: "REST & Python APIs",
               description: "Integrate and control our robots with simple, powerful APIs.",
-              image: "https://images.unsplash.com/photo-1517694712202-1428bc64a25a?q=80&w=2070&auto=format&fit=crop",
+              image: "/images/products.jpg",
               href: "/platform/api",
             },
             {
               title: "Explore API Documentation",
               description: "Your comprehensive guide to building with our platform.",
-              image: "https://images.unsplash.com/photo-1555949963-ff98082e3e03?q=80&w=1935&auto=format&fit=crop",
+              image: "/images/products.jpg",
               href: "/developers/api",
               isPromo: true,
             },
@@ -325,7 +325,7 @@ const dropdownContent: DropdownContent = {
             {
               title: "Virtual Test Environment",
               description: "Test and validate your robotics applications in a high-fidelity simulator.",
-              image: "https://images.unsplash.com/photo-1631006197148-565498a5d9e5?q=80&w=2070&auto=format&fit=crop",
+              image: "/images/products.jpg",
               href: "/platform/simulation",
             },
           ]
@@ -513,8 +513,9 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
           
         </NavbarBrand>
       </NavbarContent>
-
+      {/* navlink section */}
       <NavbarContent className="hidden ml-10 text-white pl-8 pr-6 py-2 bg-[#18171a]/60 backdrop-blur-md border rounded-xl border-[#323333] md:flex gap-2 relative" justify="center">
+        {/* Nav Links */}
         {navLinks.map(link => (
           <NavbarItem key={link.name}>
             {['About', 'Career'].includes(link.name) ? (
@@ -546,42 +547,45 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
             )}
           </NavbarItem>
         ))}
-        {/* Search Icon and Search Bar */}
+        {/* Search Icon */}
         <NavbarItem>
           <button
-            className={`size-10 ml-2 flex justify-center items-center rounded-xl bg-[#18171a]/20 backdrop-blur-md border transition-colors duration-200
+            className={`size-10 cursor-pointer ml-2 flex justify-center items-center rounded-xl bg-[#18171a]/20 backdrop-blur-md border transition-colors duration-200
               ${searchOpen ? 'border-[#0feaf5] text-[#0feaf5]' : 'border-[#323333] text-white'}
               hover:bg-[#242424] hover:text-[#0feaf5] focus:border-[#0feaf5] focus:text-[#0feaf5]`
             }
-            onClick={() => setSearchOpen((v) => !v)}
+            onClick={() => setSearchOpen(true)}
             aria-label="Search"
           >
             <FiSearch className="w-5 h-5" />
           </button>
         </NavbarItem>
-        
-        {/* Search Dropdown */}
-        {searchOpen && (
-          <div
-            ref={searchDropdownRef}
-            className="absolute left-0 top-full mt-2 w-full bg-[#18171a]/60 backdrop-blur-md border border-[#232323] focus-within:border-[#0feaf5] transition-colors rounded-xl shadow-2xl flex items-center px-1 py-1 animate-fadeIn z-40"
+        {/* Search Overlay */}
+        <div
+          className={`absolute top-0 left-0 right-0 h-full flex items-center bg-[#18171a] z-30 transition-opacity duration-300 ${searchOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'} rounded-xl`}
+          style={{ willChange: 'opacity' }}
+        >
+          <form className="flex flex-1 items-center rounded-r-3xl " onSubmit={(e) => { e.preventDefault(); setSearchOpen(false); }}>
+            <PlaceholdersAndVanishInput
+              placeholders={roboticsPlaceholders}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                console.log(e.target.value);
+              }}
+              onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+                e.preventDefault();
+                setSearchOpen(false);
+              }}
+            />
+          </form>
+          <button
+            className="ml-2 mr-3 flex items-center cursor-pointer justify-center rounded-xl bg-[#18171a]/20 border border-[#323333] text-white hover:bg-[#242424] hover:text-[#0feaf5]  size-10"
+            onClick={() => setSearchOpen(false)}
+            aria-label="Close search"
+            tabIndex={searchOpen ? 0 : -1}
           >
-            <div className="relative flex-1">
-              <PlaceholdersAndVanishInput
-                placeholders={roboticsPlaceholders}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  console.log(e.target.value);
-                }}
-                onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-                  e.preventDefault();
-                  console.log('submitted');
-                }}
-              />
-              
-            </div>
-          </div>
-        )}
-        
+            <FiX className="w-5 h-5" />
+          </button>
+        </div>
         {/* Dropdown Menu */}
         {openDropdown && dropdownContent[openDropdown as keyof typeof dropdownContent] && (
           <div
