@@ -4,7 +4,7 @@ import WhyEpic from './whyepic'
 import YourBenefits from './yourbenefits'
 
 import WhatURGoodAt from './whaturgoodat'
-import ProjectCarousel from './projectcarousel'
+// import ProjectCarousel from './projectcarousel'
 
 const Homepage = () => {
   return (
@@ -12,7 +12,7 @@ const Homepage = () => {
       <HeroSection />
       <WhyEpic />
       <WhatURGoodAt/>
-      <ProjectCarousel/>
+      {/* <ProjectCarousel/> */}
       {/* <Newsletter/> */}
       <YourBenefits/>
       <ClientlogoSection />

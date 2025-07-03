@@ -26,9 +26,9 @@ export default function YourBenefits() {
         {/* Right Column: Custom Grid Layout with different column widths */}
         <div className="w-full md:w-1/2 min-h-[500px] md:min-h-[650px] flex flex-row gap-6">
           {/* Column 1 */}
-          <div className="flex flex-col h-full gap-6" style={{ width: '36%' }}>
+          <div className="flex flex-col h-full gap-6 flex-[0_0_36%] max-w-[36%]">
             {/* 1st row: 60% */}
-            <div className="bg-white rounded-3xl shadow flex flex-col items-end justify-end overflow-hidden relative" style={{ flexBasis: '55%', flexGrow: 0, flexShrink: 0, minHeight: '0' }}>
+            <div className="bg-white rounded-3xl shadow flex flex-col items-end justify-end overflow-hidden relative flex-[0_0_55%] min-h-0">
               <img src="https://images.pexels.com/photos/4344878/pexels-photo-4344878.jpeg" alt="Mike" className="w-full h-full object-cover rounded-t-2xl min-h-[120px]" style={{ minHeight: '120px', maxHeight: '100%' }} />
               <div className="absolute left-0 bottom-6 flex items-center gap-2 bg-white rounded-l-none rounded-full px-4 py-2 shadow">
                 <div>
@@ -41,7 +41,7 @@ export default function YourBenefits() {
               </div>
             </div>
             {/* 2nd row: 40% */}
-            <div className="relative rounded-3xl shadow flex flex-col justify-between p-6 overflow-hidden h-full min-h-0" style={{ background: '#e4c6fd', flexBasis: '45%', flexGrow: 0, flexShrink: 0, minHeight: '0' }}>
+            <div className="relative rounded-3xl shadow flex flex-col justify-between p-6 overflow-hidden h-full min-h-0 bg-[#e4c6fd] flex-[0_0_45%]">
               {/* Soft purple geometric shape */}
               <svg className="absolute top-0 left-0 w-full h-full" style={{zIndex: 0}} viewBox="0 0 280 290" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
@@ -63,9 +63,9 @@ export default function YourBenefits() {
             </div>
           </div>
           {/* Column 2 */}
-          <div className="flex flex-col h-full gap-6" style={{ width: '32%' }}>
+          <div className="flex flex-col h-full gap-6 flex-[0_0_32%] max-w-[32%]">
             {/* 1st row: 50% */}
-            <div className="bg-[#A9FFCC] rounded-3xl overflow-hidden shadow flex flex-col justify-between p-6 h-full min-h-0 relative" style={{ flexBasis: '50%', flexGrow: 0, flexShrink: 0, minHeight: '0' }}>
+            <div className="bg-[#A9FFCC] rounded-3xl overflow-hidden shadow flex flex-col justify-between p-6 h-full min-h-0 relative flex-[0_0_50%]">
               {/* Green gradient blob SVG top right */}
                 <svg id="sw-js-blob-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="absolute -top-12 -right-20 w-full h-[60%]" style={{zIndex: 0}}>
                 <defs>
@@ -80,7 +80,7 @@ export default function YourBenefits() {
               <div className="text-[#18181a] text-lg font-semibold mt-auto relative z-10" style={{fontFamily: 'Gilroy, sans-serif'}}>Hire within a mere 72 <br /> hours. Easily adjust your <br/> team size from month <br /> to month as required.</div>
             </div>
             {/* 2nd row: 50% */}
-            <div className="bg-white rounded-3xl shadow flex flex-col items-end justify-end overflow-hidden relative" style={{ flexBasis: '50%', flexGrow: 0, flexShrink: 0, minHeight: '0' }}>
+            <div className="bg-white rounded-3xl shadow flex flex-col items-end justify-end overflow-hidden relative flex-[0_0_50%] min-h-0">
               <img src="https://images.pexels.com/photos/9604304/pexels-photo-9604304.jpeg" alt="Asgeir" className="w-full h-full object-cover rounded-t-2xl min-h-[120px]" style={{ minHeight: '120px', maxHeight: '100%' }} />
               <div className="absolute left-0 bottom-6 flex items-center gap-2 bg-white rounded-l-none rounded-full px-4 py-2 shadow">
                 <div>
@@ -94,9 +94,9 @@ export default function YourBenefits() {
             </div>
           </div>
           {/* Column 3 */}
-          <div className="flex flex-col h-full gap-6" style={{ width: '28%' }}>
+          <div className="flex flex-col h-full gap-6 flex-[0_0_28%] max-w-[28%]">
             {/* 1st row: 35% */}
-            <div className="bg-white rounded-3xl shadow flex flex-col items-end justify-end overflow-hidden relative" style={{ flexBasis: '37%', flexGrow: 0, flexShrink: 0, minHeight: '0' }}>
+            <div className="bg-white rounded-3xl shadow flex flex-col items-end justify-end overflow-hidden relative flex-[0_0_37%] min-h-0">
               <img src="https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg" alt="Latisha" className="w-full h-full object-cover rounded-t-2xl min-h-[80px]" style={{ minHeight: '80px', maxHeight: '100%' }} />
               <div className="absolute left-0 bottom-6 flex items-center gap-2 bg-white rounded-l-none rounded-full px-4 py-2 shadow">
                 <div>
@@ -109,7 +109,7 @@ export default function YourBenefits() {
               </div>
             </div>
             {/* 2nd row: 70% */}
-            <div className="bg-[#fbc8a9] rounded-3xl shadow flex flex-col items-start justify-end p-6 relative overflow-hidden" style={{ flexBasis: '63%', flexGrow: 0, flexShrink: 0, minHeight: '0' }}>
+            <div className="bg-[#fbc8a9] rounded-3xl shadow flex flex-col items-start justify-end p-6 relative overflow-hidden flex-[0_0_63%] min-h-0">
               <div className="font-bold text-[2rem] text-[#18181a] mb-2 leading-tight z-10" style={{fontFamily: 'Gilroy, sans-serif'}}>Rest assured, there are no crazy fees or legal hassle to worry about.</div>
               <svg className="absolute left-15 -top-25 opacity-35" width="380" height="380" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="36" stroke="#f2994a" strokeWidth="8"/><circle cx="40" cy="40" r="24" stroke="#f2994a" strokeWidth="4"/></svg>
             </div>
