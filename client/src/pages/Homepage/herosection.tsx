@@ -20,10 +20,12 @@ export default function HeroSection() {
       <div className="w-[100vw] h-[100vh] my-auto mx-auto flex flex-col items-center relative overflow-hidden p-2 ">
 
         {/* Background Video */}
-        <img src="/images/bg.jpg" alt="Hero Background" className="absolute inset-0 w-full h-full object-fill" />
+        <img src="/images/bggg.jpeg" alt="Hero Background" className="absolute inset-0 w-full h-full object-fill " />
+        
         
         {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/60 -z-5 pointer-events-none rounded-2xl p-2" style={{ boxSizing: 'border-box' }}></div>
+        <div className="absolute inset-0 bg-black/50 z-5 pointer-events-none rounded-2xl p-2" style={{ boxSizing: 'border-box' }}></div>
+        
         {/* Title, Description, and CTA */}
         <div className="w-full flex-grow flex items-start justify-center relative z-10 px-4 sm:px-8 md:px-6 mt-20">
           <div className="w-full flex flex-col md:flex-row items-center justify-between text-white">

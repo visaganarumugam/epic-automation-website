@@ -383,9 +383,9 @@ function LanguageSelector() {
   return (
     <div ref={ref} className="relative ">
       <button
-        className={`h-12 w-12 flex justify-center items-center rounded-xl bg-[#18171a]/60 backdrop-blur-md  border transition-colors duration-200
-          ${open ? 'border-[#0feaf5]' : 'border-[#323333]'}
-          hover:bg-[#242424] focus:border-[#0feaf5]`}
+        className={`h-13 w-13 flex justify-center items-center rounded-xl bg-[#18171a] backdrop-blur-md  border transition-colors duration-200
+          ${open ? 'border-[#ff9900]' : 'border-[#323333]'}
+          hover:bg-[#242424] focus:border-[#ff9900]`}
         onClick={() => setOpen((v) => !v)}
         aria-label="Select language"
         tabIndex={0}
@@ -400,7 +400,7 @@ function LanguageSelector() {
         />
       </button>
       {open && (
-        <div className="absolute right-0 mt-2 w-40 bg-[#18171a] border border-[#323222] rounded-xl rounded-tr-none shadow-2xl z-50 animate-fadeIn">
+        <div className="absolute right-0 mt-2 w-40 bg-[#18171a]/70 backdrop-blur-md border border-[#323222] rounded-xl rounded-tr-none shadow-2xl z-50 animate-fadeIn">
           {languageOptions.map(option => (
             <button
               key={option.value}
@@ -508,20 +508,20 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
       <NavbarContent>
         <NavbarBrand>
           <RouterLink to="/">
-            <img src={logo} alt="Logo" className="h-10 w-auto mr-2" />
+            <img src={logo} alt="Logo" className="h-12 w-auto mr-2" />
           </RouterLink>
           
         </NavbarBrand>
       </NavbarContent>
       {/* navlink section */}
-      <NavbarContent className="hidden ml-10 text-white pl-8 pr-6 py-2 bg-[#18171a]/60 backdrop-blur-md border rounded-xl border-[#323333] md:flex gap-2 relative" justify="center">
+      <NavbarContent className="hidden ml-10 text-white pl-8 pr-6 py-3 bg-[#18171a]/60 backdrop-blur-md border rounded-xl border-[#323333] md:flex gap-2 relative" justify="center">
         {/* Nav Links */}
         {navLinks.map(link => (
           <NavbarItem key={link.name}>
             {['About', 'Career'].includes(link.name) ? (
               <RouterLink
                 to={`/${link.name.toLowerCase()}`}
-                className={`flex items-center gap-1 font-medium text-white transition-colors duration-200 py-2 rounded-lg px-2 ${openDropdown === link.name ? 'text-[#0feaf5]' : 'text-white'} hover:text-[#0feaf5]`}
+                className={`flex items-center gap-1 font-medium text-lg text-white transition-colors duration-200 py-2 rounded-lg px-2 ${openDropdown === link.name ? 'text-[#ff9900]' : 'text-white'} hover:text-[#ff9900]`}
                 style={{ textDecoration: 'none' }}
               >
                 {link.name}
@@ -529,10 +529,10 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
             ) : (
               <button
                 className={`
-                  flex items-center gap-1 font-medium text-white
+                  flex items-center gap-1 font-medium text-white text-lg
                   transition-colors duration-200 py-2 rounded-lg px-2
-                  ${openDropdown === link.name ? 'text-[#0feaf5]' : 'text-white'}
-                  hover:text-[#0feaf5]
+                  ${openDropdown === link.name ? 'text-[#ff9900]' : 'text-white'}
+                  hover:text-[#ff9900]
                 `}
                 onClick={() => link.dropdown && handleTabClick(link)}
                 onMouseEnter={() => link.dropdown && handleDropdownMouseEnter(link)}
@@ -550,14 +550,14 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
         {/* Search Icon */}
         <NavbarItem>
           <button
-            className={`size-10 cursor-pointer ml-2 flex justify-center items-center rounded-xl bg-[#18171a]/20 backdrop-blur-md border transition-colors duration-200
-              ${searchOpen ? 'border-[#0feaf5] text-[#0feaf5]' : 'border-[#323333] text-white'}
-              hover:bg-[#242424] hover:text-[#0feaf5] focus:border-[#0feaf5] focus:text-[#0feaf5]`
+            className={`size-11 cursor-pointer ml-2 flex justify-center items-center rounded-xl   border transition-colors duration-200
+              ${searchOpen ? 'border-[#ff9900] text-[#ff9900]' : 'border-[#323333] text-white'}
+              hover:bg-[#242424] hover:text-[#ff9900] focus:border-[#ff9900] focus:text-[#ff9900]`
             }
             onClick={() => setSearchOpen(true)}
             aria-label="Search"
           >
-            <FiSearch className="w-5 h-5" />
+            <FiSearch className="w-6 h-6" />
           </button>
         </NavbarItem>
         {/* Search Overlay */}
@@ -578,7 +578,7 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
             />
           </form>
           <button
-            className="ml-2 mr-3 flex items-center cursor-pointer justify-center rounded-xl bg-[#18171a]/20 border border-[#323333] text-white hover:bg-[#242424] hover:text-[#0feaf5]  size-10"
+            className="ml-2 mr-3 flex items-center cursor-pointer justify-center rounded-xl bg-[#18171a]/20 border border-[#323333] text-white hover:bg-[#242424] hover:text-[#ff9900]  size-10"
             onClick={() => setSearchOpen(false)}
             aria-label="Close search"
             tabIndex={searchOpen ? 0 : -1}
@@ -617,7 +617,7 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
                         </button>
                     ))}
                 </div>
-                <div className="w-[65%] bg-gray-100 p-6 rounded-r-xl">
+                <div className="w-[65%] bg-white/25 backdrop-blur-2xl p-6 rounded-r-xl">
                   <div className="grid grid-cols-1 md:grid-cols-2 h-full gap-4 grid-auto-rows-fr">
                     {activeTabData?.items.map((item, idx) =>
                       item.isPromo ? (
@@ -687,8 +687,8 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
         <NavbarItem className="hidden md:flex">
           <RouterLink to="/help-center" style={{ textDecoration: 'none' }}>
             <button
-              className={`size-12 flex justify-center items-center rounded-xl bg-[#18171a]/60 backdrop-blur-md border transition-colors duration-200
-                border-[#323333] text-white hover:bg-[#242424] hover:text-[#0feaf5] focus:border-[#0feaf5] focus:text-[#0feaf5]`
+              className={`size-13 flex justify-center items-center rounded-xl bg-[#18171a]/60 backdrop-blur-md border transition-colors duration-200
+                border-[#323333] text-white hover:bg-[#242424] hover:text-[#ff9900] focus:border-[#ff9900] focus:text-[#ff9900]`
               }
               aria-label="Help Center"
             >
@@ -699,8 +699,8 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
         {/* Sign Up Button */}
         <NavbarItem className="hidden md:flex">
           <RouterLink to="/signup" style={{ textDecoration: 'none' }}>
-            <button className="relative inline-flex h-12 overflow-hidden rounded-xl p-[1px] focus:outline-none focus:ring-1 focus:ring-orange-500 focus:ring-offset-1 focus:ring-offset-orange-100">
-              <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E9F8FF_0%,#082F61_50%,#C1E3FF_100%)]" />
+            <button className="relative inline-flex h-13 overflow-hidden rounded-xl p-[1px] focus:outline-none focus:ring-1 focus:ring-orange-500 focus:ring-offset-1 focus:ring-offset-orange-100">
+              <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#ff9900_0%,#082F61_50%,#ff9900_100%)]" />
               <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-xl  bg-[#18171a]  px-5 py-1 text-sm font-medium text-white backdrop-blur-3xl">
                 Sign Up
               </span>
