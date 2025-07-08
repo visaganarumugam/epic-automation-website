@@ -4,7 +4,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Play, XIcon } from "lucide-react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 
 type AnimationStyle =
   | "from-bottom"
@@ -80,7 +80,7 @@ export default function HeroVideoDialog({
   return (
     <div className={cn("relative", className)}>
       <div
-        className="group relative cursor-pointer"
+        className="group relative  h-[79vh] cursor-pointer"
         onClick={() => setIsVideoOpen(true)}
       >
         <img
@@ -129,7 +129,8 @@ export default function HeroVideoDialog({
                   className="size-full rounded-2xl"
                   allowFullScreen
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                ></iframe>
+                />
+                
               </div>
             </motion.div>
           </motion.div>
