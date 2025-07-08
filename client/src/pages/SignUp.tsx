@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Eye, EyeOff, Mail, Lock, User } from "lucide-react";
-import logo from "/images/logo.png";
+import { Eye, EyeOff } from "lucide-react";
+// import logo from "/images/logo.png";
 
 export default function SignUp() {
   const [isLogin, setIsLogin] = useState(false);
