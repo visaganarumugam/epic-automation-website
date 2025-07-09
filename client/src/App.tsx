@@ -26,8 +26,8 @@ function AppContent() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Hide Navbar and Footer on /signup
-  const hideNavAndFooter = location.pathname === "/signup";
+  // Hide Navbar and Footer on /signup and /help-center
+  const hideNavAndFooter = location.pathname === "/signup" || location.pathname === "/help-center";
 
   return (
     <>
