@@ -139,7 +139,6 @@ const languageOptions = [
 const navLinks = [
   { name: 'Home', dropdown: false },
   { name: 'Services', dropdown: true },
-  { name: 'Clients', dropdown: false },
   { name: 'Career', dropdown: true },
   { name: 'About', dropdown: false },
 ];
