@@ -29,10 +29,10 @@ interface DropdownContent {
 }
 
 const dropdownContent: DropdownContent = {
-  Products: {
+  Services: {
     tabs: [
       {
-        name: "Production",
+        name: "Robotics & Automation",
         items: [
           {
             title: "ADAM",
@@ -56,7 +56,7 @@ const dropdownContent: DropdownContent = {
         ],
       },
       { 
-        name: "Delivery", 
+        name: "Special Purpose Machine (SPM) ", 
         items: [
           {
             title: "Wally",
@@ -73,7 +73,7 @@ const dropdownContent: DropdownContent = {
         ] 
       },
       { 
-        name: "Cleaning", 
+        name: "SCADA", 
         items: [
            {
             title: "NeatBot",
@@ -90,7 +90,7 @@ const dropdownContent: DropdownContent = {
         ] 
       },
       { 
-        name: "See all robots", 
+        name: "Custom Panel Design & Manufacturing", 
         items: [
           {
             title: "Discover Our Full Robotic Lineup",
@@ -102,7 +102,19 @@ const dropdownContent: DropdownContent = {
         ] 
       },
       { 
-        name: "Rent a robot", 
+        name: "Robot Programming Services", 
+        items: [
+          {
+            title: "Flexible Robotics on Demand",
+            description: "Get the automation you need, for as long as you need it.",
+            image: "/images/products.jpg",
+            href: "/rentals",
+            isPromo: true,
+          },
+        ] 
+      },
+      { 
+        name: "PLC & HMI Programming Services", 
         items: [
           {
             title: "Flexible Robotics on Demand",
@@ -115,223 +127,7 @@ const dropdownContent: DropdownContent = {
       },
     ],
   },
-  Design: {
-      tabs: [
-        {
-          name: "UI/UX",
-          items: [
-            {
-              title: "Design System",
-              description: "Build consistent and scalable designs with our automated tools.",
-              image: "/images/products.jpg",
-              href: "/design/system",
-            },
-            {
-              title: "UX Research Bot",
-              description: "Automate user research and gather insights with our AI-powered bot.",
-              image: "/images/products.jpg",
-              href: "/design/research",
-            },
-          ],
-        },
-        { 
-          name: "Branding", 
-          items: [
-            {
-              title: "LogoBot",
-              description: "AI-powered logo and brand identity generator for a quick start.",
-              image: "/images/products.jpg",
-              href: "/design/logobot",
-            },
-            {
-              title: "StyleScout",
-              description: "Generate complete brand style guides, from colors to fonts.",
-              image: "/images/products.jpg",
-              href: "/design/stylescout",
-            },
-          ] 
-        },
-        { 
-          name: "Illustration", 
-          items: [
-            {
-              title: "Artisan AI",
-              description: "Create stunning, production-ready illustrations from text prompts.",
-              image: "/images/products.jpg",
-              href: "/design/artisan-ai",
-            },
-          ]
-        },
-      ],
-  },
-  Development: {
-      tabs: [
-        {
-          name: "DevBots",
-          items: [
-            {
-              title: "Code Assistant Bot",
-              description: "Your AI pair programmer for higher productivity and fewer bugs.",
-              image: "/images/products.jpg",
-              href: "/dev/code-assistant",
-            },
-            {
-              title: "QA Bot",
-              description: "Automated testing with our intelligent QA bot to ensure quality.",
-              image: "/images/products.jpg",
-              href: "/dev/qa-bot",
-            },
-             {
-              title: "Explore our APIs",
-              description: "",
-              image: "/images/products.jpg",
-              href: "/developers/api",
-              isPromo: true,
-            },
-          ],
-        },
-        { 
-          name: "QA Bots", 
-          items: [
-            {
-              title: "BugHunter",
-              description: "Autonomous testing bot that finds and reports bugs before they ship.",
-              image: "/images/products.jpg",
-              href: "/dev/bughunter",
-            },
-            {
-              title: "TestGrid",
-              description: "Run thousands of parallel tests on our distributed bot network.",
-              image: "/images/products.jpg",
-              href: "/dev/testgrid",
-            },
-          ]
-        },
-        { 
-          name: "Integrations", 
-          items: [
-            {
-              title: "ConnectAPI",
-              description: "Seamlessly integrate our robots with your existing software stack.",
-              image: "/images/products.jpg",
-              href: "/dev/connect-api",
-            },
-          ]
-        },
-      ],
-  },
-  Solutions: {
-      tabs: [
-        {
-          name: "By Industry",
-          items: [
-            {
-              title: "Manufacturing",
-              description: "Automate your production line with our precision robots.",
-              image: "/images/products.jpg",
-              href: "/solutions/manufacturing",
-            },
-            {
-              title: "Logistics & Warehousing",
-              description: "Streamline your supply chain with our autonomous delivery bots.",
-              image: "/images/products.jpg",
-              href: "/solutions/logistics",
-            },
-            {
-              title: "Explore All Industries",
-              description: "",
-              image: "/images/products.jpg",
-              href: "/solutions/industries",
-              isPromo: true,
-            },
-          ],
-        },
-        { 
-          name: "By Application", 
-          items: [
-            {
-              title: "Material Handling",
-              description: "Automated transport of goods within your facility.",
-              image: "/images/products.jpg",
-              href: "/solutions/material-handling",
-            },
-            {
-              title: "Inspection & Monitoring",
-              description: "High-precision robots for quality control and surveillance.",
-              image: "/images/products.jpg",
-              href: "/solutions/inspection",
-            },
-          ] 
-        },
-        { 
-          name: "By Technology", 
-          items: [
-            {
-              title: "AI & Machine Learning",
-              description: "The core intelligence driving our autonomous systems.",
-              image: "/images/products.jpg",
-              href: "/technology/ai-ml",
-            },
-            {
-              title: "Computer Vision",
-              description: "Enabling robots to perceive and understand the world.",
-              image: "/images/products.jpg",
-              href: "/technology/computer-vision",
-            },
-          ] 
-        },
-      ],
-  },
-  Platform: {
-      tabs: [
-        {
-          name: "Robotics OS",
-          items: [
-            {
-              title: "Our Core Operating System",
-              description: "The powerful, scalable, and secure OS for our entire fleet.",
-              image: "/images/products.jpg",
-              href: "/platform/os",
-            },
-            {
-              title: "Real-time Kernel",
-              description: "Ensuring microsecond precision for critical operations.",
-              image: "/images/products.jpg",
-              href: "/platform/os-kernel",
-            },
-          ],
-        },
-        { 
-          name: "Developer APIs", 
-          items: [
-            {
-              title: "REST & Python APIs",
-              description: "Integrate and control our robots with simple, powerful APIs.",
-              image: "/images/products.jpg",
-              href: "/platform/api",
-            },
-            {
-              title: "Explore API Documentation",
-              description: "Your comprehensive guide to building with our platform.",
-              image: "/images/products.jpg",
-              href: "/developers/api",
-              isPromo: true,
-            },
-          ]
-        },
-        { 
-          name: "Simulation Tools", 
-          items: [
-            {
-              title: "Virtual Test Environment",
-              description: "Test and validate your robotics applications in a high-fidelity simulator.",
-              image: "/images/products.jpg",
-              href: "/platform/simulation",
-            },
-          ]
-        },
-      ],
-  },
+  
 };
 
 const languageOptions = [
@@ -341,11 +137,10 @@ const languageOptions = [
 ];
 
 const navLinks = [
-  { name: 'Products', dropdown: true },
-  { name: 'Solutions', dropdown: true },
-  { name: 'Platform', dropdown: true },
+  { name: 'Home', dropdown: false },
+  { name: 'Services', dropdown: true },
+  { name: 'Career', dropdown: true },
   { name: 'About', dropdown: false },
-  { name: 'Career', dropdown: false },
 ];
 
 const roboticsPlaceholders = [
@@ -383,7 +178,7 @@ function LanguageSelector() {
   return (
     <div ref={ref} className="relative ">
       <button
-        className={`h-13 w-13 flex justify-center items-center rounded-xl bg-[#18171a] backdrop-blur-md  border transition-colors duration-200
+        className={`h-13 w-13 flex justify-center items-center rounded-xl bg-[#18171a]/50 backdrop-blur-md  border transition-colors duration-200
           ${open ? 'border-[#ff9900]' : 'border-[#323333]'}
           hover:bg-[#242424] focus:border-[#ff9900]`}
         onClick={() => setOpen((v) => !v)}
@@ -400,7 +195,7 @@ function LanguageSelector() {
         />
       </button>
       {open && (
-        <div className="absolute right-0 mt-2 w-40 bg-[#18171a]/70 backdrop-blur-md border border-[#323222] rounded-xl rounded-tr-none shadow-2xl z-50 animate-fadeIn">
+        <div className="absolute right-0 mt-2 w-40 bg-[#18171a] backdrop-blur-md border border-[#323222] rounded-xl rounded-tr-none shadow-2xl z-50 animate-fadeIn">
           {languageOptions.map(option => (
             <button
               key={option.value}
@@ -479,7 +274,7 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
   };
   
   const handleDropdownMouseLeave = () => {
-    setDropdownHovered(false);
+    setDropdownHovered(true);
     closeDropdownTimeout = window.setTimeout(() => {
       if (!dropdownHovered) setOpenDropdown(null);
     }, 120);
@@ -514,7 +309,7 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
         </NavbarBrand>
       </NavbarContent>
       {/* navlink section */}
-      <NavbarContent className="hidden ml-10 text-white pl-8 pr-6 py-3 bg-[#18171a]/60 backdrop-blur-md border rounded-xl border-[#323333] md:flex gap-2 relative" justify="center">
+      <NavbarContent className="hidden ml-10 text-white pl-8 pr-6 py-2 bg-[#18171a]/60 backdrop-blur-md border rounded-xl border-[#323333] md:flex gap-2 relative" justify="center">
         {/* Nav Links */}
         {navLinks.map(link => (
           <NavbarItem key={link.name}>
@@ -550,8 +345,8 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
         {/* Search Icon */}
         <NavbarItem>
           <button
-            className={`size-11 cursor-pointer ml-2 flex justify-center items-center rounded-xl   border transition-colors duration-200
-              ${searchOpen ? 'border-[#ff9900] text-[#ff9900]' : 'border-[#323333] text-white'}
+            className={`size-11 cursor-pointer ml-2 flex justify-center items-center rounded-xl   transition-colors duration-200
+              ${searchOpen ? 'border-[#ff9900] text-[#ff9900]' : 'bg-black/40 text-white'}
               hover:bg-[#242424] hover:text-[#ff9900] focus:border-[#ff9900] focus:text-[#ff9900]`
             }
             onClick={() => setSearchOpen(true)}
@@ -588,8 +383,9 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
         </div>
         {/* Dropdown Menu */}
         {openDropdown && dropdownContent[openDropdown as keyof typeof dropdownContent] && (
-          <div
-            className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[70vw] max-w-[900px] border border-[#323333] rounded-xl shadow-2xl flex z-40 transition-all duration-200 animate-fadeIn"
+          <div 
+            className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[70vw] max-w-[900px] border border-[#323333] rounded-xl shadow-md flex transition-all duration-200 animate-fadeIn  z-50" 
+            style={{ backgroundImage: "url('/images/navbardropdownimg.png')", backgroundSize: 'cover', backgroundPosition: 'center' , backdropFilter: 'blur(8px)' }}
             onMouseEnter={() => {
               if (closeDropdownTimeout) clearTimeout(closeDropdownTimeout);
               setDropdownHovered(true);
@@ -603,7 +399,7 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
               const activeTabData: DropdownTab | undefined = linkData.tabs.find(t => t.name === activeTab);
 
               return <>
-                <div className="w-[35%] bg-[#0f4a69] p-4 rounded-l-xl flex flex-col">
+                <div className="w-[35%] bg-[#0f4a69]  p-4 rounded-l-xl flex flex-col" >
                     {linkData.tabs.map((tab) => (
                         <button
                             key={tab.name}
@@ -617,8 +413,8 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
                         </button>
                     ))}
                 </div>
-                <div className="w-[65%] bg-white/25 backdrop-blur-2xl p-6 rounded-r-xl">
-                  <div className="grid grid-cols-1 md:grid-cols-2 h-full gap-4 grid-auto-rows-fr">
+                <div className="w-[65%] p-6 rounded-r-xl " >
+                  <div className="grid grid-cols-1 md:grid-cols-2 h-full   gap-4 grid-auto-rows-fr">
                     {activeTabData?.items.map((item, idx) =>
                       item.isPromo ? (
                         <RouterLink to={item.href} key={idx} className="relative rounded-lg overflow-hidden h-full group col-span-1 md:col-span-2">

@@ -65,7 +65,6 @@ export default function HelpCenter() {
           height="100%"
           allowFullScreen={true}
           className="rounded-4xl px-1 py-1 bg-black/70"
-          loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
       </div>

@@ -26,13 +26,13 @@ export default function ContactUsForm() {
     <section className="w-full min-h-screen flex items-center justify-center bg-transparent relative overflow-hidden px-10 md:py-0">
       {/* Large faded CONTACT background text */}
       <span className="absolute inset-0 flex items-center justify-center select-none pointer-events-none z-0">
-        <span className="text-[10vw] md:text-[10vw] font-black tracking-tighter text-[#5d88a8] opacity-20" style={{letterSpacing: '-0.05em'}}>EPIC AUTOMATIONS</span>
+        <span className="text-[10vw] md:text-[10vw] font-black tracking-tighter text-white/40 opacity-80" style={{letterSpacing: '-0.05em' , textShadow : '0 0 5px #FBE6BF, 0 0 10px #FBE6BF, 0 0 20px #FBE6BF'}} >EPIC AUTOMATIONS</span>
       </span>
-      <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 bg-transparent">
+      <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-2  mx-10 bg-transparent">
         {/* Left: Contact Info */}
         <div className="flex flex-col w-full gap-6 justify-center h-full">
           <div className="w-fit px-6 py-2 rounded-full bg-[#181b1f] border border-[#23272b] text-white text-2xl font-semibold mb-2 shadow-lg flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-[#0feaf5] mr-2 inline-block"></span>
+            <span className="w-3 h-3 rounded-full bg-[#ffa200] mr-2 inline-block"></span>
             Contact
           </div> 
           <h2 className="text-4xl md:text-7xl font-bold text-black">Get in touch</h2>
@@ -44,10 +44,10 @@ export default function ContactUsForm() {
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between w-[94%] bg-white/25 backdrop-blur-[15px] border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-2xl px-6 py-4 group hover:border-[#0feaf5] transition-all"
+                className="flex items-center justify-between w-[94%] bg-white/25 backdrop-blur-[15px] border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-2xl px-6 py-4 group hover:border-[#FEB130] transition-all"
               >
                 <div className="flex py-2 items-center gap-4">
-                  <span className="bg-white/10 border  border-white/25 rounded-xl p-2 flex items-center justify-center">
+                  <span className="bg-white/10 border  border-black/25 rounded-xl p-2 flex items-center justify-center">
                     {item.icon}
                   </span>
                   <div className="flex flex-col">
@@ -55,7 +55,7 @@ export default function ContactUsForm() {
                     <span className="text-gray-700 text-lg">{item.value}</span>
                   </div>
                 </div>
-                <span className="bg-[#23272b] rounded-2xl p-2 ml-4 group-hover:bg-[#0feaf5] transition-colors">
+                <span className="bg-[#23272b] rounded-2xl p-2 ml-4 group-hover:bg-[#FEB130] transition-colors">
                   <IconArrowUpRight size={27} className="text-white group-hover:text-black" />
                 </span>
               </a>
@@ -67,24 +67,24 @@ export default function ContactUsForm() {
           <input
             type="text"
             placeholder="Name"
-            className="bg-white/25 backdrop-blur-[15px] border border-white/20 text-lg h-[12%] shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 py-4 text-black placeholder-gray-800 focus:outline-none focus:border-[#0feaf5] transition-all"
+            className="bg-white/25 backdrop-blur-[15px] border border-white/20 text-lg h-[12%] shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 py-4 text-black placeholder-gray-800 focus:outline-none focus:border-[#FEB130] transition-all"
             style={{fontFamily: 'Gilroy'}}
           />
           <input
             type="email"
             placeholder="Email"
-            className="bg-white/25 backdrop-blur-[15px] border border-white/20 text-lg h-[12%] shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 py-4 text-black placeholder-gray-800 focus:outline-none focus:border-[#0feaf5] transition-all"
+            className="bg-white/25 backdrop-blur-[15px] border border-white/20 text-lg h-[12%] shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 py-4 text-black placeholder-gray-800 focus:outline-none focus:border-[#FEB130] transition-all"
             style={{fontFamily: 'Gilroy'}}
           />
           <textarea
             placeholder="Message"
             rows={6}
-            className=" h-[70%] bg-white/25 backdrop-blur-[15px] border border-white/20 text-lg shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 py-4 text-black placeholder-gray-800 focus:outline-none focus:border-[#0feaf5] transition-all resize-none"
+            className=" h-[70%] bg-white/25 backdrop-blur-[15px] border border-white/20 text-lg shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 py-4 text-black placeholder-gray-800 focus:outline-none focus:border-[#FEB130] transition-all resize-none"
             style={{fontFamily: 'Gilroy'}}
           />
           <button
             type="submit"
-            className="w-full bg-black text-white font-semibold text-lg py-4 rounded-xl shadow hover:bg-[#0feaf5] hover:text-black transition-all mt-2"
+            className="w-full bg-black text-white font-semibold text-lg py-4 rounded-xl shadow hover:bg-[#FEB130] hover:text-black transition-all mt-2"
             style={{fontFamily: 'Gilroy'}}
           >
             Submit
