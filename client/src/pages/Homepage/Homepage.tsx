@@ -1,20 +1,24 @@
 import HeroSection from './herosection'
 import ClientlogoSection from './clientlogosection'
 import WhyEpic from './whyepic'
-import YourBenefits from './yourbenefits'
+import WhatWeRGoodAt from './WhatWeAreGoodAt'
 
-import WhatURGoodAt from './whaturgoodat'
+import OurApproach from './ourapproach'
+import YourBenefits from './YourBenefits'
+import OurMission from './ourmisson'
 // import ProjectCarousel from './projectcarousel'
 
 const Homepage = () => {
   return (
-    <div className='overflow-hidden '>
+    <div className='overflow-hidden bg-white'>
       <HeroSection />
       <WhyEpic />
-      <WhatURGoodAt/>
+      <OurMission />
+      <OurApproach/>
       {/* <ProjectCarousel/> */}
       {/* <Newsletter/> */}
-      <YourBenefits/>
+      <WhatWeRGoodAt/>
+      <YourBenefits />
       <ClientlogoSection />
       
       

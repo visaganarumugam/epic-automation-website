@@ -91,36 +91,13 @@ body, html, #root {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.5);
+  
   z-index: 40;
 }
 
-.nav-gradient-bg {
-  background: linear-gradient(90deg, #FFE5B4 0%, #FF8C00 50%, #FFE5B4 100%);
-}
 
-.nav-glass-bg {
-  position: relative;
-  background: rgba(15, 15, 20, 0.7);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 2.5px solid transparent;
-  box-shadow: 0 4px 32px 0 rgba(0,0,0,0.18);
-}
-.nav-glass-bg::before {
-  content: '';
-  position: absolute;
-  inset: -2.5px;
-  border-radius: inherit;
-  padding: 0;
-  z-index: 0;
-  background: conic-gradient(from 90deg at 50% 50%, #FFE5B4 0%, #FF8C00 50%, #FFE5B4 100%);
-  opacity: 0.9;
-  pointer-events: none;
-}
-.nav-glass-bg > * {
-  position: relative;
-  z-index: 1;
-}
+
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -322,6 +299,21 @@ body, html, #root {
 .animate-popup {
   animation: popup 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   opacity: 1;
+}
+
+@keyframes robot-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes robot-spin-reverse {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+.animate-robot-spin {
+  animation: robot-spin 3s linear infinite;
+}
+.animate-robot-spin-reverse {
+  animation: robot-spin-reverse 3s linear infinite;
 }
 
 @layer base {

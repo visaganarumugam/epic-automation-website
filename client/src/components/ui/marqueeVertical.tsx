@@ -8,7 +8,7 @@ const reviews = [
     username: "@ava",
     body: "The automation solutions provided by Robotics Co. have revolutionized our assembly line. Efficiency is up 40%!",
     img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    rating: 5,
+    rating: 4,
   },
   {
     name: "Dr. Isaac",
@@ -95,7 +95,7 @@ const StarRating = ({ rating }: { rating: number }) => {
         </svg>
       )}
       {Array.from({ length: emptyStars }).map((_, i) => (
-        <svg key={i} className="w-4 h-4 text-gray-300 inline" fill="currentColor" viewBox="0 0 20 20">
+        <svg key={i} className="w-4 h-4 text-7 inline" fill="currentColor" viewBox="0 0 20 20">
           <polygon points="9.9,1.1 12.3,6.6 18.2,7.3 13.7,11.4 15,17.2 9.9,14.1 4.8,17.2 6.1,11.4 1.6,7.3 7.5,6.6" />
         </svg>
       ))}
@@ -121,7 +121,7 @@ const ReviewCard = ({
       className={cn(
         "relative h-full w-fit sm:w-full  cursor-pointer overflow-hidden rounded-xl border p-4",
         // light styles
-        "border-gray-950/[.1] bg-gray-300/10 backdrop-blur-sm hover:bg-gray-200/10",
+        "border-gray-950/[.1] bg-gray-700/10 backdrop-blur-sm hover:bg-gray-300/10",
         // dark styles
         "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
       )}
@@ -133,13 +133,13 @@ const ReviewCard = ({
       <div className="flex flex-row items-center gap-2">
         <img className="rounded-full w-12 h-12 object-cover"  alt="" src={img} />
         <div className="flex flex-col">
-          <figcaption className="text-xl font-semibold text-white">
+          <figcaption className="text-xl font-semibold text-black">
             {name}
           </figcaption>
-          <p className="text-md font-medium text-white/40">{username}</p>
+          <p className="text-md font-medium text-black/40">{username}</p>
         </div>
       </div>
-      <p className="mt-5 text-lg w-full text-amber-50">{body}</p>
+      <p className="mt-5 text-lg w-full text-black">{body}</p>
     </figure>
   );
 };
@@ -173,8 +173,8 @@ export function MarqueeDemoVertical() {
         ))}
       </Marquee>
       
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-[#101014]"></div>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-[#101014]"></div>
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-[#fddca4]"></div>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-tl from-[#fddca4]"></div>
     </div>
   );
 }
