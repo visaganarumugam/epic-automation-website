@@ -33,7 +33,9 @@ function AppContent() {
     <>
       {!hideNavAndFooter && <TopNavbar isScrolled={scrolled} />}
       <Routes>
+        <Route path="/" element={<Homepage />} />
         <Route path="/home" element={<Homepage />} />
+
         <Route path="/products" element={<Products />} />
         <Route path="/design" element={<Design />} />
         <Route path="/development" element={<Development />} />
