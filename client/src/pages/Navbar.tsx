@@ -302,7 +302,7 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
     >
       <NavbarContent>
         <NavbarBrand>
-          <RouterLink to="/">
+          <RouterLink to="/home">
             <img src={logo} alt="Logo" className="h-12 w-auto mr-2" />
           </RouterLink>
           
@@ -313,7 +313,7 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
         {/* Nav Links */}
         {navLinks.map(link => (
           <NavbarItem key={link.name}>
-            {['About', 'Career'].includes(link.name) ? (
+            {['Home' , 'About', 'Career'].includes(link.name) ? (
               <RouterLink
                 to={`/${link.name.toLowerCase()}`}
                 className={`flex items-center gap-1 font-medium text-lg text-white transition-colors duration-200 py-2 rounded-lg px-2 ${openDropdown === link.name ? 'text-[#ff9900]' : 'text-white'} hover:text-[#ff9900]`}
