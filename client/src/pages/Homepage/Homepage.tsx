@@ -4,7 +4,7 @@ import WhyEpic from './whyepic'
 import WhatWeRGoodAt from './WhatWeAreGoodAt'
 
 import OurApproach from './ourapproach'
-import YourBenefit from './YourBenefits'
+import YourBenefit from './yourbenefits'
 import OurMission from './ourmisson'
 // import ProjectCarousel from './projectcarousel'
 
