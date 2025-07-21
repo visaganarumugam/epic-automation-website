@@ -35,21 +35,21 @@ const dropdownContent: DropdownContent = {
         name: "Robotics & Automation",
         items: [
           {
-            title: "ADAM",
-            description: "Generate revenue with this friendly, two-armed productivity robot.",
-            image: "/images/products.jpg",
+            title: "Machine Tending",
+            description: "Automate the Load , Elevate.",
+            image: "/images/navdropimages/MachineTending.png",
             href: "/products/adam",
           },
           {
-            title: "Scorpion",
-            description: "AI powered robot bartender that provides strikingly good beverage service.",
-            image: "/images/products.jpg",
+            title: "Palletizing",
+            description: "Automated Palletizing.",
+            image: "/images//navdropimages/Palletizing.png",
             href: "/products/scorpion",
           },
           {
-            title: "Explore rental options",
-            description: "",
-            image: "/images/products.jpg",
+            title: "Deburring",
+            description: "Precision Finishing for Peak",
+            image: "/images/navdropimages/deburring.png",
             href: "/rentals",
             isPromo: true,
           },
@@ -59,14 +59,14 @@ const dropdownContent: DropdownContent = {
         name: "Special Purpose Machine (SPM) ", 
         items: [
           {
-            title: "Wally",
-            description: "Automated point-to-point delivery robot for indoor environments.",
+            title: "CNC Automations",
+            description: "Consistent, Reliable. CNC Done Right.",
             image: "/images/products.jpg",
             href: "/products/wally",
           },
           {
-            title: "Rover",
-            description: "All-terrain delivery bot for last-mile logistics and outdoor tasks.",
+            title: "Packaging machine",
+            description: "Consistent Packing, Every Single Time. Efficiency Engineered nto Every Machine.",
             image: "/images/products.jpg",
             href: "/products/rover",
           },
@@ -93,8 +93,8 @@ const dropdownContent: DropdownContent = {
         name: "Custom Panel Design & Manufacturing", 
         items: [
           {
-            title: "Discover Our Full Robotic Lineup",
-            description: "Explore our complete range of automation solutions.",
+            title: "Precision in Design, Power in Control. Panels Built to Perform, Engineered to Last.",
+            description: "",
             image: "/images/products.jpg",
             href: "/products",
             isPromo: true,
@@ -105,8 +105,8 @@ const dropdownContent: DropdownContent = {
         name: "Robot Programming Services", 
         items: [
           {
-            title: "Flexible Robotics on Demand",
-            description: "Get the automation you need, for as long as you need it.",
+            title: "Turning Code into Capability. Robots That Work the Way You Want.",
+            description: "",
             image: "/images/products.jpg",
             href: "/rentals",
             isPromo: true,
@@ -117,8 +117,8 @@ const dropdownContent: DropdownContent = {
         name: "PLC & HMI Programming Services", 
         items: [
           {
-            title: "Flexible Robotics on Demand",
-            description: "Get the automation you need, for as long as you need it.",
+            title: "From Logic to Touch – Total Control. We Program the Brains and the Face of Automation",
+            description: "",
             image: "/images/products.jpg",
             href: "/rentals",
             isPromo: true,
@@ -422,9 +422,10 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
                           <div className="absolute inset-0 bg-black/50"></div>
                           <div className="relative h-full flex flex-col justify-end p-4 text-white">
                               <h3 className="text-xl font-bold">{item.title}</h3>
+                              <p className="text-white  text-md">{item.description}</p>
                               <div className="mt-4">
                                   <div className="inline-flex items-center gap-2 text-sm font-semibold bg-white text-black py-2 px-4 rounded-full group-hover:bg-gray-200 transition-colors">
-                                      <span>{ item.title.includes('rental') ? 'EXPLORE NOW' : 'EXPLORE'}</span>
+                                      <span>{ item.title.includes('rental') ? 'Learn' : 'LEARN MORE'}</span>
                                       <FiArrowRight className="transition-transform duration-200 group-hover:translate-x-1"/>
                                   </div>
                               </div>

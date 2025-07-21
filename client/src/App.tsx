@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { useState , useEffect } from "react";
-import Products from "./pages/Products";
+import Services from "./pages/Services/services";
 import Design from "./pages/Design";
 import Development from "./pages/Development";
 import About from "./pages/About";
@@ -36,7 +36,7 @@ function AppContent() {
         <Route path="/" element={<Homepage />} />
         <Route path="/home" element={<Homepage />} />
 
-        <Route path="/products" element={<Products />} />
+        <Route path="/services" element={<Services />} />
         <Route path="/design" element={<Design />} />
         <Route path="/development" element={<Development />} />
         <Route path="/about" element={<About />} />
