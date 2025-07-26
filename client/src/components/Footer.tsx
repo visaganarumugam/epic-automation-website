@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="w-full min-h-[600px] bg-[#18181a] flex flex-col items-center justify-end relative overflow-hidden px-2 py-8">
       {/* Large blurred brand name above the card */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 -mt-5 w-full flex justify-center pointer-events-none select-none z-0">
-        <span className="text-[11vw] md:text-[8vw] font-black uppercase text-black bg-clip-text bg-gradient-to-b from-[#232325] via-[#232325] to-[#18181a] opacity-90 tracking-tighter blur-[1px]" style={{ WebkitTextStroke: '2px #FEB130 ' }}>Epic Automations</span>
+        <span className="text-[11vw] md:text-[8vw] font-black uppercase text-transparent bg-clip-text bg-yellow-400 opacity-90 tracking-tighter" ><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff5900] mr-2  to-yellow-400">E</span><span className="text-transparent mr-2 bg-clip-text bg-gradient-to-r from-[#ff5900]  to-yellow-400">p</span><span className="text-transparent mr-2 bg-clip-text bg-gradient-to-r from-[#ff5900]  to-yellow-400">i</span><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff5900]  to-yellow-400">c</span> <span className="text-white">Automations</span></span>
       </div>
       {/* Main card with shiny border */}
       <div className="relative z-10 w-full max-w-8xl mx-auto rounded-3xl bg-[#111112]/90 shadow-2xl px-0 py-0 flex flex-col items-center">

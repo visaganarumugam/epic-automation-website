@@ -7,7 +7,7 @@ import { AiFillEdit } from "react-icons/ai";
 
 export default function WhatWeAreGoodAt() {
   return (
-    <section className="w-full min-h-screen bg-gradient-to-br from-[#FEB130] via-[#fcd48f] to-[#fbe6bf] flex flex-col justify-center items-center py-10">
+    <section id="what-we-are-good-at" className="w-full min-h-screen bg-gradient-to-t from-[#5cd9ff] via-[#d2f2ff] to-[#ebe97c] flex flex-col justify-center items-center py-10">
       <div className="max-w-full w-full flex flex-col md:flex-row px-6 md:px-10">
         {/* Left Column */}
         <div className="flex flex-col justify-start w-full md:w-[67vh] gap-72 pt-2">

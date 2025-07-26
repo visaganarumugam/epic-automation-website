@@ -52,22 +52,22 @@ export default function WhatUrGoodAt() {
   }, []);
 
   return (
-    <section className="w-full min-h-screen flex flex-col items-center gap-30 bg-gradient-to-tr from-[#FEB130] via-[#fcd48f] to-[#fbe6bf] relative  overflow-hidden py-10" >
+    <section id="our-approach" className="w-full min-h-screen flex flex-col items-center gap-30 bg-gradient-to-b from-gray-200 via-[#2eb9e4] to-[#ebe97c] relative  overflow-hidden py-10" >
       {/* Heading */}
       <div className="w-full flex flex-col items-center mt-10 mb-10 px-4">
         <h1 className="text-5xl md:text-7xl font-extrabold text-center leading-tight">
           <span className="text-black">Epic Automations in  </span>
-          <span className="text-orange-400">Action:</span>
+          <span className="text-blue-600">Action:</span>
           <br />
           <span className="text-black">StreamLine , Smart and </span>
-          <span className="text-orange-400">Scalable</span>
+          <span className="text-blue-600">Scalable.</span>
         </h1>
       </div>
       {/* Timeline */}
       <div className="max-w-full w-full flex flex-col items-center justify-center px-4 relative">
         {/* Dotted Line (behind badges) */}
         <div className="absolute left-0 w-full flex items-center z-0" style={{top: 'calc(100% - 28px)'}}>
-          <div className="w-full h-[15px] bg-gradient-to-r from-orange-900 via-orange-500 to-orange-900 opacity-80 rounded-full" style={{ backgroundImage: 'repeating-linear-gradient(to right, #ff8800 0 4px, transparent 4px 8px)' }}></div>
+          <div className="w-full h-[15px] bg-gradient-to-r from-blue-900 via-blue-500 to-blue-900 opacity-80 rounded-full" style={{ backgroundImage: 'repeating-linear-gradient(to right, blue 0 4px, transparent 4px 8px)' }}></div>
         </div>
         {/* Steps */}
         <div className="w-full flex flex-row justify-between items-end relative z-10 gap-0">
@@ -82,14 +82,14 @@ export default function WhatUrGoodAt() {
                   <h3 className="text-black text-lg md:text-2xl font-bold mb-1">{step.title}</h3>
                   <p className="text-[#363636] text-xs md:text-base font-medium max-w-[300px] mx-auto">{step.desc}</p>
                 </div>
-                <div className={`${step.lineHeight} w-0.5 bg-gradient-to-b from-orange-500 to-transparent mb-1`}></div>
+                <div className={`${step.lineHeight} w-0.5 bg-gradient-to-b from-blue-500 to-transparent mb-1`}></div>
               </div>
               {/* steps (no transition) */}
               <div className="flex items-center justify-center relative z-10 mt-1">
                 {/* steps */}
-                <div className="flex items-center bg-white/50 backdrop-blur-xl rounded-lg px-7 py-3 shadow-lg shadow-[#fbe6bf] border border-[#fdda9d]">
-                  <span className="text-black text-base font-semibold">{step.time}</span>
-                  <span className="ml-3 w-5 h-5 rounded-md bg-orange-500 flex items-center justify-center shadow-lg"></span>
+                <div className="flex items-center bg-[#003d76] backdrop-blur-xl rounded-lg px-7 py-3 shadow-lg shadow-[#fbe6bf] border border-[#fdda9d]">
+                  <span className="text-white text-xl font-semibold">{step.time}</span>
+                  <span className="ml-3 w-5 h-5 rounded-md bg-blue-300 flex items-center justify-center shadow-lg"></span>
                 </div>
               </div>
             </div>
