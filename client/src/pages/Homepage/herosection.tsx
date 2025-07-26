@@ -317,7 +317,7 @@ export default function HeroSection() {
     };
   }, [current]);
 
-  const goTo = (idx: number) => setCurrent(idx);
+  // const goTo = (idx: number) => setCurrent(idx);
   const prev = () => setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
   const next = () => setCurrent((prev) => (prev + 1) % slides.length);
   

@@ -414,17 +414,17 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
   };
 
   // Scroll to section for Services dropdown
-  const handleServicesDropdownClick = (sectionId: string) => {
-    if (location.pathname !== '/services') {
-      navigate(`/services#${sectionId}`);
-    } else {
-      setTimeout(() => {
-        const el = document.getElementById(sectionId);
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 100);
-    }
-    setOpenDropdown(null);
-  };
+  // const handleServicesDropdownClick = (sectionId: string) => {
+  //   if (location.pathname !== '/services') {
+  //     navigate(`/services#${sectionId}`);
+  //   } else {
+  //     setTimeout(() => {
+  //       const el = document.getElementById(sectionId);
+  //       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  //     }, 100);
+  //   }
+  //   setOpenDropdown(null);
+  // };
 
   return (
     <Navbar 
@@ -535,8 +535,8 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
                           <div>
                             <div className="font-medium">{s.label}</div>
                             <div className="text-xs text-gray-400 mt-1">
-                              {s.page === '/home' ? 'Homepage' : s.page.replace('/', '').replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}
-                              {s.id !== s.page.replace('/', '') && ` • ${s.id.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}`}
+                              {s.page === '/home' ? 'Homepage' : s.page.replace('/', '').replace('-', ' ').replace(/\b\w/g, (l: any) => l.toUpperCase())}
+                              {s.id !== s.page.replace('/', '') && ` • ${s.id.replace('-', ' ').replace(/\b\w/g, (l: any) => l.toUpperCase())}`}
                             </div>
                           </div>
                         </div>
