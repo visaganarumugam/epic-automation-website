@@ -100,7 +100,7 @@ export default function WhyEpic() {
   ];
 
   return (
-    <section ref={sectionRef} className="w-full bg-gradient-to-tr from-[#FEB130] via-[#fcd48f] to-[#fbe6bf] py-16 flex flex-col items-center justify-center">
+    <section id="why-epic" ref={sectionRef} className="w-full bg-gradient-to-b from-gray-200 via-[#2eb9e4] to-[#ebe97c] py-16 flex flex-col items-center justify-center">
       <div className="w-full  max-w-full flex flex-col md:flex-row items-center justify-between px-10 md:px-10">
         {/* Left Column */}
         <div className={`flex flex-col items-start w-full md:w-1/3 gap-50 ${isVisible ? 'animate-rise-up' : ''}`} style={{ animationDelay: isVisible ? '0.1s' : undefined }}>

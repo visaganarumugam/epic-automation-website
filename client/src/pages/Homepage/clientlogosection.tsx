@@ -78,7 +78,7 @@ function LogoSliderRow({ logos, toRight = false, duration = 20 }: { logos: Logo[
 
 export default function ClientlogoSection() {
   return (
-    <div className='bg-gradient-to-br from-[#FEB130] via-[#fcd48f] to-[#fbe6bf]'>
+    <div id="client-logos" className='bg-gradient-to-t from-[#5cd9ff] via-[#d2f2ff] to-[#ebe97c]'>
     <h3 className="bg-gradient-to-bl from-[#dd6b20] via-black to-[#dd6b20] bg-clip-text text-transparent text-4xl md:text-7xl justify-center font-semibold  text-center mb-3 pt-7">The Companies That Integrated <br/> Our Robotics Vision</h3>
     <p className="text-gray-700 text-base md:text-3xl text-center mt-4 mb-5">
     We serve startups to large enterprises with tailored automation solutions that boost efficiency, <br /> improve operations, and drive measurable success.

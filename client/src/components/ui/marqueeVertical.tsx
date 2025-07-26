@@ -127,7 +127,7 @@ const ReviewCard = ({
       )}
     >
       {/* Star rating at top right */}
-      <div className="absolute top-6 right-3 z-10">
+      <div className="absolute top-6 right-3 text-white z-10">
         <StarRating rating={rating} />
       </div>
       <div className="flex flex-row items-center gap-2">
@@ -173,8 +173,8 @@ export function MarqueeDemoVertical() {
         ))}
       </Marquee>
       
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-[#fddca4]"></div>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-tl from-[#fddca4]"></div>
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-black/20 backdrop-blur-sm"></div>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1 bg-black/20 backdrop-blur-sm"></div>
     </div>
   );
 }

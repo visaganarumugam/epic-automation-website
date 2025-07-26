@@ -1,27 +1,22 @@
-
-import { GridPattern } from "../components/magicui/grid-pattern";
-import { cn } from "../lib/utils";
-import HeroVideoDialog from "../components/magicui/hero-video-dialog";
-import roboticsImageAbout from "/public/images/roboticsimageabout.jpg";
 import { ShimmerButton } from "../components/magicui/shimmer-button";
 import { MarqueeDemoVertical } from "../components/ui/marqueeVertical";
 import { IconMail, IconPhone, IconMapPin, IconArrowUpRight } from '@tabler/icons-react';
 
 const contactInfo = [
   {
-    icon: <IconMail size={35} stroke={1.7} className="text-[#ff8c00]" />,
+    icon: <IconMail size={35} stroke={1.7} className="text-[#00aeff]" />,
     label: 'Email us',
     value: 'johnny.kyorov@gmail.com',
     href: 'mailto:johnny.kyorov@gmail.com',
   },
   {
-    icon: <IconPhone size={35} stroke={1.7} className="text-[#ff8c00]" />,
+    icon: <IconPhone size={35} stroke={1.7} className="text-[#00aeff]" />,
     label: 'Call us',
     value: '(501) 123-4567',
     href: 'tel:5011234567',
   },
   {
-    icon: <IconMapPin size={35} stroke={1.7} className="text-[#ff8c00]" />,
+    icon: <IconMapPin size={35} stroke={1.7} className="text-[#00aeff]" />,
     label: 'Our location',
     value: 'Crosby Street, NY, US',
     href: 'https://maps.google.com',
@@ -31,22 +26,14 @@ const contactInfo = [
 
 export default function About() {
   return (
-    <div className="relative min-h-screen w-full bg-gradient-to-br from-[#FEB130] via-[#fcd48f] to-[#fbe6bf]  flex flex-col items-center py-12 px-2 font-gilroy overflow-hidden">
+    <div className="relative min-h-screen w-full bg-gradient-to-tl from-[#5cd9ff] via-[#d2f2ff] to-[#ebe97c]  flex flex-col items-center py-12 px-2 font-gilroy overflow-hidden">
       {/* GridPattern Background */}
-      <GridPattern
-        width={100}
-        height={100}
-        x={-1}
-        y={-1}
-        className={cn(
-          "[mask-image:linear-gradient(to_bottom,white,transparent,transparent)] z-50",
-        )}
-      />
+      
       
       {/* Main Content (z-10) */}
       <div className="relative z-10 w-full flex flex-col items-center">
         {/* Heading Section - Centered Modern Layout */}
-        <div className="w-[100vw] bg-gradient-to-br from-[#FEB130] via-[#fcd48f] to-[#fbe6bf]">
+        <div className="w-[100vw] bg-gradient-to-tl from-[#5cd9ff] via-[#d2f2ff] to-[#ebe97c]">
         <div className="w-full flex flex-col items-center justify-center bg-transparent rounded-none md:rounded-2xl px-4 md:px-10 py-10 mb-5 pt-25">
           <h1 className="w-full text-center text-3xl md:text-7xl font-semibold leading-tight mb-4 md:mb-6 font-gilroy bg-gradient-to-bl from-orange-600 via-black to-orange-600 bg-clip-text text-transparent">
             Discover How Epic Automation's Robotics<br /> Innovation Are Transforming<br /> The Future
@@ -64,8 +51,14 @@ export default function About() {
           </div>
         </div>
         {/* Main Image (now Video) */}
-        <div className="w-full max-w-[70vw] p-2  bg-[#ff9900]/60  rounded-2xl overflow-hidden mb-25 mx-auto">
-          <HeroVideoDialogDemo />
+        <div id="about-mission" className="w-full max-w-[70vw] p-2  bg-black/70  rounded-2xl overflow-hidden mb-25 mx-auto">
+          <video
+            src="/videos/epicAutomations6.mp4"
+            autoPlay
+            loop
+            muted
+            className="w-full h-[65vh] object-cover rounded-2xl shadow-lg"
+          />
         </div>
         <div className="w-full    rounded-2xl py-12 px-4 flex flex-col justify-center  items-center mb-12 ">
                <h2 className="bg-gradient-to-bl max-w-7xl from-[#dd6b20] via-black to-[#dd6b20] bg-clip-text text-transparent text-4xl md:text-7xl font-semibold  text-center mb-8">
@@ -75,7 +68,7 @@ export default function About() {
               <div className="flex flex-col items-center flex-1 border-r p-3"
                 style={{
                   borderRight: '2px solid transparent',
-                  borderImageSource: 'linear-gradient(to bottom, #dd6b20, orange , #dd6b20)',
+                  borderImageSource: 'linear-gradient(to bottom, #00aeff, #000000 , #00aeff)',
                   borderImageSlice: 1,
                   
                   }}
@@ -86,7 +79,7 @@ export default function About() {
               <div className="flex flex-col items-center flex-1 border-r p-3" 
                       style={{
                       borderRight: '2px solid transparent',
-                      borderImageSource: 'linear-gradient(to bottom, #dd6b20, orange , #dd6b20)',
+                      borderImageSource: 'linear-gradient(to bottom, #00aeff, #000000 , #00aeff)',
                       borderImageSlice: 1,
                       
                       }}>
@@ -96,7 +89,7 @@ export default function About() {
               <div className="flex flex-col items-center flex-1 border-r p-3"
                 style={{
                   borderRight: '2px solid transparent',
-                  borderImageSource: 'linear-gradient(to bottom, #dd6b20, orange,#dd6b20)',
+                  borderImageSource: 'linear-gradient(to bottom, #00aeff, #000000 , #00aeff)',
                   borderImageSlice: 1,
                   
                   }}
@@ -112,7 +105,7 @@ export default function About() {
           </div>
         </div>
         {/* Story & Target Section - Pixel Perfect */}
-      <div className="w-full flex justify-center bg-gradient-to-tr from-[#FEB130] via-[#fcd48f] to-[#fbe6bf]">
+      <div className="w-full flex justify-center bg-gradient-to-bl from-[#5cd9ff] via-[#d2f2ff] to-[#ebe97c]">
             
         <div className="w-full max-w-full px-20 flex flex-col gap-10 mt-4">
           {/* Our Story Card */}
@@ -132,7 +125,7 @@ export default function About() {
               <img
                 src="/images/bg.jpg"
                 alt="Our story - Robotics innovation"
-                className="w-full h-full object-cover object-center p-1 bg-[#ff9900]/60 rounded-4xl "               
+                className="w-full h-full object-cover object-center p-1 bg-[#008cff]/60 rounded-4xl "               
               />
             </div>
           </div>
@@ -142,7 +135,7 @@ export default function About() {
               <img
                 src="/images/design.jpg"
                 alt="Our target - Robotics solutions"
-                className="w-full h-full object-cover object-center p-1 bg-[#ff9900]/60  md:rounded-4xl  "
+                className="w-full h-full object-cover object-center p-1 bg-[#008cff]/60  md:rounded-4xl  "
               />
             </div>
             <div className="flex-1 flex flex-col justify-center items-end px-8 py-10 md:py-8 order-2 md:order-none ml-auto">
@@ -162,7 +155,7 @@ export default function About() {
         
        
          {/* Success Stories & Experts Section */}
-         <div className="w-full flex flex-col bg-gradient-to-br from-[#FEB130] via-[#fcd48f] to-[#fbe6bf] items-center pt-30">
+         <div className="w-full flex flex-col bg-gradient-to-tl from-[#5cd9ff] via-[#d2f2ff] to-[#ebe97c] items-center pt-30">
           
           {/* Experts Section - Pixel Perfect */}
           <div className="w-full max-w-full flex flex-col items-center">
@@ -229,7 +222,7 @@ export default function About() {
                   <div className="grid grid-cols-2 md:grid-cols-5 gap-y-12 justify-center items-center mb-8  rounded-2xl py-6">
                     {experts.slice(0, 5).map((expert, idx) => (
                       <div key={idx} className="flex flex-col mx-7 items-center">
-                        <div className="w-32 h-32 md:w-62 md:h-72 p-1 rounded-full rounded-tl-none overflow-hidden bg-[#ff9900]/80 flex items-center justify-center mb-6 shadow-lg">
+                        <div className="w-32 h-32 md:w-62 md:h-72 p-1 rounded-full rounded-tl-none overflow-hidden bg-[#008cff]/60 flex items-center justify-center mb-6 shadow-lg">
                           <img
                             src={expert.img}
                             alt={expert.name}
@@ -246,7 +239,7 @@ export default function About() {
                   <div className="grid grid-cols-2 md:grid-cols-5 gap-y-12 justify-center items-center mt-2  rounded-2xl py-6">
                     {experts.slice(5, 10).map((expert, idx) => (
                       <div key={idx} className="flex flex-col mx-7 items-center">
-                        <div className="w-32 h-32 md:w-62 md:h-72 p-1 rounded-full rounded-tr-none overflow-hidden bg-[#ff9900]/80 flex items-center justify-center mb-6 shadow-lg">
+                        <div className="w-32 h-32 md:w-62 md:h-72 p-1 rounded-full rounded-tr-none overflow-hidden bg-[#008cff]/60 flex items-center justify-center mb-6 shadow-lg">
                           <img
                             src={expert.img}
                             alt={expert.name}
@@ -267,7 +260,7 @@ export default function About() {
         </div>
 
         {/* Review Section - Pixel Perfect */}
-        <div className="w-full max-w-full bg-gradient-to-tr from-[#FEB130] via-[#fcd48f] to-[#fbe6bf] flex flex-col items-center pt-25 pb-12">
+        <div className="w-full max-w-full bg-gradient-to-bl from-[#5cd9ff] via-[#d2f2ff] to-[#ebe97c] flex flex-col items-center pt-25 pb-12">
           <h2 className="bg-gradient-to-bl from-orange-600 via-black to-orange-600 bg-clip-text text-transparent text-3xl md:text-6xl font-semibold text-center mb-2">What Our Clients Say</h2>
           <p className="text-gray-700 text-base md:text-2xl text-center max-w-7xl mt-3 mb-1">
             Discover how our robotics solutions have transformed businesses and hear directly from satisfied customers
@@ -278,20 +271,17 @@ export default function About() {
           
         </div>
         {/* contact us form */}
-        <section className="w-full min-h-screen flex items-center justify-center bg-gradient-to-br from-[#FEB130] via-[#fcd48f] to-[#fbe6bf] relative overflow-hidden px-10 md:py-0">
-      {/* Large faded CONTACT background text */}
-      <span className="absolute inset-0 flex items-center justify-center select-none pointer-events-none z-20">
-        <span className="text-[10vw] md:text-[10vw] font-black tracking-tighter text-white opacity-80" style={{letterSpacing: '-0.05em' , textShadow : '0 0 5px #FBE6BF, 0 0 10px #FBE6BF, 0 0 20px #FBE6BF'}}>EPIC AUTOMATIONS</span>
-      </span>
+        <section className="w-full min-h-screen flex items-center justify-center bg-gradient-to-tl from-[#5cd9ff] via-[#d2f2ff] to-[#ebe97c] relative overflow-hidden px-10 md:py-0">
+      
       <div className="relative w-full grid grid-cols-1 z-50 md:grid-cols-2 mx-10 bg-transparent">
         {/* Left: Contact Info */}
         <div className="flex flex-col w-full gap-6 justify-center h-full">
           <div className="w-fit px-6 py-2 rounded-full bg-[#181b1f] border border-[#23272b] text-white text-2xl font-semibold mb-2 shadow-lg flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-[#f5540f] mr-2 inline-block"></span>
+            <span className="w-3 h-3 rounded-full bg-[#00aeff] mr-2 inline-block"></span>
             Contact
           </div> 
-          <h2 className="text-4xl md:text-7xl font-bold bg-gradient-to-bl from-orange-600 via-black to-orange-600 bg-clip-text text-transparent">Get in touch</h2>
-          <p className="text-gray-300 text-2xl font-semibold max-w-md mb-4">Have questions or ready to transform your business with AI automation?</p>
+          <h2 className="text-4xl md:text-7xl font-bold text-black">Get in touch</h2>
+          <p className="text-gray-700 text-2xl font-semibold max-w-md mb-4">Have questions or ready to transform your business with AI automation?</p>
           <div className="flex flex-col gap-4">
             {contactInfo.map((item, _) => (
               <a
@@ -299,7 +289,7 @@ export default function About() {
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between w-[94%] bg-white/25 backdrop-blur-[15px] border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-2xl px-6 py-4 group hover:border-[#ff9900] transition-all"
+                className="flex items-center justify-between w-[94%] bg-white/25 backdrop-blur-[15px] border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-2xl px-6 py-4 group hover:border-[#00aeff] transition-all"
               >
                 <div className="flex py-2 items-center gap-4">
                   <span className="bg-white/10 border  border-white/25 rounded-xl p-2 flex items-center justify-center">
@@ -310,7 +300,7 @@ export default function About() {
                     <span className="text-gray-700 text-lg">{item.value}</span>
                   </div>
                 </div>
-                <span className="bg-[#23272b] rounded-2xl p-2 ml-4 group-hover:bg-[#ff9900] transition-colors">
+                <span className="bg-[#23272b] rounded-2xl p-2 ml-4 group-hover:bg-[#00aeff] transition-colors">
                   <IconArrowUpRight size={27} className="text-white group-hover:text-black" />
                 </span>
               </a>
@@ -322,24 +312,24 @@ export default function About() {
           <input
             type="text"
             placeholder="Name"
-            className="bg-white/25 backdrop-blur-[15px] border border-white/20 text-lg h-[12%] shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 py-4 text-black placeholder-gray-800 focus:outline-none focus:border-[#ff9900] transition-all"
+            className="bg-white/25 backdrop-blur-[15px] border border-white/20 text-lg h-[12%] shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 py-4 text-black placeholder-gray-800 focus:outline-none focus:border-[#00aeff] transition-all"
             style={{fontFamily: 'Gilroy'}}
           />
           <input
             type="email"
             placeholder="Email"
-            className="bg-white/25 backdrop-blur-[15px] border border-white/20 text-lg h-[12%] shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 py-4 text-black placeholder-gray-800 focus:outline-none focus:border-[#ff9900] transition-all"
+            className="bg-white/25 backdrop-blur-[15px] border border-white/20 text-lg h-[12%] shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 py-4 text-black placeholder-gray-800 focus:outline-none focus:border-[#00aeff] transition-all"
             style={{fontFamily: 'Gilroy'}}
           />
           <textarea
             placeholder="Message"
             rows={6}
-            className=" h-[70%] bg-white/25 backdrop-blur-[15px] border border-white/20 text-lg shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 py-4 text-black placeholder-gray-800 focus:outline-none focus:border-[#ff9900] transition-all resize-none"
+            className=" h-[70%] bg-white/25 backdrop-blur-[15px] border border-white/20 text-lg shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 py-4 text-black placeholder-gray-800 focus:outline-none focus:border-[#00aeff] transition-all resize-none"
             style={{fontFamily: 'Gilroy'}}
           />
           <button
             type="submit"
-            className="w-full bg-black text-white cursor-pointer font-semibold text-lg py-4 rounded-xl shadow hover:bg-[#ff9900] hover:text-black transition-all mt-2"
+            className="w-full bg-black text-white cursor-pointer font-semibold text-lg py-4 rounded-xl shadow hover:bg-[#00aeff] hover:text-black transition-all mt-2"
             style={{fontFamily: 'Gilroy'}}
           >
             Submit
@@ -353,23 +343,3 @@ export default function About() {
   );
 }
 
-export function HeroVideoDialogDemo() {
-  return (
-    <div className="relative">
-      <HeroVideoDialog
-        className="block dark:hidden"
-        animationStyle="from-center"
-        videoSrc="https://www.youtube.com/embed/oMhES_M9WZw"
-        thumbnailSrc={roboticsImageAbout}
-        thumbnailAlt="Hero Video"
-      />
-      <HeroVideoDialog
-        className="hidden dark:block"
-        animationStyle="from-center"
-        videoSrc="https://www.youtube.com/embed/oMhES_M9WZw"
-        thumbnailSrc={roboticsImageAbout}
-        thumbnailAlt="Hero Video"
-      />
-    </div>
-  );
-} 

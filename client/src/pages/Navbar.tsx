@@ -5,8 +5,9 @@ import { FiSearch, FiX, FiChevronDown, FiArrowRight } from 'react-icons/fi';
 import ReactCountryFlag from 'react-country-flag';
 import { useState, useRef, useEffect } from 'react';
 import logo from '/images/logo.png';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate, useLocation } from 'react-router-dom';
 import { PlaceholdersAndVanishInput } from '../components/ui/placeholders-and-vanish-input';
+import { sectionIndex } from '../sectionIndex';
 
 
 interface DropdownItem {
@@ -31,6 +32,18 @@ interface DropdownContent {
 const dropdownContent: DropdownContent = {
   Services: {
     tabs: [
+      {
+        name: "Service",
+        items: [
+          {
+            title: "Our Services",
+            description: "Explore our comprehensive range of automation and robotics services.",
+            image: "/images/products.jpg",
+            href: "/services",
+            isPromo: true,
+          },
+        ],
+      },
       {
         name: "Robotics & Automation",
         items: [
@@ -141,6 +154,7 @@ const navLinks = [
   { name: 'Services', dropdown: true },
   { name: 'Career', dropdown: true },
   { name: 'About', dropdown: false },
+  { name: 'Contact Us', dropdown: false },
 ];
 
 const roboticsPlaceholders = [
@@ -225,6 +239,11 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<string>('');
   const [dropdownHovered, setDropdownHovered] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
+  const [suggestions, setSuggestions] = useState<any[]>([]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const searchInputRef = useRef<HTMLInputElement>(null);
   let closeDropdownTimeout: number | null = null;
@@ -291,6 +310,122 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [searchOpen]);
 
+  // Search bar: update suggestions as user types
+  useEffect(() => {
+    if (searchValue.trim() === '') {
+      setSuggestions([]);
+      setSelectedIndex(0);
+      return;
+    }
+    const val = searchValue.toLowerCase();
+    const filtered = sectionIndex.filter(
+      s =>
+        s.label.toLowerCase().includes(val) ||
+        s.keywords.some(k => k.toLowerCase().includes(val)) ||
+        s.page.replace('/', '').replace('-', ' ').toLowerCase().includes(val)
+    );
+    
+    // Sort by relevance: exact matches first, then partial matches
+    const sorted = filtered.sort((a, b) => {
+      const aExact = a.label.toLowerCase() === val || a.keywords.some(k => k.toLowerCase() === val);
+      const bExact = b.label.toLowerCase() === val || b.keywords.some(k => k.toLowerCase() === val);
+      
+      if (aExact && !bExact) return -1;
+      if (!aExact && bExact) return 1;
+      
+      // If both are exact or both are partial, sort by label length (shorter first)
+      return a.label.length - b.label.length;
+    });
+    
+    setSuggestions(sorted.slice(0, 10)); // Limit to 10 suggestions
+    setSelectedIndex(0); // Reset selection when suggestions change
+    
+    // Auto-open search if suggestions are found and search is not open
+    if (sorted.length > 0 && !searchOpen) {
+      setSearchOpen(true);
+    }
+  }, [searchValue, searchOpen]);
+
+  // Handle search submit or suggestion click
+  const handleSearchGo = (section: any) => {
+    if (!section) return;
+    
+    // Navigate to the page first if not already there
+    if (location.pathname !== section.page) {
+      navigate(section.page + '#' + section.id);
+    } else {
+      // Already on page, just scroll to section
+      setTimeout(() => {
+        const el = document.getElementById(section.id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Add a subtle highlight effect
+          el.style.transition = 'box-shadow 0.3s ease';
+          el.style.boxShadow = '0 0 0 4px rgba(255, 153, 0, 0.3)';
+          setTimeout(() => {
+            el.style.boxShadow = '';
+          }, 2000);
+        }
+      }, 100);
+    }
+    
+    setSearchOpen(false);
+    setSearchValue('');
+    setSuggestions([]);
+    setSelectedIndex(0);
+  };
+
+  // On Enter in search bar
+  const handleSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      if (suggestions.length > 0) {
+        handleSearchGo(suggestions[selectedIndex]);
+      } else if (searchValue.trim() !== '') {
+        // If no suggestions but user typed something, try to find a match
+        const val = searchValue.toLowerCase();
+        const match = sectionIndex.find(s =>
+          s.label.toLowerCase() === val ||
+          s.keywords.some(k => k.toLowerCase() === val) ||
+          s.page.replace('/', '').replace('-', ' ').toLowerCase() === val
+        );
+        if (match) {
+          handleSearchGo(match);
+        }
+      }
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setSelectedIndex(prev => Math.min(prev + 1, suggestions.length - 1));
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setSelectedIndex(prev => Math.max(prev - 1, 0));
+    } else if (e.key === 'Escape') {
+      setSearchOpen(false);
+      setSearchValue('');
+      setSuggestions([]);
+      setSelectedIndex(0);
+    } else if (e.key === 'Tab') {
+      e.preventDefault();
+      if (suggestions.length > 0) {
+        setSearchValue(suggestions[selectedIndex].label);
+        setSelectedIndex(0);
+      }
+    }
+  };
+
+  // Scroll to section for Services dropdown
+  const handleServicesDropdownClick = (sectionId: string) => {
+    if (location.pathname !== '/services') {
+      navigate(`/services#${sectionId}`);
+    } else {
+      setTimeout(() => {
+        const el = document.getElementById(sectionId);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+    setOpenDropdown(null);
+  };
+
   return (
     <Navbar 
       isMenuOpen={isMenuOpen} 
@@ -303,7 +438,7 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
       <NavbarContent>
         <NavbarBrand>
           <RouterLink to="/home">
-            <img src={logo} alt="Logo" className="h-12 w-auto mr-2" />
+            <img src={logo} alt="Logo" className="h-12 w-auto mr-2" /> 
           </RouterLink>
           
         </NavbarBrand>
@@ -313,9 +448,9 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
         {/* Nav Links */}
         {navLinks.map(link => (
           <NavbarItem key={link.name}>
-            {['Home' , 'About', 'Career'].includes(link.name) ? (
+            {['Home' , 'About', 'Career' , 'Contact Us'].includes(link.name) ? (
               <RouterLink
-                to={`/${link.name.toLowerCase()}`}
+                to={link.name === 'Contact Us' ? '/help-center' : `/${link.name.toLowerCase()}`}
                 className={`flex items-center gap-1 font-medium text-lg text-white transition-colors duration-200 py-2 rounded-lg px-2 ${openDropdown === link.name ? 'text-[#ff9900]' : 'text-white'} hover:text-[#ff9900]`}
                 style={{ textDecoration: 'none' }}
               >
@@ -355,23 +490,112 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
             <FiSearch className="w-6 h-6" />
           </button>
         </NavbarItem>
+
         {/* Search Overlay */}
         <div
           className={`absolute top-0 left-0 right-0 h-full flex items-center bg-[#18171a] z-30 transition-opacity duration-300 ${searchOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'} rounded-xl`}
           style={{ willChange: 'opacity' }}
         >
-          <form className="flex flex-1 items-center rounded-r-3xl " onSubmit={(e) => { e.preventDefault(); setSearchOpen(false); }}>
-            <PlaceholdersAndVanishInput
-              placeholders={roboticsPlaceholders}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                console.log(e.target.value);
-              }}
-              onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-                e.preventDefault();
-                setSearchOpen(false);
-              }}
+          <form className="flex flex-1 items-center rounded-r-3xl " onSubmit={e => { e.preventDefault(); if (suggestions.length > 0) handleSearchGo(suggestions[0]); }}>
+            <input
+              type="text"
+              className="flex-1 bg-transparent outline-none text-white text-lg px-4 py-2 pr-20"
+              placeholder="Type to search pages & sections... (↑↓ to navigate, Enter to go)"
+              value={searchValue}
+              onChange={e => setSearchValue(e.target.value)}
+              onKeyDown={handleSearchKeyDown}
+              autoFocus
             />
+            {/* Keyboard shortcut indicator */}
+            <div className="absolute right-12 top-1/2 transform -translate-y-1/2 text-xs text-gray-400 bg-gray-800/50 px-2 py-1 rounded border border-gray-600">
+              Ctrl+K
+            </div>
           </form>
+          {/* Suggestions dropdown */}
+          {searchOpen && (
+            <div className="absolute top-full left-0 right-0 bg-[#18171a] border border-[#323333] rounded-b-xl shadow-2xl z-50 max-h-80 overflow-y-auto">
+              {searchValue.trim() !== '' ? (
+                suggestions.length > 0 ? (
+                  suggestions.map((s, idx) => (
+                    <div
+                      key={s.id}
+                      className={`px-4 py-3 text-white cursor-pointer text-base border-b border-[#323333] last:border-b-0 transition-colors duration-200 ${
+                        idx === selectedIndex ? 'bg-[#ff9900]/20' : 'hover:bg-[#ff9900]/20'
+                      }`}
+                      onClick={() => handleSearchGo(s)}
+                      onMouseEnter={() => setSelectedIndex(idx)}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 bg-[#ff9900]/20 rounded-lg flex items-center justify-center">
+                            <svg className="w-4 h-4 text-[#ff9900]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                          </div>
+                          <div>
+                            <div className="font-medium">{s.label}</div>
+                            <div className="text-xs text-gray-400 mt-1">
+                              {s.page === '/home' ? 'Homepage' : s.page.replace('/', '').replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                              {s.id !== s.page.replace('/', '') && ` • ${s.id.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}`}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="text-xs text-gray-500 flex items-center gap-2">
+                          <span>{idx === selectedIndex ? 'Press Enter' : 'Click'}</span>
+                          {idx === selectedIndex && (
+                            <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                            </svg>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <div className="px-4 py-6 text-center">
+                    <svg className="w-8 h-8 text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <p className="text-gray-400 text-sm">No results found for "{searchValue}"</p>
+                    <p className="text-gray-500 text-xs mt-1">Try different keywords or page names</p>
+                  </div>
+                )
+              ) : (
+                <div className="p-4">
+                  <div className="text-sm text-gray-400 mb-3">Popular Pages & Sections</div>
+                  {sectionIndex.slice(0, 8).map((s, idx) => (
+                    <div
+                      key={s.id}
+                      className={`px-3 py-2 text-white cursor-pointer text-sm border-b border-[#323333] last:border-b-0 transition-colors duration-200 ${
+                        idx === selectedIndex ? 'bg-[#ff9900]/20' : 'hover:bg-[#ff9900]/20'
+                      }`}
+                      onClick={() => handleSearchGo(s)}
+                      onMouseEnter={() => setSelectedIndex(idx)}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <div className="w-6 h-6 bg-[#ff9900]/20 rounded flex items-center justify-center">
+                            <svg className="w-3 h-3 text-[#ff9900]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                          </div>
+                          <div>
+                            <div className="font-medium text-sm">{s.label}</div>
+                            <div className="text-xs text-gray-400">
+                              {s.page === '/home' ? 'Homepage' : s.page.replace('/', '').replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="text-xs text-gray-500">
+                          {idx === selectedIndex ? 'Press Enter' : 'Click'}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
           <button
             className="ml-2 mr-3 flex items-center cursor-pointer justify-center rounded-xl bg-[#18171a]/20 border border-[#323333] text-white hover:bg-[#242424] hover:text-[#ff9900]  size-10"
             onClick={() => setSearchOpen(false)}

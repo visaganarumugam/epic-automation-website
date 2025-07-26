@@ -47,10 +47,10 @@ const features = [
 
 export default function OurMisson() {
   return (
-    <section className="relative w-full min-h-[120vh] flex flex-col items-center justify-start py-16 pb-20 bg-gradient-to-br from-[#FEB130] via-[#fcd48f] to-[#fbe6bf] px-2 overflow-hidden">
+    <section id="our-mission" className="relative w-full min-h-[120vh] flex flex-col items-center justify-start py-16 pb-20 bg-gradient-to-t from-gray-200 via-[#2eb9e4] to-[#ebe97c] px-2 overflow-hidden">
       {/* Radial background effect */}
       <div className="absolute inset-0 pt-80 pr-15 z-0 pointer-events-none flex items-center justify-center">
-        <div className="w-[650px] h-[600px] rounded-full bg-gradient-to-br from-gray-200/40 via-white/80 to-white/100 blur-2xl" />
+        <div className="w-[650px] h-[600px] rounded-full bg-[#fffeda] blur-2xl" />
       </div>
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center w-full max-w-7xl mx-auto">

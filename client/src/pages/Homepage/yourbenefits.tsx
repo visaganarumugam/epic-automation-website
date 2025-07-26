@@ -59,7 +59,7 @@ export default function FeaturesSectionDemo() {
     },
   ];
   return (
-    <div className="bg-gradient-to-tr from-[#FEB130] via-[#fcd48f] to-[#fbe6bf] ">
+    <div id="your-benefits" className="bg-gradient-to-b from-[#5cd9ff] via-[#d2f2ff] to-[#ebe97c] ">
         <h2 className="bg-gradient-to-bl from-orange-600 via-black to-orange-600 bg-clip-text text-transparent text-3xl md:text-[5.2rem] font-semibold text-center pt-12 mb-2">From Human to Hybrid: Your Gains</h2>
           <p className="text-gray-700 text-base md:text-3xl text-center mt-3 mb-5">
           Epic Automations delivers smart robotics that merge physical precision  <br /> with adaptive digital intelligence.

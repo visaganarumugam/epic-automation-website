@@ -1,5 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Eye, EyeOff } from "lucide-react";
+import { FcGoogle } from "react-icons/fc";
+import { FaApple } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { signUpWithEmail, signInWithEmail, signInWithGoogle, onAuthStateChange } from "../lib/firebase";
 // import logo from "/images/logo.png";
 
 export default function SignUp() {
@@ -9,6 +13,101 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [authChecking, setAuthChecking] = useState(true);
+  const navigate = useNavigate();
+
+  // Check if user is already authenticated
+  useEffect(() => {
+    const unsubscribe = onAuthStateChange((user) => {
+      setAuthChecking(false);
+      if (user && user.emailVerified) {
+        // Only redirect if user is verified
+        navigate('/home');
+      }
+    });
+
+    return () => unsubscribe();
+  }, [navigate]);
+
+  const handleSignUp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    setSuccess("");
+
+    if (password.length < 8) {
+      setError("Password must be at least 8 characters long");
+      setLoading(false);
+      return;
+    }
+
+    const result = await signUpWithEmail(email, password);
+    
+    if (result.error) {
+      setError(result.error);
+    } else {
+      setSuccess("Account created successfully! Please check your email for verification.");
+      // Clear form
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPassword("");
+    }
+    
+    setLoading(false);
+  };
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    setSuccess("");
+
+    const result = await signInWithEmail(email, password);
+    
+    if (result.error) {
+      setError(result.error);
+    } else {
+      setSuccess("Login successful!");
+      // Clear form
+      setEmail("");
+      setPassword("");
+    }
+    
+    setLoading(false);
+  };
+
+  const handleGoogleSignIn = async () => {
+    setLoading(true);
+    setError("");
+    setSuccess("");
+
+    const result = await signInWithGoogle();
+    
+    if (result.error) {
+      setError(result.error);
+    } else {
+      setSuccess("Google sign-in successful!");
+    }
+    
+    setLoading(false);
+  };
+
+  // Show loading screen while checking authentication
+  if (authChecking) {
+    return (
+      <div className="min-h-screen w-full flex items-center justify-center relative font-gilroy">
+        <img src="/images/signup_bg1.jpg" alt="Background" className="absolute inset-0 w-full h-full object-cover z-0" />
+        <div className="absolute inset-0 bg-black/30 z-0" />
+        <div className="w-full max-w-[600px] mx-auto p-8 py-12 rounded-2xl flex flex-col items-center absolute z-10 bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl">
+          <div className="text-white text-xl">Loading...</div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center relative font-gilroy">
@@ -16,21 +115,42 @@ export default function SignUp() {
       <img src="/images/signup_bg1.jpg" alt="Background" className="absolute inset-0 w-full h-full object-cover z-0" />
       {/* Overlay for darkening the background (optional, can adjust opacity) */}
       <div className="absolute inset-0 bg-black/30 z-0" />
-      <div className="w-full max-w-2xl h-[90vh] right-60 mx-auto p-8 rounded-2xl flex flex-col items-center absolute z-10 bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.25)'}}>
+      <div className="w-full max-w-[600px]  mx-auto p-8 py-12 rounded-2xl flex flex-col items-center absolute z-10 bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.25)'}}>
         {isLogin ? (
-          <>
-            <h1 className="text-white text-3xl font-bold mb-2 text-center">Log In</h1>
-            <p className="text-gray-300 mb-8 text-center">Enter your credentials to access your account.</p>
+          <form onSubmit={handleLogin}>
+            <h1 className="text-white text-4xl font-bold mb-2 text-center">Login to Epic Automations</h1>
+            <p className="text-gray-300 mb-6 text-lg text-center">Enter your credentials to access your account.</p>
+          {/* Error/Success Messages */}
+          {error && (
+            <div className="w-full mb-4 p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300 text-sm">
+              {error}
+            </div>
+          )}
+          {success && (
+            <div className="w-full mb-4 p-3 bg-green-500/20 border border-green-500/50 rounded-lg text-green-300 text-sm">
+              {success}
+            </div>
+          )}
+          
           {/* Social Login */}
           <div className="flex gap-4 mb-6 w-full">
-              <button className="flex-1 flex items-center justify-center gap-2 border border-white/20 bg-black text-white rounded-lg py-3 font-medium transition hover:bg-white/10">
-              <svg width="20" height="20" viewBox="0 0 48 48" className="inline-block"><g><path fill="#4285F4" d="M43.611 20.083H42V20H24v8h11.303C33.972 32.833 29.418 36 24 36c-6.627 0-12-5.373-12-12s5.373-12 12-12c2.803 0 5.377.99 7.413 2.626l6.293-6.293C34.583 6.527 29.583 4 24 4 12.954 4 4 12.954 4 24s8.954 20 20 20c11.045 0 19.818-8.955 19.818-20 0-1.341-.138-2.651-.407-3.917z"/><path fill="#34A853" d="M6.306 14.691l6.571 4.819C14.655 16.104 19.001 13 24 13c2.803 0 5.377.99 7.413 2.626l6.293-6.293C34.583 6.527 29.583 4 24 4c-7.732 0-14.41 4.41-17.694 10.691z"/><path fill="#FBBC05" d="M24 44c5.356 0 10.207-1.797 13.994-4.889l-6.481-5.307C29.418 36 24 36 24 36c-5.418 0-9.972-3.167-11.303-8.083l-6.57 5.073C9.59 39.59 16.268 44 24 44z"/><path fill="#EA4335" d="M43.611 20.083H42V20H24v8h11.303C34.627 32.833 30.073 36 24 36c-5.418 0-9.972-3.167-11.303-8.083l-6.57 5.073C9.59 39.59 16.268 44 24 44c11.045 0 19.818-8.955 19.818-20 0-1.341-.138-2.651-.407-3.917z"/></g></svg>
-              Google
-            </button>
-              <button className="flex-1 flex items-center justify-center gap-2 border border-white/20 bg-black text-white rounded-lg py-3 font-medium transition hover:bg-white/10">
-                <svg width="20" height="20" viewBox="0 0 24 24" className="inline-block"><path fill="white" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-              Apple
-            </button>
+              <button 
+                type="button"
+                onClick={handleGoogleSignIn}
+                disabled={loading}
+                className="flex-1 flex items-center justify-center gap-2 border border-white/20 bg-black text-white rounded-lg py-3 font-semibold text-xl transition hover:bg-black/60 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <FcGoogle size={25} />
+                Google
+              </button> 
+              <button 
+                type="button"
+                disabled={loading}
+                className="flex-1 flex items-center justify-center gap-2 border border-white/20 bg-black text-white rounded-lg py-3 font-semibold text-xl transition hover:bg-black/60 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <FaApple size={25} />
+                Apple
+              </button>
           </div>
           {/* Divider */}
           <div className="flex items-center my-6 w-full">
@@ -47,6 +167,7 @@ export default function SignUp() {
                 placeholder="Enter your email"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
+                required
                 className="w-full rounded-lg bg-[#18181b] border border-white/10 text-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-white/30 placeholder-white/40 text-base"
               />
           </div>
@@ -60,6 +181,7 @@ export default function SignUp() {
                   placeholder="Enter your password"
                   value={password}
                   onChange={e => setPassword(e.target.value)}
+                  required
                   className="w-full rounded-lg bg-[#18181b] border border-white/10 text-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-white/30 placeholder-white/40 text-base"
                 />
                 <button
@@ -72,33 +194,61 @@ export default function SignUp() {
                 </button>
               </div>
             </div>
-            <div className="w-full flex justify-end mb-6">
-              <button className="text-white/70 text-sm hover:underline" type="button">Forgot password?</button>
+            <div className="w-full flex justify-center mt-2 mb-4">
+              <button className="text-white/70 text-md hover:underline" type="button">Forgot password?</button>
             </div>
             {/* Log In Button */}
-            <button className="w-full bg-white text-black font-bold py-3 rounded-lg text-base transition mb-4 shadow-lg hover:bg-gray-100">Log In</button>
+            <button 
+              type="submit"
+              disabled={loading}
+              className="w-full bg-white text-black font-bold py-3 rounded-lg text-xl transition mb-4 shadow-lg hover:bg-gray-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {loading ? "Logging in..." : "Log In"}
+            </button>
             {/* Toggle to Sign Up */}
             <div className="w-full flex justify-center mt-2">
-              <span className="text-white/80 text-sm">
+              <span className="text-white/80 text-lg">
                 Don&apos;t have an account?{' '}
-                <button className="text-white underline font-semibold hover:text-gray-300 transition" type="button" onClick={() => setIsLogin(false)}>
+                <button className="text-white cursor-pointer underline font-semibold hover:text-gray-300 transition" type="button" onClick={() => setIsLogin(false)}>
                   Sign up
                 </button>
               </span>
             </div>
-          </>
+          </form>
         ) : (
-          <>
-            <h1 className="text-white text-3xl font-bold mb-2 text-center">Sign Up Account</h1>
-            <p className="text-gray-300 mb-8 text-center">Enter your personal data to create your account.</p>
+          <form onSubmit={handleSignUp}>
+            <h1 className="text-white text-4xl font-bold mb-2 text-center">Sign Up to Epic Automations</h1>
+            <p className="text-gray-300 mb-6 text-lg text-center">Enter your personal data to create your account.</p>
+            
+            {/* Error/Success Messages */}
+            {error && (
+              <div className="w-full mb-4 p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300 text-sm">
+                {error}
+              </div>
+            )}
+            {success && (
+              <div className="w-full mb-4 p-3 bg-green-500/20 border border-green-500/50 rounded-lg text-green-300 text-sm">
+                {success}
+              </div>
+            )}
+            
             {/* Social Login */}
             <div className="flex gap-4 mb-6 w-full">
-              <button className="flex-1 flex items-center justify-center gap-2 border border-white/20 bg-black text-white rounded-lg py-3 font-medium transition hover:bg-white/10">
-                <svg width="20" height="20" viewBox="0 0 48 48" className="inline-block"><g><path fill="#4285F4" d="M43.611 20.083H42V20H24v8h11.303C33.972 32.833 29.418 36 24 36c-6.627 0-12-5.373-12-12s5.373-12 12-12c2.803 0 5.377.99 7.413 2.626l6.293-6.293C34.583 6.527 29.583 4 24 4 12.954 4 4 12.954 4 24s8.954 20 20 20c11.045 0 19.818-8.955 19.818-20 0-1.341-.138-2.651-.407-3.917z"/><path fill="#34A853" d="M6.306 14.691l6.571 4.819C14.655 16.104 19.001 13 24 13c2.803 0 5.377.99 7.413 2.626l6.293-6.293C34.583 6.527 29.583 4 24 4c-7.732 0-14.41 4.41-17.694 10.691z"/><path fill="#FBBC05" d="M24 44c5.356 0 10.207-1.797 13.994-4.889l-6.481-5.307C29.418 36 24 36 24 36c-5.418 0-9.972-3.167-11.303-8.083l-6.57 5.073C9.59 39.59 16.268 44 24 44z"/><path fill="#EA4335" d="M43.611 20.083H42V20H24v8h11.303C34.627 32.833 30.073 36 24 36c-5.418 0-9.972-3.167-11.303-8.083l-6.57 5.073C9.59 39.59 16.268 44 24 44c11.045 0 19.818-8.955 19.818-20 0-1.341-.138-2.651-.407-3.917z"/></g></svg>
+              <button 
+                type="button"
+                onClick={handleGoogleSignIn}
+                disabled={loading}
+                className="flex-1 flex cursor-pointer items-center justify-center gap-2 border border-white/20 bg-black text-white rounded-lg py-3 font-semibold text-xl transition hover:bg-black/60 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <FcGoogle size={25} />
                 Google
               </button>
-              <button className="flex-1 flex items-center justify-center gap-2 border border-white/20 bg-black text-white rounded-lg py-3 font-medium transition hover:bg-white/10">
-                <svg width="20" height="20" viewBox="0 0 24 24" className="inline-block"><path fill="white" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+              <button 
+                type="button"
+                disabled={loading}
+                className="flex-1 flex cursor-pointer items-center justify-center gap-2 border border-white/20 bg-black text-white rounded-lg py-3 font-semibold text-xl transition hover:bg-black/60 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <FaApple size={25} />
                 Apple
               </button>
             </div>
@@ -118,6 +268,7 @@ export default function SignUp() {
                   placeholder="eg. John"
                   value={firstName}
                   onChange={e => setFirstName(e.target.value)}
+                  required
                   className="w-full rounded-lg bg-[#18181b] border border-white/10 text-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-white/30 placeholder-white/40 text-base"
                 />
               </div>
@@ -129,6 +280,7 @@ export default function SignUp() {
                   placeholder="eg. Francisco"
                   value={lastName}
                   onChange={e => setLastName(e.target.value)}
+                  required
                   className="w-full rounded-lg bg-[#18181b] border border-white/10 text-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-white/30 placeholder-white/40 text-base"
                 />
               </div>
@@ -142,6 +294,7 @@ export default function SignUp() {
                 placeholder="eg. johnfrans@gmail.com"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
+                required
                 className="w-full rounded-lg bg-[#18181b] border border-white/10 text-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-white/30 placeholder-white/40 text-base"
               />
             </div>
@@ -155,6 +308,7 @@ export default function SignUp() {
                 placeholder="Enter your password"
                 value={password}
                 onChange={e => setPassword(e.target.value)}
+                required
                   className="w-full rounded-lg bg-[#18181b] border border-white/10 text-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-white/30 placeholder-white/40 text-base"
               />
               <button
@@ -171,17 +325,23 @@ export default function SignUp() {
               <span className="text-gray-400 text-xs">Must be at least 8 characters.</span>
             </div>
             {/* Sign Up Button */}
-            <button className="w-full bg-white text-black font-bold py-3 rounded-lg text-base transition mb-4 shadow-lg hover:bg-gray-100">Sign Up</button>
+            <button 
+              type="submit"
+              disabled={loading}
+              className="w-full bg-white text-black font-bold py-3 rounded-lg text-xl transition mb-4 cursor-pointer shadow-lg hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {loading ? "Creating account..." : "Sign Up"}
+            </button>
             {/* Toggle to Log In */}
             <div className="w-full flex justify-center mt-2">
-              <span className="text-white/80 text-sm">
+              <span className="text-white/80 text-lg">
                 Already have an account?{' '}
-                <button className="text-white underline font-semibold hover:text-gray-300 transition" type="button" onClick={() => setIsLogin(true)}>
+                <button className="text-white underline font-semibold cursor-pointer hover:text-gray-300 transition" type="button" onClick={() => setIsLogin(true)}>
                   Log in
                 </button>
               </span>
             </div>
-          </>
+          </form>
             )}
       </div>
     </div>
