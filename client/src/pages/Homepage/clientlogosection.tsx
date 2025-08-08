@@ -60,7 +60,7 @@ function LogoSliderRow({ logos, toRight = false, duration = 20 }: { logos: Logo[
         {logos.map((logo: Logo, idx: number) => (
           <Slider.Slide key={idx}>
             <div
-              className={`flex items-center justify-center bg-white/35 backdrop-blur-[15px] border border-white/20  rounded-xl h-20 w-40 ${logo.faded ? 'opacity-40 grayscale' : ''}`}
+              className={`flex items-center justify-center bg-white/75 shadow-2xl backdrop-blur-[15px] border border-blue-200/20  rounded-xl h-20 w-40 ${logo.faded ? 'opacity-40 grayscale' : ''}`}
               style={{ marginLeft: 30 }}
             >
               <img
@@ -78,7 +78,7 @@ function LogoSliderRow({ logos, toRight = false, duration = 20 }: { logos: Logo[
 
 export default function ClientlogoSection() {
   return (
-    <div id="client-logos" className='bg-gradient-to-t from-[#5cd9ff] via-[#d2f2ff] to-[#ebe97c]'>
+    <div id="client-logos" className='bg-[#ffe7b6]'>
     <h3 className="bg-gradient-to-bl from-[#dd6b20] via-black to-[#dd6b20] bg-clip-text text-transparent text-4xl md:text-7xl justify-center font-semibold  text-center mb-3 pt-7">The Companies That Integrated <br/> Our Robotics Vision</h3>
     <p className="text-gray-700 text-base md:text-3xl text-center mt-4 mb-5">
     We serve startups to large enterprises with tailored automation solutions that boost efficiency, <br /> improve operations, and drive measurable success.

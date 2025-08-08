@@ -2,7 +2,7 @@ import {Navbar, NavbarBrand, NavbarContent, NavbarItem} from "@heroui/react";
 import { Sling as Hamburger } from 'hamburger-react';
 import { MdSupportAgent } from 'react-icons/md';
 import { FiSearch, FiX, FiChevronDown, FiArrowRight } from 'react-icons/fi';
-import ReactCountryFlag from 'react-country-flag';
+
 import { useState, useRef, useEffect } from 'react';
 import logo from '/images/logo.png';
 import { Link as RouterLink, useNavigate, useLocation } from 'react-router-dom';
@@ -49,39 +49,43 @@ const dropdownContent: DropdownContent = {
         items: [
           {
             title: "Machine Tending",
-            description: "Automate the Load , Elevate.",
+            description: "Automate the Load, Elevate Performance",
             image: "/images/navdropimages/MachineTending.png",
-            href: "/products/adam",
+            href: "/services",
+            isPromo: true,
           },
           {
             title: "Palletizing",
-            description: "Automated Palletizing.",
-            image: "/images//navdropimages/Palletizing.png",
-            href: "/products/scorpion",
+            description: "Automated Palletizing Solutions",
+            image: "/images/navdropimages/Palletizing.png",
+            href: "/services",
+            isPromo: true,
           },
           {
             title: "Deburring",
-            description: "Precision Finishing for Peak",
+            description: "Precision Finishing for Peak Performance",
             image: "/images/navdropimages/deburring.png",
-            href: "/rentals",
+            href: "/services",
             isPromo: true,
           },
         ],
       },
       { 
-        name: "Special Purpose Machine (SPM) ", 
+        name: "Special Purpose Machine (SPM)", 
         items: [
           {
             title: "CNC Automations",
             description: "Consistent, Reliable. CNC Done Right.",
-            image: "/images/products.jpg",
-            href: "/products/wally",
+            image: "/images/navdropimages/CNC_Automation.jpg",
+            href: "/services",
+            isPromo: true,
           },
           {
-            title: "Packaging machine",
-            description: "Consistent Packing, Every Single Time. Efficiency Engineered nto Every Machine.",
+            title: "Packaging Machine",
+            description: "Consistent Packing, Every Single Time. Efficiency Engineered into Every Machine.",
             image: "/images/products.jpg",
-            href: "/products/rover",
+            href: "/services",
+            isPromo: true,
           },
         ] 
       },
@@ -89,16 +93,18 @@ const dropdownContent: DropdownContent = {
         name: "SCADA", 
         items: [
            {
-            title: "NeatBot",
-            description: "Commercial-grade autonomous floor scrubbing for large spaces.",
+            title: "SCADA Systems",
+            description: "Advanced monitoring and control systems for industrial automation.",
             image: "/images/products.jpg",
-            href: "/products/neatbot",
+            href: "/services",
+            isPromo: true,
           },
           {
-            title: "Tidy",
-            description: "Compact cleaning bot perfect for small offices and retail spaces.",
+            title: "HMI Solutions",
+            description: "Human-Machine Interface solutions for seamless operation control.",
             image: "/images/products.jpg",
-            href: "/products/tidy",
+            href: "/services",
+            isPromo: true,
           },
         ] 
       },
@@ -107,9 +113,9 @@ const dropdownContent: DropdownContent = {
         items: [
           {
             title: "Precision in Design, Power in Control. Panels Built to Perform, Engineered to Last.",
-            description: "",
+            description: "Custom control panels designed for your specific automation needs.",
             image: "/images/products.jpg",
-            href: "/products",
+            href: "/services",
             isPromo: true,
           },
         ] 
@@ -119,9 +125,9 @@ const dropdownContent: DropdownContent = {
         items: [
           {
             title: "Turning Code into Capability. Robots That Work the Way You Want.",
-            description: "",
+            description: "Expert robot programming for optimal performance and efficiency.",
             image: "/images/products.jpg",
-            href: "/rentals",
+            href: "/services",
             isPromo: true,
           },
         ] 
@@ -131,9 +137,9 @@ const dropdownContent: DropdownContent = {
         items: [
           {
             title: "From Logic to Touch – Total Control. We Program the Brains and the Face of Automation",
-            description: "",
+            description: "Complete PLC and HMI programming solutions for industrial automation.",
             image: "/images/products.jpg",
-            href: "/rentals",
+            href: "/services",
             isPromo: true,
           },
         ] 
@@ -143,11 +149,7 @@ const dropdownContent: DropdownContent = {
   
 };
 
-const languageOptions = [
-  { value: 'english', label: 'English', code: 'GB' },
-  { value: 'tamil', label: 'Tamil', code: 'IN' },
-  { value: 'arabic', label: 'Arabic', code: 'SA' },
-];
+
 
 const navLinks = [
   { name: 'Home', dropdown: false },
@@ -169,69 +171,7 @@ const roboticsPlaceholders = [
   "How to join a robotics competition?",
 ];
 
-function LanguageSelector() {
-  const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState(languageOptions[0]);
-  const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    function handleClick(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
-        setOpen(false);
-      }
-    }
-    if (open) document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
-  }, [open]);
-
-  function handleSelect(option: typeof languageOptions[0]) {
-    setSelected(option);
-    setOpen(false);
-  }
-
-  return (
-    <div ref={ref} className="relative ">
-      <button
-        className={`h-13 w-13 flex justify-center items-center rounded-xl bg-[#18171a]/50 backdrop-blur-md  border transition-colors duration-200
-          ${open ? 'border-[#ff9900]' : 'border-[#323333]'}
-          hover:bg-[#242424] focus:border-[#ff9900]`}
-        onClick={() => setOpen((v) => !v)}
-        aria-label="Select language"
-        tabIndex={0}
-        type="button"
-      >
-        <ReactCountryFlag
-          countryCode={selected.code}
-          svg
-          style={{ width: 20, height: 20, borderRadius: '9999px', objectFit: 'cover', display: 'block' }}
-          aria-label={selected.label}
-          title={selected.label}
-        />
-      </button>
-      {open && (
-        <div className="absolute right-0 mt-2 w-40 bg-[#18171a] backdrop-blur-md border border-[#323222] rounded-xl rounded-tr-none shadow-2xl z-50 animate-fadeIn">
-          {languageOptions.map(option => (
-            <button
-              key={option.value}
-              className={`flex items-center gap-2 w-full px-4 py-2 text-white hover:bg-[#232323] transition-colors text-left ${selected.value === option.value ? 'text-[#F56E0F]' : ''}`}
-              onClick={() => handleSelect(option)}
-              type="button"
-            >
-              <ReactCountryFlag
-                countryCode={option.code}
-                svg
-                style={{ width: 20, height: 20, borderRadius: '9999px', objectFit: 'cover', display: 'block' }}
-                aria-label={option.label}
-                title={option.label}
-              />
-              <span>{option.label}</span>
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
 
 export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -267,9 +207,16 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
 
   // Close dropdowns on outside click
   useEffect(() => {
-    function handleClick(_: MouseEvent) {
-      setOpenDropdown(null);
+    function handleClick(event: MouseEvent) {
+      const target = event.target as Element;
+      const dropdown = document.querySelector('[data-dropdown="services"]');
+      const navbarItem = document.querySelector('[data-navbar-item="services"]');
+      
+      if (dropdown && !dropdown.contains(target) && navbarItem && !navbarItem.contains(target)) {
+        setOpenDropdown(null);
+      }
     }
+    
     if (openDropdown) {
       document.addEventListener('mousedown', handleClick);
     }
@@ -293,10 +240,10 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
   };
   
   const handleDropdownMouseLeave = () => {
-    setDropdownHovered(true);
+    setDropdownHovered(false);
     closeDropdownTimeout = window.setTimeout(() => {
       if (!dropdownHovered) setOpenDropdown(null);
-    }, 120);
+    }, 150);
   };
 
   const searchDropdownRef = useRef<HTMLDivElement>(null);
@@ -432,26 +379,32 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
       onMenuOpenChange={setIsMenuOpen} 
       isBordered={false} 
       isBlurred={false} 
-      className={`w-[98vw] ml-3 fixed top-1  py-2 px-2 rounded-xl transition-all duration-300 z-50 ${isScrolled ? 'bg-black/50 backdrop-blur-md' : 'bg-transparent'}`} 
+      className={`w-[98.5vw] fixed top-1  py-2 mx-2 rounded-xl transition-all duration-300 z-50 ${isScrolled ? 'bg-black/50 backdrop-blur-md' : 'bg-transparent'}`} 
       maxWidth="full"
     >
       <NavbarContent>
         <NavbarBrand>
           <RouterLink to="/home">
-            <img src={logo} alt="Logo" className="h-12 w-auto mr-2" /> 
+            <img src={logo} alt="Logo" className="h-15 w-auto rounded-2xl p-2 px-4 " /> 
           </RouterLink>
           
         </NavbarBrand>
       </NavbarContent>
       {/* navlink section */}
-      <NavbarContent className="hidden ml-10 text-white pl-8 pr-6 py-2 bg-[#18171a]/60 backdrop-blur-md border rounded-xl border-[#323333] md:flex gap-2 relative" justify="center">
+      <NavbarContent className="hidden text-white pl-8 pr-6 py-2 bg-[#18171a]/60 backdrop-blur-md border rounded-xl border-[#323333] md:flex gap-2 relative" justify="center">
         {/* Nav Links */}
         {navLinks.map(link => (
           <NavbarItem key={link.name}>
             {['Home' , 'About', 'Career' , 'Contact Us'].includes(link.name) ? (
               <RouterLink
                 to={link.name === 'Contact Us' ? '/help-center' : `/${link.name.toLowerCase()}`}
-                className={`flex items-center gap-1 font-medium text-lg text-white transition-colors duration-200 py-2 rounded-lg px-2 ${openDropdown === link.name ? 'text-[#ff9900]' : 'text-white'} hover:text-[#ff9900]`}
+                className={`flex items-center gap-1 font-medium text-lg transition-colors duration-200 py-2 rounded-lg px-2 ${
+                  openDropdown === link.name 
+                    ? 'text-[#ff9900]' 
+                    : location.pathname === (link.name === 'Contact Us' ? '/help-center' : `/${link.name.toLowerCase()}`)
+                    ? 'text-[#ff9900]'
+                    : 'text-white hover:text-[#ff9900]'
+                }`}
                 style={{ textDecoration: 'none' }}
               >
                 {link.name}
@@ -459,15 +412,20 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
             ) : (
               <button
                 className={`
-                  flex items-center gap-1 font-medium text-white text-lg
+                  flex items-center gap-1 font-medium text-lg
                   transition-colors duration-200 py-2 rounded-lg px-2
-                  ${openDropdown === link.name ? 'text-[#ff9900]' : 'text-white'}
-                  hover:text-[#ff9900]
+                  ${openDropdown === link.name 
+                    ? 'text-[#ff9900]' 
+                    : location.pathname === '/services'
+                    ? 'text-[#ff9900]'
+                    : 'text-white hover:text-[#ff9900]'
+                  }
                 `}
                 onClick={() => link.dropdown && handleTabClick(link)}
                 onMouseEnter={() => link.dropdown && handleDropdownMouseEnter(link)}
                 onMouseLeave={() => link.dropdown && handleDropdownMouseLeave()}
                 type="button"
+                data-navbar-item={link.name.toLowerCase()}
               >
                 {link.name}
                 {link.dropdown && (
@@ -608,13 +566,14 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
         {/* Dropdown Menu */}
         {openDropdown && dropdownContent[openDropdown as keyof typeof dropdownContent] && (
           <div 
-            className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[70vw] max-w-[900px] border border-[#323333] rounded-xl shadow-md flex transition-all duration-200 animate-fadeIn  z-50" 
-            style={{ backgroundImage: "url('/images/navbardropdownimg.png')", backgroundSize: 'cover', backgroundPosition: 'center' , backdropFilter: 'blur(8px)' }}
+            className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[70vw] max-w-[900px] border border-[#323333] rounded-xl shadow-2xl flex transition-all duration-300 animate-fadeIn z-50" 
+            style={{ backgroundImage: "url('/images/navbardropdownimg.png')", backgroundSize: 'cover', backgroundPosition: 'center', backdropFilter: 'blur(8px)' }}
             onMouseEnter={() => {
               if (closeDropdownTimeout) clearTimeout(closeDropdownTimeout);
               setDropdownHovered(true);
             }}
             onMouseLeave={handleDropdownMouseLeave}
+            data-dropdown={openDropdown.toLowerCase()}
           >
             {(() => {
               const linkData = dropdownContent[openDropdown as keyof typeof dropdownContent];
@@ -623,12 +582,12 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
               const activeTabData: DropdownTab | undefined = linkData.tabs.find(t => t.name === activeTab);
 
               return <>
-                <div className="w-[35%] bg-[#0f4a69]  p-4 rounded-l-xl flex flex-col" >
+                <div className="w-[35%] bg-[#0f4a69]/90 backdrop-blur-sm p-4 rounded-l-xl flex flex-col" >
                     {linkData.tabs.map((tab) => (
                         <button
                             key={tab.name}
                             onMouseEnter={() => setActiveTab(tab.name)}
-                            className="block w-full text-left text-white text-lg py-3 px-4 rounded-lg transition-colors duration-200 hover:bg-[#1d5266]"
+                            className="block w-full text-left text-white text-lg py-3 px-4 rounded-lg transition-colors duration-200 hover:bg-[#1d5266]/80"
                         >
                             <span className={`${activeTab === tab.name ? 'font-bold' : ''}`}>{tab.name}</span>
                             {activeTab === tab.name && (
@@ -637,43 +596,36 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
                         </button>
                     ))}
                 </div>
-                <div className="w-[65%] p-6 rounded-r-xl " >
-                  <div className="grid grid-cols-1 md:grid-cols-2 h-full   gap-4 grid-auto-rows-fr">
-                    {activeTabData?.items.map((item, idx) =>
-                      item.isPromo ? (
-                        <RouterLink to={item.href} key={idx} className="relative rounded-lg overflow-hidden h-full group col-span-1 md:col-span-2">
-                          <img src={item.image} alt={item.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
-                          <div className="absolute inset-0 bg-black/50"></div>
-                          <div className="relative h-full flex flex-col justify-end p-4 text-white">
-                              <h3 className="text-xl font-bold">{item.title}</h3>
-                              <p className="text-white  text-md">{item.description}</p>
-                              <div className="mt-4">
-                                  <div className="inline-flex items-center gap-2 text-sm font-semibold bg-white text-black py-2 px-4 rounded-full group-hover:bg-gray-200 transition-colors">
-                                      <span>{ item.title.includes('rental') ? 'Learn' : 'LEARN MORE'}</span>
-                                      <FiArrowRight className="transition-transform duration-200 group-hover:translate-x-1"/>
-                                  </div>
-                              </div>
-                          </div>
-                        </RouterLink>
-                      ) : (
-                        <RouterLink to={item.href} key={idx} className="bg-white rounded-lg p-4 flex flex-col justify-between shadow-sm hover:shadow-xl transition-shadow duration-300 group">
-                          <div>
-                            <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
-                            <p className="text-gray-600 mt-2 text-sm">{item.description}</p>
-                          </div>
-                          <div className="aspect-w-1 aspect-h-1 my-4">
-                              <img src={item.image} alt={item.title} className="w-full h-full object-contain" />
-                          </div>
-                          <div className="mt-auto">
-                            <div className="inline-flex items-center gap-2 text-sm font-semibold bg-white text-gray-800 py-2 px-4 rounded-full border border-gray-200 group-hover:bg-gray-100 transition-colors">
-                                  <span>LEARN MORE</span>
-                                  <FiArrowRight className="transition-transform duration-200 group-hover:translate-x-1"/>
+                <div className="w-[65%] p-6 rounded-r-xl" >
+                  <div className="grid grid-cols-1 h-full gap-4">
+                    {activeTabData?.items.map((item, idx) => (
+                      <RouterLink 
+                        to={item.href} 
+                        key={idx} 
+                        className={`relative rounded-lg overflow-hidden group transition-all duration-300 hover:scale-105 ${
+                          activeTabData.items.length === 1 ? 'h-full' : 'h-48'
+                        }`}
+                        onClick={() => setOpenDropdown(null)}
+                      >
+                        <img 
+                          src={item.image} 
+                          alt={item.title} 
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" 
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                        <div className="relative h-full flex flex-col justify-end p-6 text-white">
+                            <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                            <p className="text-white/90 text-base mb-6 line-clamp-2">{item.description}</p>
+                            <div className="mt-auto">
+                                <div className="inline-flex items-center gap-2 text-sm font-semibold bg-white text-black py-3 px-6 rounded-full group-hover:bg-gray-200 transition-colors duration-200">
+                                    <span>LEARN MORE</span>
+                                    <FiArrowRight className="transition-transform duration-200 group-hover:translate-x-1"/>
+                                </div>
                             </div>
-                          </div>
-                        </RouterLink>
-                      )
-                    )}
-                    </div>
+                        </div>
+                      </RouterLink>
+                    ))}
+                  </div>
                 </div>
               </>;
             })()}
@@ -700,34 +652,21 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
               />
             </div>
           </NavbarItem>
-        {/* Language Selector */}
-        <NavbarItem >
-          <LanguageSelector />
-        </NavbarItem>
+        
         {/* Help Center Icon */}
         <NavbarItem className="hidden md:flex">
           <RouterLink to="/help-center" style={{ textDecoration: 'none' }}>
             <button
-              className={`size-13 flex justify-center items-center rounded-xl bg-[#18171a]/60 backdrop-blur-md border transition-colors duration-200
+              className={`w-35 h-13 flex justify-center cursor-pointer gap-2 items-center rounded-xl bg-[#18171a]/60 backdrop-blur-md border transition-colors duration-200
                 border-[#323333] text-white hover:bg-[#242424] hover:text-[#ff9900] focus:border-[#ff9900] focus:text-[#ff9900]`
               }
               aria-label="Help Center"
             >
-              <MdSupportAgent className="w-5 h-5" />
+              <MdSupportAgent className="w-5 h-5" /> Help Center
             </button>
           </RouterLink>
         </NavbarItem>
-        {/* Sign Up Button */}
-        <NavbarItem className="hidden md:flex">
-          <RouterLink to="/signup" style={{ textDecoration: 'none' }}>
-            <button className="relative inline-flex h-13 overflow-hidden rounded-xl p-[1px] focus:outline-none focus:ring-1 focus:ring-orange-500 focus:ring-offset-1 focus:ring-offset-orange-100">
-              <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#ff9900_0%,#082F61_50%,#ff9900_100%)]" />
-              <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-xl  bg-[#18171a]  px-5 py-1 text-sm font-medium text-white backdrop-blur-3xl">
-                Sign Up
-              </span>
-            </button>
-          </RouterLink>
-        </NavbarItem>
+
         {/* Hamburger Menu Toggle */}
         <NavbarItem className="md:hidden bg-[#18171a]/60 backdrop-blur-md border border-[#323333] text-white hover:bg-[#242424] hover:text-[#F56E0F] focus:border-[#F56E0F] focus:text-[#F56E0F] rounded-xl">
           <Hamburger toggled={isMenuOpen} toggle={setIsMenuOpen} size={24}  />
@@ -748,8 +687,12 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
               {navLinks.map((item) => (
                 <RouterLink
                   key={item.name}
-                  to={`/${item.name.toLowerCase()}`}
-                  className="w-full text-lg text-white py-2 px-3 rounded-lg hover:bg-[#232323] transition-colors text-left"
+                  to={item.name === 'Contact Us' ? '/help-center' : `/${item.name.toLowerCase()}`}
+                  className={`w-full text-lg py-2 px-3 rounded-lg transition-colors text-left ${
+                    location.pathname === (item.name === 'Contact Us' ? '/help-center' : `/${item.name.toLowerCase()}`)
+                      ? 'text-[#ff9900] bg-[#232323]'
+                      : 'text-white hover:bg-[#232323]'
+                  }`}
                   style={{ textDecoration: 'none' }}
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -766,17 +709,7 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
               >
                 <MdSupportAgent className="w-5 h-5" /> Help Center
               </RouterLink>
-              <RouterLink
-                to="/signup"
-                style={{ textDecoration: 'none' }}
-                onClick={() => setIsMenuOpen(false)}
-                className="relative inline-flex h-12 overflow-hidden rounded-xl p-[1px] focus:outline-none focus:ring-1 focus:ring-orange-500 focus:ring-offset-1 focus:ring-offset-orange-100"
-              >
-                <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#FFE5B4_0%,#FF8C00_50%,#FFE5B4_100%)]" />
-                <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-xl  bg-[#18171a] px-5 py-1 text-sm font-medium text-white backdrop-blur-3xl">
-                  Sign Up
-                </span>
-              </RouterLink>
+
             </div>
           </nav>
         </>
