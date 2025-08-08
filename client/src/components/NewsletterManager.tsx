@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { useNewsletterPopup } from '../hooks/useNewsletterPopup';
 import NewsletterPopup from './NewsletterPopup';
 import SuccessToast from './SuccessToast';
