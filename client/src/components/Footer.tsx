@@ -85,7 +85,10 @@ export default function Footer() {
                 </button>
                 
               </div>
-              <button className="border border-[#FEB130] text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-[#fddca4] hover:text-black transition text-xl shadow bg-transparent">
+              <button
+                className="border border-[#FEB130] text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-[#fddca4] hover:text-black transition text-xl shadow bg-transparent"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
                 ↑
               </button>
             </div>

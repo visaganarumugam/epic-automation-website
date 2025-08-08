@@ -71,36 +71,60 @@ export default function WhyEpic() {
       end: 100,
       title: 'Total Rated By Clients',
       desc: 'We are proud to have received 100+ positive reviews from our clients, reflecting our commitment to delivering exceptional service and quality.',
+      hoverColor: 'group-hover:text-orange-400',
+      
+      hoverBorder: 'group-hover:border-2 group-hover:border-orange-400',
+      hoverCardShadow: 'group-hover:shadow-[0_8px_32px_rgba(59,130,246,0.3)]',
     },
     {
       end: 200,
       title: 'Total Machines Delivered',
       desc: 'We have delivered more than 200 machines to our clients, helping them automate their processes and improve their productivity.',
+      hoverColor: 'group-hover:text-orange-400',
+      
+      hoverBorder: 'group-hover:border-2 group-hover:border-orange-400',
+      hoverCardShadow: 'group-hover:shadow-[0_8px_32px_rgba(147,51,234,0.3)]',
     },
     {
       end: 4,
       title: 'Years of Experience',
       desc: 'We have been in the business for more than 4 years, helping our clients automate their processes and improve their productivity.',
+      hoverColor: 'group-hover:text-orange-400',
+      
+      hoverBorder: 'group-hover:border-2 group-hover:border-orange-400',
+      hoverCardShadow: 'group-hover:shadow-[0_8px_32px_rgba(34,197,94,0.3)]',
     },
     {
       end: 6,
       title: 'Key Industries Across Globe',
       desc: 'We have worked with clients across various industries, helping them automate their processes and improve their productivity.',
+      hoverColor: 'group-hover:text-orange-400',
+      
+      hoverBorder: 'group-hover:border-2 group-hover:border-orange-400',
+      hoverCardShadow: 'group-hover:shadow-[0_8px_32px_rgba(251,146,60,0.3)]',
     },
     {
       end: 120,
       title: 'Robotic Systems Installed',
       desc: 'Over 120 advanced robotic systems installed, streamlining manufacturing and logistics for our partners.',
+      hoverColor: 'group-hover:text-orange-400',
+      
+      hoverBorder: 'group-hover:border-2 group-hover:border-orange-400',
+      hoverCardShadow: 'group-hover:shadow-[0_8px_32px_rgba(248,113,113,0.3)]',
     },
     {
       end: 35,
       title: 'Patents & Innovations',
       desc: 'Thirty-five patents and innovations in robotics automation driving industry progress and technological advancement.',
+      hoverColor: 'group-hover:text-orange-400',
+      
+      hoverBorder: 'group-hover:border-2 group-hover:border-orange-400',
+      hoverCardShadow: 'group-hover:shadow-[0_8px_32px_rgba(45,212,191,0.3)]',
     },
   ];
 
   return (
-    <section id="why-epic" ref={sectionRef} className="w-full bg-gradient-to-b from-gray-200 via-[#2eb9e4] to-[#ebe97c] py-16 flex flex-col items-center justify-center">
+    <section id="why-epic" ref={sectionRef} className="w-full bg-[#ffe7b6] py-16 flex flex-col items-center justify-center">
       <div className="w-full  max-w-full flex flex-col md:flex-row items-center justify-between px-10 md:px-10">
         {/* Left Column */}
         <div className={`flex flex-col items-start w-full md:w-1/3 gap-50 ${isVisible ? 'animate-rise-up' : ''}`} style={{ animationDelay: isVisible ? '0.1s' : undefined }}>
@@ -113,7 +137,7 @@ export default function WhyEpic() {
         <div className={`flex flex-col w-full md:w-2/3 gap-8 items-start justify-center mt-12 md:mt-0 ${isVisible ? 'animate-rise-up' : ''}`} style={{ animationDelay: isVisible ? '0.3s' : undefined }}>
           <h2 className="text-3xl md:text-6xl font-bold text-[#18181a] leading-tight mb-6">
             From precision automation to remote system monitoring to{' '}
-            <span className="text-[#ffffff] font-normal">fulfilling the <br /> promise of tomorrow's technology.</span>
+            <span className="text-[#4b4b4b] font-normal">fulfilling the <br /> promise of tomorrow's technology.</span>
           </h2>
           <div className="flex items-start gap-4">
             {/* Avatars */}
@@ -123,7 +147,7 @@ export default function WhyEpic() {
               <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Team 3" className="w-15 h-15 rounded-full border-2 border-white shadow" />
               <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Team 4" className="w-15 h-15 rounded-full border-2 border-white shadow" />
             </div>
-            <div className="text-[#222] text-2xl font-normal ml-20 max-w-3xl">
+            <div className="text-[#222] text-3xl font-semibold ml-20 max-w-45xl">
             Epic Automations designs and manufactures custom, cost-<br/>effective machines, specializing in automation solutions <br/> that boost productivity, reduce costs, and maintain <br/> high-quality standards across various industries.
             </div>
           </div>
@@ -132,17 +156,17 @@ export default function WhyEpic() {
       {/* stats */}
       <div ref={statsRef} className="w-full px-10 mt-22 grid grid-cols-1 md:grid-cols-3 gap-8 ">
         {stats.map((stat, idx) => (
-          <div key={stat.title} className={`bg-white/25 backdrop-blur-[15px] border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-xl flex flex-col items-center justify-between px-8 py-8 min-h-[220px] ${statsVisible ? 'animate-rise-up' : ''}`} style={{ animationDelay: statsVisible ? `${0.2 + idx * 0.1}s` : undefined }}>
+          <div key={stat.title} className={`group bg-white/50 backdrop-blur-[15px]  shadow-2xl  rounded-xl flex flex-col items-center justify-between px-8 py-8 min-h-[220px] transition-all duration-300 hover:scale-105 ${stat.hoverBorder} ${stat.hoverCardShadow} ${statsVisible ? 'animate-rise-up' : ''}`} style={{ animationDelay: statsVisible ? `${0.2 + idx * 0.1}s` : undefined }}>
             {/* Top: Number and Title */}
             <div className="flex flex-col items-center w-full mb-2">
               <div className="flex items-center gap-2">
-                <UpCount end={stat.end} className="text-5xl md:text-6xl font-bold text-[#1B1B1B]" start={statsVisible} />
-                <span className="text-4xl md:text-6xl text-[#1b1b1b] font-normal ml-1">+</span>
+                <UpCount end={stat.end} className={`text-5xl md:text-6xl font-bold text-[#ff4f0f] transition-all duration-300  `} start={statsVisible} />
+                <span className={`text-4xl md:text-6xl text-[#ff4f0f] font-normal ml-1 transition-all duration-300  `}>+</span>
               </div>
-              <div className="text-[#1B1B1B] text-2xl md:text-4xl font-semibold text-center mt-2">{stat.title}</div>
+              <div className={`text-[#ff4f0f] text-2xl md:text-4xl font-semibold text-center mt-2 transition-all duration-300  `}>{stat.title}</div>
             </div>
             {/* Bottom: Description */}
-            <div className="text-black text-lg font-normal max-w-md text-center">{stat.desc}</div>
+            <div className="text-black text-[24px] font-semibold max-w-md text-center">{stat.desc}</div>
           </div>
         ))}
       </div>

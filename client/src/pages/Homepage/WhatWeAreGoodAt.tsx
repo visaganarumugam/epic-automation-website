@@ -7,13 +7,13 @@ import { AiFillEdit } from "react-icons/ai";
 
 export default function WhatWeAreGoodAt() {
   return (
-    <section id="what-we-are-good-at" className="w-full min-h-screen bg-gradient-to-t from-[#5cd9ff] via-[#d2f2ff] to-[#ebe97c] flex flex-col justify-center items-center py-10">
+    <section id="what-we-are-good-at" className="w-full min-h-screen bg-[#ffe7b6] flex flex-col justify-center items-center py-10">
       <div className="max-w-full w-full flex flex-col md:flex-row px-6 md:px-10">
         {/* Left Column */}
         <div className="flex flex-col justify-start w-full md:w-[67vh] gap-72 pt-2">
           <h1 className="text-[3.2rem] md:text-[5.2rem] font-semibold text-[#18181a] leading-[1.05] mb-0" style={{fontFamily: 'Gilroy, sans-serif'}}>Our Expertise<br/>in Smart Robotic<br/>Systems.</h1>
           <div className="flex flex-col gap-8 mt-2">
-            <p className="text-[#18181a] text-base md:text-2xl max-w-lg font-medium" style={{fontFamily: 'Gilroy, sans-serif'}}>We specialize in designing intelligent robotic systems that enhance efficiency, precision, and innovation across diverse industrial applications.</p>
+            <p className="text-[#18181a] text-base md:text-3xl max-w-xl font-semibold" style={{fontFamily: 'Gilroy, sans-serif'}}>We specialize in designing intelligent robotic systems that enhance efficiency, precision, and innovation across diverse industrial applications.</p>
             <div className="flex items-center gap-4 ">
             <button className={`border border-[#222] rounded-full text-lg font-semibold flex items-center gap-2 hover:bg-[#f5f5f5] transition`}>
           <InteractiveHoverButton>Having Questions?</InteractiveHoverButton>
@@ -34,7 +34,7 @@ export default function WhatWeAreGoodAt() {
           <div className="flex flex-col h-full gap-6 flex-[0_0_36%] max-w-[34%]">
             {/* 1st row: 60% */}
             <div className="bg-white rounded-3xl shadow flex flex-col items-end justify-end overflow-hidden relative flex-[0_0_55%] min-h-0">
-              <img src="https://images.pexels.com/photos/8191959/pexels-photo-8191959.jpeg" alt="Mike" className="w-full h-full object-cover rounded-t-2xl min-h-[120px]" style={{ minHeight: '120px', maxHeight: '100%' }} />
+              <img src="/images/Image_3.jpg" alt="Mike" className="w-full h-full object-cover rounded-t-2xl min-h-[120px]" style={{ minHeight: '120px', maxHeight: '100%' }} />
               <div className="absolute left-0 bottom-6 flex items-center gap-2 bg-white rounded-l-none rounded-full px-4 py-2 shadow">
                 <div>
                   <div className="text-[#18181a] font-semibold text-lg leading-tight" style={{fontFamily: 'Gilroy, sans-serif'}}>Technology</div>
@@ -62,7 +62,7 @@ export default function WhatWeAreGoodAt() {
                   <div className="font-semibold text-4xl text-[#18181a] leading-tight mb-2" style={{fontFamily: 'Gilroy, sans-serif'}}>Technology Consulting</div>
                 </div>
                 <div>
-                  <div className="text-[#18181a] text-lg font-semibold" style={{fontFamily: 'Gilroy, sans-serif'}}>Sometimes you need to <br /> look far to see close. Our <br /> experts help you make <br /> sense of technology.</div>
+                  <div className="text-[#18181a] text-xl font-semibold" style={{fontFamily: 'Gilroy, sans-serif'}}>Sometimes you need to <br /> look far to see close. Our <br /> experts help you make <br /> sense of technology.</div>
                 </div>
               </div>
             </div>
@@ -82,11 +82,11 @@ export default function WhatWeAreGoodAt() {
                 <path fill="url(#sw-gradient)" d="M23.4,-26.7C31.6,-21,40.4,-14.8,43.7,-6.2C47,2.4,44.8,13.5,38.3,19.7C31.9,25.9,21.1,27.3,11.6,29.7C2.1,32.2,-6.1,35.9,-13.2,34.2C-20.3,32.5,-26.2,25.5,-31.5,17.6C-36.9,9.6,-41.7,0.7,-41.2,-8.1C-40.6,-17,-34.8,-25.7,-27,-31.5C-19.3,-37.3,-9.6,-40.1,-1,-38.9C7.6,-37.7,15.2,-32.4,23.4,-26.7Z" width="100%" height="100%" transform="translate(50 50)" strokeWidth="0" style={{transition: '0.3s'}} stroke="url(#sw-gradient)" />
               </svg>
               <div className="font-semibold text-[2.1rem] text-[#18181a] leading-tight mb-2 relative z-10" style={{fontFamily: 'Gilroy, sans-serif'}}>Infrastructure <br />& Engineering</div>
-              <div className="text-[#18181a] text-lg font-semibold mt-auto relative z-10" style={{fontFamily: 'Gilroy, sans-serif'}}>t's not enough to have <br /> technology, you also <br/>need to have the right <br /> tools to manage it <br /> day-to-day..</div>
+              <div className="text-[#18181a] text-xl font-semibold mt-auto relative z-10" style={{fontFamily: 'Gilroy, sans-serif'}}>It's not enough to have <br /> technology, you also <br/>need to have the right <br /> tools to manage it <br /> day-to-day..</div>
             </div>
             {/* 2nd row: 50% */}
             <div className="bg-white rounded-3xl shadow flex flex-col items-end justify-end overflow-hidden relative flex-[0_0_50%] min-h-0">
-              <img src="https://images.pexels.com/photos/9242836/pexels-photo-9242836.jpeg" alt="Asgeir" className="w-full h-full object-cover rounded-t-2xl min-h-[120px]" style={{ minHeight: '120px', maxHeight: '100%' }} />
+              <img src="/images/Image_5.jpg" alt="Asgeir" className="w-full h-full object-cover rounded-t-2xl min-h-[120px]" style={{ minHeight: '120px', maxHeight: '100%' }} />
               <div className="absolute left-0 bottom-6 flex items-center gap-2 bg-white rounded-l-none rounded-full px-4 py-2 shadow">
                 <div>
                   <div className="text-[#18181a] font-semibold text-lg leading-tight" style={{fontFamily: 'Gilroy, sans-serif'}}>Infrastructure</div>
@@ -114,10 +114,10 @@ export default function WhatWeAreGoodAt() {
               </div>
             </div>
             {/* 2nd row: 70% */}
-            <div className="bg-[#fbc8a9] rounded-3xl shadow flex flex-col items-start justify-end p-6 relative overflow-hidden flex-[0_0_60%] min-h-0">
+            <div className="bg-[#ff949f] rounded-3xl shadow flex flex-col items-start justify-end p-6 relative overflow-hidden flex-[0_0_60%] min-h-0">
             <div className="font-semibold text-[2.1rem] text-[#18181a] leading-tight mb-2 relative z-10" style={{fontFamily: 'Gilroy, sans-serif'}}>Own Design <br /> & Production</div>
             <div className="text-[#18181a] text-xl font-semibold mt-auto relative z-10" style={{fontFamily: 'Gilroy, sans-serif'}}>From in-house design, prototyping to assembly, we offer a<br />wide range of custom<br/>   solutions and<br /> services.</div>
-              <svg className="absolute left-15 -top-25 opacity-35" width="380" height="380" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="36" stroke="#f2994a" strokeWidth="8"/><circle cx="40" cy="40" r="24" stroke="#f2994a" strokeWidth="4"/></svg>
+              <svg className="absolute left-15 -top-25 opacity-35" width="380" height="380" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="36" stroke="#F24A4AFF" strokeWidth="8"/><circle cx="40" cy="40" r="24" stroke="#F24A4AFF" strokeWidth="4"/></svg>
             </div>
           </div>
           {/* Column 4 */}
@@ -125,13 +125,13 @@ export default function WhatWeAreGoodAt() {
             {/* 1st row: 35% */}
             <div className="bg-[#56ccf2] rounded-3xl shadow flex flex-col items-start justify-end p-6 relative overflow-hidden flex-[0_0_57%]  min-h-0">
             <div className="font-semibold text-[2.1rem] text-[#18181a] leading-tight mb-2 relative z-10" style={{fontFamily: 'Gilroy, sans-serif'}}>Customized <br /> Solutions</div>
-            <div className="text-[#18181a] text-lg font-semibold mt-auto relative z-10" style={{fontFamily: 'Gilroy, sans-serif'}}>In order to make true global product, you <br /> need to understand your  <br/> needs,different solutions & Return On Investment <br /> (ROI). We can visualize yours for you.</div>
+            <div className="text-[#18181a] text-xl font-semibold mt-auto relative z-10" style={{fontFamily: 'Gilroy, sans-serif'}}>In order to make true global product, you <br /> need to understand your needs, different<br/>  solutions & Return On Investment (ROI). We<br /> can visualize yours for you.</div>
               <svg className="absolute left-15 -top-25 opacity-35" width="380" height="380" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="36" stroke="#6f86d6" strokeWidth="8"/><circle cx="40" cy="40" r="24" stroke="#6f86d6" strokeWidth="4"/></svg>
             </div>
             
             {/* 2nd row: 70% */}
             <div className="bg-white rounded-3xl shadow flex flex-col items-end justify-end overflow-hidden relative flex-[0_0_43%] min-h-0">
-              <img src="/images/customizedsolutions.jpeg" alt="Customized Solutions" className="w-full h-full object-cover rounded-t-2xl min-h-[80px]" style={{ minHeight: '80px', maxHeight: '100%' }} />
+              <img src="/images/Image_1.jpg" alt="Customized Solutions" className="w-full h-full object-cover rounded-t-2xl min-h-[80px]" style={{ minHeight: '80px', maxHeight: '100%' }} />
               <div className="absolute left-0 bottom-6 flex items-center gap-2 bg-white rounded-l-none rounded-full px-4 py-2 shadow">
                 <div>
                   <div className="text-[#18181a] font-semibold text-lg leading-tight" style={{fontFamily: 'Gilroy, sans-serif'}}>Customized</div>

@@ -16,52 +16,52 @@ export default function FeaturesSectionDemo() {
       title: "Cutting-Edge Technology",
       description:
         "Access to the latest and most advanced automation solutions, ensuring your operations remain at the forefront of industry standards.",
-      icon: <IconCpu size={40} color="black"  />,
+      icon: <IconCpu size={50}  />,
     },
     {
       title: "Streamlined Processes",
       description:
         "Our automation solutions optimize production processes, reducing manual labor, minimizing downtime, and leading to significant cost savings.",
-      icon: <IconSettingsAutomation size={40} color="black"  />,
+      icon: <IconSettingsAutomation size={50}   />,
     },
     {
       title: "Versatile Expertise",
       description:
         "Benefit from the vast expertise of our skilled professionals, covering diverse industries and applications, from medical disposables to food processing.",
-      icon: <IconUsers size={40} color="black"  />,
+      icon: <IconUsers size={50}   />,
     },
     {
       title: "Faster Time-to-Market",
       description: "Our rapid prototyping capabilities and efficient manufacturing process accelerate the development and launch of your products.",
-      icon: <IconRocket size={40} color="black"  />,
+      icon: <IconRocket size={50}   />,
     },
     {
       title: "Competitive Advantage",
       description: "Stay ahead of the competition with our state-of-the-art technology and streamlined automation solutions, setting new standards in your industry.",
-      icon: <IconTrendingUp size={40} color="black"  />,
+      icon: <IconTrendingUp size={50}   />,
     },
     {
       title: "Comprehensive Support",
       description:
         "Our team provides end-to-end support, from initial consultation and 3D design services to installation, training, and lifetime technical assistance.",
-      icon: <IconAdjustmentsBolt size={40} color="black"  />,
+      icon: <IconAdjustmentsBolt size={50}   />,
     },
     {
       title: "Reliable Performance",
       description:
         "Count on our machines' precision, durability, and reliability, backed by our stringent quality assurance measures.",
-      icon: <IconShieldCheck size={40} color="black"   />,
+      icon: <IconShieldCheck size={50}   />,
     },
     {
       title: "Transformative Ideas",
       description: "Leverage our expertise to turn your innovative ideas into reality, empowering you to scale up and achieve your business goals.",
-      icon: <IconBulb size={40} color="black"   />,
+      icon: <IconBulb size={50}   />,
     },
   ];
   return (
-    <div id="your-benefits" className="bg-gradient-to-b from-[#5cd9ff] via-[#d2f2ff] to-[#ebe97c] ">
+    <div id="your-benefits" className="bg-[#ffe7b6] ">
         <h2 className="bg-gradient-to-bl from-orange-600 via-black to-orange-600 bg-clip-text text-transparent text-3xl md:text-[5.2rem] font-semibold text-center pt-12 mb-2">From Human to Hybrid: Your Gains</h2>
-          <p className="text-gray-700 text-base md:text-3xl text-center mt-3 mb-5">
+          <p className="text-black font-semibold text-base md:text-3xl text-center mt-3 mb-5">
           Epic Automations delivers smart robotics that merge physical precision  <br /> with adaptive digital intelligence.
           </p>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  relative z-10 py-10 max-w-full px-10 ">
@@ -99,16 +99,16 @@ const Feature = ({
       {index >= 4 && (
         <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-white/25 dark:from-neutral-800 to-transparent pointer-events-none" />
       )}
-      <div className="mb-4 relative z-10 px-10 text-neutral-600 ">
+      <div className="mb-4 relative z-10 px-10 group-hover/feature:scale-110 transition duration-200 group-hover/feature:text-orange-600 ">
         {icon}
       </div>
       <div className="text-[1.7rem] font-bold mb-2 relative z-10 px-10">
         <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-black group-hover/feature:bg-orange-500 transition-all duration-200 origin-center" />
-        <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-neutral-800 ">
+        <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block group-hover/feature:text-transparent group-hover/feature:bg-clip-text group-hover/feature:bg-gradient-to-tr from-orange-600 via-black to-orange-600 text-black">
           {title}
         </span>
       </div>
-      <p className="text-[1.2rem] font-mono text-neutral-800 d max-w-sm relative z-10 px-10">
+      <p className="text-[1.2rem] font-semibold text-neutral-800 d max-w-sm relative z-10 px-10">
         {description}
       </p>
     </div>

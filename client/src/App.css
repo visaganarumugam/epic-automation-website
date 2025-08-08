@@ -92,3 +92,11 @@ html, body {
 .animate-rise-down {
   animation: riseDown 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
+
+.fade-in-center-card {
+  animation: fadeInCenterCard 0.7s;
+}
+@keyframes fadeInCenterCard {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

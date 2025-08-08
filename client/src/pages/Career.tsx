@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { IoIosSend } from 'react-icons/io';
 const jobs1 = [
   {
     label: 'RESEARCH',
@@ -156,28 +154,36 @@ const jobs4 = [
 ];
 
 export default function Career() {
-  const [email, setEmail] = useState('');
+  
 
   return (
-    <div className="min-h-screen w-full bg-white flex flex-col items-center justify-start pt-16 px-2">
-      {/* Main Title */}
-      <h1 className="text-4xl md:text-7xl font-bold text-center text-black leading-20 mb-6 mt-15">Life Planning, Making<br />Easy to Turn Dreams a Reality.</h1>
-      {/* Subheadline */}
-      <p className="text-lg md:text-3xl text-center text-gray-500 mb-13">Get Exclusive offers on purchase of any plans</p>
-      {/* Email Input and Button */}
-      <form className="flex flex-col md:flex-row items-center justify-center gap-2 mb-12 w-full max-w-full mx-auto">
-          <div className="flex items-center w-full md:w-[20vw] bg-white border border-gray-800 rounded-full px-4 py-3 shadow-sm">
-            <IoIosSend className="w-5 h-5 text-gray-800 mr-2" />
-          <input
-            type="email"
-            placeholder="Your Email"
-            className="bg-transparent placeholder:text-gray-800 font-semibold placeholder:font-semibold outline-none flex-1 text-lg"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
+    <div className="min-h-screen w-full  bg-gradient-to-b  from-[#2eb9e4] via-gray-200 to-[#ebe97c] flex flex-col items-center justify-start pt-16 px-2">
+      {/* Hero Section with Background Image */}
+      <div className="relative w-[90vw] mt-20 mx-auto mb-8 rounded-3xl overflow-hidden shadow-2xl">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="/images/herosecImages/epicbghero1.png" 
+            alt="Epic Automations Hero Background"
+            className="w-full h-full object-cover"
           />
+          {/* Overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
         </div>
-        <button type="submit" className="bg-black text-white font-semibold px-8 py-3 rounded-full text-lg shadow hover:bg-gray-900 transition-all">Sign Up</button>
-      </form>
+        
+        {/* Content */}
+        <div className="relative z-10 p-12 md:p-16 text-center">
+          {/* Main Title */}
+          <h1 className="text-4xl md:text-7xl font-bold text-white leading-20 mb-6 drop-shadow-2xl">
+            Life Planning, Making Easy to <br /> Turn Dreams a Reality.
+          </h1>
+          {/* Subheadline */}
+          <p className="text-lg md:text-3xl text-white/90 mb-8 drop-shadow-lg">
+            Get Exclusive offers on purchase of any plans
+          </p>
+        </div>
+      </div>
+      
       {/* Section Row */}
       <div id="career-featured-plans" className="flex items-center justify-between w-full max-w-full mb-6 mt-10 px-21">
         <span className="text-xl md:text-3xl font-semibold">Featured Plans</span>

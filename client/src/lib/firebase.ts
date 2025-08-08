@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 import type { User } from "firebase/auth";
 
 // Debug: Check if environment variables are loaded
@@ -32,6 +33,7 @@ if (typeof window !== "undefined") {
   }
 }
 const auth = getAuth(app);
+const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
 
 // Authentication functions
@@ -75,4 +77,4 @@ export const onAuthStateChange = (callback: (user: User | null) => void) => {
   return onAuthStateChanged(auth, callback);
 };
 
-export { auth, analytics }; 
+export { auth, db, analytics }; 

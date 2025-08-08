@@ -14,6 +14,7 @@ import Profile from "./pages/Profile";
 import Homepage from "./pages/Homepage/Homepage";
 import Footer from "./components/Footer";
 import TopNavbar from "./pages/Navbar";
+import NewsletterManager from "./components/NewsletterManager";
 
 function AppContent() {
   const [scrolled, setScrolled] = useState(false);
@@ -45,7 +46,7 @@ function AppContent() {
   }, []);
 
   // Hide Navbar and Footer on /signup and /help-center
-  const hideNavAndFooter = location.pathname === "/signup" || location.pathname === "/help-center";
+  const hideNavAndFooter = location.pathname === "/signup" ;
 
   return (
     <>
@@ -66,6 +67,7 @@ function AppContent() {
         <Route path="/profile" element={<Profile />} />
       </Routes>
       {!hideNavAndFooter && <Footer />}
+      <NewsletterManager />
     </>
   );
 }
