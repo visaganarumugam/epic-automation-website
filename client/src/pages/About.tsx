@@ -78,23 +78,23 @@ export default function About() {
     },
     {
       bgImage: '/images/products.jpg',
-      logo: '/images/logos/BERGER.png',
-      title: 'Next-Gen Products',
-      description: 'Cutting-edge robotics products for modern industries',
+      logo: '/images/logos/Ammarun-Foundries.jpg',
+      title: 'Pre Machining',
+      description: 'Power Press for Industrial Use — Upgrade with advanced Cross Shaft Power Press machines. Efficiency and precision! Call Us. Enhance Production with Cross Shaft Power Presses. Durable and precise machinery. Call Us. Boost Productivity Now.',
       
     },
     {
       bgImage: '/images/collaboration.png',
-      logo: '/images/logos/HEALTHCARE.png',
-      title: 'Team Excellence',
-      description: 'Collaborative robotics solutions for success',
+      logo: '/images/logos/lmw.png',
+      title: 'PCB Automation',
+      description: 'PCB assembly automation involves using machines and automated systems to handle the various steps of assembling electronic components onto printed circuit boards (PCBs), replacing manual labor for increased speed, precision, and efficiency. This automation extends from component placement and soldering to testing and inspection.',
       
     },
     {
-      bgImage: '/images/innovation.png',
-      logo: '/images/logos/ALBA.jpg',
+      bgImage: '/images/logos/ola.avif',
+      logo: '/images/logos/ola.png',
       title: 'Research & Development',
-      description: 'Pushing the boundaries of robotics innovation',
+      description: 'An automation line, or automated production line, is a manufacturing system that uses technology to perform tasks previously done by humans, increasing efficiency and reducing costs. These lines integrate various machines, robots, and technologies to automate a sequence of manufacturing tasks with minimal human intervention.',
       
     },
     {
@@ -219,7 +219,7 @@ export default function About() {
         {/* Story & Target Section - Pixel Perfect */}
       <div className="w-full flex justify-center bg-[#ffe7b6]">
             
-        <div className="w-full max-w-full px-20 flex flex-col gap-10 mt-4">
+        <div className="w-full max-w-full px-4 sm:px-8 md:px-20 flex flex-col gap-6 sm:gap-8 md:gap-10 mt-4">
           {/* Our Story Card */}
           <div className="w-full h-[60vh]  rounded-4xl  flex flex-col md:flex-row items-stretch overflow-hidden px-0 py-0" style={{minHeight:'270px'}}>
             <div className="flex-1 flex flex-col items-start justify-center px-8 py-10 md:py-8">
@@ -277,8 +277,8 @@ export default function About() {
         <div className="w-full py-20 bg-[#ffe7b6] relative overflow-hidden">
           <div className="w-full max-w-full mx-auto px-4">
             {/* Section Heading */}
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-7xl font-bold text-black">
+            <div className="text-center mb-8 sm:mb-12 md:mb-16">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-7xl font-bold text-black px-4">
                 Projects That We've Worked On
               </h2>
             </div>
@@ -287,27 +287,27 @@ export default function About() {
             <div className="relative">
               {/* Left Arrow */}
               <button 
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/80 hover:bg-white rounded-full p-3 shadow-lg transition-all duration-300"
+                className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/80 hover:bg-white rounded-full p-2 sm:p-3 shadow-lg transition-all duration-300"
                 onClick={() => handlePrevCard()}
               >
-                <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-6 sm:h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
 
               {/* Right Arrow */}
               <button 
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/80 hover:bg-white rounded-full p-3 shadow-lg transition-all duration-300"
+                className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/80 hover:bg-white rounded-full p-2 sm:p-3 shadow-lg transition-all duration-300"
                 onClick={() => handleNextCard()}
               >
-                <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-6 sm:h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
 
               {/* True Slider Carousel Animation with Peeking and Fade-out Side Cards */}
-              <div className="w-full flex justify-center items-center py-12">
-                <div className="relative w-[80vw] h-[80vh] overflow-visible flex items-center justify-center mx-auto">
+              <div className="w-full flex justify-center items-center py-6 sm:py-8 md:py-12">
+                <div className="relative w-[95vw] sm:w-[90vw] md:w-[80vw] h-[60vh] sm:h-[70vh] md:h-[80vh] overflow-visible flex items-center justify-center mx-auto">
                   {[
                     (activeCard === 0 ? cardData.length - 2 : activeCard === 1 ? cardData.length - 1 : activeCard - 2), // far left
                     (activeCard === 0 ? cardData.length - 1 : activeCard - 1), // left
@@ -371,33 +371,33 @@ export default function About() {
                           pointerEvents: pos === 2 ? 'auto' : 'none',
                         }}
                       >
-                        <div className="w-full h-full bg-white rounded-2xl shadow-lg overflow-hidden relative flex">
+                        <div className="w-full h-full bg-white rounded-xl sm:rounded-2xl shadow-lg overflow-hidden relative flex flex-col md:flex-row">
                           {/* Left Section - Content (Image-inspired UI) */}
-                          <div className="flex-1 flex flex-col justify-between p-10 min-h-[400px]">
+                          <div className="flex-1 flex flex-col justify-between p-4 sm:p-6 md:p-10 min-h-[300px] sm:min-h-[350px] md:min-h-[400px]">
                             <div>
                               {/* Pill label */}
-                              <div className="inline-block px-5 py-1 mb-6 rounded-xl border border-gray-300 bg-white text-gray-700 text-xl font-semibold shadow-sm">
+                              <div className="inline-block px-3 sm:px-4 md:px-5 py-1 mb-3 sm:mb-4 md:mb-6 rounded-lg sm:rounded-xl border border-gray-300 bg-white text-gray-700 text-sm sm:text-base md:text-xl font-semibold shadow-sm">
                                 Our Service
                               </div>
                               {/* Heading */}
-                              <h3 className="font-serif font-bold text-4xl md:text-7xl leading-tight text-transparent bg-clip-text bg-gradient-to-br from-orange-600 via-black to-orange-600 mb-6" style={{lineHeight: '1.1'}}>
+                              <h3 className="font-serif font-bold text-xl sm:text-2xl md:text-4xl lg:text-7xl leading-tight text-transparent bg-clip-text bg-gradient-to-br from-orange-600 via-black to-orange-600 mb-3 sm:mb-4 md:mb-6" style={{lineHeight: '1.1'}}>
                                 {cardData[idx].title}
                               </h3>
                               {/* Description */}
-                              <p className="text-black text-xl md:text-3xl font-semibold max-w-xl">
+                              <p className="text-black text-sm sm:text-base md:text-lg lg:text-3xl font-semibold max-w-xl leading-relaxed">
                                 {cardData[idx].description}
                               </p>
                             </div>
                             {/* Get Started Button with Logo */}
-                            <div className="mt-10">
+                            <div className="mt-6 sm:mt-8 md:mt-10">
                               
-                                <img src={cardData[idx].logo} alt="Logo" className="h-15  bg-white p-1 mr-2" />
+                                <img src={cardData[idx].logo} alt="Logo" className="h-8 sm:h-10 md:h-15 bg-white p-1 mr-2 rounded" />
                                
                               
                             </div>
                           </div>
                           {/* Right Section - Image or Video */}
-                          <div className="flex-1 flex items-center justify-center p-10">
+                          <div className="flex-1 flex items-center justify-center p-4 sm:p-6 md:p-10">
                             {idx === 0 ? (
                               <video
                                 ref={videoRef0}
@@ -409,10 +409,21 @@ export default function About() {
                                 className="w-full h-full object-cover rounded-xl shadow-lg shadow-black/50"
                                 poster={cardData[idx].bgImage}
                               />
-                            ) : idx === 1 ? (
+                            )  : idx === 5 ? (
                               <video
                                 ref={videoRef1}
-                                src="/videos/epicAutomations6.mp4"
+                                src="/videos/Pre-Machining.mov"
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                className="w-full h-full object-cover rounded-xl shadow-lg shadow-black/50"
+                                poster={cardData[idx].bgImage}
+                              />
+                            ) : idx === 6 ? (
+                              <video
+                                ref={videoRef1}
+                                src="/videos/lmv.mp4"
                                 autoPlay
                                 loop
                                 muted
@@ -436,13 +447,13 @@ export default function About() {
               </div>
               
               {/* Pagination Dots */}
-              <div className="flex justify-center items-center gap-2 mt-8">
+              <div className="flex justify-center items-center gap-1 sm:gap-2 mt-4 sm:mt-6 md:mt-8">
                 {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((index) => (
                   <button
                     key={index}
                     onClick={() => setActiveCard(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      activeCard === index ? 'bg-black h-4' : 'bg-gray-400'
+                    className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 ${
+                      activeCard === index ? 'bg-black h-3 sm:h-4' : 'bg-gray-400'
                     }`}
                   />
                 ))}

@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import ScrollToTop from "./ScrollToTop";
 import { useState , useEffect } from "react";
-import Services from "./pages/Services/Services_Main";
+import Servicespage from "./pages/Services.tsx";
 import Design from "./pages/Design";
 import Development from "./pages/Development";
 import About from "./pages/About";
@@ -54,7 +54,7 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/home" element={<Homepage />} />
-        <Route path="/services" element={<Services />} />
+        <Route path="/services" element={<Servicespage />} />
         <Route path="/design" element={<Design />} />
         <Route path="/development" element={<Development />} />
         <Route path="/about" element={<About />} />
