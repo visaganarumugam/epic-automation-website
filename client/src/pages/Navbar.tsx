@@ -6,7 +6,7 @@ import { FiSearch, FiX, FiChevronDown, FiArrowRight } from 'react-icons/fi';
 import { useState, useRef, useEffect } from 'react';
 import logo from '/images/logo.png';
 import { Link as RouterLink, useNavigate, useLocation } from 'react-router-dom';
-import { PlaceholdersAndVanishInput } from '../components/ui/placeholders-and-vanish-input';
+
 import { sectionIndex } from '../sectionIndex';
 
 
@@ -51,21 +51,21 @@ const dropdownContent: DropdownContent = {
             title: "Machine Tending",
             description: "Automate the Load, Elevate Performance",
             image: "/images/navdropimages/MachineTending.png",
-            href: "/services",
+            href: "/services#robotics-automation",
             isPromo: true,
           },
           {
             title: "Palletizing",
             description: "Automated Palletizing Solutions",
             image: "/images/navdropimages/Palletizing.png",
-            href: "/services",
+            href: "/services#robotics-automation",
             isPromo: true,
           },
           {
             title: "Deburring",
             description: "Precision Finishing for Peak Performance",
             image: "/images/navdropimages/deburring.png",
-            href: "/services",
+            href: "/services#robotics-automation",
             isPromo: true,
           },
         ],
@@ -77,14 +77,14 @@ const dropdownContent: DropdownContent = {
             title: "CNC Automations",
             description: "Consistent, Reliable. CNC Done Right.",
             image: "/images/navdropimages/CNC_Automation.jpg",
-            href: "/services",
+            href: "/services#special-purpose-machine",
             isPromo: true,
           },
           {
             title: "Packaging Machine",
             description: "Consistent Packing, Every Single Time. Efficiency Engineered into Every Machine.",
-            image: "/images/products.jpg",
-            href: "/services",
+            image: "/images/Packing_Machine.jpg",
+            href: "/services#special-purpose-machine",
             isPromo: true,
           },
         ] 
@@ -114,8 +114,8 @@ const dropdownContent: DropdownContent = {
           {
             title: "Precision in Design, Power in Control. Panels Built to Perform, Engineered to Last.",
             description: "Custom control panels designed for your specific automation needs.",
-            image: "/images/products.jpg",
-            href: "/services",
+            image: "/images/Automation-Control-Panels.jpg",
+            href: "/services#custom-panel-design",
             isPromo: true,
           },
         ] 
@@ -126,8 +126,8 @@ const dropdownContent: DropdownContent = {
           {
             title: "Turning Code into Capability. Robots That Work the Way You Want.",
             description: "Expert robot programming for optimal performance and efficiency.",
-            image: "/images/products.jpg",
-            href: "/services",
+            image: "/images/Robot_Programming.jpg",
+            href: "/services#robot-programming",
             isPromo: true,
           },
         ] 
@@ -138,8 +138,8 @@ const dropdownContent: DropdownContent = {
           {
             title: "From Logic to Touch – Total Control. We Program the Brains and the Face of Automation",
             description: "Complete PLC and HMI programming solutions for industrial automation.",
-            image: "/images/products.jpg",
-            href: "/services",
+            image: "/images/plc_and_hmi.jpg",
+            href: "/services#plc-hmi-programming",
             isPromo: true,
           },
         ] 
@@ -159,17 +159,7 @@ const navLinks = [
   { name: 'Contact Us', dropdown: false },
 ];
 
-const roboticsPlaceholders = [
-  "Search robotics kits...",
-  "Find automation solutions...",
-  "Explore AI projects...",
-  "How to build a line follower robot?",
-  "What is ROS (Robot Operating System)?",
-  "Best sensors for obstacle avoidance",
-  "Latest in humanoid robotics",
-  "Get started with Arduino robots",
-  "How to join a robotics competition?",
-];
+
 
 
 
@@ -360,18 +350,30 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
     }
   };
 
-  // Scroll to section for Services dropdown
-  // const handleServicesDropdownClick = (sectionId: string) => {
-  //   if (location.pathname !== '/services') {
-  //     navigate(`/services#${sectionId}`);
-  //   } else {
-  //     setTimeout(() => {
-  //       const el = document.getElementById(sectionId);
-  //       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  //     }, 100);
-  //   }
-  //   setOpenDropdown(null);
-  // };
+  // Handle Services dropdown navigation
+  const handleServicesDropdownClick = (href: string) => {
+    const [path, hash] = href.split('#');
+    
+    if (location.pathname !== path) {
+      // Navigate to the page first
+      navigate(href);
+    } else {
+      // Already on the page, scroll to section
+      setTimeout(() => {
+        const el = document.getElementById(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Add a subtle highlight effect
+          el.style.transition = 'box-shadow 0.3s ease';
+          el.style.boxShadow = '0 0 0 4px rgba(255, 153, 0, 0.3)';
+          setTimeout(() => {
+            el.style.boxShadow = '';
+          }, 2000);
+        }
+      }, 100);
+    }
+    setOpenDropdown(null);
+  };
 
   return (
     <Navbar 
@@ -599,13 +601,12 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
                 <div className="w-[65%] p-6 rounded-r-xl" >
                   <div className="grid grid-cols-1 h-full gap-4">
                     {activeTabData?.items.map((item, idx) => (
-                      <RouterLink 
-                        to={item.href} 
+                      <div 
                         key={idx} 
-                        className={`relative rounded-lg overflow-hidden group transition-all duration-300 hover:scale-105 ${
+                        className={`relative rounded-lg overflow-hidden group transition-all duration-300 hover:scale-105 cursor-pointer ${
                           activeTabData.items.length === 1 ? 'h-full' : 'h-48'
                         }`}
-                        onClick={() => setOpenDropdown(null)}
+                        onClick={() => handleServicesDropdownClick(item.href)}
                       >
                         <img 
                           src={item.image} 
@@ -623,7 +624,7 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
                                 </div>
                             </div>
                         </div>
-                      </RouterLink>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -636,20 +637,64 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
       <NavbarContent justify="end" className="gap-2 items-center">
           <NavbarItem className="flex md:hidden flex-1">
             <div className="relative w-full border border-[#323222] focus-within:border-orange-500 transition-colors rounded-xl">
-              <PlaceholdersAndVanishInput
-                placeholders={roboticsPlaceholders}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  console.log(e.target.value);
-                }}
-                onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-                  e.preventDefault();
-                  console.log('submitted');
-                }}
-              />
-              <FiSearch
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer"
-                onClick={() => setSearchOpen((v) => !v)}
-              />
+              <form className="flex items-center" onSubmit={e => { e.preventDefault(); if (suggestions.length > 0) handleSearchGo(suggestions[0]); }}>
+                <input
+                  type="text"
+                  className="flex-1 bg-transparent outline-none text-white text-sm px-3 py-2 pr-10"
+                  placeholder="Search pages & sections..."
+                  value={searchValue}
+                  onChange={e => setSearchValue(e.target.value)}
+                  onKeyDown={handleSearchKeyDown}
+                />
+                <FiSearch
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer"
+                  onClick={() => {
+                    if (suggestions.length > 0) {
+                      handleSearchGo(suggestions[0]);
+                    }
+                  }}
+                />
+              </form>
+              
+              {/* Mobile Search Suggestions */}
+              {searchValue.trim() !== '' && (
+                <div className="absolute top-full left-0 right-0 bg-[#18171a] border border-[#323333] rounded-b-lg shadow-2xl z-50 max-h-60 overflow-y-auto mt-1">
+                  {suggestions.length > 0 ? (
+                    suggestions.map((s, idx) => (
+                      <div
+                        key={s.id}
+                        className={`px-3 py-2 text-white cursor-pointer text-sm border-b border-[#323333] last:border-b-0 transition-colors duration-200 ${
+                          idx === selectedIndex ? 'bg-[#ff9900]/20' : 'hover:bg-[#ff9900]/20'
+                        }`}
+                        onClick={() => handleSearchGo(s)}
+                        onMouseEnter={() => setSelectedIndex(idx)}
+                      >
+                        <div className="flex items-center gap-2">
+                          <div className="w-5 h-5 bg-[#ff9900]/20 rounded flex items-center justify-center">
+                            <svg className="w-3 h-3 text-[#ff9900]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                          </div>
+                          <div>
+                            <div className="font-medium text-sm">{s.label}</div>
+                            <div className="text-xs text-gray-400">
+                              {s.page === '/home' ? 'Homepage' : s.page.replace('/', '').replace('-', ' ').replace(/\b\w/g, (l: any) => l.toUpperCase())}
+                              {s.id !== s.page.replace('/', '') && ` • ${s.id.replace('-', ' ').replace(/\b\w/g, (l: any) => l.toUpperCase())}`}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="px-3 py-4 text-center">
+                      <svg className="w-6 h-6 text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                      </svg>
+                      <p className="text-gray-400 text-xs">No results found for "{searchValue}"</p>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </NavbarItem>
         
@@ -677,18 +722,88 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
         <>
           <div className="menu-overlay md:hidden" onClick={() => setIsMenuOpen(false)} />
           <nav className="menu-sidebar md:hidden">
-            <div className="flex items-center justify-between mb-8">
-              <img src={logo} alt="Logo" className="h-8" />
-              <button onClick={() => setIsMenuOpen(false)} className="text-white text-3xl hover:text-[#F56E0F] cursor-pointer">
+            <div className="flex items-center justify-between mb-6">
+              <img src={logo} alt="Logo" className="h-6 sm:h-8" />
+              <button onClick={() => setIsMenuOpen(false)} className="text-white text-2xl sm:text-3xl hover:text-[#F56E0F] cursor-pointer">
                 <FiX />
               </button>
             </div>
-            <div className="flex flex-col gap-2 mb-6">
+            
+            {/* Mobile Search */}
+            <div className="mb-6">
+              <div className="relative w-full border border-[#323222] focus-within:border-orange-500 transition-colors rounded-lg">
+                <form className="flex items-center" onSubmit={e => { e.preventDefault(); if (suggestions.length > 0) handleSearchGo(suggestions[0]); }}>
+                  <input
+                    type="text"
+                    className="flex-1 bg-transparent outline-none text-white text-base px-3 py-2 pr-10"
+                    placeholder="Search pages & sections..."
+                    value={searchValue}
+                    onChange={e => setSearchValue(e.target.value)}
+                    onKeyDown={handleSearchKeyDown}
+                    autoFocus
+                  />
+                  <FiSearch
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer"
+                    onClick={() => {
+                      if (suggestions.length > 0) {
+                        handleSearchGo(suggestions[0]);
+                        setIsMenuOpen(false);
+                      }
+                    }}
+                  />
+                </form>
+                
+                {/* Mobile Search Suggestions */}
+                {searchValue.trim() !== '' && (
+                  <div className="absolute top-full left-0 right-0 bg-[#18171a] border border-[#323333] rounded-b-lg shadow-2xl z-50 max-h-60 overflow-y-auto mt-1">
+                    {suggestions.length > 0 ? (
+                      suggestions.map((s, idx) => (
+                        <div
+                          key={s.id}
+                          className={`px-3 py-2 text-white cursor-pointer text-sm border-b border-[#323333] last:border-b-0 transition-colors duration-200 ${
+                            idx === selectedIndex ? 'bg-[#ff9900]/20' : 'hover:bg-[#ff9900]/20'
+                          }`}
+                          onClick={() => {
+                            handleSearchGo(s);
+                            setIsMenuOpen(false);
+                          }}
+                          onMouseEnter={() => setSelectedIndex(idx)}
+                        >
+                          <div className="flex items-center gap-2">
+                            <div className="w-5 h-5 bg-[#ff9900]/20 rounded flex items-center justify-center">
+                              <svg className="w-3 h-3 text-[#ff9900]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                              </svg>
+                            </div>
+                            <div>
+                              <div className="font-medium text-sm">{s.label}</div>
+                              <div className="text-xs text-gray-400">
+                                {s.page === '/home' ? 'Homepage' : s.page.replace('/', '').replace('-', ' ').replace(/\b\w/g, (l: any) => l.toUpperCase())}
+                                {s.id !== s.page.replace('/', '') && ` • ${s.id.replace('-', ' ').replace(/\b\w/g, (l: any) => l.toUpperCase())}`}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="px-3 py-4 text-center">
+                        <svg className="w-6 h-6 text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                        <p className="text-gray-400 text-xs">No results found for "{searchValue}"</p>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+            
+            <div className="flex flex-col gap-1 sm:gap-2 mb-6">
               {navLinks.map((item) => (
                 <RouterLink
                   key={item.name}
                   to={item.name === 'Contact Us' ? '/help-center' : `/${item.name.toLowerCase()}`}
-                  className={`w-full text-lg py-2 px-3 rounded-lg transition-colors text-left ${
+                  className={`w-full text-base sm:text-lg py-2 px-3 rounded-lg transition-colors text-left ${
                     location.pathname === (item.name === 'Contact Us' ? '/help-center' : `/${item.name.toLowerCase()}`)
                       ? 'text-[#ff9900] bg-[#232323]'
                       : 'text-white hover:bg-[#232323]'
@@ -703,11 +818,11 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
             <div className="flex flex-col gap-2 mt-auto">
               <RouterLink
                 to="/help-center"
-                className="w-full flex items-center gap-2 py-3 px-3 rounded-lg hover:bg-[#242424] hover:text-[#F56E0F] bg-[#18171a] cursor-pointer border border-[#323333] text-white text-base font-medium mb-2"
+                className="w-full flex items-center gap-2 py-2 sm:py-3 px-3 rounded-lg hover:bg-[#242424] hover:text-[#F56E0F] bg-[#18171a] cursor-pointer border border-[#323333] text-white text-sm sm:text-base font-medium mb-2"
                 style={{ textDecoration: 'none' }}
                 onClick={() => setIsMenuOpen(false)}
               >
-                <MdSupportAgent className="w-5 h-5" /> Help Center
+                <MdSupportAgent className="w-4 h-4 sm:w-5 sm:h-5" /> Help Center
               </RouterLink>
 
             </div>

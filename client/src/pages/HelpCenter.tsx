@@ -31,7 +31,7 @@ export default function HelpCenter() {
     <>
       <div className="fixed top-0 left-0 right-0 z-50"><TopNavbar /></div>
       {/* Hero Section with Orange Gradient */}
-      <div className="relative w-full h-[60vh] min-h-[420px] bg-gradient-to-br from-orange-700 via-orange-400 to-orange-300 flex items-center justify-center overflow-hidden">
+      <div className="relative w-full h-[50vh] sm:h-[55vh] md:h-[60vh] min-h-[350px] sm:min-h-[380px] md:min-h-[420px] bg-gradient-to-br from-orange-700 via-orange-400 to-orange-300 flex items-center justify-center overflow-hidden">
         {/* Decorative Dots */}
         <div className="absolute top-8 left-8 opacity-30">
           <svg width="60" height="60"><circle cx="6" cy="6" r="2" fill="#fff"/><circle cx="20" cy="6" r="2" fill="#fff"/><circle cx="34" cy="6" r="2" fill="#fff"/><circle cx="48" cy="6" r="2" fill="#fff"/><circle cx="6" cy="20" r="2" fill="#fff"/><circle cx="20" cy="20" r="2" fill="#fff"/><circle cx="34" cy="20" r="2" fill="#fff"/><circle cx="48" cy="20" r="2" fill="#fff"/></svg>
@@ -41,43 +41,43 @@ export default function HelpCenter() {
         </div>
         {/* Hero Images/Icons */}
         {/* Leftmost */}
-        <div className="absolute left-8 bottom-10 md:left-24 md:top-50 z-20">
-          <div className="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-white shadow-lg overflow-hidden bg-white flex items-center justify-center">
+        <div className="absolute left-4 sm:left-6 md:left-8 lg:left-24 bottom-6 sm:bottom-8 md:bottom-10 lg:top-50 z-20">
+          <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full border-2 sm:border-3 md:border-4 border-white shadow-lg overflow-hidden bg-white flex items-center justify-center">
             <img src={heroImages[0].src} alt={heroImages[0].alt} className="w-full h-full object-cover" />
           </div>
         </div>
         {/* Left Center */}
         <div className="absolute left-1/4 bottom-0 md:left-1/4 md:bottom-4 z-20">
-          <div className="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-white shadow-lg overflow-hidden bg-white flex items-center justify-center">
+          <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full border-2 sm:border-3 md:border-4 border-white shadow-lg overflow-hidden bg-white flex items-center justify-center">
             <img src={heroImages[1].src} alt={heroImages[1].alt} className="w-full h-full object-cover" />
           </div>
         </div>
         {/* Center Icon */}
         <div className="absolute right-1/4 bottom-0 md:right-1/3 md:bottom-44 z-20">
-          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-white shadow-lg bg-white flex items-center justify-center">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full border-2 sm:border-3 md:border-4 border-white shadow-lg bg-white flex items-center justify-center">
             {heroImages[2].icon}
           </div>
         </div>
         {/* Right Center */}
         <div className="absolute right-1/4 bottom-0 md:right-1/6 md:top-34 z-20">
-          <div className="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-white shadow-lg overflow-hidden bg-white flex items-center justify-center">
+          <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full border-2 sm:border-3 md:border-4 border-white shadow-lg overflow-hidden bg-white flex items-center justify-center">
             <img src={heroImages[3].src} alt={heroImages[3].alt} className="w-full h-full object-cover" />
           </div>
         </div>
         {/* Rightmost */}
-        <div className="absolute right-8 bottom-10 md:right-24 md:bottom-8 z-20">
-          <div className="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-white shadow-lg overflow-hidden bg-white flex items-center justify-center">
+        <div className="absolute right-4 sm:right-6 md:right-8 lg:right-24 bottom-6 sm:bottom-8 md:bottom-10 lg:bottom-8 z-20">
+          <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full border-2 sm:border-3 md:border-4 border-white shadow-lg overflow-hidden bg-white flex items-center justify-center">
             <img src={heroImages[4].src} alt={heroImages[4].alt} className="w-full h-full object-cover" />
           </div>
         </div>
         {/* Centered Content */}
-        <div className="flex flex-col items-center justify-center z-30">
-          <h1 className="text-5xl md:text-8xl font-bold text-white mb-4">Contact us</h1>
-          <p className="text-2xl md:text-2xl font-semibold text-white mb-6 text-center max-w-xl">
+        <div className="flex flex-col items-center justify-center z-30 px-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-8xl font-bold text-white mb-2 sm:mb-3 md:mb-4 text-center">Contact us</h1>
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white mb-4 sm:mb-5 md:mb-6 text-center max-w-xl px-2">
             Let's start something great together. Get in touch with one of the team today!
           </p>
           <FiChevronsDown 
-            className="w-10 h-10 text-white/80 animate-bounce cursor-pointer hover:text-white transition-colors" 
+            className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white/80 animate-bounce cursor-pointer hover:text-white transition-colors" 
             onClick={scrollToContactForm}
           />
         </div>
@@ -91,52 +91,52 @@ export default function HelpCenter() {
 
       {/* Main Content Section */}
       <div className="bg-white min-h-screen">
-        <div className="max-w-7xl mx-auto px-4 py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
             
             {/* Left Column - Contact Information */}
-            <div  className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               <div>
-                <h2  className="text-5xl font-bold text-gray-900 mb-6">Get in touch</h2>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">Get in touch</h2>
                 
                 {/* Phone */}
-                <div className="mb-6">
-                  <h3 className="text-2xl font-semibold text-gray-900 mb-2">Phone</h3>
-                  <p className="text-gray-500 text-md font-semibold mb-2">
-                    Due to COVID-19, our full team are working remotely. <br /> Please email us or request a callback.
+                <div className="mb-4 sm:mb-6">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2">Phone</h3>
+                  <p className="text-gray-500 text-sm sm:text-md font-semibold mb-2">
+                    Due to COVID-19, our full team are working remotely. <br className="hidden sm:block" /> Please email us or request a callback.
                   </p>
-                  <a href="tel:+915011234567" className="text-orange-500 font-semibold text-xl hover:text-orange-600">
+                  <a href="tel:+915011234567" className="text-orange-500 font-semibold text-lg sm:text-xl hover:text-orange-600">
                     +91 501 123 4567
                   </a>
                 </div>
 
                 {/* Email */}
-                <div className="mb-6">
-                  <h3 className="text-2xl font-semibold text-gray-900 mb-2">Email</h3>
+                <div className="mb-4 sm:mb-6">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2">Email</h3>
                   <div className="space-y-1">
-                    <a href="mailto:hello@epicautomations.com" className="block text-orange-500 font-semibold text-xl hover:text-orange-600">
+                    <a href="mailto:hello@epicautomations.com" className="block text-orange-500 font-semibold text-base sm:text-lg md:text-xl hover:text-orange-600">
                       hello@epicautomations.com
                     </a>
-                    <a href="mailto:business@epicautomations.com" className="block text-orange-500 font-semibold text-xl hover:text-orange-600">
+                    <a href="mailto:business@epicautomations.com" className="block text-orange-500 font-semibold text-base sm:text-lg md:text-xl hover:text-orange-600">
                       business@epicautomations.com
                     </a>
-                    <a href="mailto:support@epicautomations.com" className="block text-orange-500 font-semibold text-xl hover:text-orange-600">
+                    <a href="mailto:support@epicautomations.com" className="block text-orange-500 font-semibold text-base sm:text-lg md:text-xl hover:text-orange-600">
                       support@epicautomations.com
                     </a>
                   </div>
                 </div>
 
                 {/* Offices */}
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   <div>
-                    <h3 className="text-2xl font-semibold text-gray-900 mb-2">Chennai Office</h3>
-                    <p className="text-gray-500 text-md font-semibold">
+                    <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2">Chennai Office</h3>
+                    <p className="text-gray-500 text-sm sm:text-md font-semibold">
                       EPIC AUTOMATIONS, Chennai, Tamil Nadu, India
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-2xl font-semibold text-gray-900 mb-2">Bangalore Office</h3>
-                    <p className="text-gray-500 text-md font-semibold">
+                    <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2">Bangalore Office</h3>
+                    <p className="text-gray-500 text-sm sm:text-md font-semibold">
                       EPIC AUTOMATIONS, Bangalore, Karnataka, India
                     </p>
                   </div>
@@ -145,87 +145,87 @@ export default function HelpCenter() {
             </div>
 
             {/* Right Column - Contact Form */}
-            <div  className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 md:p-8 border border-gray-100">
+              <form className="space-y-4 sm:space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                   <div>
-                    <Label htmlFor="firstname" className="text-md font-semibold text-gray-700 mb-2 block">
+                    <Label htmlFor="firstname" className="text-sm sm:text-md font-semibold text-gray-700 mb-1 sm:mb-2 block">
                       First name
                     </Label>
                     <div className="relative">
-                      <IconUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800 w-5 h-5" />
+                      <IconUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800 w-4 h-4 sm:w-5 sm:h-5" />
                       <Input 
                         id="firstname" 
                         placeholder="Mike" 
                         type="text" 
-                        className="pl-10 h-12 border-gray-300 placeholder:font-semibold placeholder:text-lg "
+                        className="pl-8 sm:pl-10 h-10 sm:h-12 border-gray-300 placeholder:font-semibold placeholder:text-sm sm:placeholder:text-lg text-sm sm:text-base"
                       />
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="lastname" className="text-md font-semibold text-gray-700 mb-2 block">
+                    <Label htmlFor="lastname" className="text-sm sm:text-md font-semibold text-gray-700 mb-1 sm:mb-2 block">
                       Last name
                     </Label>
                     <div className="relative">
-                      <IconUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800 w-5 h-5" />
+                      <IconUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800 w-4 h-4 sm:w-5 sm:h-5" />
                       <Input 
                         id="lastname" 
                         placeholder="Type name" 
                         type="text" 
-                        className="pl-10 h-12 border-gray-300 placeholder:font-semibold placeholder:text-lg "
+                        className="pl-8 sm:pl-10 h-10 sm:h-12 border-gray-300 placeholder:font-semibold placeholder:text-sm sm:placeholder:text-lg text-sm sm:text-base"
                       />
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <Label htmlFor="email" className="text-md font-semibold text-gray-700 mb-2 block">
+                  <Label htmlFor="email" className="text-sm sm:text-md font-semibold text-gray-700 mb-1 sm:mb-2 block">
                     Email
                   </Label>
                   <div className="relative">
-                    <IconMail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800 w-5 h-5" />
+                    <IconMail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800 w-4 h-4 sm:w-5 sm:h-5" />
                     <Input 
                       id="email" 
                       placeholder="Type email" 
                       type="email" 
-                      className="pl-10 h-12 border-gray-300 placeholder:font-semibold placeholder:text-lg "
+                      className="pl-8 sm:pl-10 h-10 sm:h-12 border-gray-300 placeholder:font-semibold placeholder:text-sm sm:placeholder:text-lg text-sm sm:text-base"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <Label htmlFor="phone" className="text-md font-semibold text-gray-700 mb-2 block">
+                  <Label htmlFor="phone" className="text-sm sm:text-md font-semibold text-gray-700 mb-1 sm:mb-2 block">
                     Phone number
                   </Label>
                   <div className="relative">
-                    <IconPhone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800 w-5 h-5" />
+                    <IconPhone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800 w-4 h-4 sm:w-5 sm:h-5" />
                     <Input 
                       id="phone" 
                       placeholder="Type phone number" 
                       type="tel" 
-                      className="pl-10 h-12 border-gray-300 placeholder:font-semibold placeholder:text-lg "
+                      className="pl-8 sm:pl-10 h-10 sm:h-12 border-gray-300 placeholder:font-semibold placeholder:text-sm sm:placeholder:text-lg text-sm sm:text-base"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <Label htmlFor="message" className="text-md font-semibold text-gray-700 mb-2 block">
+                  <Label htmlFor="message" className="text-sm sm:text-md font-semibold text-gray-700 mb-1 sm:mb-2 block">
                     Message
                   </Label>
                   <div className="relative">
-                    <IconMessage className="absolute left-3 top-3 text-gray-800 w-5 h-5" />
+                    <IconMessage className="absolute left-3 top-3 text-gray-800 w-4 h-4 sm:w-5 sm:h-5" />
                     <textarea 
                       id="message" 
                       placeholder="Type message" 
-                      rows={4}
-                      className="w-full pl-10 pr-3 py-3 border border-gray-300 placeholder:font-semibold placeholder:text-lg rounded-md  resize-none"
+                      rows={3}
+                      className="w-full pl-8 sm:pl-10 pr-3 py-2 sm:py-3 border border-gray-300 placeholder:font-semibold placeholder:text-sm sm:placeholder:text-lg rounded-md resize-none text-sm sm:text-base"
                     />
                   </div>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-orange-500 text-white font-semibold py-3 px-6 rounded-md hover:bg-orange-600 transition-colors duration-200"
+                  className="w-full bg-orange-500 text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-md hover:bg-orange-600 transition-colors duration-200 text-sm sm:text-base"
                 >
                   Send
                 </button>
@@ -235,7 +235,7 @@ export default function HelpCenter() {
         </div>
         
         {/* Map Section */}
-        <div className="relative w-full h-[600px] bg-gray-100 z-10">
+        <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] bg-gray-100 z-10">
           {/* Map Wave (top) */}
         <div className="absolute -top-1 rotate-180 left-0 right-0 z-10 pointer-events-none">
           <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-[90px] md:h-[159px]">
@@ -254,15 +254,15 @@ export default function HelpCenter() {
           ></iframe>
         </div>
           {/* Newsletter Signup Overlay */}
-          <div className="absolute bottom-8 left-8 right-8  rounded-lg shadow-lg flex justify-center z-20 p-6 max-w-full">
-            <div className="flex items-center bg-white p-3 px-4 rounded-xl w-[800px] space-x-4">
-              <IconMail className="text-gray-400 w-5 h-5 inset-0" />
+          <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-4 sm:left-6 md:left-8 right-4 sm:right-6 md:right-8 rounded-lg shadow-lg flex justify-center z-20 p-3 sm:p-4 md:p-6 max-w-full">
+            <div className="flex flex-col sm:flex-row items-center bg-white p-3 px-4 rounded-xl w-full max-w-[800px] space-y-2 sm:space-y-0 sm:space-x-4">
+              <IconMail className="text-gray-400 w-4 h-4 sm:w-5 sm:h-5" />
               <input
                 type="email"
                 placeholder="Enter Your Email address"
-                className="flex-1 border border-gray-300 placeholder:font-semibold placeholder:text-lg rounded-md px-3 py-2 focus:outline-none focus:border-orange-500"
+                className="flex-1 border border-gray-300 placeholder:font-semibold placeholder:text-sm sm:placeholder:text-lg rounded-md px-3 py-2 focus:outline-none focus:border-orange-500 text-sm sm:text-base w-full"
               />
-              <button className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition-colors">
+              <button className="bg-orange-500 text-white px-3 sm:px-4 py-2 rounded-md hover:bg-orange-600 transition-colors text-sm sm:text-base w-full sm:w-auto">
                 Get started
               </button>
               </div>
