@@ -1,5 +1,6 @@
 import Slider from 'react-infinite-logo-slider';
 import ContactUsForm from './contactusform';
+import { AnimatedSection, FadeUpSection } from '../../components/AnimatedSection';
 interface Logo {
   name: string;
   img: string;
@@ -60,13 +61,17 @@ function LogoSliderRow({ logos, toRight = false, duration = 20 }: { logos: Logo[
         {logos.map((logo: Logo, idx: number) => (
           <Slider.Slide key={idx}>
             <div
-              className={`flex items-center justify-center bg-white/75 shadow-2xl backdrop-blur-[15px] border border-blue-200/20  rounded-xl h-20 w-40 ${logo.faded ? 'opacity-40 grayscale' : ''}`}
-              style={{ marginLeft: 30 }}
+              className={`flex items-center justify-center bg-white/75 shadow-2xl backdrop-blur-[15px] border border-blue-200/20 rounded-xl h-16 w-32 sm:h-18 sm:w-36 md:h-20 md:w-40 ${logo.faded ? 'opacity-40 grayscale' : ''}`}
+              style={{ marginLeft: 20 }}
             >
               <img
                 src={logo.img}
                 alt={logo.name}
-                style={{ width: logo.size?.w || 80, height: logo.size?.h || 32, objectFit: 'contain' }}
+                style={{ 
+                  width: logo.size?.w, 
+                  height: logo.size?.h, 
+                  objectFit: 'contain' 
+                }}
               />
             </div>
           </Slider.Slide>
@@ -79,21 +84,30 @@ function LogoSliderRow({ logos, toRight = false, duration = 20 }: { logos: Logo[
 export default function ClientlogoSection() {
   return (
     <div id="client-logos" className='bg-[#ffe7b6]'>
-    <h3 className="bg-gradient-to-bl from-[#dd6b20] via-black to-[#dd6b20] bg-clip-text text-transparent text-4xl md:text-7xl justify-center font-semibold  text-center mb-3 pt-7">The Companies That Integrated <br/> Our Robotics Vision</h3>
-    <p className="text-gray-700 text-base md:text-3xl text-center mt-4 mb-5">
-    We serve startups to large enterprises with tailored automation solutions that boost efficiency, <br /> improve operations, and drive measurable success.
-    </p>
+      <FadeUpSection>
+        <h3 className="bg-gradient-to-bl from-[#dd6b20] via-black to-[#dd6b20] bg-clip-text text-transparent text-3xl md:text-4xl lg:text-7xl justify-center font-bold sm:font-semibold text-center mb-3 pt-7 px-4 sm:px-6 md:px-0">The Companies That Integrated <br className="hidden sm:block"/> Our Robotics Vision</h3>
+      </FadeUpSection>
+      <AnimatedSection
+        customAnimation={{ y: 30, opacity: 0, duration: 0.8, delay: 0.2 }}
+      >
+        <p className="text-gray-700 leading-tight text-lg font-semibold lg:text-3xl text-center mt-4 mb-5 px-4 sm:px-6 md:px-0">
+        We serve startups to large enterprises with tailored automation solutions that boost efficiency, <br className="hidden sm:block"/> improve operations, and drive measurable success.
+        </p>
+      </AnimatedSection>
            
-    <section className="w-full  flex flex-col md:flex-row items-center justify-start  py-16 gap-20 bg-transparent">
+    <AnimatedSection
+      className="w-full flex flex-col md:flex-row items-center justify-start py-8 sm:py-12 md:py-16 gap-8 sm:gap-12 md:gap-20 bg-transparent px-4 sm:px-6 md:px-0"
+      customAnimation={{ y: 50, opacity: 0, duration: 1, delay: 0.4 }}
+    >
       {/* Left: 3-row infinite logo slider (70%) from-[#EAF6FF] via-[#90B2D8] to-[#0077b3] */}
-      <div className="w-full md:w-[full] flex flex-col gap-8 relative">
+      <div className="w-full md:w-[full] flex flex-col gap-4 sm:gap-6 md:gap-8 relative">
         
         <LogoSliderRow logos={row1} toRight={false} duration={120} />
         <LogoSliderRow logos={row2} toRight={false} duration={60} />
         <LogoSliderRow logos={row3} toRight={false} duration={120} />
       </div>
       
-    </section>
+    </AnimatedSection>
     <ContactUsForm />
     </div>
     

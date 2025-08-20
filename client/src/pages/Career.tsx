@@ -1,3 +1,5 @@
+import { AnimatedSection, FadeUpSection } from '../components/AnimatedSection';
+
 const jobs1 = [
   {
     label: 'RESEARCH',
@@ -157,9 +159,9 @@ export default function Career() {
   
 
   return (
-    <div className="min-h-screen w-full  bg-gradient-to-b  from-[#2eb9e4] via-gray-200 to-[#ebe97c] flex flex-col items-center justify-start pt-16 px-2">
+    <div className="min-h-screen w-full bg-gradient-to-b from-[#fadca1]  to-[#ffe7b6] flex flex-col items-center justify-start pt-16 px-2">
       {/* Hero Section with Background Image */}
-      <div className="relative w-[90vw] mt-20 mx-auto mb-8 rounded-3xl overflow-hidden shadow-2xl">
+      <div className="relative w-[82vw] sm:w-[92vw] md:w-[90vw] mt-16 sm:mt-18 md:mt-20 mx-auto mb-6 sm:mb-8 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
         {/* Background Image */}
         <div className="absolute inset-0">
           <img 
@@ -172,43 +174,54 @@ export default function Career() {
         </div>
         
         {/* Content */}
-        <div className="relative z-10 p-12 md:p-16 text-center">
+        <FadeUpSection className="relative z-10 p-6 sm:p-8 md:p-12 lg:p-16 text-center">
           {/* Main Title */}
-          <h1 className="text-4xl md:text-7xl font-bold text-white leading-20 mb-6 drop-shadow-2xl">
-            Life Planning, Making Easy to <br /> Turn Dreams a Reality.
-          </h1>
+          <AnimatedSection
+            customAnimation={{ y: 50, opacity: 0, duration: 1, delay: 0.2 }}
+          >
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight sm:leading-20 mb-4 sm:mb-6 drop-shadow-2xl">
+              Life Planning, Making Easy to <br className="hidden sm:block" /> Turn Dreams a Reality.
+            </h1>
+          </AnimatedSection>
           {/* Subheadline */}
-          <p className="text-lg md:text-3xl text-white/90 mb-8 drop-shadow-lg">
-            Get Exclusive offers on purchase of any plans
-          </p>
-        </div>
+          <AnimatedSection
+            customAnimation={{ y: 30, opacity: 0, duration: 0.8, delay: 0.4 }}
+          >
+            <p className="text-base sm:text-lg md:text-xl lg:text-3xl text-white/90 mb-6 sm:mb-8 drop-shadow-lg">
+              Get Exclusive offers on purchase of any plans
+            </p>
+          </AnimatedSection>
+        </FadeUpSection>
       </div>
       
       {/* Section Row */}
-      <div id="career-featured-plans" className="flex items-center justify-between w-full max-w-full mb-6 mt-10 px-21">
-        <span className="text-xl md:text-3xl font-semibold">Featured Plans</span>
-        <span className="text-xl md:text-3xl font-semibold text-right">Explore All</span>
+      <div id="career-featured-plans" className="flex items-center justify-between w-full max-w-full mb-6 mt-8 sm:mt-10 px-8 sm:px-8 md:px-21">
+        <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold">Featured Plans</span>
+        <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-right">Explore All</span>
       </div>
       {/* Cards Row */}
-      <div className='flex flex-col gap-10 mb-10'>
-        <div className="w-full max-w-full flex flex-col md:flex-row gap-6 md:gap-10 justify-center items-stretch px-2">
+      <AnimatedSection 
+        className='flex flex-col gap-6 sm:gap-8 md:gap-10 mb-8 sm:mb-10 px-2 sm:px-4 md:px-2'
+        customAnimation={{ y: 50, opacity: 0, duration: 1, delay: 0.6 }}
+      >
+        <div className="w-full max-w-full flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-10 justify-center items-stretch">
         {jobs1.map((job, i) => (
-          <div key={i} className={`flex flex-col justify-between gap-2 rounded-2xl p-6 ${job.bg} ${job.text} shadow-md flex-1 min-w-[220px] max-w-[400px] min-h-[320px]`}>
-            <span className="uppercase text-md font-semibold mb-2 opacity-70">{job.label}</span>
-            <h2 className="text-3xl font-bold mb-2">{job.title}</h2>
-            <p className="text-xl font-semibold mb-2 opacity-80">{job.desc}</p>
+          <div key={i} className={`flex flex-col justify-between gap-2 rounded-xl sm:rounded-2xl p-4 sm:p-6 ${job.bg} ${job.text} shadow-md flex-1 min-w-[200px] sm:min-w-[220px] max-w-[400px] min-h-[280px] sm:min-h-[320px]`}>
+            <span className="uppercase text-sm sm:text-md font-semibold mb-2 opacity-70">{job.label}</span>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">{job.title}</h2>
+            <p className="text-base sm:text-lg md:text-xl font-semibold mb-2 opacity-80">{job.desc}</p>
             <hr className={`border-t-2 w-full mt-2 ${job.text === 'text-white' ? 'border-white/30' : 'border-black/20'}`} />
             <div className="flex items-end justify-between mt-auto">
         <div>
-                <span className="block text-md font-semibold opacity-70 mb-2">{job.period}</span>
-                <span className="block text-2xl md:text-4xl font-bold">{job.value}</span>
+                <span className="block text-sm sm:text-md font-semibold opacity-70 mb-2">{job.period}</span>
+                <span className="block text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold">{job.value}</span>
               </div>
             <button
-                className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-md transition-all ml-2
+                className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md transition-all ml-2
                   ${job.bg === 'bg-black' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-900'}`}
                 aria-label="Go"
               >
-                <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <svg width="18" height="18" className="sm:w-22 sm:h-22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
             </button>
@@ -216,24 +229,24 @@ export default function Career() {
           </div>
           ))}
         </div>
-        <div className="w-full max-w-full flex flex-col md:flex-row gap-6 md:gap-10 justify-center items-stretch px-2">
+        <div className="w-full max-w-full flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-10 justify-center items-stretch">
         {jobs2.map((job, i) => (
-          <div key={i} className={`flex flex-col justify-between gap-2 rounded-2xl p-6 ${job.bg} ${job.text} shadow-md flex-1 min-w-[220px] max-w-[400px] min-h-[320px]`}>
-            <span className="uppercase text-md font-semibold mb-2 opacity-70">{job.label}</span>
-            <h2 className="text-3xl font-bold mb-2">{job.title}</h2>
-            <p className="text-xl font-semibold mb-2 opacity-80">{job.desc}</p>
+          <div key={i} className={`flex flex-col justify-between gap-2 rounded-xl sm:rounded-2xl p-4 sm:p-6 ${job.bg} ${job.text} shadow-md flex-1 min-w-[200px] sm:min-w-[220px] max-w-[400px] min-h-[280px] sm:min-h-[320px]`}>
+            <span className="uppercase text-sm sm:text-md font-semibold mb-2 opacity-70">{job.label}</span>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">{job.title}</h2>
+            <p className="text-base sm:text-lg md:text-xl font-semibold mb-2 opacity-80">{job.desc}</p>
             <hr className={`border-t-2 w-full mt-2 ${job.text === 'text-white' ? 'border-white/30' : 'border-black/20'}`} />
             <div className="flex items-end justify-between mt-auto">
               <div>
-                <span className="block text-md font-semibold opacity-70 mb-2">{job.period}</span>
-                <span className="block text-2xl md:text-4xl font-bold">{job.value}</span>
+                <span className="block text-sm sm:text-md font-semibold opacity-70 mb-2">{job.period}</span>
+                <span className="block text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold">{job.value}</span>
               </div>
               <button
-                className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-md transition-all ml-2
+                className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md transition-all ml-2
                   ${job.bg === 'bg-black' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-900'}`}
                 aria-label="Go"
               >
-                <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <svg width="18" height="18" className="sm:w-22 sm:h-22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </button>
@@ -241,24 +254,24 @@ export default function Career() {
           </div>
         ))}
         </div>
-        <div className="w-full max-w-full flex flex-col md:flex-row gap-6 md:gap-10 justify-center items-stretch px-2">
+        <div className="w-full max-w-full flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-10 justify-center items-stretch">
         {jobs3.map((job, i) => (
-          <div key={i} className={`flex flex-col justify-between gap-2 rounded-2xl p-6 ${job.bg} ${job.text} shadow-md flex-1 min-w-[220px] max-w-[400px] min-h-[320px]`}>
-            <span className="uppercase text-md font-semibold mb-2 opacity-70">{job.label}</span>
-            <h2 className="text-3xl font-bold mb-2">{job.title}</h2>
-            <p className="text-xl font-semibold mb-2 opacity-80">{job.desc}</p>
+          <div key={i} className={`flex flex-col justify-between gap-2 rounded-xl sm:rounded-2xl p-4 sm:p-6 ${job.bg} ${job.text} shadow-md flex-1 min-w-[200px] sm:min-w-[220px] max-w-[400px] min-h-[280px] sm:min-h-[320px]`}>
+            <span className="uppercase text-sm sm:text-md font-semibold mb-2 opacity-70">{job.label}</span>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">{job.title}</h2>
+            <p className="text-base sm:text-lg md:text-xl font-semibold mb-2 opacity-80">{job.desc}</p>
             <hr className={`border-t-2 w-full mt-2 ${job.text === 'text-white' ? 'border-white/30' : 'border-black/20'}`} />
             <div className="flex items-end justify-between mt-auto">
               <div>
-                <span className="block text-md font-semibold opacity-70 mb-2">{job.period}</span>
-                <span className="block text-2xl md:text-4xl font-bold">{job.value}</span>
+                <span className="block text-sm sm:text-md font-semibold opacity-70 mb-2">{job.period}</span>
+                <span className="block text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold">{job.value}</span>
               </div>
               <button
-                className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-md transition-all ml-2
+                className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md transition-all ml-2
                   ${job.bg === 'bg-black' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-900'}`}
                 aria-label="Go"
               >
-                <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <svg width="18" height="18" className="sm:w-22 sm:h-22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </button>
@@ -266,24 +279,24 @@ export default function Career() {
           </div>
         ))}
         </div>
-        <div className="w-full max-w-full flex flex-col md:flex-row gap-6 md:gap-10 justify-center items-stretch px-2">
+        <div className="w-full max-w-full flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-10 justify-center items-stretch">
         {jobs4.map((job, i) => (
-          <div key={i} className={`flex flex-col justify-between gap-2 rounded-2xl p-6 ${job.bg} ${job.text} shadow-md flex-1 min-w-[220px] max-w-[400px] min-h-[320px]`}>
-            <span className="uppercase text-md font-semibold mb-2 opacity-70">{job.label}</span>
-            <h2 className="text-3xl font-bold mb-2">{job.title}</h2>
-            <p className="text-xl font-semibold mb-2 opacity-80">{job.desc}</p>
+          <div key={i} className={`flex flex-col justify-between gap-2 rounded-xl sm:rounded-2xl p-4 sm:p-6 ${job.bg} ${job.text} shadow-md flex-1 min-w-[200px] sm:min-w-[220px] max-w-[400px] min-h-[280px] sm:min-h-[320px]`}>
+            <span className="uppercase text-sm sm:text-md font-semibold mb-2 opacity-70">{job.label}</span>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">{job.title}</h2>
+            <p className="text-base sm:text-lg md:text-xl font-semibold mb-2 opacity-80">{job.desc}</p>
             <hr className={`border-t-2 w-full mt-2 ${job.text === 'text-white' ? 'border-white/30' : 'border-black/20'}`} />
             <div className="flex items-end justify-between mt-auto">
               <div>
-                <span className="block text-md font-semibold opacity-70 mb-2">{job.period}</span>
-                <span className="block text-2xl md:text-4xl font-bold">{job.value}</span>
+                <span className="block text-sm sm:text-md font-semibold opacity-70 mb-2">{job.period}</span>
+                <span className="block text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold">{job.value}</span>
               </div>
               <button
-                className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-md transition-all ml-2
+                className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center shadow-md transition-all ml-2
                   ${job.bg === 'bg-black' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-900'}`}
                 aria-label="Go"
               >
-                <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <svg width="18" height="18" className="sm:w-22 sm:h-22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </button>
@@ -291,7 +304,7 @@ export default function Career() {
             </div>
           ))}
         </div>
-      </div>
+      </AnimatedSection>
 
     </div>
   );

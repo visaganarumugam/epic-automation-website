@@ -1,12 +1,13 @@
 "use client";
-// import React from "react";
-import { Label } from "../components/ui/label";
-import { Input } from "../components/ui/input";
-// import { cn } from "../lib/utils";
+
+
+
 import TopNavbar from "./Navbar";
-import { IconMail, IconPhone, IconUser, IconMessage  , IconHeart } from '@tabler/icons-react';
+import { IconMail, IconHeart } from '@tabler/icons-react';
+import ContactForm from '../components/ContactForm';
 import { FiChevronsDown } from 'react-icons/fi';
 import { useRef } from 'react';
+import { AnimatedSection, FadeUpSection } from '../components/AnimatedSection';
 
 // Example images for the hero section (replace with your own or use public URLs)
 const heroImages = [
@@ -28,7 +29,7 @@ export default function HelpCenter() {
   };
 
   return (
-    <>
+    <div className="bg-white">
       <div className="fixed top-0 left-0 right-0 z-50"><TopNavbar /></div>
       {/* Hero Section with Orange Gradient */}
       <div className="relative w-full h-[50vh] sm:h-[55vh] md:h-[60vh] min-h-[350px] sm:min-h-[380px] md:min-h-[420px] bg-gradient-to-br from-orange-700 via-orange-400 to-orange-300 flex items-center justify-center overflow-hidden">
@@ -41,7 +42,7 @@ export default function HelpCenter() {
         </div>
         {/* Hero Images/Icons */}
         {/* Leftmost */}
-        <div className="absolute left-4 sm:left-6 md:left-8 lg:left-24 bottom-6 sm:bottom-8 md:bottom-10 lg:top-50 z-20">
+        <div className="absolute left-4 sm:left-6 md:left-8 lg:left-24 bottom-20 sm:bottom-8 md:bottom-10 lg:top-50 z-20">
           <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full border-2 sm:border-3 md:border-4 border-white shadow-lg overflow-hidden bg-white flex items-center justify-center">
             <img src={heroImages[0].src} alt={heroImages[0].alt} className="w-full h-full object-cover" />
           </div>
@@ -53,7 +54,7 @@ export default function HelpCenter() {
           </div>
         </div>
         {/* Center Icon */}
-        <div className="absolute right-1/4 bottom-0 md:right-1/3 md:bottom-44 z-20">
+        <div className="absolute right-1/4 bottom-30 md:right-1/3 md:bottom-44 z-20">
           <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full border-2 sm:border-3 md:border-4 border-white shadow-lg bg-white flex items-center justify-center">
             {heroImages[2].icon}
           </div>
@@ -65,32 +66,47 @@ export default function HelpCenter() {
           </div>
         </div>
         {/* Rightmost */}
-        <div className="absolute right-4 sm:right-6 md:right-8 lg:right-24 bottom-6 sm:bottom-8 md:bottom-10 lg:bottom-8 z-20">
+        <div className="absolute right-4 sm:right-6 md:right-8 lg:right-24 bottom-17 sm:bottom-8 md:bottom-10 lg:bottom-8 z-20">
           <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full border-2 sm:border-3 md:border-4 border-white shadow-lg overflow-hidden bg-white flex items-center justify-center">
             <img src={heroImages[4].src} alt={heroImages[4].alt} className="w-full h-full object-cover" />
           </div>
         </div>
         {/* Centered Content */}
-        <div className="flex flex-col items-center justify-center z-30 px-4">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-8xl font-bold text-white mb-2 sm:mb-3 md:mb-4 text-center">Contact us</h1>
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white mb-4 sm:mb-5 md:mb-6 text-center max-w-xl px-2">
-            Let's start something great together. Get in touch with one of the team today!
-          </p>
-          <FiChevronsDown 
-            className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white/80 animate-bounce cursor-pointer hover:text-white transition-colors" 
-            onClick={scrollToContactForm}
-          />
-        </div>
+        <FadeUpSection className="flex flex-col items-center justify-center z-30 px-4">
+          <AnimatedSection
+            customAnimation={{ y: 50, opacity: 0, duration: 1, delay: 0.2 }}
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-8xl font-bold text-white mb-2 sm:mb-3 md:mb-4 text-center">Contact us</h1>
+          </AnimatedSection>
+          <AnimatedSection
+            customAnimation={{ y: 30, opacity: 0, duration: 0.8, delay: 0.4 }}
+          >
+            <p className="text-lg mx-5 sm:mx-0 md:text-xl lg:text-2xl font-semibold text-white mb-4 sm:mb-5 md:mb-6 text-center max-w-xl px-2">
+              Let's start something great together. Get in touch with one of the team today!
+            </p>
+          </AnimatedSection>
+          <AnimatedSection
+            customAnimation={{ y: 20, opacity: 0, duration: 0.6, delay: 0.6 }}
+          >
+            <FiChevronsDown 
+              className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white/80 animate-bounce cursor-pointer hover:text-white transition-colors" 
+              onClick={scrollToContactForm}
+            />
+          </AnimatedSection>
+        </FadeUpSection>
         {/* Hero Wave (bottom) */}
         <div ref={contactFormRef}  className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none">
-          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-[90px] md:h-[159px]">
+          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-[40.5px] md:h-[159px]">
             <path d="M0,40 Q360,120 720,60 Q1080,0 1440,80 L1440,120 L0,120 Z" fill="#fff" />
           </svg>
         </div>
       </div>
 
       {/* Main Content Section */}
-      <div className="bg-white min-h-screen">
+      <AnimatedSection 
+        className="bg-white min-h-screen"
+        customAnimation={{ y: 50, opacity: 0, duration: 1, delay: 0.8 }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
             
@@ -145,92 +161,7 @@ export default function HelpCenter() {
             </div>
 
             {/* Right Column - Contact Form */}
-            <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 md:p-8 border border-gray-100">
-              <form className="space-y-4 sm:space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
-                  <div>
-                    <Label htmlFor="firstname" className="text-sm sm:text-md font-semibold text-gray-700 mb-1 sm:mb-2 block">
-                      First name
-                    </Label>
-                    <div className="relative">
-                      <IconUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800 w-4 h-4 sm:w-5 sm:h-5" />
-                      <Input 
-                        id="firstname" 
-                        placeholder="Mike" 
-                        type="text" 
-                        className="pl-8 sm:pl-10 h-10 sm:h-12 border-gray-300 placeholder:font-semibold placeholder:text-sm sm:placeholder:text-lg text-sm sm:text-base"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <Label htmlFor="lastname" className="text-sm sm:text-md font-semibold text-gray-700 mb-1 sm:mb-2 block">
-                      Last name
-                    </Label>
-                    <div className="relative">
-                      <IconUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800 w-4 h-4 sm:w-5 sm:h-5" />
-                      <Input 
-                        id="lastname" 
-                        placeholder="Type name" 
-                        type="text" 
-                        className="pl-8 sm:pl-10 h-10 sm:h-12 border-gray-300 placeholder:font-semibold placeholder:text-sm sm:placeholder:text-lg text-sm sm:text-base"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <Label htmlFor="email" className="text-sm sm:text-md font-semibold text-gray-700 mb-1 sm:mb-2 block">
-                    Email
-                  </Label>
-                  <div className="relative">
-                    <IconMail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800 w-4 h-4 sm:w-5 sm:h-5" />
-                    <Input 
-                      id="email" 
-                      placeholder="Type email" 
-                      type="email" 
-                      className="pl-8 sm:pl-10 h-10 sm:h-12 border-gray-300 placeholder:font-semibold placeholder:text-sm sm:placeholder:text-lg text-sm sm:text-base"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <Label htmlFor="phone" className="text-sm sm:text-md font-semibold text-gray-700 mb-1 sm:mb-2 block">
-                    Phone number
-                  </Label>
-                  <div className="relative">
-                    <IconPhone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800 w-4 h-4 sm:w-5 sm:h-5" />
-                    <Input 
-                      id="phone" 
-                      placeholder="Type phone number" 
-                      type="tel" 
-                      className="pl-8 sm:pl-10 h-10 sm:h-12 border-gray-300 placeholder:font-semibold placeholder:text-sm sm:placeholder:text-lg text-sm sm:text-base"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <Label htmlFor="message" className="text-sm sm:text-md font-semibold text-gray-700 mb-1 sm:mb-2 block">
-                    Message
-                  </Label>
-                  <div className="relative">
-                    <IconMessage className="absolute left-3 top-3 text-gray-800 w-4 h-4 sm:w-5 sm:h-5" />
-                    <textarea 
-                      id="message" 
-                      placeholder="Type message" 
-                      rows={3}
-                      className="w-full pl-8 sm:pl-10 pr-3 py-2 sm:py-3 border border-gray-300 placeholder:font-semibold placeholder:text-sm sm:placeholder:text-lg rounded-md resize-none text-sm sm:text-base"
-                    />
-                  </div>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-orange-500 text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-md hover:bg-orange-600 transition-colors duration-200 text-sm sm:text-base"
-                >
-                  Send
-                </button>
-              </form>
-            </div>
+            <ContactForm source="help-center-page" variant="help-center" />
           </div>
         </div>
         
@@ -238,7 +169,7 @@ export default function HelpCenter() {
         <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] bg-gray-100 z-10">
           {/* Map Wave (top) */}
         <div className="absolute -top-1 rotate-180 left-0 right-0 z-10 pointer-events-none">
-          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-[90px] md:h-[159px]">
+          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-[40.5px] md:h-[159px]">
             <path d="M0,40 Q360,120 720,60 Q1080,0 1440,80 L1440,120 L0,120 Z" fill="#fff" />
           </svg>
         </div>
@@ -268,21 +199,8 @@ export default function HelpCenter() {
               </div>
           </div>
         </div>
-      </div>
-    </>
+      </AnimatedSection>
+    </div>
   );
 }
 
-// const LabelInputContainer = ({
-//   children,
-//   className,
-// }: {
-//   children: React.ReactNode;
-//   className?: string;
-// }) => {
-//   return (
-//     <div className={cn("flex w-full flex-col space-y-2", className)}>
-//       {children}
-//     </div>
-//   );
-// }; 

@@ -2,11 +2,9 @@ import {Navbar, NavbarBrand, NavbarContent, NavbarItem} from "@heroui/react";
 import { Sling as Hamburger } from 'hamburger-react';
 import { MdSupportAgent } from 'react-icons/md';
 import { FiSearch, FiX, FiChevronDown, FiArrowRight } from 'react-icons/fi';
-
 import { useState, useRef, useEffect } from 'react';
 import logo from '/images/logo.png';
 import { Link as RouterLink, useNavigate, useLocation } from 'react-router-dom';
-
 import { sectionIndex } from '../sectionIndex';
 
 
@@ -149,19 +147,13 @@ const dropdownContent: DropdownContent = {
   
 };
 
-
-
 const navLinks = [
   { name: 'Home', dropdown: false },
   { name: 'Services', dropdown: true },
-  { name: 'Career', dropdown: true },
+  { name: 'Career', dropdown: false },
   { name: 'About', dropdown: false },
   { name: 'Contact Us', dropdown: false },
 ];
-
-
-
-
 
 export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -174,7 +166,6 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
-
   const searchInputRef = useRef<HTMLInputElement>(null);
   let closeDropdownTimeout: number | null = null;
 
@@ -381,13 +372,13 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
       onMenuOpenChange={setIsMenuOpen} 
       isBordered={false} 
       isBlurred={false} 
-      className={`w-[98.5vw] fixed top-1  py-2 mx-2 rounded-xl transition-all duration-300 z-50 ${isScrolled ? 'bg-black/50 backdrop-blur-md' : 'bg-transparent'}`} 
+      className={`w-[99%] mx-1 sm:mx-2 fixed top-1  py-2 rounded-xl transition-all duration-300 z-50 ${isScrolled ? 'bg-black/50 backdrop-blur-md' : 'bg-transparent'}`} 
       maxWidth="full"
     >
       <NavbarContent>
         <NavbarBrand>
           <RouterLink to="/home">
-            <img src={logo} alt="Logo" className="h-15 w-auto rounded-2xl p-2 px-4 " /> 
+            <img src={logo} alt="Logo" className="h-13 w-full rounded-2xl p-2 sm:px-4  " /> 
           </RouterLink>
           
         </NavbarBrand>
@@ -635,68 +626,6 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
       </NavbarContent>
       
       <NavbarContent justify="end" className="gap-2 items-center">
-          <NavbarItem className="flex md:hidden flex-1">
-            <div className="relative w-full border border-[#323222] focus-within:border-orange-500 transition-colors rounded-xl">
-              <form className="flex items-center" onSubmit={e => { e.preventDefault(); if (suggestions.length > 0) handleSearchGo(suggestions[0]); }}>
-                <input
-                  type="text"
-                  className="flex-1 bg-transparent outline-none text-white text-sm px-3 py-2 pr-10"
-                  placeholder="Search pages & sections..."
-                  value={searchValue}
-                  onChange={e => setSearchValue(e.target.value)}
-                  onKeyDown={handleSearchKeyDown}
-                />
-                <FiSearch
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer"
-                  onClick={() => {
-                    if (suggestions.length > 0) {
-                      handleSearchGo(suggestions[0]);
-                    }
-                  }}
-                />
-              </form>
-              
-              {/* Mobile Search Suggestions */}
-              {searchValue.trim() !== '' && (
-                <div className="absolute top-full left-0 right-0 bg-[#18171a] border border-[#323333] rounded-b-lg shadow-2xl z-50 max-h-60 overflow-y-auto mt-1">
-                  {suggestions.length > 0 ? (
-                    suggestions.map((s, idx) => (
-                      <div
-                        key={s.id}
-                        className={`px-3 py-2 text-white cursor-pointer text-sm border-b border-[#323333] last:border-b-0 transition-colors duration-200 ${
-                          idx === selectedIndex ? 'bg-[#ff9900]/20' : 'hover:bg-[#ff9900]/20'
-                        }`}
-                        onClick={() => handleSearchGo(s)}
-                        onMouseEnter={() => setSelectedIndex(idx)}
-                      >
-                        <div className="flex items-center gap-2">
-                          <div className="w-5 h-5 bg-[#ff9900]/20 rounded flex items-center justify-center">
-                            <svg className="w-3 h-3 text-[#ff9900]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                            </svg>
-                          </div>
-                          <div>
-                            <div className="font-medium text-sm">{s.label}</div>
-                            <div className="text-xs text-gray-400">
-                              {s.page === '/home' ? 'Homepage' : s.page.replace('/', '').replace('-', ' ').replace(/\b\w/g, (l: any) => l.toUpperCase())}
-                              {s.id !== s.page.replace('/', '') && ` • ${s.id.replace('-', ' ').replace(/\b\w/g, (l: any) => l.toUpperCase())}`}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    ))
-                  ) : (
-                    <div className="px-3 py-4 text-center">
-                      <svg className="w-6 h-6 text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                      </svg>
-                      <p className="text-gray-400 text-xs">No results found for "{searchValue}"</p>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          </NavbarItem>
         
         {/* Help Center Icon */}
         <NavbarItem className="hidden md:flex">
@@ -798,12 +727,12 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
               </div>
             </div>
             
-            <div className="flex flex-col gap-1 sm:gap-2 mb-6">
+            <div className="flex flex-col gap-4 mb-8">
               {navLinks.map((item) => (
                 <RouterLink
                   key={item.name}
                   to={item.name === 'Contact Us' ? '/help-center' : `/${item.name.toLowerCase()}`}
-                  className={`w-full text-base sm:text-lg py-2 px-3 rounded-lg transition-colors text-left ${
+                  className={`w-full text-lg sm:text-xl py-4 px-6 rounded-lg transition-colors text-left ${
                     location.pathname === (item.name === 'Contact Us' ? '/help-center' : `/${item.name.toLowerCase()}`)
                       ? 'text-[#ff9900] bg-[#232323]'
                       : 'text-white hover:bg-[#232323]'
@@ -811,7 +740,7 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
                   style={{ textDecoration: 'none' }}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {item.name}
+                  <span className="font-medium">{item.name}</span>
                 </RouterLink>
               ))}
             </div>

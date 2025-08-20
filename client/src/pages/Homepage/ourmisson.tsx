@@ -1,5 +1,6 @@
 // import { InteractiveHoverButton } from "../../components/ui_components/interactive-hover-button";
 import React from "react";
+import { AnimatedSection, FadeUpSection } from "../../components/AnimatedSection";
 // 1. Define features array for cards
 const features = [
   {
@@ -53,8 +54,7 @@ const features = [
 ];
 
 export default function OurMisson() {
-  
-  
+    
   React.useEffect(() => {
     const timer = setInterval(() => {
       // setCarouselIdx((prev) => (prev + 1) % carouselSlides.length);
@@ -64,83 +64,54 @@ export default function OurMisson() {
 
   return (
     <section className="slide5 w-screen min-h-screen flex items-center justify-center bg-[#ffe7b6] ">
-      <div className="relative w-[100vw] max-w-full min-h-screen shadow-2xl flex flex-col px-4 md:px-15 md:pt-28 overflow-hidden">
+      <div className="relative w-[100vw] max-w-full min-h-screen shadow-2xl flex flex-col px-4 sm:px-6 md:px-15 md:pt-28 overflow-hidden">
         {/* Main Title */}
-        <div className="w-full flex flex-col items-center mb-20 ">
-          <h1 className="text-3xl md:text-7xl font-bold text-center text-black leading-tighter" style={{fontFamily: 'Gilroy, sans-serif'}}>Our Mission. Our Vision. Our Drive.</h1>
-          <p className="text-black font-semibold md:text-3xl text-center max-w-6xl mt-5">
-        We aim to revolutionize automation with smart robotics, driving innovation, efficiency, and progress for a better, connected future.
-        </p>
-        </div>
+        <FadeUpSection className="w-full flex flex-col items-center mb-8 sm:mb-16 md:mb-20 px-4 sm:px-6 md:px-0">
+          <AnimatedSection
+            customAnimation={{ y: 50, opacity: 0, duration: 1, delay: 0.2 }}
+          >
+            <h1 className="text-4xl lg:text-7xl font-bold text-center text-black leading-tighter" style={{fontFamily: 'Gilroy, sans-serif'}}>Our Mission. Our Vision. Our Drive.</h1>
+          </AnimatedSection>
+          <AnimatedSection
+            customAnimation={{ y: 30, opacity: 0, duration: 0.8, delay: 0.4 }}
+          >
+            <p className="text-black font-semibold text-base md:text-lg lg:text-3xl text-center max-w-6xl mt-3 sm:mt-4 md:mt-5">
+          We aim to revolutionize automation with smart robotics, driving innovation, efficiency, and progress for a better, connected future.
+          </p>
+          </AnimatedSection>
+        </FadeUpSection>
         {/* Main Content Row - Custom Grid Layout */}
-        <div className="w-full max-w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+        <AnimatedSection 
+          className="w-full max-w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8 md:mb-10 px-4 sm:px-6 md:px-0"
+          customAnimation={{ y: 50, opacity: 0, duration: 1, delay: 0.6 }}
+        >
           {/* Left Section */}
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-4 sm:gap-6 md:gap-8">
             {/* Top card: full width, medium height */}
             
-            <div className="flex flex-row gap-8 h-[320px] md:h-[380px]">
-              <Card {...features[0]} className="flex-1 h-full" />
-              <Card {...features[1]} className="flex-1 h-full" />
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 h-auto sm:h-[280px] md:h-[380px]">
+              <Card {...features[0]} className="flex-1 h-[250px] sm:h-full" />
+              <Card {...features[1]} className="flex-1 h-[250px] sm:h-full" />
             </div>
             {/* Bottom row: two tall cards side by side */}
-            <Card {...features[4]} className="h-[180px] md:h-[270px] w-full" />
+            <Card {...features[4]} className="h-[150px] sm:h-[250px] md:h-[270px] w-full" />
           </div>
           {/* Right Section (upside down of left) */}
-          <div className="flex flex-col gap-8 justify-between">
+          <div className="flex flex-col gap-4 sm:gap-6 md:gap-8 justify-between">
             {/* Top row: two tall cards side by side */}
-            <Card {...features[3]} className="h-[180px] md:h-[270px] w-full" />
+            <Card {...features[3]} className="h-[150px] sm:h-[250px] md:h-[270px] w-full" />
             {/* Bottom card: full width, medium height */}
             
-            <div className="flex flex-row gap-8 h-[320px] md:h-[380px]">
-              <Card {...features[2]} className="flex-1 h-full" />
-              <Card {...features[5]} className="flex-1 h-full" />
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 h-auto sm:h-[280px] md:h-[380px]">
+              <Card {...features[2]} className="flex-1 h-[200px] sm:h-full" />
+              <Card {...features[5]} className="flex-1 h-[200px] sm:h-full" />
             </div>
           </div>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );
-  // return (
-  //   <section 
-  //     id="our-mission" 
-  //     className="relative w-full min-h-screen flex flex-col items-center justify-start py-16 pb-20 px-2 overflow-hidden bg-cover bg-center bg-no-repeat"
-  //     style={{
-  //       backgroundImage: "url('/images/Image_3.jpg')"
-  //     }}
-  //   >
-  //     {/* Overlay */}
-  //     <div className="absolute inset-0 backdrop-blur-lg z-0"></div>
-      
-  //     {/* Content */}
-  //     <div className="relative z-10 flex flex-col items-center w-full max-w-7xl mx-auto">
-  //       <h1 className="text-3xl md:text-7xl font-bold text-center text-white mb-2">Our Mission. Our Vision. Our Drive.</h1>
-  //       <p className="text-white md:text-2xl text-center max-w-4xl mb-14">
-  //       We aim to revolutionize automation with smart robotics, driving innovation, efficiency, and progress for a better, connected future.
-  //       </p>
-  //       <button className=" z-50 rounded-full flex items-center text-white gap-2 cursor-pointer px-2 py-1  hover:text-white hover:bg-black mb-12 border border-white  transition text-xl font-semibold">
-  //       <InteractiveHoverButton>Explore Machines</InteractiveHoverButton>
-  //       </button>
-  //       {/* Main visual area */}
-  //       <div className="relative flex items-center justify-center w-full max-w-full min-h-[420px] md:min-h-screen">
-  //         {/* Feature Cards */}
-  //         {features.map((feature, idx) => (
-  //                         <div
-  //               key={idx}
-  //               className={`group rounded-lg flex items-center z-50 gap-6 p-6 max-w-xl w-[600px] min-h-[110px] mb-4 md:mb-7 border transition-transform duration-300 hover:-translate-y-3 hover:shadow-2xl ${feature.position} ${feature.cardClass} ${feature.title === 'EXPERT SUPPORT' ? 'md:mb-32' : ''}`}
-  //             >
-  //               <div className="flex-shrink-0 flex items-center justify-center w-25 h-25">
-  //                 <img src={feature.img} alt={feature.title} className="w-full h-full object-contain invert rounded-lg" />
-  //               </div>
-  //               <div className="flex-1">
-  //                 <h3 className={`uppercase text-3xl font-gilroy font-bold tracking-widest text-white mb-1 transition-colors duration-300 ${feature.hoverColor}`}>{feature.title}</h3>
-  //                 <p className="text-gray-300 text-lg font-semibold mb-1">{feature.desc}</p>
-  //               </div>
-  //             </div>
-  //         ))}
-  //       </div>
-  //     </div>
-  //   </section>
-  // );
+  
 }
 
 // Card component
@@ -155,15 +126,12 @@ interface CardProps {
 }
 function Card({ title, desc, gradient, className, titleColor, descColor }: CardProps) {
   return (
-    <div className={`${gradient} rounded-3xl shadow-lg pt-6 pl-6 pr-6 flex flex-col justify-between relative ${className} transform hover:scale-105 hover:z-10 transition-transform  duration-300`}>
+    <div className={`${gradient} rounded-2xl sm:rounded-3xl shadow-lg pt-4 sm:pt-5 md:pt-6 pl-4 sm:pl-5 md:pl-6 pr-4 sm:pr-5 md:pr-6 flex flex-col justify-between relative ${className} transform hover:scale-105 hover:z-10 transition-transform duration-300`}>
       <div>
-        <div className={`text-4xl font-bold uppercase mb-2 ${titleColor}`}>{title}</div>
-        <div className={`md:text-[1.7rem] font-semibold mb-4 ${descColor}`}>{desc.split('.')[0]}</div>
-        <div className={`text-base mb-4 ${descColor}/90`}>{desc.split('.').slice(1).join('.')}</div>
+        <div className={`text-2xl lg:text-4xl font-bold uppercase mb-2 ${titleColor}`}>{title}</div>
+        <div className={`text-base md:text-lg lg:text-[1.7rem] font-semibold mb-2 sm:mb-3 md:mb-4 ${descColor}`}>{desc.split('.')[0]}</div>
+        <div className={`text-sm md:text-base mb-2 sm:mb-3 md:mb-4 ${descColor}/90`}>{desc.split('.').slice(1).join('.')}</div>
       </div>
-      {/* <div className="flex items-end justify-end mt-auto">
-        <img src={img} alt={title} className="w-20 h-20 object-contain ml-4 mb-4" />
-      </div> */}
     </div>
   );
 }
