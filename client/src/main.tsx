@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <HeroUIProvider>
       <ToastProvider />
-      <main className="text-foreground bg-background">
+      <main>
         <App />
       </main>
     </HeroUIProvider>

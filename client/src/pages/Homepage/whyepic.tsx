@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { InteractiveHoverButton } from '../../components/ui_components/interactive-hover-button';
-// UpCount component for animated counting
-// Accepts a 'start' prop to control when to start counting
+import { AnimatedSection, FadeUpSection } from '../../components/AnimatedSection';
 type UpCountProps = { end: number; duration?: number; className?: string; start?: boolean };
 function UpCount({ end, duration = 1200, className = '', start = false }: UpCountProps) {
   const [count, setCount] = useState(0);
@@ -28,28 +27,9 @@ function UpCount({ end, duration = 1200, className = '', start = false }: UpCoun
 }
 
 export default function WhyEpic() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
   const [statsVisible, setStatsVisible] = useState(false);
 
-  useEffect(() => {
-    const observer = new window.IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect(); // Only trigger once
-        }
-      },
-      { threshold: 0.2 }
-    );
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-    return () => observer.disconnect();
-  }, []);
-
-  // IntersectionObserver for stats grid
+  // IntersectionObserver for stats grid (keeping this for the counter animation)
   useEffect(() => {
     const statsObserver = new window.IntersectionObserver(
       ([entry]) => {
@@ -60,8 +40,9 @@ export default function WhyEpic() {
       },
       { threshold: 0.3 }
     );
-    if (statsRef.current) {
-      statsObserver.observe(statsRef.current);
+    const statsElement = document.querySelector('#stats-grid');
+    if (statsElement) {
+      statsObserver.observe(statsElement);
     }
     return () => statsObserver.disconnect();
   }, []);
@@ -124,52 +105,66 @@ export default function WhyEpic() {
   ];
 
   return (
-    <section id="why-epic" ref={sectionRef} className="w-full bg-[#ffe7b6] py-16 flex flex-col items-center justify-center">
-      <div className="w-full  max-w-full flex flex-col md:flex-row items-center justify-between px-10 md:px-10">
+    <section id="why-epic" className="w-full bg-[#ffe7b6] pb-12 sm:pb-0 sm:py-12 md:py-16 flex flex-col items-center justify-center">
+      <FadeUpSection className="w-full max-w-full flex flex-col md:flex-row items-center justify-between px-4 sm:px-6 md:px-10">
         {/* Left Column */}
-        <div className={`flex flex-col items-start w-full md:w-1/3 gap-50 ${isVisible ? 'animate-rise-up' : ''}`} style={{ animationDelay: isVisible ? '0.1s' : undefined }}>
-          <span className="text-[#333333] text-4xl tracking-tight font-semibold  mb-2">Why Epic Automations!</span>
-          <button className={`border border-[#222] rounded-full text-lg font-semibold flex items-center gap-2 hover:bg-[#f5f5f5] transition ${isVisible ? 'animate-rise-up' : ''}`} style={{ animationDelay: isVisible ? '0.2s' : undefined }}>
-          <InteractiveHoverButton>About Epic Automations</InteractiveHoverButton>
-          </button>
-        </div>
+        <AnimatedSection 
+          className="flex flex-col items-center md:items-start w-full md:w-1/3 gap-2 sm:gap-12 md:gap-50 md:mb-0"
+          customAnimation={{ y: 30, opacity: 0, duration: 0.8, delay: 0.1 }}
+        >
+          <span className="text-[#333333] text-3xl md:text-4xl tracking-tight font-bold mb-2 text-center md:text-left">Why Epic Automations!</span>
+          <AnimatedSection 
+            customAnimation={{ y: 30, opacity: 0, duration: 0.8, delay: 0.2 }}
+          >
+            <button className="border border-[#222] rounded-full text-base sm:text-base md:text-lg font-semibold flex items-center hover:bg-[#f5f5f5] transition">
+              <InteractiveHoverButton>About Epic Automations</InteractiveHoverButton>
+            </button>
+          </AnimatedSection>
+        </AnimatedSection>
         {/* Right Column */}
-        <div className={`flex flex-col w-full md:w-2/3 gap-8 items-start justify-center mt-12 md:mt-0 ${isVisible ? 'animate-rise-up' : ''}`} style={{ animationDelay: isVisible ? '0.3s' : undefined }}>
-          <h2 className="text-3xl md:text-6xl font-bold text-[#18181a] leading-tight mb-6">
+        <AnimatedSection 
+          className="flex flex-col w-full md:w-2/3 gap-6 sm:gap-8 items-center md:items-start justify-center mt-8 sm:mt-12 md:mt-0"
+          customAnimation={{ y: 30, opacity: 0, duration: 0.8, delay: 0.3 }}
+        >
+          <h2 className="text-3xl sm:text-2xl md:text-3xl text-center lg:text-6xl font-bold text-[#18181a] leading-tight mb-4 sm:mb-6 sm:text-center md:text-left">
             From precision automation to remote system monitoring to{' '}
-            <span className="text-[#4b4b4b] font-normal">fulfilling the <br /> promise of tomorrow's technology.</span>
+            <span className="text-[#4b4b4b] font-normal">fulfilling the <br className="hidden sm:block" /> promise of tomorrow's technology.</span>
           </h2>
-          <div className="flex items-start gap-4">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
             {/* Avatars */}
-            <div className="flex -space-x-3">
-              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team 1" className="w-15 h-15 rounded-full border-2 border-white shadow" />
-              <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Team 2" className="w-15 h-15 rounded-full border-2 border-white shadow" />
-              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Team 3" className="w-15 h-15 rounded-full border-2 border-white shadow" />
-              <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Team 4" className="w-15 h-15 rounded-full border-2 border-white shadow" />
+            <div className="flex -space-x-3 mb-8 sm:mb-0">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team 1" className="w-15 h-15 sm:w-12 sm:h-12 md:w-15 md:h-15 rounded-full border-2 border-white shadow" />
+              <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Team 2" className="w-15 h-15 sm:w-12 sm:h-12 md:w-15 md:h-15 rounded-full border-2 border-white shadow" />
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Team 3" className="w-15 h-15 sm:w-12 sm:h-12 md:w-15 md:h-15 rounded-full border-2 border-white shadow" />
+              <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Team 4" className="w-15 h-15 sm:w-12 sm:h-12 md:w-15 md:h-15 rounded-full border-2 border-white shadow" />
             </div>
-            <div className="text-[#222] text-3xl font-semibold ml-20 max-w-45xl">
-            Epic Automations designs and manufactures custom, cost-<br/>effective machines, specializing in automation solutions <br/> that boost productivity, reduce costs, and maintain <br/> high-quality standards across various industries.
+            <div className="text-[#222] text-lg sm:text-xl text-center md:text-2xl lg:text-3xl font-semibold ml-0 sm:ml-8 md:ml-20 max-w-full md:max-w-45xl md:text-center sm:text-left">
+            Epic Automations designs and manufactures custom, cost-<br className="hidden sm:block" />effective machines, specializing in automation solutions <br className="hidden sm:block" /> that boost productivity, reduce costs, and maintain <br className="hidden sm:block" /> high-quality standards across various industries.
             </div>
           </div>
-        </div>
-      </div>
+        </AnimatedSection>
+      </FadeUpSection>
       {/* stats */}
-      <div ref={statsRef} className="w-full px-10 mt-22 grid grid-cols-1 md:grid-cols-3 gap-8 ">
+      <AnimatedSection 
+        id="stats-grid"
+        className="w-full px-4 sm:px-6 md:px-10 mt-12 sm:mt-16 md:mt-22 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
+        customAnimation={{ y: 50, opacity: 0, duration: 1, stagger: 0.1 }}
+      >
         {stats.map((stat, idx) => (
-          <div key={stat.title} className={`group bg-white/50 backdrop-blur-[15px]  shadow-2xl  rounded-xl flex flex-col items-center justify-between px-8 py-8 min-h-[220px] transition-all duration-300 hover:scale-105 ${stat.hoverBorder} ${stat.hoverCardShadow} ${statsVisible ? 'animate-rise-up' : ''}`} style={{ animationDelay: statsVisible ? `${0.2 + idx * 0.1}s` : undefined }}>
+          <div key={stat.title} data-animate-child className={`group bg-white/50 backdrop-blur-[15px] shadow-2xl rounded-xl flex flex-col items-center justify-between px-4 sm:px-6 md:px-8 py-6 sm:py-8 min-h-[180px] sm:min-h-[200px] md:min-h-[220px] transition-all duration-300 hover:scale-105 ${stat.hoverBorder} ${stat.hoverCardShadow}`}>
             {/* Top: Number and Title */}
             <div className="flex flex-col items-center w-full mb-2">
               <div className="flex items-center gap-2">
-                <UpCount end={stat.end} className={`text-5xl md:text-6xl font-bold text-[#ff4f0f] transition-all duration-300  `} start={statsVisible} />
-                <span className={`text-4xl md:text-6xl text-[#ff4f0f] font-normal ml-1 transition-all duration-300  `}>+</span>
+                <UpCount end={stat.end} className={`text-4xl md:text-5xl lg:text-6xl font-bold text-[#ff4f0f] transition-all duration-300`} start={statsVisible} />
+                <span className={`text-3xl md:text-4xl lg:text-6xl text-[#ff4f0f] font-normal ml-1 transition-all duration-300`}>+</span>
               </div>
-              <div className={`text-[#ff4f0f] text-2xl md:text-4xl font-semibold text-center mt-2 transition-all duration-300  `}>{stat.title}</div>
+              <div className={`text-[#ff4f0f] text-xl md:text-2xl lg:text-4xl font-semibold text-center mt-2 transition-all duration-300`}>{stat.title}</div>
             </div>
             {/* Bottom: Description */}
-            <div className="text-black text-[24px] font-semibold max-w-md text-center">{stat.desc}</div>
+            <div className="text-black text-base md:text-lg lg:text-[24px] font-semibold max-w-md text-center">{stat.desc}</div>
           </div>
         ))}
-      </div>
+      </AnimatedSection>
     </section>
   );
 }

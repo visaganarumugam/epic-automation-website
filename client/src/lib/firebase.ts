@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, collection, addDoc, serverTimestamp, query, orderBy, limit, getDocs } from "firebase/firestore";
 import type { User } from "firebase/auth";
 
 // Debug: Check if environment variables are loaded
@@ -35,6 +35,15 @@ if (typeof window !== "undefined") {
 const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
+
+// Contact form interface
+export interface ContactFormData {
+  name: string;
+  email: string;
+  message: string;
+  timestamp?: any;
+  source?: string; // To track which page the form was submitted from
+}
 
 // Authentication functions
 export const signUpWithEmail = async (email: string, password: string) => {
@@ -75,6 +84,38 @@ export const signOutUser = async () => {
 
 export const onAuthStateChange = (callback: (user: User | null) => void) => {
   return onAuthStateChanged(auth, callback);
+};
+
+// Firestore functions for contact forms
+export const submitContactForm = async (formData: ContactFormData) => {
+  try {
+    const docRef = await addDoc(collection(db, "contactSubmissions"), {
+      ...formData,
+      timestamp: serverTimestamp(),
+      createdAt: new Date().toISOString(),
+    });
+    return { id: docRef.id, error: null };
+  } catch (error: any) {
+    return { id: null, error: error.message };
+  }
+};
+
+export const getRecentContactSubmissions = async (limitCount: number = 10) => {
+  try {
+    const q = query(
+      collection(db, "contactSubmissions"),
+      orderBy("timestamp", "desc"),
+      limit(limitCount)
+    );
+    const querySnapshot = await getDocs(q);
+    const submissions = querySnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+    return { submissions, error: null };
+  } catch (error: any) {
+    return { submissions: [], error: error.message };
+  }
 };
 
 export { auth, db, analytics }; 

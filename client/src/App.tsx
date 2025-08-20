@@ -2,15 +2,12 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import ScrollToTop from "./ScrollToTop";
 import { useState , useEffect } from "react";
 import Servicespage from "./pages/Services.tsx";
-import Design from "./pages/Design";
-import Development from "./pages/Development";
+
 import About from "./pages/About";
 import Career from "./pages/Career";
 import HelpCenter from "./pages/HelpCenter";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/TermsAndConditions";
-import SignUp from "./pages/SignUp";
-import Profile from "./pages/Profile";
 import Homepage from "./pages/Homepage/Homepage";
 import Footer from "./components/Footer";
 import TopNavbar from "./pages/Navbar";
@@ -55,16 +52,13 @@ function AppContent() {
         <Route path="/" element={<Homepage />} />
         <Route path="/home" element={<Homepage />} />
         <Route path="/services" element={<Servicespage />} />
-        <Route path="/design" element={<Design />} />
-        <Route path="/development" element={<Development />} />
         <Route path="/about" element={<About />} />
         <Route path="/career" element={<Career />} />
         <Route path="/help-center" element={<HelpCenter /> } />
         <Route path="/contact-us" element={<HelpCenter /> } />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/profile" element={<Profile />} />
+        
       </Routes>
       {!hideNavAndFooter && <Footer />}
       <NewsletterManager />
