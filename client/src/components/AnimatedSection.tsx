@@ -1,6 +1,8 @@
 import React from 'react';
 import { useScrollAnimation, scrollAnimations } from '../hooks/useScrollAnimation';
 
+type AsElement = keyof React.JSX.IntrinsicElements | React.ComponentType<any>;
+
 interface AnimatedSectionProps {
   children: React.ReactNode;
   className?: string;
@@ -19,7 +21,7 @@ interface AnimatedSectionProps {
   trigger?: string;
   start?: string;
   end?: string;
-  as?: keyof JSX.IntrinsicElements;
+  as?: AsElement;
 }
 
 export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
@@ -31,7 +33,7 @@ export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
   trigger = "top 80%",
   start = "top 80%",
   end = "bottom 20%",
-  as: Component = 'div'
+  as = 'div'
 }) => {
   const animationConfig = animation === 'custom' 
     ? customAnimation 
@@ -44,12 +46,10 @@ export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
     ...animationConfig
   });
 
+  const Component = (as || 'div') as AsElement;
+
   return (
-    <Component
-      ref={elementRef}
-      className={className}
-      id={id}
-    >
+    <Component ref={elementRef} className={className} id={id}>
       {children}
     </Component>
   );

@@ -1,9 +1,7 @@
 import  { useState, useEffect, useRef } from 'react';
-import { AnimatedSection } from '../../components/AnimatedSection';
 
 const slides = [
   {
-    
     content: (
       <section id="hero" className="slide1 w-screen h-screen relative flex flex-col justify-between overflow-hidden px-0 md:px-0">
         {/* Background Video */}
@@ -26,7 +24,6 @@ const slides = [
           </button>
           </div>
         </div>
-        
       </section>
     ),
     
