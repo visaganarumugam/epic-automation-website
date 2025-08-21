@@ -41,8 +41,25 @@ export interface ContactFormData {
   name: string;
   email: string;
   message: string;
+  phone?: string;
+  country?: string;
+  state?: string;
+  course?: string;
   timestamp?: any;
   source?: string; // To track which page the form was submitted from
+}
+
+// Enquiry form interface (Services page)
+export interface EnquiryFormData {
+  name: string;
+  email: string;
+  message: string;
+  phone: string;
+  country: string;
+  state: string;
+  course: string;
+  timestamp?: any;
+  source?: string;
 }
 
 // Authentication functions
@@ -115,6 +132,38 @@ export const getRecentContactSubmissions = async (limitCount: number = 10) => {
     return { submissions, error: null };
   } catch (error: any) {
     return { submissions: [], error: error.message };
+  }
+};
+
+// Firestore functions for service enquiries (new collection)
+export const submitServiceEnquiry = async (formData: EnquiryFormData) => {
+  try {
+    const docRef = await addDoc(collection(db, "serviceEnquiries"), {
+      ...formData,
+      timestamp: serverTimestamp(),
+      createdAt: new Date().toISOString(),
+    });
+    return { id: docRef.id, error: null };
+  } catch (error: any) {
+    return { id: null, error: error.message };
+  }
+};
+
+export const getRecentServiceEnquiries = async (limitCount: number = 10) => {
+  try {
+    const q = query(
+      collection(db, "serviceEnquiries"),
+      orderBy("timestamp", "desc"),
+      limit(limitCount)
+    );
+    const querySnapshot = await getDocs(q);
+    const enquiries = querySnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+    return { enquiries, error: null };
+  } catch (error: any) {
+    return { enquiries: [], error: error.message };
   }
 };
 

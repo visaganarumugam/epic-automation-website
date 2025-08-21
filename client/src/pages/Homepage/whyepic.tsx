@@ -150,7 +150,7 @@ export default function WhyEpic() {
         className="w-full px-4 sm:px-6 md:px-10 mt-12 sm:mt-16 md:mt-22 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
         customAnimation={{ y: 50, opacity: 0, duration: 1, stagger: 0.1 }}
       >
-        {stats.map((stat, idx) => (
+        {stats.map((stat) => (
           <div key={stat.title} data-animate-child className={`group bg-white/50 backdrop-blur-[15px] shadow-2xl rounded-xl flex flex-col items-center justify-between px-4 sm:px-6 md:px-8 py-6 sm:py-8 min-h-[180px] sm:min-h-[200px] md:min-h-[220px] transition-all duration-300 hover:scale-105 ${stat.hoverBorder} ${stat.hoverCardShadow}`}>
             {/* Top: Number and Title */}
             <div className="flex flex-col items-center w-full mb-2">

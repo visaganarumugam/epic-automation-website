@@ -559,8 +559,8 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
         {/* Dropdown Menu */}
         {openDropdown && dropdownContent[openDropdown as keyof typeof dropdownContent] && (
           <div 
-            className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[70vw] max-w-[900px] border border-[#323333] rounded-xl shadow-2xl flex transition-all duration-300 animate-fadeIn z-50" 
-            style={{ backgroundImage: "url('/images/navbardropdownimg.png')", backgroundSize: 'cover', backgroundPosition: 'center', backdropFilter: 'blur(8px)' }}
+            className="absolute left-1/2 bg-[#ffe7b6] backdrop-blur-2xl -translate-x-1/2 top-full mt-2 w-[70vw] max-w-[900px] border border-[#323333] rounded-xl shadow-2xl flex transition-all duration-300 animate-fadeIn z-50" 
+           
             onMouseEnter={() => {
               if (closeDropdownTimeout) clearTimeout(closeDropdownTimeout);
               setDropdownHovered(true);

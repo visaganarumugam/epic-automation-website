@@ -1,6 +1,6 @@
 import { IconMail, IconPhone, IconMapPin, IconArrowUpRight } from '@tabler/icons-react';
 import ContactForm from '../../components/ContactForm';
-import { AnimatedSection, FadeUpSection } from '../../components/AnimatedSection';
+import { FadeUpSection } from '../../components/AnimatedSection';
 
 const contactInfo = [
   {

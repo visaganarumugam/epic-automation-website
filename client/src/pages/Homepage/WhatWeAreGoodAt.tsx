@@ -35,7 +35,7 @@ export default function WhatWeAreGoodAt() {
                   <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="avatar1" className="w-15 h-15 sm:w-12 sm:h-12 md:w-13 md:h-13 rounded-full border-2 border-white -ml-2 first:ml-0 shadow" />
                   <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="avatar2" className="w-15 h-15 sm:w-12 sm:h-12 md:w-13 md:h-13 rounded-full border-2 border-white -ml-2 shadow" />
                   <img src="https://randomuser.me/api/portraits/men/34.jpg" alt="avatar3" className="w-15 h-15 sm:w-12 sm:h-12 md:w-13 md:h-13 rounded-full border-2 border-white -ml-2 shadow" />
-                  <span className="text-white text-base md:text-md font-semibold text-black px-3 py-4 sm:py-3 -ml-4 border-2 border-white rounded-full shadow" style={{fontFamily: 'Gilroy, sans-serif'}}>+728</span>
+                  <span className=" text-base md:text-md font-semibold text-white px-2 py-4 sm:py-3 -ml-4 border-2 bg-black rounded-full shadow" style={{fontFamily: 'Gilroy, sans-serif'}}>+728</span>
                 </div>
               </div>
             </AnimatedSection>

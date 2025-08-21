@@ -1,7 +1,7 @@
 import { IconMail, IconPhone, IconMapPin, IconArrowUpRight } from '@tabler/icons-react';
 import ContactForm from '../components/ContactForm';
 import { useEffect, useRef, useState } from 'react';
-import { AnimatedSection, FadeUpSection, ScaleUpSection } from '../components/AnimatedSection';
+import { AnimatedSection, FadeUpSection } from '../components/AnimatedSection';
 
 
 const contactInfo = [
@@ -201,7 +201,7 @@ export default function Services() {
           customAnimation={{ y: 50, opacity: 0, duration: 1, stagger: 0.1 }}
         >
           {stats.map((stat, idx) => (
-            <div key={stat.title} data-animate-child className={`group bg-white/50 backdrop-blur-[15px] shadow-2xl rounded-xl flex flex-col items-start justify-between px-4 sm:px-6 md:px-8 py-6 sm:py-8 min-h-[280px] sm:min-h-[300px] md:min-h-[320px] transition-all duration-300 hover:scale-105 ${stat.hoverBorder} ${stat.hoverCardShadow}`}>
+            <div key={stat.title} data-animate-child className={`group bg-white/50 backdrop-blur-[15px] shadow-2xl rounded-xl flex flex-col items-start justify-between px-4 sm:px-6 md:px-8 py-6 sm:py-8 min-h-[280px] sm:min-h-[300px] md:min-h-[320px] transition-all duration-300 hover:scale-105 ${stat.hoverBorder} ${stat.hoverCardShadow}` } style={{ animationDelay: statsVisible ? `${0.2 + idx * 0.1}s` : undefined }}>
               {/* Top: Image */}
               <div className="flex flex-col items-start w-full mb-1">
                 <div className="text-start">
@@ -216,7 +216,7 @@ export default function Services() {
                     alt={stat.title}
                     className="w-full h-[240px] sm:w-full mt-5 sm:mt-0 sm:h-[450px] object-cover"
                   />
-                </div> 
+            </div> 
           ))}
         </AnimatedSection>
 

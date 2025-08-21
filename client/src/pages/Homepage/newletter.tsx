@@ -1,5 +1,4 @@
-
-import { AnimatedSection, FadeUpSection } from '../../components/AnimatedSection';
+import { FadeUpSection } from '../../components/AnimatedSection';
 
 export default function Newsletter() {
   return (

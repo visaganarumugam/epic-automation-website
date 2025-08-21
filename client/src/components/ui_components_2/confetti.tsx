@@ -17,7 +17,10 @@ import React, {
   useRef,
 } from "react";
 
-import { Button, type ButtonProps } from "../ui/button";
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & { className?: string };
+const Button: React.FC<ButtonProps> = ({ children, ...props }) => (
+  <button {...props}>{children}</button>
+);
 
 type Api = {
   fire: (options?: ConfettiOptions) => void;
