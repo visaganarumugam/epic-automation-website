@@ -94,14 +94,14 @@ const dropdownContent: DropdownContent = {
             title: "SCADA Systems",
             description: "Advanced monitoring and control systems for industrial automation.",
             image: "/images/products.jpg",
-            href: "/services",
+            href: "/services#scada",
             isPromo: true,
           },
           {
             title: "HMI Solutions",
             description: "Human-Machine Interface solutions for seamless operation control.",
             image: "/images/products.jpg",
-            href: "/services",
+            href: "/services#scada",
             isPromo: true,
           },
         ] 
@@ -346,8 +346,21 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
     const [path, hash] = href.split('#');
     
     if (location.pathname !== path) {
-      // Navigate to the page first
-      navigate(href);
+      // Navigate to the page first, then scroll to section after navigation
+      navigate(path);
+      // Use a timeout to ensure navigation completes before scrolling
+      setTimeout(() => {
+        const el = document.getElementById(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Add a subtle highlight effect
+          el.style.transition = 'box-shadow 0.3s ease';
+          el.style.boxShadow = '0 0 0 4px rgba(255, 153, 0, 0.3)';
+          setTimeout(() => {
+            el.style.boxShadow = '';
+          }, 2000);
+        }
+      }, 500); // Increased delay to ensure page loads
     } else {
       // Already on the page, scroll to section
       setTimeout(() => {
@@ -652,7 +665,7 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
           <div className="menu-overlay md:hidden" onClick={() => setIsMenuOpen(false)} />
           <nav className="menu-sidebar md:hidden">
             <div className="flex items-center justify-between mb-6">
-              <img src={logo} alt="Logo" className="h-6 sm:h-8" />
+              <img src={logo} alt="Logo" className="h-6 w-10  sm:w-15 sm:h-8" />
               <button onClick={() => setIsMenuOpen(false)} className="text-white text-2xl sm:text-3xl hover:text-[#F56E0F] cursor-pointer">
                 <FiX />
               </button>

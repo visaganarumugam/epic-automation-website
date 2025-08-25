@@ -9,14 +9,14 @@ const contactInfo = [
   {
     icon: <IconMail size={35} stroke={1.7} className="text-[#ff4f0f]" />,
     label: 'Email us',
-    value: 'johnny.kyorov@gmail.com',
-    href: 'mailto:johnny.kyorov@gmail.com',
+    value: 'youremail@gmail.com',
+    href: 'mailto:youremail@gmail.com',
   },
   {
     icon: <IconPhone size={35} stroke={1.7} className="text-[#ff4f0f]" />,
     label: 'Call us',
-    value: '(501) 123-4567',
-    href: 'tel:5011234567',
+    value: '(+91) 9876543210',
+    href: 'tel:9876543210',
   },
   {
     icon: <IconMapPin size={35} stroke={1.7} className="text-[#ff4f0f]" />,
@@ -29,9 +29,10 @@ const contactInfo = [
 
 export default function About() {
   const [activeCard, setActiveCard] = useState(1); // Start with center card (index 1) as active
-  
-
-  
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [currentX, setCurrentX] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   const handlePrevCard = () => {
     setActiveCard((prev) => (prev === 0 ? 9 : prev - 1));
@@ -39,6 +40,89 @@ export default function About() {
 
   const handleNextCard = () => {
     setActiveCard((prev) => (prev === 9 ? 0 : prev + 1));
+  };
+
+  // Touch and mouse event handlers for swipe functionality
+  const handleTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault(); // Prevent default touch behavior
+    setIsDragging(true);
+    setStartX(e.touches[0].clientX);
+    setCurrentX(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging) return;
+    setCurrentX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!isDragging) return;
+    
+    const diff = startX - currentX;
+    const threshold = 50; // Minimum swipe distance
+    
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0) {
+        // Swiped left - next card
+        handleNextCard();
+      } else {
+        // Swiped right - previous card
+        handlePrevCard();
+      }
+    }
+    
+    setIsDragging(false);
+    setStartX(0);
+    setCurrentX(0);
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setStartX(e.clientX);
+    setCurrentX(e.clientX);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    setCurrentX(e.clientX);
+  };
+
+  const handleMouseUp = () => {
+    if (!isDragging) return;
+    
+    const diff = startX - currentX;
+    const threshold = 50; // Minimum drag distance
+    
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0) {
+        // Dragged left - next card
+        handleNextCard();
+      } else {
+        // Dragged right - previous card
+        handlePrevCard();
+      }
+    }
+    
+    setIsDragging(false);
+    setStartX(0);
+    setCurrentX(0);
+  };
+
+  const handleMouseLeave = () => {
+    if (isDragging) {
+      setIsDragging(false);
+      setStartX(0);
+      setCurrentX(0);
+    }
+  };
+
+  // Add visual feedback during dragging
+  const getDragTransform = () => {
+    if (!isDragging) return '';
+    const diff = currentX - startX;
+    const maxDiff = 100; // Maximum visual movement
+    const clampedDiff = Math.max(-maxDiff, Math.min(maxDiff, diff));
+    return `translateX(${clampedDiff * 0.1}px)`;
   };
 
   // Card data array
@@ -170,7 +254,7 @@ export default function About() {
               </div>
             
           <div className="w-full rounded-2xl sm:py-12 sm:px-4  flex flex-col justify-center mt-10 sm:mt-0  items-center mb-12 z-50">
-          <h2 className=" max-w-7xl  text-white text-[2rem] leading-tight md:text-7xl font-semibold  text-center mb-8">
+          <h2 className=" max-w-7xl px-5 sm:px-0 text-white text-[2rem] leading-tight md:text-7xl font-semibold  text-center mb-8">
                   Success Stories That Define  <br /> Our Robotics Journey
           </h2>
             <div className="flex flex-col md:flex-row justify-center max-w-7xl mx-10 sm:mx-0 sm:mt-12 mb-10 gap-8 w-[90vw] sm:w-full">
@@ -292,6 +376,9 @@ export default function About() {
               <h2 className="text-4xl lg:text-7xl font-bold text-black px-4">
                 Projects That We've Worked On
               </h2>
+              <p className="text-lg text-gray-600 mt-4">
+                Swipe left/right or drag to navigate • Use arrow buttons for precise control
+              </p>
             </div>
             
             {/* Carousel Container */}
@@ -318,7 +405,17 @@ export default function About() {
 
               {/* True Slider Carousel Animation with Peeking and Fade-out Side Cards */}
               <div className="w-full flex justify-center items-center py-6  sm:py-8 md:py-12">
-                <div className="relative w-[95vw] sm:w-[90vw] md:w-[80vw] h-[60vh] sm:h-[70vh] md:h-[80vh] overflow-visible flex items-center justify-center mx-auto">
+                <div 
+                  ref={carouselRef}
+                  className={`relative w-[95vw] sm:w-[90vw] md:w-[80vw] h-[60vh] sm:h-[70vh] md:h-[80vh] overflow-visible flex items-center justify-center mx-auto cursor-grab active:cursor-grabbing select-none ${isDragging ? 'pointer-events-none' : ''}`}
+                  onTouchStart={handleTouchStart}
+                  onTouchMove={handleTouchMove}
+                  onTouchEnd={handleTouchEnd}
+                  onMouseDown={handleMouseDown}
+                  onMouseMove={handleMouseMove}
+                  onMouseUp={handleMouseUp}
+                  onMouseLeave={handleMouseLeave}
+                >
                   {[
                     (activeCard === 0 ? cardData.length - 2 : activeCard === 1 ? cardData.length - 1 : activeCard - 2), // far left
                     (activeCard === 0 ? cardData.length - 1 : activeCard - 1), // left
@@ -356,6 +453,13 @@ export default function About() {
                       z = 10;
                       width = 'w-[80vw]';
                       extra = '';
+                      // Add drag feedback for center card
+                      if (isDragging) {
+                        const dragTransform = getDragTransform();
+                        if (dragTransform) {
+                          transform = dragTransform;
+                        }
+                      }
                     } else if (pos === 3) { // right
                       transform = 'translateX(90%)';
                       scale = 'scale-90';
@@ -417,7 +521,7 @@ export default function About() {
                                 loop
                                 muted
                                 playsInline
-                                className="w-full h-[255px] sm:h-full object-cover rounded-xl shadow-lg shadow-black/50"
+                                className="w-full h-[235px] sm:h-full object-cover rounded-xl shadow-lg shadow-black/50"
                                 poster={cardData[idx].bgImage}
                               />
                             ) : idx === 1 ? (
@@ -457,7 +561,7 @@ export default function About() {
                               <img
                                 src={cardData[idx].bgImage}
                                 alt={cardData[idx].title}
-                                className="w-full h-[250px] sm:h-full object-cover rounded-xl shadow-lg mb-10 shadow-black/50"
+                                className="w-full h-[230px] sm:h-full object-cover rounded-xl shadow-lg mb-10 shadow-black/50"
                               />
                             )}
                           </div>

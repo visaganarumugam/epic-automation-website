@@ -8,14 +8,14 @@ const contactInfo = [
   {
     icon: <IconMail size={35} stroke={1.7} className="text-[#ff4f0f]" />,
     label: 'Email us',
-    value: 'johnny.kyorov@gmail.com',
-    href: 'mailto:johnny.kyorov@gmail.com',
+    value: 'youremail@gmail.com',
+    href: 'mailto:youremail@gmail.com',
   },
   {
     icon: <IconPhone size={35} stroke={1.7} className="text-[#ff4f0f]" />,
     label: 'Call us',
-    value: '(501) 123-4567',
-    href: 'tel:5011234567',
+    value: '(+91) 9876543210',
+    href: 'tel:9876543210',
   },
   {
     icon: <IconMapPin size={35} stroke={1.7} className="text-[#ff4f0f]" />,
@@ -85,6 +85,25 @@ const stats2 = [
     hoverCardShadow: 'group-hover:shadow-[0_8px_32px_rgba(59,130,246,0.3)]',
   },
   
+];
+
+const stats2a = [
+  {
+    title: 'SCADA Systems',
+    desc: 'Supervisory Control and Data Acquisition (SCADA) systems provide real-time monitoring and control of industrial processes, enabling operators to manage complex automation systems efficiently.',
+    image: '/images/products.jpg',
+    hoverColor: 'group-hover:text-orange-400',
+    hoverBorder: 'group-hover:border-2 group-hover:border-orange-400',
+    hoverCardShadow: 'group-hover:shadow-[0_8px_32px_rgba(59,130,246,0.3)]',
+  },
+  {
+    title: 'HMI Solutions',
+    desc: 'Human Machine Interface (HMI) solutions provide intuitive touch-screen interfaces for operators to interact with and monitor industrial automation systems.',
+    image: '/images/products.jpg',
+    hoverColor: 'group-hover:text-orange-400',
+    hoverBorder: 'group-hover:border-2 group-hover:border-orange-400',
+    hoverCardShadow: 'group-hover:shadow-[0_8px_32px_rgba(147,51,234,0.3)]',
+  },
 ];
 const stats3 = [
   {
@@ -192,9 +211,11 @@ export default function Services() {
         </FadeUpSection>
         {/* Robotics Auto cards */}
         <FadeUpSection>
-          <h2 className="max-w-full text-black text-4xl lg:text-7xl mt-3 sm:mt-4 md:mt-10 font-bold text-center">
-            Robotics and Automation
-          </h2>   
+          <section id="robotics-automation">
+            <h2 className="max-w-full text-black text-4xl lg:text-7xl mt-3 sm:mt-4 md:mt-10 font-bold text-center">
+              Robotics and Automation
+            </h2>   
+          </section>
         </FadeUpSection>
         <AnimatedSection 
           className="w-full px-4 mb-7 sm:mb-0 sm:px-6 md:px-10 mt-12 sm:mt-16 md:mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
@@ -220,11 +241,15 @@ export default function Services() {
           ))}
         </AnimatedSection>
 
-
-        <h2 className="max-w-full text-black text-3xl md:text-4xl lg:text-7xl mt-3 sm:mt-4 md:mt-10 font-bold text-center">
-          Special Purpose Machine SPM
-        </h2>
+        <FadeUpSection>
+          <section id="special-purpose-machine">
+            <h2 className="max-w-full text-black text-3xl md:text-4xl lg:text-7xl mt-3 sm:mt-4 md:mt-10 font-bold text-center">
+              Special Purpose Machine SPM
+            </h2>
+          </section>
+        </FadeUpSection>
         {/* services cards */}
+        <AnimatedSection customAnimation={{ y: 50, opacity: 0, duration: 1, stagger: 0.1 }}>
         <div ref={statsRef} className="w-full px-4 sm:px-6 md:px-10 mb-7 sm:mb-0 mt-8 sm:mt-16 md:mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
           {stats1.map((stat, idx) => (
             <div key={stat.title} className={`group bg-white/50 backdrop-blur-[15px] shadow-2xl rounded-xl flex flex-col items-start justify-between px-4 sm:px-6 md:px-8 py-6 sm:py-8 min-h-[280px] sm:min-h-[300px] md:min-h-[320px] transition-all duration-300 hover:scale-105 ${stat.hoverBorder} ${stat.hoverCardShadow} ${statsVisible ? 'animate-rise-up' : ''}`} style={{ animationDelay: statsVisible ? `${0.2 + idx * 0.1}s` : undefined }}>
@@ -246,13 +271,52 @@ export default function Services() {
                 </div> 
           ))}
         </div>
+        </AnimatedSection>
+        
+        <FadeUpSection>
+          <section id="scada">
+            <h2 className="max-w-full text-black text-4xl lg:text-7xl mt-3 sm:mt-4 md:mt-10 font-bold text-center">
+              SCADA & HMI Solutions
+            </h2>  
+          </section>
+        </FadeUpSection>
+        
+        <AnimatedSection customAnimation={{ y: 50, opacity: 0, duration: 1, stagger: 0.1 }}>
+        <div className="w-full px-4 sm:px-6 md:px-10 mb-7 sm:mb-0 mt-8 sm:mt-16 md:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+          {stats2a.map((stat) => (
+            <div key={stat.title} className={`group bg-white/50 backdrop-blur-[15px] shadow-2xl rounded-xl flex flex-col items-start justify-between px-4 sm:px-6 md:px-8 py-6 sm:py-8 min-h-[280px] sm:min-h-[300px] md:min-h-[320px] transition-all duration-300 hover:scale-105 ${stat.hoverBorder} ${stat.hoverCardShadow}`}>
+              {/* Top: Image */}
+              <div className="flex flex-col items-start w-full mb-1">
+                <div className="text-start">
+                  <h3 className={`text-[#ff4f0f] text-3xl font-bold transition-all duration-300`}>{stat.title}</h3>
+                </div>
+              </div>
+              {/* Bottom: Description */}
+              <div className="text-black text-lg font-semibold mb-3 sm:mb-10 text-start leading-tight">{stat.desc}</div>
+              
+                  <img 
+                    src={stat.image} 
+                    alt={stat.title}
+                    className="w-full h-[240px] sm:w-full sm:h-[450px] object-cover"
+                  />
+                </div> 
+          ))}
+        </div>
+        </AnimatedSection>
+        
+        <FadeUpSection>
+          <section id="custom-panel-design">
+            <h2 className="max-w-full text-black text-4xl lg:text-7xl mt-3 sm:mt-4 md:mt-10 font-bold text-center">
+              Custom Panel Design & Manufacturing
+            </h2>  
+          </section>
+        </FadeUpSection>
         
         
         
-        <h2 className="max-w-full text-black text-4xl lg:text-7xl mt-3 sm:mt-4 md:mt-10 font-bold text-center">
-          Custom Panel Design & Manufacturing
-        </h2>
-        <div ref={statsRef} className="w-full px-4 sm:px-6 md:px-10 mt-8 sm:mt-16 md:mt-12 grid grid-cols-1  gap-4 sm:gap-6 md:gap-8">
+
+        <AnimatedSection customAnimation={{ y: 50, opacity: 0, duration: 1, stagger: 0.1 }}>
+        <div ref={statsRef} className="w-screen px-4 sm:px-6 md:px-10 mt-8 sm:mt-16 md:mt-12 grid grid-cols-1  gap-4 sm:gap-6 md:gap-8">
           {stats2.map((stat, idx) => (
             <div key={stat.title} className={`group bg-white/50 backdrop-blur-[15px] shadow-2xl rounded-xl flex flex-col items-start justify-between px-4 sm:px-6 md:px-8 py-6 sm:py-8 min-h-[280px] sm:min-h-[300px] md:min-h-[320px] transition-all duration-300 hover:scale-105 ${stat.hoverBorder} ${stat.hoverCardShadow} ${statsVisible ? 'animate-rise-up' : ''}`} style={{ animationDelay: statsVisible ? `${0.2 + idx * 0.1}s` : undefined }}>
               {/* Top: Image */}
@@ -273,12 +337,19 @@ export default function Services() {
                 </div> 
           ))}
         </div>
+        </AnimatedSection>
+        <FadeUpSection>
+          <section id="robot-programming">
+            <h2 className="max-w-full text-black text-3xl md:text-4xl lg:text-7xl mt-3 sm:mt-4 md:mt-10 font-bold text-center">
+              Robot Programming Services
+            </h2>
+          </section>
+        </FadeUpSection>
         
         
-        <h2 className="max-w-full text-black text-3xl md:text-4xl lg:text-7xl mt-3 sm:mt-4 md:mt-10 font-bold text-center">
-          Robot Programming Services
-        </h2>
-        <div ref={statsRef} className="w-full px-4 sm:px-6 md:px-10 mt-12 sm:mt-16 md:mt-12 grid grid-cols-1  gap-4 sm:gap-6 md:gap-8">
+        
+        <AnimatedSection customAnimation={{ y: 50, opacity: 0, duration: 1, stagger: 0.1 }}>
+        <div ref={statsRef} className="w-screen px-4 sm:px-6 md:px-10 mt-12 sm:mt-16 md:mt-12 grid grid-cols-1  gap-4 sm:gap-6 md:gap-8">
           {stats3.map((stat, idx) => (
             <div key={stat.title} className={`group bg-white/50 backdrop-blur-[15px] shadow-2xl rounded-xl flex flex-col items-start justify-between px-4 sm:px-6 md:px-8 py-6 sm:py-8 min-h-[280px] sm:min-h-[300px] md:min-h-[320px] transition-all duration-300 hover:scale-105 ${stat.hoverBorder} ${stat.hoverCardShadow} ${statsVisible ? 'animate-rise-up' : ''}`} style={{ animationDelay: statsVisible ? `${0.2 + idx * 0.1}s` : undefined }}>
               {/* Top: Image */}
@@ -299,12 +370,17 @@ export default function Services() {
                 </div> 
           ))}
         </div>
+        </AnimatedSection>
         
+        <FadeUpSection>
+          <section id="plc-hmi-programming">
+            <h2 className="max-w-full text-black text-3xl md:text-4xl lg:text-7xl mt-3 sm:mt-4 md:mt-10 font-bold text-center">
+              PLC & HMI Programming
+            </h2>
+          </section>
+        </FadeUpSection>
         
-        
-        <h2 className="max-w-full text-black text-3xl md:text-4xl lg:text-7xl mt-3 sm:mt-4 md:mt-10 font-bold text-center">
-          PLC & HMI Programming
-        </h2>
+        <AnimatedSection customAnimation={{ y: 50, opacity: 0, duration: 1, stagger: 0.1 }}>
         <div ref={statsRef} className="w-full px-4 sm:px-6 md:px-10 mt-12 sm:mt-16 md:mt-12 grid grid-cols-1  gap-4 sm:gap-6 md:gap-8">
           {stats4.map((stat, idx) => (
             <div key={stat.title} className={`group bg-white/50 backdrop-blur-[15px] shadow-2xl rounded-xl flex flex-col items-start justify-between px-4 sm:px-6 md:px-8 py-6 sm:py-8  transition-all duration-300 hover:scale-105 ${stat.hoverBorder} ${stat.hoverCardShadow} ${statsVisible ? 'animate-rise-up' : ''}`} style={{ animationDelay: statsVisible ? `${0.2 + idx * 0.1}s` : undefined }}>
@@ -327,8 +403,11 @@ export default function Services() {
             
           ))}
         </div>
+        </AnimatedSection>
+        
         
         {/* contact us form */}
+
         <section className="w-screen min-h-screen flex items-center justify-center bg-transparent relative overflow-hidden px-0 sm:px-10 py-10 md:py-0">
           <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 mx-10 bg-transparent">
             {/* Left: Contact Info */}
