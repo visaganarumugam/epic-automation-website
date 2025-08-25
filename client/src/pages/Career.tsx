@@ -3,6 +3,7 @@ import Slider from 'react-infinite-logo-slider';
 import { submitServiceEnquiry } from '../lib/firebase';
 import { useState } from 'react';
 import { IconAnchor, IconSchool, IconWorld, IconBriefcase , IconArrowUpRight , IconMail , IconPhone , IconMapPin } from '@tabler/icons-react';
+import confetti from 'canvas-confetti';
 
 
 
@@ -194,14 +195,14 @@ const contactInfo = [
   {
     icon: <IconMail size={35} stroke={1.7} className="text-[#ff4f0f]" />,
     label: 'Email us',
-    value: 'johnny.kyorov@gmail.com',
-    href: 'mailto:johnny.kyorov@gmail.com',
+    value: 'youremail@gmail.com',
+    href: 'mailto:youremail@gmail.com',
   },
   {
     icon: <IconPhone size={35} stroke={1.7} className="text-[#ff4f0f]" />,
     label: 'Call us',
-    value: '(501) 123-4567',
-    href: 'tel:5011234567',
+    value: '(+91) 9876543210',
+    href: 'tel:9876543210',
   },
   {
     icon: <IconMapPin size={35} stroke={1.7} className="text-[#ff4f0f]" />,
@@ -213,6 +214,7 @@ const contactInfo = [
 export default function Career() {
   const [enquiryStatus, setEnquiryStatus] = useState<'idle'|'loading'|'success'|'error'>('idle');
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleEnquirySubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -239,6 +241,39 @@ export default function Career() {
       } else {
         setEnquiryStatus('success');
         form.reset();
+        
+        // Show success alert
+        setShowAlert(true);
+        
+        // Trigger confetti from left and right sides
+        const end = Date.now() + 3 * 1000;
+        const colors = ["#ff4f0f", "#ff9900", "#00ff88", "#0088ff", "#ff0088"];
+
+        const frame = () => {
+          if (Date.now() > end) return;
+          confetti({
+            particleCount: 2,
+            angle: 60,
+            spread: 55,
+            startVelocity: 60,
+            origin: { x: 0, y: 0.5 },
+            colors,
+          });
+          confetti({
+            particleCount: 2,
+            angle: 120,
+            spread: 55,
+            startVelocity: 60,
+            origin: { x: 1, y: 0.5 },
+            colors,
+          });
+          requestAnimationFrame(frame);
+        };
+
+        frame();
+        
+        // Hide alert after 5 seconds
+        setTimeout(() => setShowAlert(false), 5000);
       }
     } catch (e: any) {
       setEnquiryStatus('error');
@@ -248,10 +283,37 @@ export default function Career() {
     }
   };
 
+
+
   return (
     <div className="min-h-screen w-full bg-gradient-to-b from-[#fadca1]  to-[#ffe7b6] flex flex-col items-center justify-start pt-16 px-2">
+      {/* Success Alert */}
+      {showAlert && (
+        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-4 rounded-xl shadow-2xl border-2 border-green-300 animate-bounce">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+            <div className="text-center">
+              <div className="font-bold text-lg">🎉 Application Submitted Successfully!</div>
+              <div className="text-sm opacity-90">Thank you for your interest in our courses!</div>
+            </div>
+            <button 
+              onClick={() => setShowAlert(false)}
+              className="ml-4 p-1 hover:bg-white/20 rounded-full transition-colors"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
+      
       {/* Hero Section with Background Image */}
-      <div className="relative w-[82vw] sm:w-[92vw] md:w-[90vw] mt-16 sm:mt-18 md:mt-20 mx-auto mb-6 sm:mb-8 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
+      <div className="relative w-[90vw] sm:w-[92vw] md:w-[93vw] mt-16 sm:mt-18 md:mt-20 mx-auto mb-3 sm:mb-8 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
         {/* Background Image */}
         <div className="absolute inset-0">
           <img 
@@ -269,16 +331,25 @@ export default function Career() {
           <AnimatedSection
             customAnimation={{ y: 50, opacity: 0, duration: 1, delay: 0.2 }}
           >
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight sm:leading-20 mb-4 sm:mb-6 drop-shadow-2xl">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight sm:leading-20 mb-4 sm:mb-6 drop-shadow-2xl">
             India's Best Center for Technology  <br className="hidden sm:block" /> & Management Courses.
-            </h1>
+          </h1>
           </AnimatedSection>
           {/* Subheadline */}
           <AnimatedSection customAnimation={{ y: 30, opacity: 0, duration: 0.8, delay: 0.4 }}
           >
              <div className="flex flex-col sm:flex-row gap-4 sm:w-full justify-center mb-2">
                 
-                <button className="border-2 border-[#ff4f0f] cursor-pointer text-white bg-transparent px-8 py-3 rounded-full font-semibold text-base sm:text-lg hover:bg-black hover:text-white transition font-gilroy" style={{boxShadow:'0 8px 32px 0 #ff4f0f'}}>
+                <button 
+                  onClick={() => {
+                    const enquiryForm = document.getElementById('enquiry-form');
+                    if (enquiryForm) {
+                      enquiryForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }}
+                  className="border-2 border-[#ff4f0f] cursor-pointer text-white bg-transparent px-8 py-3 rounded-full font-semibold text-base sm:text-lg hover:bg-black hover:text-white transition font-gilroy" 
+                  style={{boxShadow:'0 8px 32px 0 #ff4f0f'}}
+                >
                   Join now 
                   <span className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#ff4f0f] ml-4 inline-block"></span>
                 </button>
@@ -288,29 +359,32 @@ export default function Career() {
       </div>
       
        {/* Courses Overview (new section) */}
+       
        <section id="courses-overview" className="w-full py-10 sm:py-12 md:py-16">
           <div className="w-full mx-auto px-4 sm:px-6 md:px-12">
             {/* Top categories */}
+            <AnimatedSection customAnimation={{ y: 50, opacity: 0, duration: 1, stagger: 0.1 }}>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 sm:mb-8">
               <button className="w-full rounded-xl bg-[#ff4f0f] hover:bg-blue-700 text-white font-semibold py-5 text-2xl transition-colors">
                 Technical Courses
               </button>
               <button className="w-full rounded-xl bg-[#ff4f0f] hover:bg-blue-700 text-white font-semibold py-5 text-2xl transition-colors">
-                IT Courses
+                Industrial Courses
               </button>
               <button className="w-full rounded-xl bg-[#ff4f0f] hover:bg-blue-700 text-white font-semibold py-5 text-2xl transition-colors">
                 Management Courses
               </button>
             </div>
-
+            </AnimatedSection>
             {/* Three audience panels */}
+            <AnimatedSection customAnimation={{ y: 50, opacity: 0, duration: 1, stagger: 0.1 }}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
               <div className="rounded-xl border border-emerald-200 bg-emerald-100 p-10">
                 <div className="text-black font-bold text-lg mb-1">Students and Professionals</div>
                 <p className="text-xl font-semibold text-black/80">
                   <span className="italic">Unlock Your Potential</span>: Compete, Build Resume,
                   Grow and get Hired!
-                </p>
+          </p>
         </div>
               <div className="rounded-xl border border-emerald-200 bg-emerald-100 p-10">
                 <div className="text-black font-bold text-lg mb-1">Companies and Recruiters</div>
@@ -327,8 +401,9 @@ export default function Career() {
                 </p>
               </div>
                 </div> 
-            
+            </AnimatedSection>
             {/* Trending courses buttons */}
+            <AnimatedSection customAnimation={{ y: 50, opacity: 0, duration: 1, stagger: 0.1 }}>
             <div className="mb-10">
               <div className="text-black text-2xl font-bold mb-8">Trending Courses for after</div>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -342,8 +417,9 @@ export default function Career() {
                 ))}
               </div>
                 </div> 
-            
+            </AnimatedSection>
             {/* Collaborators logos line (text placeholders to avoid missing assets) */}
+            <AnimatedSection customAnimation={{ y: 50, opacity: 0, duration: 1, stagger: 0.1 }}>
             <div className="rounded-2xl bg-gray-50 border border-gray-200 px-4 sm:px-6 md:px-8 py-6 md:py-8 mb-10">
               <p className="text-center text-black/80 text-sm md:text-2xl mb-10">
                 Our online-courses training collaborates with over 200+ multinational companies
@@ -352,9 +428,10 @@ export default function Career() {
                  <LogoSliderRow logos={row1} toRight={false} duration={120} />
                </div>
         </div>
-        
+        </AnimatedSection>
             {/* Our Divisions */}
-            <div className="mb-6">
+            <AnimatedSection customAnimation={{ y: 50, opacity: 0, duration: 1, stagger: 0.1 }}>
+            <div className="">
               <div className="text-black font-bold text-3xl mb-10">Our Divisions</div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
                 <div className="rounded-2xl bg-white border border-gray-200 shadow-sm p-6 flex flex-col items-center text-center">
@@ -395,11 +472,348 @@ export default function Career() {
                 </div>
               </div>
                 </div> 
+                </AnimatedSection>
         </div>
         </section>
         
+        
+        <section className="w-full py-10 sm:py-12 md:pb-6 md:pt-0">
+          <div className="w-full mx-auto px-4 sm:px-6 md:px-12">
+            <FadeUpSection>
+              <h2 className="text-3xl md:text-4xl font-bold text-black mb-8">Our Courses</h2>
+            </FadeUpSection>
+            
+            <AnimatedSection
+              customAnimation={{ y: 50, opacity: 0, duration: 1, delay: 0.2 }}
+            >
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:mb-10">
+               
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                  <div className="relative">
+                    <img 
+                      src="/images/plc_and_hmi.jpg" 
+                      alt="Industrial Automation Course"
+                      className="w-full h-68 object-cover"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-gray-800 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                        Masters
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-800 mb-4">
+                      HMI & PLC Programming
+                    </h3>
+                    <div className="space-y-3 mb-4">
+                      <div className="flex items-center text-sm text-gray-600">
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        9 months
+                      </div>
+                      <div className="flex items-center text-sm text-gray-600">
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                        Course code: 25101
+                      </div>
+                      <div className="flex items-center text-sm text-gray-600">
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                        Eligibility: Tech Degree, ITI, Diploma, B-Tech Above
+                      </div>
+                    </div>
+                    <div className="flex items-center mb-4">
+                     
+                    </div>
+                    <button 
+                      onClick={() => {
+                        const enquiryForm = document.getElementById('enquiry-form');
+                        if (enquiryForm) {
+                          enquiryForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                      }}
+                      className="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 rounded-lg transition-colors"
+                    >
+                      Apply Now
+                    </button>
+                  </div>
+                </div>
+
+                {/* Course Card 2 */}
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                  <div className="relative">
+                    <img 
+                      src="/images/Robot_Programming.jpg" 
+                      alt="Professional Diploma Course"
+                      className="w-full h-68 object-cover"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-gray-800 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                        Professional
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-800 mb-4">
+                      Robotics & Industrial Automation
+                    </h3>
+                    <div className="space-y-3 mb-4">
+                      <div className="flex items-center text-sm text-gray-600">
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        6 months
+                      </div>
+                      <div className="flex items-center text-sm text-gray-600">
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                        Course code: 25102
+                      </div>
+                      <div className="flex items-center text-sm text-gray-600">
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                        Eligibility: Tech Degree, ITI, Diploma, B-Tech Above
+                      </div>
+                    </div>
+                    <div className="flex items-center mb-4">
+                     
+                    </div>
+                    <button 
+                      onClick={() => {
+                        const enquiryForm = document.getElementById('enquiry-form');
+                        if (enquiryForm) {
+                          enquiryForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                      }}
+                      className="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 rounded-lg transition-colors"
+                    >
+                      Apply Now
+                    </button>
+                  </div>
+                </div>
+
+                {/* Course Card 3 */}
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                  <div className="relative">
+                    <img 
+                      src="/images/Automation-Control-Panels.jpg" 
+                      alt="Certified Engineer Course"
+                      className="w-full h-68 object-cover"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-gray-800 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                        Certificate
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-800 mb-4">
+                      Designing Simulation
+                    </h3>
+                    <div className="space-y-3 mb-4">
+                      <div className="flex items-center text-sm text-gray-600">
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        3 months
+                      </div>
+                      <div className="flex items-center text-sm text-gray-600">
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                        Course code: 25103
+                      </div>
+                      <div className="flex items-center text-sm text-gray-600">
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                        Eligibility: Tech Degree, ITI, Diploma, B-Tech Above
+                      </div>
+                    </div>
+                    <div className="flex items-center mb-11">
+                     
+                    </div>
+                    <button 
+                      onClick={() => {
+                        const enquiryForm = document.getElementById('enquiry-form');
+                        if (enquiryForm) {
+                          enquiryForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                      }}
+                      className="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 rounded-lg transition-colors"
+                    >
+                      Apply Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Course Card 1 */}
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                  <div className="relative">
+                    <img 
+                      src="/images/navdropimages/deburring.png" 
+                      alt="Industrial Automation Course"
+                      className="w-full h-68 object-cover"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-gray-800 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                        Masters
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-800 mb-4">
+                      SCADA
+                    </h3>
+                    <div className="space-y-3 mb-4">
+                      <div className="flex items-center text-sm text-gray-600">
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        9 months
+                      </div>
+                      <div className="flex items-center text-sm text-gray-600">
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                        Course code: 25101
+                      </div>
+                      <div className="flex items-center text-sm text-gray-600">
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                        Eligibility: Tech Degree, ITI, Diploma, B-Tech Above
+                      </div>
+                    </div>
+                    <div className="flex items-center mb-9">
+                    </div>
+                    <button 
+                      onClick={() => {
+                        const enquiryForm = document.getElementById('enquiry-form');
+                        if (enquiryForm) {
+                          enquiryForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                      }}
+                      className="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 rounded-lg transition-colors"
+                    >
+                      Apply Now
+                    </button>
+                  </div>
+                </div>
+
+                {/* Course Card 2 */}
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                  <div className="relative">
+                    <img 
+                      src="/images/navdropimages/CNC_Automation.jpg" 
+                      alt="Professional Diploma Course"
+                      className="w-full h-68 object-cover"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-gray-800 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                        Professional
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-800 mb-4">
+                      Controls Electrical
+                    </h3>
+                    <div className="space-y-3 mb-4">
+                      <div className="flex items-center text-sm text-gray-600">
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        6 months
+                      </div>
+                      <div className="flex items-center text-sm text-gray-600">
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                        Course code: 25102
+                      </div>
+                      <div className="flex items-center text-sm text-gray-600">
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                        Eligibility: Tech Degree, ITI, Diploma, B-Tech Above
+                      </div>
+                    </div>
+                    <div className="flex items-center mb-9">
+                    </div>
+                    <button 
+                      onClick={() => {
+                        const enquiryForm = document.getElementById('enquiry-form');
+                        if (enquiryForm) {
+                          enquiryForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                      }}
+                      className="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 rounded-lg transition-colors"
+                    >
+                      Apply Now
+                    </button>
+                  </div>
+                </div>
+
+                {/* Course Card 3
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                  <div className="relative">
+                    <img 
+                      src="/images/courses/industrial-automation-3.jpg" 
+                      alt="Certified Engineer Course"
+                      className="w-full h-48 object-cover"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-gray-800 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                        Certificate
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-800 mb-4">
+                      Certified Industrial Automation Engineer
+                    </h3>
+                    <div className="space-y-3 mb-4">
+                      <div className="flex items-center text-sm text-gray-600">
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        3 months
+                      </div>
+                      <div className="flex items-center text-sm text-gray-600">
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                        Course code: 25103
+                      </div>
+                      <div className="flex items-center text-sm text-gray-600">
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                        Eligibility: Tech Degree, ITI, Diploma, B-Tech Above
+                      </div>
+                    </div>
+                    <div className="flex items-center mb-4">
+                     
+                    </div>
+                    <button className="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 rounded-lg transition-colors">
+                      Download Syllabus
+                    </button>
+                  </div>
+                </div> */}
+              </div>
+            </AnimatedSection>
+          </div>
+        </section>
+
         {/* contact us form */}
-        <section className="w-screen min-h-screen flex items-center justify-center bg-transparent relative overflow-hidden px-0 sm:px-10 py-10 md:py-0">
+        <section id="enquiry-form" className="w-screen min-h-screen flex items-center justify-center bg-transparent relative overflow-hidden px-0 sm:px-10 py-10 md:py-0">
           <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 mx-10 bg-transparent">
             {/* Left: Contact Info */}
             <div className="flex flex-col w-full gap-2 sm:gap-6 justify-center h-full">
@@ -407,8 +821,8 @@ export default function Career() {
                 <span className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#ff4f0f] mr-2 inline-block"></span>
                 Contact
               </div> 
-              <h2 className="text-4xl md:text-7xl font-bold text-black">Get in touch</h2>
-              <p className="text-gray-700 text-lg sm:text-2xl font-semibold max-w-md mb-4">Have questions or ready to transform your business with AI automation?</p>
+              <h2 className="text-4xl md:text-7xl font-bold text-black">Work with us</h2>
+              <p className="text-gray-700 text-lg sm:text-2xl font-semibold max-w-md mb-4">"Ready to make an impact? Apply now and start your journey with us."</p>
               <div className="flex flex-col gap-4 mb-7 sm:mb-0">
                 {contactInfo.map((item, _) => (
                   <a
@@ -444,32 +858,32 @@ export default function Career() {
                 )}
                 {enquiryStatus === 'success' && (
                   <div className="col-span-1 sm:col-span-2 text-green-700 bg-green-100 border border-green-300 rounded-md px-3 py-2 text-sm">
-                    Enquiry submitted successfully.
+                    Your Form has been submitted successfully.
                   </div>
                 )}
                 <div className="col-span-1">
                   <label className="block text-black font-semibold mb-2">Name</label>
-                  <input name="name" type="text" required className="w-full bg-white/70 text-black placeholder-black/60 border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-orange-500" placeholder="Your name" />
+                  <input name="name" type="text" required className="w-full bg-white/25 backdrop-blur-2xl text-black placeholder-black/60 border-2 border-white/35 shadow rounded-md px-4 py-2 focus:outline-none focus:border-orange-500" placeholder="Your name" />
                 </div>
                 <div className="col-span-1">
                   <label className="block text-black font-semibold mb-2">Phone</label>
-                  <input name="phone" type="tel" required className="w-full bg-white/70 text-black placeholder-black/60 border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-orange-500" placeholder="Your phone number" />
+                  <input name="phone" type="tel" required className="w-full bg-white/25 backdrop-blur-2xl text-black placeholder-black/60 border-2 border-white/35 shadow rounded-md px-4 py-2 focus:outline-none focus:border-orange-500" placeholder="Your phone number" />
                 </div>
                 <div className="col-span-1">
                   <label className="block text-black font-semibold mb-2">Email</label>
-                  <input name="email" type="email" required className="w-full bg-white/70 text-black placeholder-black/60 border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-orange-500" placeholder="you@example.com" />
+                  <input name="email" type="email" required className="w-full bg-white/25 backdrop-blur-2xl text-black placeholder-black/60 border-2 border-white/35 shadow rounded-md px-4 py-2 focus:outline-none focus:border-orange-500" placeholder="you@example.com" />
                 </div>
                 <div className="col-span-1">
                   <label className="block text-black font-semibold mb-2">Country</label>
-                  <input name="country" type="text" required className="w-full bg-white/70 text-black placeholder-black/60 border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-orange-500" placeholder="Your country" />
+                  <input name="country" type="text" required className="w-full bg-white/25 backdrop-blur-2xl text-black placeholder-black/60 border-2 border-white/35 shadow rounded-md px-4 py-2 focus:outline-none focus:border-orange-500" placeholder="Your country" />
                 </div>
                 <div className="col-span-1">
                   <label className="block text-black font-semibold mb-2">State</label>
-                  <input name="state" type="text" required className="w-full bg-white/70 text-black placeholder-black/60 border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-orange-500" placeholder="Your state" />
+                  <input name="state" type="text" required className="w-full bg-white/25 backdrop-blur-2xl text-black placeholder-black/60 border-2 border-white/35 shadow rounded-md px-4 py-2 focus:outline-none focus:border-orange-500" placeholder="Your state" />
                 </div>
                 <div className="col-span-1">
                   <label className="block text-black font-semibold mb-2">Course</label>
-                  <select name="course" required className="w-full bg-white/70 text-black border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-orange-500">
+                  <select name="course" required className="w-full bg-white/25 backdrop-blur-2xl text-black border-2 border-white/35 shadow rounded-md px-4 py-2 focus:outline-none focus:border-orange-500">
                     <option value="">Select a course</option>
                     <option>Robotics & Automation</option>
                     <option>Special Purpose Machine (SPM)</option>
@@ -482,11 +896,11 @@ export default function Career() {
                 </div>
                 <div className="col-span-1 sm:col-span-2">
                   <label className="block text-black font-semibold mb-2">Message</label>
-                  <textarea name="message" rows={4} className="w-full bg-white/70 text-black placeholder-black/60 border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-orange-500" placeholder="Tell us about your requirement"></textarea>
+                  <textarea name="message" rows={7} className="w-full bg-white/25 backdrop-blur-2xl text-black placeholder-black/60 border-2 border-white/35 rounded-md px-4 py-2 focus:outline-none focus:border-orange-500" placeholder="Tell us about yourself"></textarea>
                 </div>
-                <div className="col-span-1 sm:col-span-2 flex justify-end">
-                  <button type="submit" className="bg-[#ff4f0f] hover:bg-[#e65a08] text-white font-semibold px-6 py-2 rounded-md transition-colors">
-                    {enquiryStatus === 'loading' ? 'Submitting...' : enquiryStatus === 'success' ? 'Submitted!' : 'Submit Enquiry'}
+                <div className="w-[70vw] sm:w-[205%] flex justify-center">
+                  <button type="submit" className="bg-[#ff4f0f] hover:bg-[#e65a08] text-xl text-white font-semibold px-6 py-3 w-[100vw] rounded-md transition-colors">
+                    {enquiryStatus === 'loading' ? 'Applying...' : enquiryStatus === 'success' ? 'Applied!' : 'Apply Now'}
                   </button>
                 </div>
               </form>
@@ -550,7 +964,7 @@ function LogoSliderRow({ logos, toRight = false, duration = 20 }: { logos: Logo[
   );
 }
 
-
+      
       {/* Section Row */}
       {/* <div id="career-featured-plans" className="flex items-center justify-between w-full max-w-full mb-6 mt-8 sm:mt-10 px-8 sm:px-8 md:px-21">
         <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold">Featured Plans</span>
@@ -663,4 +1077,3 @@ function LogoSliderRow({ logos, toRight = false, duration = 20 }: { logos: Logo[
         </div>
       </AnimatedSection> */}
 
- 

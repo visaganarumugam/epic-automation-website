@@ -99,7 +99,7 @@ export default function OurMisson() {
           {/* Right Section (upside down of left) */}
           <div className="flex flex-col gap-4 sm:gap-6 md:gap-8 justify-between">
             {/* Top row: two tall cards side by side */}
-            <Card {...features[3]} className="h-[150px] sm:h-[250px] md:h-[270px] w-full" />
+            <Card {...features[3]} className="h-[190px] sm:h-[250px] md:h-[270px] w-full" />
             {/* Bottom card: full width, medium height */}
             
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 h-auto sm:h-[280px] md:h-[380px]">

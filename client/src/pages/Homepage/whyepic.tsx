@@ -105,7 +105,7 @@ export default function WhyEpic() {
   ];
 
   return (
-    <section id="why-epic" className="w-full bg-[#ffe7b6] pb-12 sm:pb-0 sm:py-12 md:py-16 flex flex-col items-center justify-center">
+    <section id="why-epic" className="w-full bg-[#ffe7b6] pb-12 pt-7 sm:pt-0 sm:pb-0 sm:py-12 md:py-16 flex flex-col items-center justify-center">
       <FadeUpSection className="w-full max-w-full flex flex-col md:flex-row items-center justify-between px-4 sm:px-6 md:px-10">
         {/* Left Column */}
         <AnimatedSection 

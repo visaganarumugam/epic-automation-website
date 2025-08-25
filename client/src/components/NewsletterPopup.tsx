@@ -8,16 +8,60 @@ import { FiX, FiMail } from 'react-icons/fi';
 console.log('Firebase db instance:', db);
 
 interface NewsletterPopupProps {
-  isOpen: boolean;
-  onClose: () => void;
+  isOpen?: boolean;
+  onClose?: () => void;
   onSubscribeSuccess?: () => void;
+  autoShow?: boolean;
+  delay?: number;
 }
 
-export default function NewsletterPopup({ isOpen, onClose, onSubscribeSuccess }: NewsletterPopupProps) {
+export default function NewsletterPopup({ 
+  isOpen: externalIsOpen, 
+  onClose: externalOnClose, 
+  onSubscribeSuccess,
+  autoShow = true,
+  delay = 15000
+}: NewsletterPopupProps) {
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+
+  // Determine if popup should be open
+  const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
+  const onClose = externalOnClose || (() => setInternalIsOpen(false));
+
+  // Auto-show popup after delay
+  useEffect(() => {
+    console.log('NewsletterPopup useEffect running...');
+    console.log('autoShow:', autoShow);
+    console.log('delay:', delay);
+    
+    if (autoShow) {
+      // Check if popup has already been shown in this session
+      const hasShownPopup = sessionStorage.getItem('newsletterPopupShown');
+      console.log('Has shown popup before:', hasShownPopup);
+      
+      if (!hasShownPopup) {
+        console.log(`Setting timer for ${delay}ms (${delay/1000} seconds)...`);
+        // Show popup after specified delay (default 15 seconds)
+        const timer = setTimeout(() => {
+          console.log('Timer completed! Showing popup...');
+          setInternalIsOpen(true);
+          // Mark as shown in session storage
+          sessionStorage.setItem('newsletterPopupShown', 'true');
+        }, delay);
+
+        return () => {
+          console.log('Cleaning up timer...');
+          clearTimeout(timer);
+        };
+      } else {
+        console.log('Popup already shown this session');
+      }
+    }
+  }, [autoShow, delay]);
 
   // Debug state changes
   useEffect(() => {
@@ -170,7 +214,7 @@ export default function NewsletterPopup({ isOpen, onClose, onSubscribeSuccess }:
             {/* Content Layout */}
             <div className="relative z-10 h-full flex flex-row">
               {/* Left Section - Machine Image */}
-              <div className="w-1/2 h-full flex items-center justify-center p-6">
+              <div className="w-1/2 h-full hidden  md:flex items-center justify-center p-6">
                 <img 
                   src="/images/herosecImages/Spm_Machine.png" 
                   alt="Industrial Machine"
@@ -179,7 +223,7 @@ export default function NewsletterPopup({ isOpen, onClose, onSubscribeSuccess }:
               </div>
 
               {/* Right Section - Content */}
-              <div className="w-1/2 h-full flex  items-center justify-center p-8">
+              <div className="sm:w-1/2 w-full h-full flex  items-center justify-center p-8">
                 <div className="text-start max-w-lg">
                   {!success ? (
                     <>

@@ -12,10 +12,14 @@ import Homepage from "./pages/Homepage/Homepage";
 import Footer from "./components/Footer";
 import TopNavbar from "./pages/Navbar";
 import NewsletterManager from "./components/NewsletterManager";
+import LoadingScreen from "./components/LoadingScreen";
+import NavigationLoadingScreen from "./components/NavigationLoadingScreen";
+import { useAppLoading } from "./hooks/useAppLoading";
 
 function AppContent() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { isLoading, isNavigating, handleLoadingComplete } = useAppLoading();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,21 +51,36 @@ function AppContent() {
 
   return (
     <>
-      {!hideNavAndFooter && <TopNavbar isScrolled={scrolled} />}
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/home" element={<Homepage />} />
-        <Route path="/services" element={<Servicespage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/career" element={<Career />} />
-        <Route path="/help-center" element={<HelpCenter /> } />
-        <Route path="/contact-us" element={<HelpCenter /> } />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-        
-      </Routes>
-      {!hideNavAndFooter && <Footer />}
-      <NewsletterManager />
+      {/* Initial Loading Screen */}
+      {isLoading && (
+        <LoadingScreen onLoadingComplete={handleLoadingComplete} minLoadTime={2500} />
+      )}
+
+      {/* Navigation Loading Screen */}
+      {isNavigating && !isLoading && (
+        <NavigationLoadingScreen onLoadingComplete={() => {}} minLoadTime={1500} />
+      )}
+
+      {/* Main App Content */}
+      {!isLoading && !isNavigating && (
+        <>
+          {!hideNavAndFooter && <TopNavbar isScrolled={scrolled} />}
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/home" element={<Homepage />} />
+            <Route path="/services" element={<Servicespage />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/career" element={<Career />} />
+            <Route path="/help-center" element={<HelpCenter /> } />
+            <Route path="/contact-us" element={<HelpCenter /> } />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+            
+          </Routes>
+          {!hideNavAndFooter && <Footer />}
+          <NewsletterManager />
+        </>
+      )}
     </>
   );
 }

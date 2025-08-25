@@ -6,14 +6,14 @@ const contactInfo = [
   {
     icon: <IconMail size={25} stroke={1.7} className="text-black sm:size-9 " />,
     label: 'Email us',
-    value: 'johnny.kyorov@gmail.com',
+    value: 'youremail@gmail.com',
     href: 'mailto:johnny.kyorov@gmail.com',
   },
   {
     icon: <IconPhone size={25} stroke={1.7} className="text-black sm:size-9" />,
     label: 'Call us',
-    value: '(501) 123-4567',
-    href: 'tel:5011234567',
+    value: '(+91) 9876543210',
+    href: 'tel:9876543210',
   },
   {
     icon: <IconMapPin size={25} stroke={1.7} className="text-black sm:size-9" />,
