@@ -223,7 +223,7 @@ export default function NewsletterPopup({
               </div>
 
               {/* Right Section - Content */}
-              <div className="sm:w-1/2 w-full h-full flex  items-center justify-center p-8">
+              <div className="sm:w-1/2 w-full h-full py-15 sm:py-0 flex  items-center justify-center p-8">
                 <div className="text-start max-w-lg">
                   {!success ? (
                     <>

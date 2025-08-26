@@ -1,4 +1,4 @@
-import { ShimmerButton } from "../components/ui_components_2/shimmer-button";
+// import { ShimmerButton } from "../components/ui_components_2/shimmer-button";
 
 import { IconMail, IconPhone, IconMapPin, IconArrowUpRight } from '@tabler/icons-react';
 import ContactForm from '../components/ContactForm';
@@ -322,11 +322,11 @@ export default function About() {
               <p className="text-gray-700 text-lg font-semibold md:text-2xl mb-8 max-w-full">
                 Founded with a vision to revolutionize industries, Epic Automations harnesses the power of robotics and AI to create intelligent, adaptive solutions. Our journey began with a passion for innovation—designing robots that not only automate tasks but also learn, collaborate, and transform the way businesses operate. From manufacturing floors to smart warehouses, our story is one of relentless pursuit of excellence in robotics.
               </p>
-              <ShimmerButton className="shadow-2xl mt-2">
+              {/* <ShimmerButton className="shadow-2xl mt-2">
                 <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
                  Learn More
                 </span>
-              </ShimmerButton>
+              </ShimmerButton> */}
             </div>
             <div className="flex-1 flex items-center sm:m-5  justify-center sm:min-h-[220px] ">
               <video
@@ -336,7 +336,7 @@ export default function About() {
                 muted
                 playsInline
                 className="w-full h-full object-cover object-center shadow-lg shadow-black/50 rounded-4xl"
-                poster="/images/bg.jpg"
+                poster="/images/bdg.jpg"
               />
             </div>
           </div>
@@ -350,7 +350,7 @@ export default function About() {
                 muted
                 playsInline
                 className="w-full h-full object-cover object-center shadow-lg shadow-black/50 rounded-4xl"
-                poster="/images/design.jpg"
+                poster="/images/desigfgn.jpg"
               />
             </div>
             <div className="flex-1 flex flex-col justify-center items-end px-8 py-10 md:py-8 order-2 md:order-none ml-auto">
@@ -358,11 +358,11 @@ export default function About() {
               <p className="text-gray-700 text-lg font-semibold  md:text-2xl mb-8 font-mono max-w-full text-right">
                 We aim to lead the robotics revolution by delivering scalable, intelligent automation for every industry. Our mission is to empower businesses with robots that enhance productivity, ensure safety, and drive sustainable growth. By integrating advanced AI, machine vision, and collaborative robotics, we strive to shape a future where humans and robots work side by side to achieve extraordinary results.
               </p>
-              <ShimmerButton className="shadow-2xl mt-2">
+              {/* <ShimmerButton className="shadow-2xl mt-2">
                 <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
                  Learn More
                 </span>
-              </ShimmerButton>
+              </ShimmerButton> */}
             </div>
           </div>
         </AnimatedSection>

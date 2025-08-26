@@ -8,20 +8,84 @@ interface LoadingScreenProps {
 export default function LoadingScreen({ onLoadingComplete, minLoadTime = 2000 }: LoadingScreenProps) {
   const [progress, setProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
+  const [loadingStage, setLoadingStage] = useState(0);
 
   useEffect(() => {
     const startTime = Date.now();
     
-    // Simulate loading progress
+    // Preload critical resources
+    const preloadResources = async () => {
+      try {
+        // Preload critical images
+        const criticalImages = [
+          '/images/herosecImages/epicbghero1.png',
+          '/images/herosecImages/Spm_Machine.png',
+          '/images/navdropimages/MachineTending.png',
+          '/images/navdropimages/Palletizing.png',
+          '/images/navdropimages/deburring.png',
+          '/images/navdropimages/CNC_Automation.jpg',
+          '/images/Packing_Machine.jpg',
+          '/images/Automation-Control-Panels.jpg',
+          '/images/products.jpg',
+          '/images/Robot_Programming.jpg',
+          '/images/plc_and_hmi.jpg'
+        ];
+
+        // Preload images in parallel
+        const imagePromises = criticalImages.map(src => {
+          return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = resolve;
+            img.onerror = reject;
+            img.src = src;
+          });
+        });
+
+        // Wait for all images to load
+        await Promise.allSettled(imagePromises);
+        
+        // Simulate component initialization
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+      } catch (error) {
+        console.log('Some resources failed to preload, continuing...');
+      }
+    };
+
+    // Enhanced loading progress with stages
     const progressInterval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(progressInterval);
           return 100;
         }
-        return prev + Math.random() * 15 + 5; // Random increment between 5-20
+        
+        // Different progress rates for different stages
+        let increment;
+        if (prev < 30) {
+          // Initial loading (fast)
+          increment = Math.random() * 8 + 3;
+          setLoadingStage(0);
+        } else if (prev < 60) {
+          // Resource loading (medium)
+          increment = Math.random() * 6 + 2;
+          setLoadingStage(1);
+        } else if (prev < 85) {
+          // Component initialization (slower)
+          increment = Math.random() * 4 + 1;
+          setLoadingStage(2);
+        } else {
+          // Final preparation (slowest)
+          increment = Math.random() * 2 + 0.5;
+          setLoadingStage(3);
+        }
+        
+        return Math.min(prev + increment, 100);
       });
-    }, 100);
+    }, 80);
+
+    // Start preloading
+    preloadResources();
 
     // Ensure minimum loading time
     const minTimeTimer = setTimeout(() => {
@@ -110,11 +174,11 @@ export default function LoadingScreen({ onLoadingComplete, minLoadTime = 2000 }:
 
         {/* Loading Messages */}
         <div className="mt-8 text-blue-300 text-sm">
-          {progress < 25 && "Connecting to automation systems..."}
-          {progress >= 25 && progress < 50 && "Loading robotics modules..."}
-          {progress >= 50 && progress < 75 && "Initializing smart solutions..."}
-          {progress >= 75 && progress < 100 && "Preparing your experience..."}
-          {progress >= 100 && "Ready to automate!"}
+          {loadingStage === 0 && "Initializing EPIC Automations..."}
+          {loadingStage === 1 && "Loading robotics & automation resources..."}
+          {loadingStage === 2 && "Preparing interactive components..."}
+          {loadingStage === 3 && "Finalizing your experience..."}
+          {progress >= 100 && "Ready to automate! 🚀"}
         </div>
       </div>
 
