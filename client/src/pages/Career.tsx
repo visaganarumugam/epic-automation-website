@@ -1,8 +1,8 @@
 import { AnimatedSection, FadeUpSection } from '../components/AnimatedSection';
 import Slider from 'react-infinite-logo-slider';
-import { submitServiceEnquiry } from '../lib/firebase';
-import { useState } from 'react';
-import { IconAnchor, IconSchool, IconWorld, IconBriefcase , IconArrowUpRight , IconMail , IconPhone , IconMapPin } from '@tabler/icons-react';
+import { submitServiceEnquiryWithFile } from '../lib/firebase';
+import { useState, useRef } from 'react';
+import { IconAnchor, IconSchool, IconWorld, IconBriefcase , IconArrowUpRight , IconMail , IconPhone , IconMapPin, IconUpload, IconFile, IconX, IconMessage } from '@tabler/icons-react';
 import confetti from 'canvas-confetti';
 
 
@@ -215,6 +215,39 @@ export default function Career() {
   const [enquiryStatus, setEnquiryStatus] = useState<'idle'|'loading'|'success'|'error'>('idle');
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [showAlert, setShowAlert] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      // Validate file type
+      const allowedTypes = ['.pdf', '.doc', '.docx'];
+      const fileExtension = '.' + file.name.split('.').pop()?.toLowerCase();
+      
+      if (!allowedTypes.includes(fileExtension)) {
+        setErrorMsg('Please select a valid file type (PDF, DOC, or DOCX)');
+        return;
+      }
+
+      // Validate file size (5MB limit)
+      if (file.size > 5 * 1024 * 1024) {
+        setErrorMsg('File size must be less than 5MB');
+        return;
+      }
+
+      setSelectedFile(file);
+      setErrorMsg(null);
+    }
+  };
+
+  const removeFile = () => {
+    setSelectedFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
 
   const handleEnquirySubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -227,20 +260,55 @@ export default function Career() {
       country: String(fd.get('country') || '').trim(),
       state: String(fd.get('state') || '').trim(),
       course: String(fd.get('course') || '').trim(),
+      courseTitle: String(fd.get('courseTitle') || '').trim(),
       message: String(fd.get('message') || '').trim(),
-      source: 'services-enquiry',
-    } as any;
+      source: 'career-enquiry',
+    };
+
+
 
     setEnquiryStatus('loading');
     setErrorMsg(null);
+    setUploadProgress(0);
+
     try {
-      const res = await submitServiceEnquiry(payload as any);
+      let progressInterval: NodeJS.Timeout | null = null;
+      
+      // Simulate upload progress only if there's a file
+      if (selectedFile) {
+        progressInterval = setInterval(() => {
+          setUploadProgress(prev => {
+            if (prev >= 90) {
+              return 90;
+            }
+            return prev + 10;
+          });
+        }, 200);
+      }
+
+      const res = await submitServiceEnquiryWithFile(payload, selectedFile || undefined);
+      
+      // Clear interval and set to 100%
+      if (progressInterval) {
+        clearInterval(progressInterval);
+      }
+      setUploadProgress(100);
+      
+      // Wait a moment for the 100% to show, then reset
+      setTimeout(() => {
+        setUploadProgress(0);
+      }, 1000);
+
       if (res.error) {
         setEnquiryStatus('error');
         setErrorMsg(res.error);
       } else {
         setEnquiryStatus('success');
         form.reset();
+        setSelectedFile(null);
+        if (fileInputRef.current) {
+          fileInputRef.current.value = '';
+        }
         
         // Show success alert
         setShowAlert(true);
@@ -279,7 +347,7 @@ export default function Career() {
       setEnquiryStatus('error');
       setErrorMsg(e?.message || 'Submission failed');
     } finally {
-      setTimeout(()=>setEnquiryStatus('idle'), 5000);
+      setEnquiryStatus('idle');
     }
   };
 
@@ -885,22 +953,115 @@ export default function Career() {
                   <label className="block text-black font-semibold mb-2">Course</label>
                   <select name="course" required className="w-full bg-white/25 backdrop-blur-2xl text-black border-2 border-white/35 shadow rounded-md px-4 py-2 focus:outline-none focus:border-orange-500">
                     <option value="">Select a course</option>
-                    <option>Robotics & Automation</option>
-                    <option>Special Purpose Machine (SPM)</option>
-                    <option>SCADA</option>
-                    <option>Custom Panel Design & Manufacturing</option>
-                    <option>Robot Programming Services</option>
-                    <option>PLC & HMI Programming Services</option>
-                  
+                    <option value="Robotics & Automation">Robotics & Automation</option>
+                    <option value="Special Purpose Machine (SPM)">Special Purpose Machine (SPM)</option>
+                    <option value="Scada">SCADA</option>
+                    <option value="Custom Panel Design & Manufacturing">Custom Panel Design & Manufacturing</option>
+                    <option value="Robot Programming Services">Robot Programming Services</option>
+                    <option value="PLC & HMI Programming Services">PLC & HMI Programming Services</option>
+                    <option value="HMI & PLC Programming">HMI & PLC Programming</option>
+                    <option value="Robotics & Industrial Automation">Robotics & Industrial Automation</option>
                   </select>
                 </div>
+
+                <div className="col-span-1">
+                  <label className="block text-black font-semibold mb-2">Course Title</label>
+                  <select name="courseTitle" required className="w-full bg-white/25 backdrop-blur-2xl text-black border-2 border-white/35 shadow rounded-md px-4 py-2 focus:outline-none focus:border-orange-500">
+                    <option value="">Select a course title</option>
+                    <option value="HMI & PLC Programming">HMI & PLC Programming</option>
+                    <option value="Robotics & Industrial Automation">Robotics & Industrial Automation</option>
+                    <option value="Designing Simulation">Designing Simulation</option>
+                    <option value="SCADA">SCADA</option>
+                  </select>
+                </div>
+
+                {/* File Upload Field */}
                 <div className="col-span-1 sm:col-span-2">
-                  <label className="block text-black font-semibold mb-2">Message</label>
-                  <textarea name="message" rows={7} className="w-full bg-white/25 backdrop-blur-2xl text-black placeholder-black/60 border-2 border-white/35 rounded-md px-4 py-2 focus:outline-none focus:border-orange-500" placeholder="Tell us about yourself"></textarea>
+                  <label className=" text-black font-semibold mb-2 flex items-center gap-2">
+                    <IconFile size={16} />
+                    Resume/Document (Optional)
+                  </label>
+                  <div className="relative">
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      accept=".pdf,.doc,.docx"
+                      onChange={handleFileChange}
+                      className="hidden"
+                    />
+                    <div className="border-2 border-dashed border-black/80 rounded-md p-4 text-center hover:border-orange-500 transition-colors cursor-pointer"
+                         onClick={() => fileInputRef.current?.click()}>
+                      {selectedFile ? (
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <IconFile size={20} className="text-orange-500" />
+                            <span className="text-black font-medium">{selectedFile.name}</span>
+                                                 <span className="text-gray-500 text-sm">
+                       ({(selectedFile.size / (1024 * 1024)).toFixed(2)} MB)
+                     </span>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              removeFile();
+                            }}
+                            className="text-red-500 hover:text-red-700"
+                          >
+                            <IconX size={16} />
+                          </button>
+                        </div>
+                      ) : (
+                        <div className="flex flex-col items-center gap-2">
+                          <IconUpload size={24} className="text-orange-500" />
+                          <span className="text-black">Click to upload or drag and drop</span>
+                          <span className="text-gray-500 text-sm">PDF, DOC, DOCX (max 5MB)</span>
+
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Upload Progress */}
+                {enquiryStatus === 'loading' && selectedFile && uploadProgress > 0 && (
+                  <div className="col-span-1 sm:col-span-2">
+                    <div className="bg-blue-50 border border-blue-200 rounded-md p-3">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-blue-700 text-sm font-medium">
+                          {uploadProgress < 100 ? 'Uploading...' : 'Upload Complete!'}
+                        </span>
+                        <span className="text-blue-700 text-sm">{uploadProgress}%</span>
+                      </div>
+                      <div className="w-full bg-blue-200 rounded-full h-2">
+                        <div 
+                          className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                          style={{ width: `${uploadProgress}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <div className="col-span-1 sm:col-span-2">
+                  <label className=" text-black font-semibold mb-2 flex items-center gap-2">
+                    <IconMessage size={16} />
+                    Message
+                  </label>
+                  <textarea name="message" rows={7} className="w-full bg-white/25 backdrop-blur-2xl text-black placeholder-black/60 border-2 border-white/35 rounded-md px-4 py-2 focus:outline-none focus:border-orange-500" placeholder="Tell us about yourself and your experience"></textarea>
                 </div>
                 <div className="w-[70vw] sm:w-[205%] flex justify-center">
-                  <button type="submit" className="bg-[#ff4f0f] hover:bg-[#e65a08] text-xl text-white font-semibold px-6 py-3 w-[100vw] rounded-md transition-colors">
-                    {enquiryStatus === 'loading' ? 'Applying...' : enquiryStatus === 'success' ? 'Applied!' : 'Apply Now'}
+                  <button type="submit" disabled={enquiryStatus === 'loading'} className="bg-[#ff4f0f] hover:bg-[#e65a08] disabled:bg-gray-400 text-xl text-white font-semibold px-6 py-3 w-[100vw] rounded-md transition-colors disabled:cursor-not-allowed flex items-center gap-2">
+                    {enquiryStatus === 'loading' ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        {selectedFile ? 'Uploading & Applying...' : 'Applying...'}
+                      </>
+                    ) : enquiryStatus === 'success' ? (
+                      'Applied Successfully!'
+                    ) : (
+                      'Apply Now'
+                    )}
                   </button>
                 </div>
               </form>

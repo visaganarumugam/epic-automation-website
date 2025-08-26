@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, collection, addDoc, serverTimestamp, query, orderBy, limit, getDocs } from "firebase/firestore";
+// import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import type { User } from "firebase/auth";
 
 // Debug: Check if environment variables are loaded
@@ -34,6 +35,7 @@ if (typeof window !== "undefined") {
 }
 const auth = getAuth(app);
 const db = getFirestore(app);
+// const storage = getStorage(app);
 const googleProvider = new GoogleAuthProvider();
 
 // Contact form interface
@@ -58,8 +60,11 @@ export interface EnquiryFormData {
   country: string;
   state: string;
   course: string;
+  courseTitle?: string;
   timestamp?: any;
   source?: string;
+  fileUrl?: string; // URL of uploaded file
+  fileName?: string; // Original filename
 }
 
 // Authentication functions
@@ -164,6 +169,67 @@ export const getRecentServiceEnquiries = async (limitCount: number = 10) => {
     return { enquiries, error: null };
   } catch (error: any) {
     return { enquiries: [], error: error.message };
+  }
+};
+
+// File upload function using Cloudinary
+export const uploadFile = async (file: File): Promise<{ url: string; error: string | null }> => {
+  try {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', 'enquiry-uploads');
+    formData.append('cloud_name', 'df2x2nu9p');
+    formData.append('folder', 'enquiry-files');
+
+    const response = await fetch(`https://api.cloudinary.com/v1_1/df2x2nu9p/auto/upload`, {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error(`Upload failed: ${response.statusText}`);
+    }
+
+    const result = await response.json();
+    return { url: result.secure_url, error: null };
+  } catch (error: any) {
+    console.error('Cloudinary upload error:', error);
+    return { url: '', error: error.message };
+  }
+};
+
+// Enhanced service enquiry submission with file upload
+export const submitServiceEnquiryWithFile = async (formData: EnquiryFormData, file?: File) => {
+  try {
+    let fileUrl = '';
+    let fileName = '';
+
+    // Upload file if provided (no authentication required)
+    if (file) {
+      const uploadResult = await uploadFile(file);
+      
+      if (uploadResult.error) {
+        return { id: null, error: `File upload failed: ${uploadResult.error}` };
+      }
+      fileUrl = uploadResult.url;
+      fileName = file.name;
+    }
+
+    // Save enquiry data with file information
+    const enquiryData = {
+      ...formData,
+      fileUrl,
+      fileName,
+      timestamp: serverTimestamp(),
+      createdAt: new Date().toISOString(),
+      userId: auth.currentUser?.uid || null,
+    };
+
+    const docRef = await addDoc(collection(db, "serviceEnquiries"), enquiryData);
+    
+    return { id: docRef.id, error: null };
+  } catch (error: any) {
+    return { id: null, error: error.message };
   }
 };
 

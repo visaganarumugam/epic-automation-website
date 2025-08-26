@@ -12,6 +12,59 @@ export default function NavigationLoadingScreen({ onLoadingComplete, minLoadTime
   useEffect(() => {
     const startTime = Date.now();
     
+    // Preload page-specific resources
+    const preloadPageResources = async () => {
+      try {
+        // Get current path to preload relevant resources
+        const currentPath = window.location.pathname;
+        
+        // Preload page-specific images based on route
+        let pageImages: string[] = [];
+        
+        if (currentPath === '/services') {
+          pageImages = [
+            '/images/navdropimages/MachineTending.png',
+            '/images/navdropimages/Palletizing.png',
+            '/images/navdropimages/deburring.png',
+            '/images/navdropimages/CNC_Automation.jpg',
+            '/images/Packing_Machine.jpg',
+            '/images/Automation-Control-Panels.jpg',
+            '/images/products.jpg',
+            '/images/Robot_Programming.jpg',
+            '/images/plc_and_hmi.jpg'
+          ];
+        } else if (currentPath === '/about') {
+          pageImages = [
+            '/images/herosecImages/epicbghero1.png',
+            '/images/desigfgn.jpg'
+          ];
+        } else if (currentPath === '/career') {
+          pageImages = [
+            '/images/herosecImages/epicbghero1.png'
+          ];
+        }
+
+        // Preload images in parallel
+        const imagePromises = pageImages.map(src => {
+          return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = resolve;
+            img.onerror = reject;
+            img.src = src;
+          });
+        });
+
+        // Wait for all images to load
+        await Promise.allSettled(imagePromises);
+        
+      } catch (error) {
+        console.log('Some page resources failed to preload, continuing...');
+      }
+    };
+
+    // Start preloading
+    preloadPageResources();
+    
     // Faster progress for navigation
     const progressInterval = setInterval(() => {
       setProgress(prev => {

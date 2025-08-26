@@ -75,7 +75,6 @@ function AppContent() {
             <Route path="/contact-us" element={<HelpCenter /> } />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-            
           </Routes>
           {!hideNavAndFooter && <Footer />}
           <NewsletterManager />
