@@ -11,14 +11,14 @@ export interface OptimizedAnimationConfig {
   duration?: number;
   delay?: number;
   ease?: string;
-  margin?: string | number;
+  margin?: string;
 }
 
 export const useOptimizedScrollAnimation = (config: OptimizedAnimationConfig = {}) => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,
-    margin: config.margin || "-10%",
+    margin: (config.margin as any) || "-10%",
   });
 
   const defaultConfig: Required<OptimizedAnimationConfig> = {

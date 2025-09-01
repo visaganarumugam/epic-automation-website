@@ -111,7 +111,6 @@ function ChartTooltipContent({
   indicator = "dot",
   hideLabel = false,
   hideIndicator = false,
-  label,
   labelFormatter,
   labelClassName,
   formatter,
@@ -136,10 +135,7 @@ function ChartTooltipContent({
     const [item] = payload;
     const key = `${labelKey || item?.dataKey || item?.name || "value"}`;
     const itemConfig = getPayloadConfigFromPayload(config, item, key);
-    const value =
-      !labelKey && typeof label === "string"
-        ? config[label as keyof typeof config]?.label || label
-        : itemConfig?.label;
+    const value = itemConfig?.label;
 
     if (labelFormatter) {
       return (
@@ -155,7 +151,6 @@ function ChartTooltipContent({
 
     return <div className={cn("font-medium", labelClassName)}>{value}</div>;
   }, [
-    label,
     labelFormatter,
     payload,
     hideLabel,
