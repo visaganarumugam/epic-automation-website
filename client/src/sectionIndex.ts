@@ -23,12 +23,22 @@ export const sectionIndex = [
 
   // Services
   { id: "services", label: "Services", keywords: ["services", "automation", "robotics", "solutions", "offerings", "what we offer"], page: "/services" },
+  
+  // Individual Service Cards
+  { id: "machine-tending", label: "Machine Tending", keywords: ["machine tending", "autonomous", "computer vision", "adaptive gripping", "loading", "unloading", "production machines", "robots", "24/7 operation", "99.9% accuracy"], page: "/services" },
+  { id: "palletizing", label: "Palletizing", keywords: ["palletizing", "robotic palletizing", "ml patterns", "stacking", "multi-sku", "auto-sizing", "1000/hr", "500+ patterns", "60kg weight"], page: "/services" },
+  { id: "deburring", label: "Deburring", keywords: ["deburring", "precision deburring", "force feedback", "3d scanning", "surface finish", "±0.05mm precision", "0-50N force", "Ra 0.1 finish"], page: "/services" },
+  { id: "cnc-automation", label: "CNC Automation", keywords: ["cnc automation", "computer numerical control", "smart iot panels", "diagnostics", "monitoring", "maintenance", "ul certified", "ip65 rating"], page: "/services" },
+  { id: "packaging-machine", label: "Packaging Machine", keywords: ["packaging machine", "end-to-end automation", "digital twin", "ai planning", "simulation", "complete integration", "40% efficiency"], page: "/services" },
+  { id: "scada", label: "SCADA Systems", keywords: ["scada", "supervisory control", "data acquisition", "monitoring", "control systems", "industrial software", "real-time monitoring"], page: "/services" },
+  { id: "hmi-solutions", label: "HMI Solutions", keywords: ["hmi", "human machine interface", "touch-screen", "intuitive interface", "operators", "industrial automation", "visual interface"], page: "/services" },
+  { id: "custom-panel-design-and-manufacturing", label: "Custom Panel Design & Manufacturing", keywords: ["custom panel", "design", "manufacturing", "control panels", "electrical panels", "hmi panels", "relay-based", "plc/scada integrated"], page: "/services" },
+  { id: "robot-programming", label: "Robot Programming", keywords: ["robot programming", "code", "services", "automation programming", "robot software", "industrial programming", "instructions", "brain behind automation"], page: "/services" },
+  { id: "plc-hmi-programming", label: "PLC & HMI Programming", keywords: ["plc", "hmi", "programming", "programmable logic controller", "human machine interface", "industrial programming", "logic control", "visual interface"], page: "/services" },
+  
+  // Service Categories (for backward compatibility)
   { id: "robotics-automation", label: "Robotics & Automation", keywords: ["robotics", "automation", "robots", "automated systems", "machine tending", "palletizing", "deburring", "industrial automation"], page: "/services" },
   { id: "spm", label: "Special Purpose Machine (SPM)", keywords: ["spm", "special purpose machine", "custom machines", "cnc automation", "packaging machine", "manufacturing", "production"], page: "/services" },
-  { id: "scada", label: "SCADA", keywords: ["scada", "supervisory control", "data acquisition", "monitoring", "control systems", "industrial software"], page: "/services" },
-  { id: "custom-panel-design", label: "Custom Panel Design", keywords: ["custom panel", "design", "manufacturing", "control panels", "electrical panels", "hmi panels"], page: "/services" },
-  { id: "robot-programming", label: "Robot Programming Services", keywords: ["robot programming", "code", "services", "automation programming", "robot software", "industrial programming"], page: "/services" },
-  { id: "plc-hmi", label: "PLC & HMI Programming", keywords: ["plc", "hmi", "programming", "programmable logic controller", "human machine interface", "industrial programming"], page: "/services" },
   { id: "services-contact", label: "Contact (Services)", keywords: ["contact", "services", "get quote", "inquiry", "consultation"], page: "/services" },
 
   // Design

@@ -445,7 +445,7 @@ export default function Career() {
             </div>
             </AnimatedSection>
             {/* Three audience panels */}
-            <AnimatedSection customAnimation={{ y: 50, opacity: 0, duration: 1, stagger: 0.1 }}>
+            
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
               <div className="rounded-xl border border-emerald-200 bg-emerald-100 p-10">
                 <div className="text-black font-bold text-lg mb-1">Students and Professionals</div>
@@ -469,7 +469,7 @@ export default function Career() {
                 </p>
               </div>
                 </div> 
-            </AnimatedSection>
+            
             {/* Trending courses buttons */}
             <AnimatedSection customAnimation={{ y: 50, opacity: 0, duration: 1, stagger: 0.1 }}>
             <div className="mb-10">

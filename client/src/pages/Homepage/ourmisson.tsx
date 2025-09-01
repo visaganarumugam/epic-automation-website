@@ -68,12 +68,12 @@ export default function OurMisson() {
         {/* Main Title */}
         <FadeUpSection className="w-full flex flex-col items-center mb-8 sm:mb-16 md:mb-20 px-4 sm:px-6 md:px-0">
           <AnimatedSection
-            customAnimation={{ y: 50, opacity: 0, duration: 1, delay: 0.2 }}
+            customAnimation={{ y: 20, opacity: 0, duration: 0.4, delay: 0.1 }}
           >
             <h1 className="text-4xl lg:text-7xl font-bold text-center text-black leading-tighter" style={{fontFamily: 'Gilroy, sans-serif'}}>Our Mission. Our Vision. Our Drive.</h1>
           </AnimatedSection>
           <AnimatedSection
-            customAnimation={{ y: 30, opacity: 0, duration: 0.8, delay: 0.4 }}
+            customAnimation={{ y: 15, opacity: 0, duration: 0.3, delay: 0.2 }}
           >
             <p className="text-black font-semibold text-base md:text-lg lg:text-3xl text-center max-w-6xl mt-3 sm:mt-4 md:mt-5">
           We aim to revolutionize automation with smart robotics, driving innovation, efficiency, and progress for a better, connected future.
@@ -83,7 +83,7 @@ export default function OurMisson() {
         {/* Main Content Row - Custom Grid Layout */}
         <AnimatedSection 
           className="w-full max-w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8 md:mb-10 px-4 sm:px-6 md:px-0"
-          customAnimation={{ y: 50, opacity: 0, duration: 1, delay: 0.6 }}
+          customAnimation={{ y: 30, opacity: 0, duration: 0.5, delay: 0.3 }}
         >
           {/* Left Section */}
           <div className="flex flex-col gap-4 sm:gap-6 md:gap-8">
