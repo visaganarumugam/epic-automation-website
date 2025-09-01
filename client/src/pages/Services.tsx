@@ -166,7 +166,7 @@ const standardServices = [
     id: 2,
     icon: Layers,
     title: "Palletizing",
-    subtitle: "AI-driven pallet stacking and handling",
+    subtitle: "AI-driven robotic pallet stacking and efficient material handling.",
     description: "Robotic palletizing using machine learning for efficient stacking.",
     longDescription: "Palletizing is the process of arranging products into a pallet, often using robots. This involves stacking, wrapping, and securing items to create a stable, reusable platform for transportation.",
     keyBenefit: "Triple stacking speed vs. manual",
@@ -180,7 +180,7 @@ const standardServices = [
     id: 3,
     icon: Settings,
     title: "Deburring",
-    subtitle: "Robotic surface finishing with precision",
+    subtitle: "Robotic surface finishing process delivering consistent, high precision.",
     description: "Robotic deburring with force feedback for consistent finishing.",
     longDescription: "Deburring is the process of removing small imperfections, known as burrs, from the surface edges of metal, plastic, or other materials after machining, drilling, milling, cutting, or stamping operations.",
     keyBenefit: "Consistent finishing quality",
@@ -350,7 +350,7 @@ export default function Services() {
           </div>
         </FadeUpSection>
         <motion.h3 
-          className="bg-gradient-to-bl mt-10 mb-15 from-orange-600 via-black to-orange-600 bg-clip-text text-transparent text-4xl md:text-7xl font-bold"
+          className="bg-gradient-to-bl mt-8 sm:mt-10 mb-8 sm:mb-15 from-orange-600 via-black to-orange-600 bg-clip-text text-transparent text-3xl sm:text-4xl md:text-7xl font-bold px-4 text-center"
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.1 }}
@@ -359,7 +359,7 @@ export default function Services() {
           Our Services
         </motion.h3>
         {/* Revolutionary Holographic Service Cards */}
-        <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-full mx-25 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 lg:gap-12 max-w-full mx-4 sm:mx-8 lg:mx-25 mb-8 sm:mb-16">
           {standardServices.map((service, index) => {
             const IconComponent = service.icon;
             const isHovered = hoveredCard === service.id;
@@ -386,8 +386,8 @@ export default function Services() {
                   {/* Main Card */}
                   <div 
                     className={`
-                      relative bg-white
-                      backdrop-blur-xl border-2 border-[#1A1A1A]/10 rounded-2xl overflow-hidden
+                      relative bg-white h-[600px] sm:h-[700px] lg:h-[800px] flex flex-col
+                      backdrop-blur-xl border-2 border-[#1A1A1A]/10 rounded-xl sm:rounded-2xl overflow-hidden
                       transition-all duration-500 group-hover:border-[#E85A2B]/40 shadow-xl shadow-[#1A1A1A]/30
                       ${isHovered ? 'transform scale-105 rotate-1 shadow-2xl shadow-[#E85A2B]/20' : ''}
                     `}
@@ -398,7 +398,7 @@ export default function Services() {
                     // }}
                   >
                     {/* Top Section - Image & Icon */}
-                    <div className="relative h-68 overflow-hidden">
+                    <div className="relative h-48 sm:h-56 lg:h-68 overflow-hidden">
                       <ImageWithFallback
                         src={service.videoThumbnail}
                         alt={`${service.title} technology`}
@@ -406,53 +406,53 @@ export default function Services() {
                       />
                       {/* Holographic Icon */}
                       <motion.div
-                        className="absolute top-4 left-4 w-16 h-16"
+                        className="absolute top-2 sm:top-4 left-2 sm:left-4 w-12 h-12 sm:w-16 sm:h-16"
                         whileHover={{ scale: 1.2, rotateY: 180 }}
                         transition={{ duration: 0.6, ease: "backOut" }}
                       >
-                        <div className="w-full h-full bg-gradient-to-br from-[#E85A2B] via-[#2C5AA0] to-[#00D4FF] rounded-xl flex items-center justify-center shadow-2xl shadow-[#E85A2B]/30 border border-white/40">
-                          <IconComponent className="w-8 h-8 text-white" />
+                        <div className="w-full h-full bg-gradient-to-br from-[#E85A2B] via-[#2C5AA0] to-[#00D4FF] rounded-lg sm:rounded-xl flex items-center justify-center shadow-2xl shadow-[#E85A2B]/30 border border-white/40">
+                          <IconComponent className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                 </div>
                       </motion.div>
                       {/* Performance Metric Badge */}
-                      <div className="absolute top-4 right-4">
+                      <div className="absolute top-2 sm:top-4 right-2 sm:right-4">
                         <motion.div
-                          className="bg-white/80 backdrop-blur-md px-3 py-2 rounded-lg border border-green-500/30 shadow-lg"
+                          className="bg-white/80 backdrop-blur-md px-2 py-1 sm:px-3 sm:py-2 rounded-lg border border-green-500/30 shadow-lg"
                           initial={{ scale: 0 }}
                           whileInView={{ scale: 1 }}
                           transition={{ delay: index * 0.05 + 0.2 }}
                         >
-                          <div className="flex items-center space-x-2">
-                            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                          <div className="flex items-center space-x-1 sm:space-x-2">
+                            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full animate-pulse"></div>
                             <span className="text-green-600 text-xs font-bold">{service.keyBenefit}</span>
               </div>
                         </motion.div>
                 </div>
               </div>
                     {/* Content Section */}
-                    <div className="p-6 space-y-4">
+                    <div className="p-3 sm:p-4 lg:p-6 space-y-2 sm:space-y-3 lg:space-y-4 flex-1 flex flex-col">
                       {/* Title & Subtitle */}
-                      <div className="space-y-3">
-                        <h3 className="text-2xl font-bold text-[#1A1A1A] group-hover:text-gradient-holographic transition-all duration-300">
+                      <div className="space-y-2 sm:space-y-3">
+                        <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-[#1A1A1A] group-hover:text-gradient-holographic transition-all duration-300">
                           {service.title}
                         </h3>
-                        <p className="text-xl text-[#2C5AA0] font-semibold opacity-90">
+                        <p className="text-sm sm:text-lg lg:text-xl text-[#2C5AA0] font-semibold opacity-90">
                           {service.subtitle}
                         </p>
-                        <p className="text-md text-[#ff4f0f] font-semibold opacity-90">
+                        <p className="text-xs sm:text-sm lg:text-md text-[#ff4f0f] font-semibold opacity-90">
                           {service.description}
                         </p>
         </div>
                       {/* Key Benefit Highlight */}
-                      <div className="flex items-center justify-between p-3 bg-white/60 backdrop-blur-sm rounded-lg border border-[#1A1A1A]/10 shadow-sm">
-                        <div className="flex items-center space-x-2">
-                          <Target className="w-4 h-4 text-green-600" />
-                          <span className="text-[#1A1A1A]/90 font-bold text-lg">Key Benefit</span>
+                      <div className="flex items-center justify-between p-2 sm:p-3 bg-white/60 backdrop-blur-sm rounded-lg border border-[#1A1A1A]/10 shadow-sm">
+                        <div className="flex items-center space-x-1 sm:space-x-2">
+                          <Target className="w-3 h-3 sm:w-4 sm:h-4 text-green-600" />
+                          <span className="text-[#1A1A1A]/90 font-bold text-sm sm:text-lg">Key Benefit</span>
                 </div>
-                        <span className="text-green-600 font-bold text-lg">{service.keyBenefit}</span>
+                        <span className="text-green-600 font-bold text-sm sm:text-lg">{service.keyBenefit}</span>
               </div>
                       {/* Interactive Tabs */}
-                      <div className="space-y-3">
+                      <div className="space-y-2 sm:space-y-3 flex-1 flex flex-col">
                         <div className="flex space-x-1 bg-[#1A1A1A]/5 p-1 rounded-lg">
                           {[
                             { key: 'features', icon: CheckCircle, label: 'Features' },
@@ -463,15 +463,15 @@ export default function Services() {
                               key={key}
                               onClick={() => setActiveTabs(prev => ({ ...prev, [service.id]: key }))}
                               className={`
-                                flex-1 px-2 py-2 text-xs font-medium rounded transition-all duration-200 flex items-center justify-center space-x-1
+                                flex-1 px-1 sm:px-2 py-1.5 sm:py-2 text-xs font-medium rounded transition-all duration-200 flex items-center justify-center space-x-0.5 sm:space-x-1
                                 ${activeTabs[service.id] === key 
                                   ? 'bg-[#ff4f0f] text-white shadow-lg' 
                                   : 'text-[#1A1A1A]/70 hover:text-[#1A1A1A] hover:bg-[#1A1A1A]/10'
                                 }
                               `}
                             >
-                              <Icon className="w-3 h-3" />
-                              <span>{label}</span>
+                              <Icon className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+                              <span className="text-xs">{label}</span>
                             </button>
                           ))}
                         </div>
@@ -482,90 +482,96 @@ export default function Services() {
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.3 }}
-                          className="min-h-[80px] bg-white/40 backdrop-blur-sm rounded-lg p-3 border border-[#1A1A1A]/10"
+                          className="flex-1 bg-white/40 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-[#1A1A1A]/10 flex flex-col"
                         >
                           {activeTabs[service.id] === 'features' && (
-                            <div className="space-y-2">
-                              <h4 className="text-sm font-bold text-[#1A1A1A] mb-2 flex items-center">
-                                <CheckCircle className="w-3 h-3 text-green-600 mr-2" />
+                            <div className="space-y-2 flex-1 flex flex-col">
+                              <h4 className="text-xs sm:text-sm font-bold text-[#1A1A1A] mb-1 sm:mb-2 flex items-center">
+                                <CheckCircle className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-green-600 mr-1 sm:mr-2" />
                                 Key Features
                               </h4>
-                              {service.features.map((feature, idx) => (
-                                <motion.div 
-                                  key={idx} 
-                                  initial={{ opacity: 0, x: -10 }}
-                                  animate={{ opacity: 1, x: 0 }}
-                                  transition={{ delay: idx * 0.1 }}
-                                  className="flex items-center space-x-2"
-                                >
-                                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full flex-shrink-0" />
-                                  <span className="text-xs text-[#1A1A1A]/80">{feature}</span>
-                                </motion.div>
-                              ))}
+                              <div className="flex-1 space-y-1.5 sm:space-y-2">
+                                {service.features.map((feature, idx) => (
+                                  <motion.div 
+                                    key={idx} 
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: idx * 0.1 }}
+                                    className="flex items-center space-x-1.5 sm:space-x-2"
+                                  >
+                                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-green-500 rounded-full flex-shrink-0" />
+                                    <span className="text-xs text-[#1A1A1A]/80">{feature}</span>
+                                  </motion.div>
+                                ))}
+                              </div>
                             </div>
                           )}
                           
                           {activeTabs[service.id] === 'specs' && (
-                            <div className="space-y-2">
-                              <h4 className="text-sm font-bold text-[#1A1A1A] mb-2 flex items-center">
-                                <Settings className="w-3 h-3 text-[#ff4f0f] mr-2" />
+                            <div className="space-y-2 flex-1 flex flex-col">
+                              <h4 className="text-xs sm:text-sm font-bold text-[#1A1A1A] mb-1 sm:mb-2 flex items-center">
+                                <Settings className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#ff4f0f] mr-1 sm:mr-2" />
                                 Technical Specifications
                               </h4>
-                              {Object.entries(service.specs).map(([key, value], idx) => (
-                                <motion.div 
-                                  key={idx} 
-                                  initial={{ opacity: 0, x: -10 }}
-                                  animate={{ opacity: 1, x: 0 }}
-                                  transition={{ delay: idx * 0.1 }}
-                                  className="flex justify-between items-center p-1 bg-white/20 rounded"
-                                >
-                                  <span className="text-xs text-[#1A1A1A]/70 font-medium">{key}:</span>
-                                  <span className="text-xs text-[#ff4f0f] font-bold">{value}</span>
-                                </motion.div>
-                              ))}
+                              <div className="flex-1 space-y-1.5 sm:space-y-2">
+                                {Object.entries(service.specs).map(([key, value], idx) => (
+                                  <motion.div 
+                                    key={idx} 
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: idx * 0.1 }}
+                                    className="flex justify-between items-center p-1 bg-white/20 rounded text-xs"
+                                  >
+                                    <span className="text-xs text-[#1A1A1A]/70 font-medium">{key}:</span>
+                                    <span className="text-xs text-[#ff4f0f] font-bold">{value}</span>
+                                  </motion.div>
+                                ))}
+                              </div>
                             </div>
                           )}
                           
                           {activeTabs[service.id] === 'roi' && (
-                            <div className="space-y-2">
-                              <h4 className="text-sm font-bold text-[#1A1A1A] mb-2 flex items-center">
-                                <Target className="w-3 h-3 text-green-600 mr-2" />
+                            <div className="space-y-2 flex-1 flex flex-col">
+                              <h4 className="text-xs sm:text-sm font-bold text-[#1A1A1A] mb-1 sm:mb-2 flex items-center">
+                                <Target className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-green-600 mr-1 sm:mr-2" />
                                 Return on Investment
                               </h4>
-                              {Object.entries(service.roi).map(([key, value], idx) => (
-                                <motion.div 
-                                  key={idx} 
-                                  initial={{ opacity: 0, x: -10 }}
-                                  animate={{ opacity: 1, x: 0 }}
-                                  transition={{ delay: idx * 0.1 }}
-                                  className="flex justify-between items-center p-1 bg-green-50/50 rounded border border-green-200/30"
-                                >
-                                  <span className="text-xs text-[#1A1A1A]/70 font-medium">{key}:</span>
-                                  <span className="text-xs text-green-600 font-bold">{value}</span>
-                                </motion.div>
-                              ))}
+                              <div className="flex-1 space-y-1.5 sm:space-y-2">
+                                {Object.entries(service.roi).map(([key, value], idx) => (
+                                  <motion.div 
+                                    key={idx} 
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: idx * 0.1 }}
+                                    className="flex justify-between items-center p-1 bg-green-50/50 rounded border border-green-200/30 text-xs"
+                                  >
+                                    <span className="text-xs text-[#1A1A1A]/70 font-medium">{key}:</span>
+                                    <span className="text-xs text-green-600 font-bold">{value}</span>
+                                  </motion.div>
+                                ))}
+                              </div>
                             </div>
                           )}
                           
                           {!activeTabs[service.id] && (
-                            <div className="flex items-center justify-center h-full">
-                              <span className="text-xs text-[#1A1A1A]/50">Select a tab to view details</span>
+                            <div className="flex-1 flex items-center justify-center">
+                              <span className="text-xs text-[#1A1A1A]/50 text-center px-2">Select a tab to view details</span>
                             </div>
                           )}
                         </motion.div>
                       </div>
                       {/* Action Buttons */}
-                      <div className="flex space-x-2 pt-2 relative z-30">
+                      <div className="flex space-x-2 pt-2 relative z-30 mt-auto">
                         <Button 
                           variant="outline" 
-                          className="flex-1  py-5 font-semibold text-lg hover:text-black bg-black hover:bg-white text-white hover:border-[#E85A2B] transition-all duration-300 relative z-40"
+                          className="flex-1 py-3 sm:py-4 lg:py-5 font-semibold text-sm sm:text-base lg:text-lg hover:text-black bg-black hover:bg-white text-white hover:border-[#E85A2B] transition-all duration-300 relative z-40"
                           size="sm"
                           onClick={() => {
                             console.log('View Details button clicked for service:', service.title);
                             setSelectedService(service);
                           }}
                         >
-                          <Eye className="mr-2 w-3 h-3" />
+                          <Eye className="mr-1.5 sm:mr-2 w-2.5 h-2.5 sm:w-3 sm:h-3" />
                           Know More 
                         </Button>
                       </div>
