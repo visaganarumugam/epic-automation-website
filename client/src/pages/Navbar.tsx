@@ -240,7 +240,7 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
 
   // Helper function to get appropriate icon for search suggestions
   const getSearchIcon = (section: any) => {
-    const { page, id, label } = section;
+    const { page, id } = section;
     
     // Service cards
     if (page === '/services' && id !== 'services' && id !== 'services-contact') {

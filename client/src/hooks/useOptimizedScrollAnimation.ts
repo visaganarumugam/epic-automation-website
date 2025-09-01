@@ -11,7 +11,7 @@ export interface OptimizedAnimationConfig {
   duration?: number;
   delay?: number;
   ease?: string;
-  margin?: string;
+  margin?: string | number;
 }
 
 export const useOptimizedScrollAnimation = (config: OptimizedAnimationConfig = {}) => {
