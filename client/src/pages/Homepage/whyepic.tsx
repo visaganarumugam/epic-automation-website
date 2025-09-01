@@ -110,11 +110,11 @@ export default function WhyEpic() {
         {/* Left Column */}
         <AnimatedSection 
           className="flex flex-col items-center md:items-start w-full md:w-1/3 gap-2 sm:gap-12 md:gap-50 md:mb-0"
-          customAnimation={{ y: 30, opacity: 0, duration: 0.8, delay: 0.1 }}
+          customAnimation={{ y: 20, opacity: 0, duration: 0.4, delay: 0.05 }}
         >
           <span className="text-[#333333] text-3xl md:text-4xl tracking-tight font-bold mb-2 text-center md:text-left">Why Epic Automations!</span>
           <AnimatedSection 
-            customAnimation={{ y: 30, opacity: 0, duration: 0.8, delay: 0.2 }}
+            customAnimation={{ y: 15, opacity: 0, duration: 0.3, delay: 0.1 }}
           >
             <button className="border border-[#222] rounded-full text-base sm:text-base md:text-lg font-semibold flex items-center hover:bg-[#f5f5f5] transition">
               <InteractiveHoverButton>About Epic Automations</InteractiveHoverButton>
@@ -124,7 +124,7 @@ export default function WhyEpic() {
         {/* Right Column */}
         <AnimatedSection 
           className="flex flex-col w-full md:w-2/3 gap-6 sm:gap-8 items-center md:items-start justify-center mt-8 sm:mt-12 md:mt-0"
-          customAnimation={{ y: 30, opacity: 0, duration: 0.8, delay: 0.3 }}
+          customAnimation={{ y: 20, opacity: 0, duration: 0.4, delay: 0.15 }}
         >
           <h2 className="text-3xl sm:text-2xl md:text-3xl text-center lg:text-6xl font-bold text-[#18181a] leading-tight mb-4 sm:mb-6 sm:text-center md:text-left">
             From precision automation to remote system monitoring to{' '}
@@ -148,7 +148,7 @@ export default function WhyEpic() {
       <AnimatedSection 
         id="stats-grid"
         className="w-full px-4 sm:px-6 md:px-10 mt-12 sm:mt-16 md:mt-22 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
-        customAnimation={{ y: 50, opacity: 0, duration: 1, stagger: 0.1 }}
+        customAnimation={{ y: 30, opacity: 0, duration: 0.5, stagger: 0.05 }}
       >
         {stats.map((stat) => (
           <div key={stat.title} data-animate-child className={`group bg-white/50 backdrop-blur-[15px] shadow-2xl rounded-xl flex flex-col items-center justify-between px-4 sm:px-6 md:px-8 py-6 sm:py-8 min-h-[180px] sm:min-h-[200px] md:min-h-[220px] transition-all duration-300 hover:scale-105 ${stat.hoverBorder} ${stat.hoverCardShadow}`}>

@@ -9,7 +9,7 @@ import OurMission from './ourmisson'
 
 const Homepage = () => {
   return (
-    <div className='overflow-hidden bg-white'>
+    <div className='overflow-hidden '>
       <HeroSection />
       <WhyEpic />
       <OurMission />

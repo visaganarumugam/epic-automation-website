@@ -95,6 +95,100 @@ body, html, #root {
   z-index: 40;
 }
 
+/* Optimized Scroll Animations */
+@keyframes optimizedFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes optimizedFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes optimizedScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes optimizedSlideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes optimizedSlideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animation Classes */
+.animate-optimized-fade-up {
+  animation: optimizedFadeUp 0.4s ease-out forwards;
+}
+
+.animate-optimized-fade-in {
+  animation: optimizedFadeIn 0.3s ease-out forwards;
+}
+
+.animate-optimized-scale-in {
+  animation: optimizedScaleIn 0.4s ease-out forwards;
+}
+
+.animate-optimized-slide-left {
+  animation: optimizedSlideInLeft 0.4s ease-out forwards;
+}
+
+.animate-optimized-slide-right {
+  animation: optimizedSlideInRight 0.4s ease-out forwards;
+}
+
+/* Stagger Animation Delays */
+.animate-stagger-0 { animation-delay: 0s; }
+.animate-stagger-1 { animation-delay: 0.05s; }
+.animate-stagger-2 { animation-delay: 0.1s; }
+.animate-stagger-3 { animation-delay: 0.15s; }
+.animate-stagger-4 { animation-delay: 0.2s; }
+.animate-stagger-5 { animation-delay: 0.25s; }
+
+/* Performance Optimizations */
+.animate-will-change {
+  will-change: transform, opacity;
+}
+
+.animate-gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
 
 
 

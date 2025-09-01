@@ -47,23 +47,23 @@ const dropdownContent: DropdownContent = {
         items: [
           {
             title: "Machine Tending",
-            description: "Automate the Load, Elevate Performance",
-            image: "/images/navdropimages/MachineTending.png",
-            href: "/services#robotics-automation",
+            description: "Autonomous machine tending with computer vision and adaptive gripping",
+            image: "/images/palletizing_robot1.jpg",
+            href: "/services#machine-tending",
             isPromo: true,
           },
           {
             title: "Palletizing",
-            description: "Automated Palletizing Solutions",
-            image: "/images/navdropimages/Palletizing.png",
-            href: "/services#robotics-automation",
+            description: "High-speed robotic palletizing with ML-optimized patterns",
+            image: "/images/palletizing_robot1.jpg",
+            href: "/services#palletizing",
             isPromo: true,
           },
           {
             title: "Deburring",
-            description: "Precision Finishing for Peak Performance",
-            image: "/images/navdropimages/deburring.png",
-            href: "/services#robotics-automation",
+            description: "Precision robotic deburring with force feedback control",
+            image: "/images/deburring.jpg",
+            href: "/services#deburring",
             isPromo: true,
           },
         ],
@@ -72,36 +72,36 @@ const dropdownContent: DropdownContent = {
         name: "Special Purpose Machine (SPM)", 
         items: [
           {
-            title: "CNC Automations",
-            description: "Consistent, Reliable. CNC Done Right.",
-            image: "/images/navdropimages/CNC_Automation.jpg",
-            href: "/services#special-purpose-machine",
+            title: "CNC Automation",
+            description: "Smart IoT panels with diagnostics for monitoring and maintenance",
+            image: "/images/CNC.jpg",
+            href: "/services#cnc-automation",
             isPromo: true,
           },
           {
             title: "Packaging Machine",
-            description: "Consistent Packing, Every Single Time. Efficiency Engineered into Every Machine.",
+            description: "End-to-end automation with digital twin technology",
             image: "/images/Packing_Machine.jpg",
-            href: "/services#special-purpose-machine",
+            href: "/services#packaging-machine",
             isPromo: true,
           },
         ] 
       },
       { 
-        name: "SCADA", 
+        name: "SCADA & HMI", 
         items: [
            {
             title: "SCADA Systems",
-            description: "Advanced monitoring and control systems for industrial automation.",
-            image: "/images/products.jpg",
+            description: "Supervisory Control and Data Acquisition systems for industrial automation",
+            image: "/images/SCADA.jpg",
             href: "/services#scada",
             isPromo: true,
           },
           {
             title: "HMI Solutions",
-            description: "Human-Machine Interface solutions for seamless operation control.",
-            image: "/images/products.jpg",
-            href: "/services#scada",
+            description: "Human Machine Interface solutions with intuitive touch-screen interfaces",
+            image: "/images/hmisystem.webp",
+            href: "/services#hmi-solutions",
             isPromo: true,
           },
         ] 
@@ -110,9 +110,9 @@ const dropdownContent: DropdownContent = {
         name: "Custom Panel Design & Manufacturing", 
         items: [
           {
-            title: "Precision in Design, Power in Control. Panels Built to Perform, Engineered to Last.",
-            description: "Custom control panels designed for your specific automation needs.",
-            image: "/images/Automation-Control-Panels.jpg",
+            title: "Custom Panel Design and Manufacturing",
+            description: "From small relay-based enclosures to large PLC/SCADA-integrated panels",
+            image: "/images/custompanel.jpg",
             href: "/services#custom-panel-design",
             isPromo: true,
           },
@@ -122,9 +122,9 @@ const dropdownContent: DropdownContent = {
         name: "Robot Programming Services", 
         items: [
           {
-            title: "Turning Code into Capability. Robots That Work the Way You Want.",
-            description: "Expert robot programming for optimal performance and efficiency.",
-            image: "/images/Robot_Programming.jpg",
+            title: "Robot Programming",
+            description: "The Brain Behind Automation - creating instructions for industrial robots",
+            image: "/images/robot.jpg",
             href: "/services#robot-programming",
             isPromo: true,
           },
@@ -134,9 +134,9 @@ const dropdownContent: DropdownContent = {
         name: "PLC & HMI Programming Services", 
         items: [
           {
-            title: "From Logic to Touch – Total Control. We Program the Brains and the Face of Automation",
-            description: "Complete PLC and HMI programming solutions for industrial automation.",
-            image: "/images/plc_and_hmi.jpg",
+            title: "PLC and HMI Programming",
+            description: "PLC and HMI programming for industrial automation control and monitoring",
+            image: "/images/plchmi.jpg",
             href: "/services#plc-hmi-programming",
             isPromo: true,
           },
@@ -238,6 +238,35 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [searchOpen]);
 
+  // Helper function to get appropriate icon for search suggestions
+  const getSearchIcon = (section: any) => {
+    const { page, id } = section;
+    
+    // Service cards
+    if (page === '/services' && id !== 'services' && id !== 'services-contact') {
+      if (id.includes('machine-tending')) return '🤖';
+      if (id.includes('palletizing')) return '📦';
+      if (id.includes('deburring')) return '🔧';
+      if (id.includes('cnc')) return '⚙️';
+      if (id.includes('packaging')) return '📋';
+      if (id.includes('scada')) return '🖥️';
+      if (id.includes('hmi')) return '📱';
+      if (id.includes('panel')) return '🔌';
+      if (id.includes('robot-programming')) return '💻';
+      if (id.includes('plc')) return '🎛️';
+      return '🔧'; // Default for services
+    }
+    
+    // Page types
+    if (page === '/home') return '🏠';
+    if (page === '/about') return 'ℹ️';
+    if (page === '/career') return '💼';
+    if (page === '/help-center') return '❓';
+    if (page === '/services') return '🔧';
+    
+    return '📄'; // Default
+  };
+
   // Search bar: update suggestions as user types
   useEffect(() => {
     if (searchValue.trim() === '') {
@@ -278,15 +307,25 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
   const handleSearchGo = (section: any) => {
     if (!section) return;
     
-    // Navigate to the page first if not already there
+    // Check if this is a service card navigation
+    const isServiceCard = section.page === '/services' && section.id !== 'services' && section.id !== 'services-contact';
+    
     if (location.pathname !== section.page) {
-      navigate(section.page + '#' + section.id);
+      // Navigate to the page first
+      if (isServiceCard) {
+        // For service cards, store the target hash for the Services page to use
+        sessionStorage.setItem('scrollToService', section.id);
+        navigate(section.page);
+      } else {
+        // For other pages, use URL hash
+        navigate(section.page + '#' + section.id);
+      }
     } else {
-      // Already on page, just scroll to section
+      // Already on the page, scroll to section
       setTimeout(() => {
         const el = document.getElementById(section.id);
         if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
           // Add a subtle highlight effect
           el.style.transition = 'box-shadow 0.3s ease';
           el.style.boxShadow = '0 0 0 4px rgba(255, 153, 0, 0.3)';
@@ -348,25 +387,17 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
     if (location.pathname !== path) {
       // Navigate to the page first, then scroll to section after navigation
       navigate(path);
-      // Use a timeout to ensure navigation completes before scrolling
-      setTimeout(() => {
-        const el = document.getElementById(hash);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          // Add a subtle highlight effect
-          el.style.transition = 'box-shadow 0.3s ease';
-          el.style.boxShadow = '0 0 0 4px rgba(255, 153, 0, 0.3)';
-          setTimeout(() => {
-            el.style.boxShadow = '';
-          }, 2000);
-        }
-      }, 500); // Increased delay to ensure page loads
+      
+      // Store the target hash in sessionStorage for the Services page to use
+      if (hash) {
+        sessionStorage.setItem('scrollToService', hash);
+      }
     } else {
       // Already on the page, scroll to section
       setTimeout(() => {
         const el = document.getElementById(hash);
         if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
           // Add a subtle highlight effect
           el.style.transition = 'box-shadow 0.3s ease';
           el.style.boxShadow = '0 0 0 4px rgba(255, 153, 0, 0.3)';
@@ -491,16 +522,15 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 bg-[#ff9900]/20 rounded-lg flex items-center justify-center">
-                            <svg className="w-4 h-4 text-[#ff9900]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                            </svg>
+                          <div className="w-8 h-8 bg-[#ff9900]/20 rounded-lg flex items-center justify-center text-lg">
+                            {getSearchIcon(s)}
                           </div>
                           <div>
                             <div className="font-medium">{s.label}</div>
                             <div className="text-xs text-gray-400 mt-1">
                               {s.page === '/home' ? 'Homepage' : s.page.replace('/', '').replace('-', ' ').replace(/\b\w/g, (l: any) => l.toUpperCase())}
-                              {s.id !== s.page.replace('/', '') && ` • ${s.id.replace('-', ' ').replace(/\b\w/g, (l: any) => l.toUpperCase())}`}
+                              {s.page === '/services' && s.id !== 'services' && s.id !== 'services-contact' ? ' • Service Card' : 
+                               s.id !== s.page.replace('/', '') && ` • ${s.id.replace('-', ' ').replace(/\b\w/g, (l: any) => l.toUpperCase())}`}
                             </div>
                           </div>
                         </div>
@@ -538,10 +568,8 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <div className="w-6 h-6 bg-[#ff9900]/20 rounded flex items-center justify-center">
-                            <svg className="w-3 h-3 text-[#ff9900]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                            </svg>
+                          <div className="w-6 h-6 bg-[#ff9900]/20 rounded flex items-center justify-center text-sm">
+                            {getSearchIcon(s)}
                           </div>
                           <div>
                             <div className="font-medium text-sm">{s.label}</div>

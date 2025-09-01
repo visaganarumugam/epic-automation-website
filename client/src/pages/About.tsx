@@ -172,8 +172,8 @@ export default function About() {
     {
       bgImage: '/images/collaboration.png',
       logo: '/images/logos/lmw.png',
-      title: 'PCB Automation',
-      description: 'PCB assembly automation involves using machines and automated systems to handle the various steps of assembling electronic components onto printed circuit boards (PCBs), replacing manual labor for increased speed, precision, and efficiency. This automation extends from component placement and soldering to testing and inspection.',
+      title: 'MCB Automation',
+      description: 'MCB assembly automation involves using machines and automated systems to handle the various steps of assembling electronic components onto printed circuit boards (PCBs), replacing manual labor for increased speed, precision, and efficiency. This automation extends from component placement and soldering to testing and inspection.',
       
     },
     {
@@ -376,9 +376,7 @@ export default function About() {
               <h2 className="text-4xl lg:text-7xl font-bold text-black px-4">
                 Projects That We've Worked On
               </h2>
-              <p className="text-lg text-gray-600 mt-4">
-                Swipe left/right or drag to navigate • Use arrow buttons for precise control
-              </p>
+              
             </div>
             
             {/* Carousel Container */}
