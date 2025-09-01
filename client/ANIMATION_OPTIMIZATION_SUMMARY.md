@@ -164,3 +164,4 @@ const { ref, animationProps } = useOptimizedScrollAnimation({
 4. **Mobile Testing**: Verify animations work well on mobile devices
 5. **Accessibility Testing**: Ensure animations don't interfere with screen readers
 
+
