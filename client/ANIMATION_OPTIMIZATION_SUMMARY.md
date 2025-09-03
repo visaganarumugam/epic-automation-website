@@ -165,3 +165,6 @@ const { ref, animationProps } = useOptimizedScrollAnimation({
 5. **Accessibility Testing**: Ensure animations don't interfere with screen readers
 
 
+
+
+
