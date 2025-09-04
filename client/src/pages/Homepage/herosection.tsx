@@ -28,7 +28,7 @@ const slides = [
             
             {/* CTA Button */}
             <div className="mt-auto mb-5 sm:mb-12">
-              <button className="bg-black border-2 border-white text-white hover:text-black hover:bg-white font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-lg shadow-2xl hover:shadow-white/50 transition-all duration-300 text-base sm:text-lg md:text-xl flex items-center gap-3 z-30" style={{boxShadow:'0 8px 32px 0 white'}}>
+              <button className="bg-black border-2 border-white text-white hover:text-black hover:bg-white font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-lg shadow-2xl hover:shadow-white/50 transition-all duration-300 text-sm sm:text-lg md:text-xl flex items-center gap-3 z-30" style={{boxShadow:'0 8px 32px 0 white'}}>
                 Book a call with us
                 <svg width="20" height="20" className="sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7"/>
