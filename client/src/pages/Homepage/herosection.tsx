@@ -27,7 +27,7 @@ const slides = [
             
             
             {/* CTA Button */}
-            <div className="mt-auto mb-8 sm:mb-12">
+            <div className="mt-auto mb-5 sm:mb-12">
               <button className="bg-black border-2 border-white text-white hover:text-black hover:bg-white font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-lg shadow-2xl hover:shadow-white/50 transition-all duration-300 text-base sm:text-lg md:text-xl flex items-center gap-3 z-30" style={{boxShadow:'0 8px 32px 0 white'}}>
                 Book a call with us
                 <svg width="20" height="20" className="sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -63,7 +63,7 @@ export default function HeroSection() {
 
   
   return (
-    <div className="w-screen h-[300px] sm:h-[380px] md:h-[480px] lg:h-screen relative overflow-hidden">
+    <div className="w-screen h-[250px] sm:h-[380px] md:h-[480px] lg:h-screen relative overflow-hidden">
       {slides.map((slide, idx) => (
         <div
           key={idx}
