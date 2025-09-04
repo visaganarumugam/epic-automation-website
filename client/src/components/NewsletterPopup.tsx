@@ -190,7 +190,7 @@ export default function NewsletterPopup({
       
       {/* Popup */}
       <div className="fixed inset-0 flex items-center justify-center z-50 p-2 sm:p-4">
-        <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl max-w-[95vw] sm:max-w-4xl lg:max-w-6xl w-full h-[90vh] sm:h-[80vh] md:h-[70vh] lg:h-[60vh] overflow-hidden relative">
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl max-w-[95vw] sm:max-w-4xl lg:max-w-6xl w-full h-[48vh] sm:h-[80vh] md:h-[70vh] lg:h-[60vh] overflow-hidden relative">
           {/* Close button - always visible */}
           <button
             onClick={onClose}
@@ -199,7 +199,7 @@ export default function NewsletterPopup({
             <FiX className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
 
-          <div className="relative h-full bg-white w-full">
+          <div className="relative h-full mt-10 sm:mt-0 bg-white w-full">
             {/* Background Image */}
             <div className="absolute inset-0 ">
               {/* <img 
@@ -223,7 +223,7 @@ export default function NewsletterPopup({
               </div>
 
               {/* Right Section - Content */}
-              <div className="w-full md:w-1/2 h-3/4 sm:h-2/3 md:h-full flex items-center justify-center p-3 sm:p-4 md:p-6 lg:p-8">
+              <div className="w-full md:w-1/2 h-3/4 sm:h-2/3 md:h-full flex items-center justify-center px-3 pt-3 pb-0 sm:px-4 sm:pt-4 sm:pb-0 md:px-6 md:pt-6 md:pb-6 lg:px-8 lg:pt-8 lg:pb-8">
                 <div className="text-center sm:text-start max-w-lg w-full">
                   {!success ? (
                     <>
@@ -278,7 +278,7 @@ export default function NewsletterPopup({
                       </form>
 
                       {/* Disclaimer */}
-                      <p className="text-sm sm:text-base lg:text-lg text-black mt-3 sm:mt-5 text-center">
+                      <p className="text-sm sm:text-base lg:text-lg text-black mt-3 sm:mt-5 mb-0 text-center">
                         Get industry insights, case studies, and automation tips. No spam, just value.
                       </p>
                     </>
