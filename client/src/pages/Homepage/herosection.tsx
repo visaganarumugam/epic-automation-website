@@ -63,7 +63,7 @@ export default function HeroSection() {
 
   
   return (
-    <div className="w-screen h-[400px] sm:h-[500px] md:h-[600px] lg:h-screen relative overflow-hidden">
+    <div className="w-screen h-[300px] sm:h-[380px] md:h-[480px] lg:h-screen relative overflow-hidden">
       {slides.map((slide, idx) => (
         <div
           key={idx}
