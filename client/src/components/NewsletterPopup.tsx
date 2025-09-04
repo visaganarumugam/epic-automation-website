@@ -190,7 +190,7 @@ export default function NewsletterPopup({
       
       {/* Popup */}
       <div className="fixed inset-0 flex items-center justify-center z-50 p-2 sm:p-4">
-        <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl max-w-[95vw] sm:max-w-4xl lg:max-w-6xl w-full h-[45vh] sm:h-[80vh] md:h-[70vh] lg:h-[60vh] overflow-hidden relative">
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl max-w-[95vw] sm:max-w-4xl lg:max-w-6xl w-full h-[48vh] sm:h-[80vh] md:h-[70vh] lg:h-[60vh] overflow-hidden relative">
           {/* Close button - always visible */}
           <button
             onClick={onClose}
