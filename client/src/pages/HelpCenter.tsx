@@ -1,7 +1,4 @@
 "use client";
-
-
-
 import TopNavbar from "./Navbar";
 import { IconMail, IconHeart } from '@tabler/icons-react';
 import ContactForm from '../components/ContactForm';
@@ -121,8 +118,8 @@ export default function HelpCenter() {
                   <p className="text-gray-500 text-sm sm:text-md font-semibold mb-2">
                     Due to COVID-19, our full team are working remotely. <br className="hidden sm:block" /> Please email us or request a callback.
                   </p>
-                  <a href="tel:+915011234567" className="text-orange-500 font-semibold text-lg sm:text-xl hover:text-orange-600">
-                    +91 501 123 4567
+                  <a href="tel:+917402143821" className="text-orange-500 font-semibold text-lg sm:text-xl hover:text-orange-600">
+                    +91 7402143821
                   </a>
                 </div>
 
@@ -130,14 +127,14 @@ export default function HelpCenter() {
                 <div className="mb-4 sm:mb-6">
                   <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2">Email</h3>
                   <div className="space-y-1">
-                    <a href="mailto:hello@epicautomations.com" className="block text-orange-500 font-semibold text-base sm:text-lg md:text-xl hover:text-orange-600">
-                      hello@epicautomations.com
+                    <a href="mailto:Sales@epicautoamtions.co.in" className="block text-orange-500 font-semibold text-base sm:text-lg md:text-xl hover:text-orange-600">
+                    Sales@epicautoamtions.co.in
                     </a>
-                    <a href="mailto:business@epicautomations.com" className="block text-orange-500 font-semibold text-base sm:text-lg md:text-xl hover:text-orange-600">
-                      business@epicautomations.com
+                    <a href="mailto:Epicautomations@gmail.com" className="block text-orange-500 font-semibold text-base sm:text-lg md:text-xl hover:text-orange-600">
+                    Epicautomations@gmail.com
                     </a>
-                    <a href="mailto:support@epicautomations.com" className="block text-orange-500 font-semibold text-base sm:text-lg md:text-xl hover:text-orange-600">
-                      support@epicautomations.com
+                    <a href="mailto:Visaganarumugam@epicautomation.co.in" className="block text-orange-500 font-semibold text-base sm:text-lg md:text-xl hover:text-orange-600">
+                    Visaganarumugam@epicautomation.co.in
                     </a>
                   </div>
                 </div>
@@ -145,17 +142,12 @@ export default function HelpCenter() {
                 {/* Offices */}
                 <div className="space-y-3 sm:space-y-4">
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2">Chennai Office</h3>
+                    <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2">Coimbatore Office</h3>
                     <p className="text-gray-500 text-sm sm:text-md font-semibold">
-                      EPIC AUTOMATIONS, Chennai, Tamil Nadu, India
+                    Epic Automations, Coimbatore
                     </p>
                   </div>
-                  <div>
-                    <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2">Bangalore Office</h3>
-                    <p className="text-gray-500 text-sm sm:text-md font-semibold">
-                      EPIC AUTOMATIONS, Bangalore, Karnataka, India
-                    </p>
-                  </div>
+                  
                 </div>
               </div>
             </div>

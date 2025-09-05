@@ -235,10 +235,10 @@ export default function Footer() {
                     <span className="text-white text-lg sm:text-xl md:text-2xl font-semibold leading-tight">Powered by Epic Automations</span>
                   </div>
                   <span 
-                    onClick={() => handleEmail('innovation@epicautomations.com')}
+                    onClick={() => handleEmail('Visaganarumugam@epicautomations.co.in')}
                     className="text-gray-300 text-sm sm:text-lg mb-2 opacity-70 break-all cursor-pointer hover:text-[#FEB130] transition-colors"
                   >
-                    innovation@epicautomations.com
+                    Visaganarumugam@epicautomations.co.in
                   </span>
                   <div className="flex flex-col gap-2 sm:gap-0">
                     <button 

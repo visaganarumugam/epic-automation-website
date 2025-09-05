@@ -1,6 +1,7 @@
 import  { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const slides = [
+const createSlides = (handleBookCallClick: () => void) => [
   {
     content: (
       <section id="hero" className="slide1 w-full h-full relative flex flex-col justify-center items-center overflow-hidden">
@@ -28,7 +29,11 @@ const slides = [
             
             {/* CTA Button */}
             <div className="mt-auto mb-5 sm:mb-12">
-              <button className="bg-black border-2 border-white text-white hover:text-black hover:bg-white font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-lg shadow-2xl hover:shadow-white/50 transition-all duration-300 text-sm sm:text-lg md:text-xl flex items-center gap-3 z-30" style={{boxShadow:'0 8px 32px 0 white'}}>
+              <button 
+                onClick={handleBookCallClick}
+                className="bg-black border-2 border-white text-white hover:text-black hover:bg-white font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-lg shadow-2xl hover:shadow-white/50 transition-all duration-300 text-sm sm:text-lg md:text-xl flex items-center gap-3 z-30" 
+                style={{boxShadow:'0 8px 32px 0 white'}}
+              >
                 Book a call with us
                 <svg width="20" height="20" className="sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7"/>
@@ -49,7 +54,14 @@ const slides = [
 export default function HeroSection() {
   const [current, setCurrent] = useState(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const navigate = useNavigate();
   const SLIDE_DURATION = 10000; // 30 minutes in milliseconds
+
+  const handleBookCallClick = () => {
+    navigate('/help-center#helpcenter-contact-form');
+  };
+
+  const slides = createSlides(handleBookCallClick);
 
   useEffect(() => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
