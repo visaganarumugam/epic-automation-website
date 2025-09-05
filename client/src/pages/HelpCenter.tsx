@@ -8,11 +8,11 @@ import { AnimatedSection, FadeUpSection } from '../components/AnimatedSection';
 
 // Example images for the hero section (replace with your own or use public URLs)
 const heroImages = [
-  { src: "/images/slide3imgs/img1.JPG", alt: "Person 1" },
-  { src: "/images/slide3imgs/img2.jpg", alt: "Person 2" },
+  { src: "/images/navdropimages/deburring.jpg", alt: "Deburring" },
+  { src: "/images/navdropimages/palletizing.jpg", alt: "Palletizing" },
   { icon: <IconHeart className="w-8 h-8 text-black" />, alt: "Heart" },
-  { src: "/images/slide3imgs/img3.png", alt: "Person 3" },
-  { src: "/images/roboticsimageabout.jpg", alt: "Person 4" },
+  { src: "/images/MCB.jpg", alt: "Robot Programming" },
+  { src: "/images/navdropimages/CNC_Automation.jpg", alt: "CNC Automation" },
 ];
 
 export default function HelpCenter() {

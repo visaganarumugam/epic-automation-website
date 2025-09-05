@@ -233,20 +233,7 @@ const standardServices = [
     specs: { "Response Time": "<10ms", "Supported Languages": "25+", "Max Display": "4K" },
     roi: { "Decision Speed": "300%", "System Visibility": "100%", "ROI Timeline": "14 months" }
   },
-  {
-    id: 7,
-    icon: Smartphone,
-    title: "Robot Programming",
-    subtitle: "Customized programming for industrial robots",
-    description: "The Brain Behind Automation - creating instructions for industrial robots.",
-    longDescription: "Robot programming is the process of creating instructions that guide industrial or collaborative robots to perform specific tasks with precision and efficiency.",
-    keyBenefit: "Flexible, task-specific control",
-    videoThumbnail: "/images/robot.jpg",
-    detailImage: "/images/robot.jpg",
-    features: ["Automated Code Generation", "Optimized Path Planning", "Advanced Motion Control"],
-    specs: { "Latency": "<10ms", "Supported Languages": "25+", "Visualization": "4K" },
-    roi: { "Programming Time": "75%", "Flexibility": "200%", "ROI Timeline": "10 months" }
-  },
+  
   {
     id: 8,
     icon: Smartphone,
@@ -255,11 +242,25 @@ const standardServices = [
     description: "PLC and HMI programming for industrial automation control and monitoring.",
     longDescription: "PLC and HMI programming are essential components of industrial automation, working together to control and monitor processes. PLCs (Programmable Logic Controllers) execute logic and control functions based on input signals, while HMIs (Human Machine Interfaces) provide a visual interface for operators to interact with and monitor the PLC and the system it controls.",
     keyBenefit: "Unified process management",
-    videoThumbnail: "/images/plchmi.jpg",
-    detailImage: "/images/plchmi.jpg",
+    videoThumbnail: "/images/navdropimages/plchmi.png",
+    detailImage: "/images/navdropimages/plchmi.png",
     features: ["Logic-Based Control", "Interactive Visual Interface", "Comprehensive Process Monitoring"],
     specs: { "Response Time": "<10ms", "Supported Languages": "25+", "Max Display": "4K" },
     roi: { "Integration Efficiency": "80%", "Operator Training": "60%", "ROI Timeline": "13 months" }
+  },
+  {
+    id: 7,
+    icon: Smartphone,
+    title: "Robot Programming",
+    subtitle: "Customized programming for industrial robots",
+    description: "The Brain Behind Automation - creating instructions for industrial robots.",
+    longDescription: "Robot programming is the process of creating instructions that guide industrial or collaborative robots to perform specific tasks with precision and efficiency.",
+    keyBenefit: "Flexible, task-specific control",
+    videoThumbnail: "/images/Robot_Programming.jpg",
+    detailImage: "/images/navdropimages/robot_programing.jpg",
+    features: ["Automated Code Generation", "Optimized Path Planning", "Advanced Motion Control"],
+    specs: { "Latency": "<10ms", "Supported Languages": "25+", "Visualization": "4K" },
+    roi: { "Programming Time": "75%", "Flexibility": "200%", "ROI Timeline": "10 months" }
   },
 ];
 
