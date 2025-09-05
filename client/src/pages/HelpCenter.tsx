@@ -1,6 +1,6 @@
 "use client";
 import TopNavbar from "./Navbar";
-import { IconMail, IconHeart } from '@tabler/icons-react';
+import { IconHeart } from '@tabler/icons-react';
 import ContactForm from '../components/ContactForm';
 import { FiChevronsDown } from 'react-icons/fi';
 import { useRef } from 'react';
@@ -176,20 +176,7 @@ export default function HelpCenter() {
               style={{ border: 0 }}
           ></iframe>
         </div>
-          {/* Newsletter Signup Overlay */}
-          <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-4 sm:left-6 md:left-8 right-4 sm:right-6 md:right-8 rounded-lg shadow-lg flex justify-center z-20 p-3 sm:p-4 md:p-6 max-w-full">
-            <div className="flex flex-col sm:flex-row items-center bg-white p-3 px-4 rounded-xl w-full max-w-[800px] space-y-2 sm:space-y-0 sm:space-x-4">
-              <IconMail className="text-gray-400 w-4 h-4 sm:w-5 sm:h-5" />
-              <input
-                type="email"
-                placeholder="Enter Your Email address"
-                className="flex-1 border border-gray-300 placeholder:font-semibold placeholder:text-sm sm:placeholder:text-lg rounded-md px-3 py-2 focus:outline-none focus:border-orange-500 text-sm sm:text-base w-full"
-              />
-              <button className="bg-orange-500 text-white px-3 sm:px-4 py-2 rounded-md hover:bg-orange-600 transition-colors text-sm sm:text-base w-full sm:w-auto">
-                Get started
-              </button>
-              </div>
-          </div>
+          
         </div>
       </AnimatedSection>
     </div>
