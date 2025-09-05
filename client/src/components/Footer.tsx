@@ -218,13 +218,7 @@ export default function Footer() {
                     <span className="truncate">Book a Consultation</span>
                     <span className="ml-2 text-base sm:text-lg group-hover:translate-x-1 transition flex-shrink-0">→</span>
                   </button>
-                  <button 
-                    onClick={() => handleNavigation('/help-center')}
-                    className="border border-[#FEB130] text-white font-semibold px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base hover:bg-[#232325] transition flex items-center justify-between group"
-                  >
-                    <span className="truncate">Chat with an Expert</span>
-                    <span className="ml-2 text-base sm:text-lg group-hover:translate-x-1 transition flex-shrink-0">→</span>
-                  </button>
+                  
                 </div>
               </div>
               
@@ -240,7 +234,7 @@ export default function Footer() {
                   >
                     Visaganarumugam@epicautomations.co.in
                   </span>
-                  <div className="flex flex-col gap-2 sm:gap-0">
+                  <div className="flex flex-col mt-10 gap-2 sm:gap-0">
                     <button 
                       onClick={handleLinkedIn}
                       className="border border-[#FEB130] mt-4 text-white font-semibold px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base hover:bg-[#232325] transition flex items-center justify-between group"
@@ -248,13 +242,7 @@ export default function Footer() {
                       <span className="truncate">Follow on LinkedIn</span>
                       <span className="ml-2 text-base sm:text-lg group-hover:translate-x-1 transition flex-shrink-0">→</span>
                     </button>
-                    <button 
-                      onClick={handleTwitter}
-                      className="border border-[#FEB130] mt-2 text-white font-semibold px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base hover:bg-[#232325] transition flex items-center justify-between group"
-                    >
-                      <span className="truncate">Follow on Twitter</span>
-                      <span className="ml-2 text-base sm:text-lg group-hover:translate-x-1 transition flex-shrink-0">→</span>
-                    </button>
+                    
                   </div>
                 </div>
                 <button
