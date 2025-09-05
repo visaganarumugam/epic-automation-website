@@ -42,9 +42,7 @@ export default function Footer() {
     window.open('https://linkedin.com/company/epic-automations', '_blank');
   };
 
-  const handleTwitter = () => {
-    window.open('https://twitter.com/epicautomations', '_blank');
-  };
+  
 
   const handleEmail = (email: string) => {
     window.open(`mailto:${email}`, '_blank');
