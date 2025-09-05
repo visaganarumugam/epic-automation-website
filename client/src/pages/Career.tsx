@@ -906,7 +906,7 @@ export default function Career() {
                       </span>
                       <div className="flex flex-col">
                         <span className="text-black text-lg sm:text-xl font-semibold">{item.label}</span>
-                        <span className="text-black text-base sm:text-lg">{item.value}</span>
+                        <span className="text-black text-base sm:text-lg break-all sm:break-normal">{item.value}</span>
                       </div>
                     </div>
                     <span className="bg-[#23272b] rounded-2xl p-2 ml-4 group-hover:bg-[#ff4f0f] transition-colors">
