@@ -1,4 +1,5 @@
 import { InteractiveHoverButton } from "../../components/ui_components/interactive-hover-button";
+import { useNavigate } from 'react-router-dom';
 
 import { BiSolidCustomize } from "react-icons/bi";
 import { GiCargoCrane , GiArtificialHive } from "react-icons/gi";
@@ -7,6 +8,12 @@ import { AnimatedSection, FadeUpSection } from "../../components/AnimatedSection
 
 
 export default function WhatWeAreGoodAt() {
+  const navigate = useNavigate();
+
+  const handleHavingQuestionsClick = () => {
+    navigate('/help-center#helpcenter-contact-form');
+  };
+
   return (
     <section id="what-we-are-good-at" className="w-full min-h-screen bg-[#ffe7b6] flex flex-col justify-center items-center py-6 sm:py-8 md:py-10">
       <div className="max-w-full w-full flex flex-col md:flex-row px-4 sm:px-6 md:px-10">
@@ -27,7 +34,10 @@ export default function WhatWeAreGoodAt() {
               customAnimation={{ y: 30, opacity: 0, duration: 0.8, delay: 0.6 }}
             >
               <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
-              <button className={`border border-[#222] rounded-full text-sm sm:text-base md:text-lg font-semibold flex items-center gap-2 hover:bg-[#f5f5f5] transition  `}>
+              <button 
+                onClick={handleHavingQuestionsClick}
+                className={`border border-[#222] rounded-full text-sm sm:text-base md:text-lg font-semibold flex items-center gap-2 hover:bg-[#f5f5f5] transition  `}
+              >
             <InteractiveHoverButton>Having Questions?</InteractiveHoverButton>
             </button>
                 {/* Avatars */}

@@ -48,21 +48,21 @@ const dropdownContent: DropdownContent = {
           {
             title: "Machine Tending",
             description: "Autonomous machine tending with computer vision and adaptive gripping",
-            image: "/images/palletizing_robot1.jpg",
+            image: "/images/navdropimages/Machine-Tending.jpg",
             href: "/services#machine-tending",
             isPromo: true,
           },
           {
             title: "Palletizing",
             description: "High-speed robotic palletizing with ML-optimized patterns",
-            image: "/images/palletizing_robot1.jpg",
+            image: "/images/navdropimages/palletizing.jpg",
             href: "/services#palletizing",
             isPromo: true,
           },
           {
             title: "Deburring",
             description: "Precision robotic deburring with force feedback control",
-            image: "/images/deburring.jpg",
+            image: "/images/navdropimages/deburring.jpg",
             href: "/services#deburring",
             isPromo: true,
           },
@@ -124,7 +124,7 @@ const dropdownContent: DropdownContent = {
           {
             title: "Robot Programming",
             description: "The Brain Behind Automation - creating instructions for industrial robots",
-            image: "/images/robot.jpg",
+            image: "/images/navdropimages/robot_programing.jpg",
             href: "/services#robot-programming",
             isPromo: true,
           },
@@ -136,7 +136,7 @@ const dropdownContent: DropdownContent = {
           {
             title: "PLC and HMI Programming",
             description: "PLC and HMI programming for industrial automation control and monitoring",
-            image: "/images/plchmi.jpg",
+            image: "/images/navdropimages/plc_and_hmi.jpg",
             href: "/services#plc-hmi-programming",
             isPromo: true,
           },
@@ -645,12 +645,12 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
                           alt={item.title} 
                           className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" 
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                        <div className="absolute inset-0 bg-black/60"></div>
                         <div className="relative h-full flex flex-col justify-end p-6 text-white">
-                            <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                            <p className="text-white/90 text-base mb-6 line-clamp-2">{item.description}</p>
+                            <h3 className="text-2xl font-bold mb-1">{item.title}</h3>
+                            <p className="text-white/90 font-semibold text-lg line-clamp-2">{item.description}</p>
                             <div className="mt-auto">
-                                <div className="inline-flex items-center gap-2 text-sm font-semibold bg-white text-black py-3 px-6 rounded-full group-hover:bg-gray-200 transition-colors duration-200">
+                                <div className="inline-flex items-center gap-2 text-sm font-semibold bg-white text-black py-2 px-6 rounded-full group-hover:bg-gray-200 transition-colors duration-200">
                                     <span>LEARN MORE</span>
                                     <FiArrowRight className="transition-transform duration-200 group-hover:translate-x-1"/>
                                 </div>

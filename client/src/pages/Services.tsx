@@ -2,6 +2,7 @@ import { IconMail, IconPhone, IconMapPin, IconArrowUpRight } from '@tabler/icons
 import ContactForm from '../components/ContactForm';
 import { useEffect,  useState } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from 'react-router-dom';
 import { AnimatedSection, FadeUpSection } from '../components/AnimatedSection';
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
@@ -22,21 +23,21 @@ import {
 } from "lucide-react";
 const contactInfo = [
   {
-    icon: <IconMail size={35} stroke={1.7} className="text-[#ff4f0f]" />,
+    icon: <IconMail size={25} stroke={1.7} className="text-black sm:size-9 " />,
     label: 'Email us',
-    value: 'youremail@gmail.com',
-    href: 'mailto:youremail@gmail.com',
+    value: 'Visaganarumugam@epicautomations.co.in',
+    href: 'mailto:Visaganarumugam@epicautomations.co.in',
   },
   {
-    icon: <IconPhone size={35} stroke={1.7} className="text-[#ff4f0f]" />,
+    icon: <IconPhone size={25} stroke={1.7} className="text-black sm:size-9" />,
     label: 'Call us',
-    value: '(+91) 9876543210',
-    href: 'tel:9876543210',
+    value: '(+91) 7402143821',
+    href: 'tel:7402143821',
   },
   {
-    icon: <IconMapPin size={35} stroke={1.7} className="text-[#ff4f0f]" />,
+    icon: <IconMapPin size={25} stroke={1.7} className="text-black sm:size-9" />,
     label: 'Our location',
-    value: 'Crosby Street, NY, US',
+    value: 'Epic Automations, Coimbatore',
     href: 'https://maps.google.com',
   },
 ];
@@ -267,6 +268,19 @@ export default function Services() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [selectedService, setSelectedService] = useState<typeof standardServices[0] | null>(null);
   const [activeTabs, setActiveTabs] = useState<{ [key: number]: string }>({});
+  const navigate = useNavigate();
+
+  const handleExploreServicesClick = () => {
+    // Scroll to services section on the same page
+    const servicesSection = document.getElementById('services-section');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const handleClarifyQueriesClick = () => {
+    navigate('/help-center#helpcenter-contact-form');
+  };
   // IntersectionObserver for stats grid
   // Set default active tabs for each service
   useEffect(() => {
@@ -340,10 +354,16 @@ export default function Services() {
               </p>
             </AnimatedSection>
               <div className="flex flex-col sm:flex-row gap-4 sm:w-full justify-center mb-2">
-                <button className="bg-[#ff4f0f] cursor-pointer text-white px-8 py-3 rounded-full font-semibold text-lg shadow hover:bg-[#ff2f0f] transition font-gilroy">
+                <button 
+                  onClick={handleClarifyQueriesClick}
+                  className="bg-[#ff4f0f] cursor-pointer text-white px-8 py-3 rounded-full font-semibold text-lg shadow hover:bg-[#ff2f0f] transition font-gilroy"
+                >
                   Clarify Your Queries
                 </button>
-                <button className="border-2 border-[#ff4f0f] cursor-pointer text-white bg-transparent px-8 py-3 rounded-full font-semibold text-base sm:text-lg hover:bg-black hover:text-white transition font-gilroy">
+                <button 
+                  onClick={handleExploreServicesClick}
+                  className="border-2 border-[#ff4f0f] cursor-pointer text-white bg-transparent px-8 py-3 rounded-full font-semibold text-base sm:text-lg hover:bg-black hover:text-white transition font-gilroy"
+                >
                   Explore Our Services
                 </button>
               </div>
@@ -359,7 +379,7 @@ export default function Services() {
           Our Services
         </motion.h3>
         {/* Revolutionary Holographic Service Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 lg:gap-12 max-w-full mx-4 sm:mx-8 lg:mx-25 mb-8 sm:mb-16">
+        <div id="services-section" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 lg:gap-12 max-w-full mx-4 sm:mx-8 lg:mx-25 mb-8 sm:mb-16">
           {standardServices.map((service, index) => {
             const IconComponent = service.icon;
             const isHovered = hoveredCard === service.id;
@@ -504,7 +524,7 @@ export default function Services() {
                                   </motion.div>
                                 ))}
                               </div>
-                            </div>
+                </div> 
                           )}
                           
                           {activeTabs[service.id] === 'specs' && (
@@ -525,8 +545,8 @@ export default function Services() {
                                     <span className="text-xs text-[#1A1A1A]/70 font-medium">{key}:</span>
                                     <span className="text-xs text-[#ff4f0f] font-bold">{value}</span>
                                   </motion.div>
-                                ))}
-                              </div>
+          ))}
+        </div>
                             </div>
                           )}
                           

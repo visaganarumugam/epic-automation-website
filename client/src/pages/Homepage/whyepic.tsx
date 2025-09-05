@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { InteractiveHoverButton } from '../../components/ui_components/interactive-hover-button';
 import { AnimatedSection, FadeUpSection } from '../../components/AnimatedSection';
 type UpCountProps = { end: number; duration?: number; className?: string; start?: boolean };
@@ -28,6 +29,11 @@ function UpCount({ end, duration = 1200, className = '', start = false }: UpCoun
 
 export default function WhyEpic() {
   const [statsVisible, setStatsVisible] = useState(false);
+  const navigate = useNavigate();
+
+  const handleAboutClick = () => {
+    navigate('/about');
+  };
 
   // IntersectionObserver for stats grid (keeping this for the counter animation)
   useEffect(() => {
@@ -58,7 +64,7 @@ export default function WhyEpic() {
       hoverCardShadow: 'group-hover:shadow-[0_8px_32px_rgba(59,130,246,0.3)]',
     },
     {
-      end: 200,
+      end: 20,
       title: 'Total Machines Delivered',
       desc: 'We have delivered more than 200 machines to our clients, helping them automate their processes and improve their productivity.',
       hoverColor: 'group-hover:text-orange-400',
@@ -67,7 +73,7 @@ export default function WhyEpic() {
       hoverCardShadow: 'group-hover:shadow-[0_8px_32px_rgba(147,51,234,0.3)]',
     },
     {
-      end: 4,
+      end: 5,
       title: 'Years of Experience',
       desc: 'We have been in the business for more than 4 years, helping our clients automate their processes and improve their productivity.',
       hoverColor: 'group-hover:text-orange-400',
@@ -85,7 +91,7 @@ export default function WhyEpic() {
       hoverCardShadow: 'group-hover:shadow-[0_8px_32px_rgba(251,146,60,0.3)]',
     },
     {
-      end: 120,
+      end: 12,
       title: 'Robotic Systems Installed',
       desc: 'Over 120 advanced robotic systems installed, streamlining manufacturing and logistics for our partners.',
       hoverColor: 'group-hover:text-orange-400',
@@ -94,7 +100,7 @@ export default function WhyEpic() {
       hoverCardShadow: 'group-hover:shadow-[0_8px_32px_rgba(248,113,113,0.3)]',
     },
     {
-      end: 35,
+      end: 5,
       title: 'Patents & Innovations',
       desc: 'Thirty-five patents and innovations in robotics automation driving industry progress and technological advancement.',
       hoverColor: 'group-hover:text-orange-400',
@@ -116,7 +122,10 @@ export default function WhyEpic() {
           <AnimatedSection 
             customAnimation={{ y: 15, opacity: 0, duration: 0.3, delay: 0.1 }}
           >
-            <button className="border border-[#222] rounded-full text-base sm:text-base md:text-lg font-semibold flex items-center hover:bg-[#f5f5f5] transition">
+            <button 
+              onClick={handleAboutClick}
+              className="border border-[#222] rounded-full text-base sm:text-base md:text-lg font-semibold flex items-center hover:bg-[#f5f5f5] transition"
+            >
               <InteractiveHoverButton>About Epic Automations</InteractiveHoverButton>
             </button>
           </AnimatedSection>

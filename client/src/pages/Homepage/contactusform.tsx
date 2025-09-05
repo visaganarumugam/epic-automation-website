@@ -6,19 +6,19 @@ const contactInfo = [
   {
     icon: <IconMail size={25} stroke={1.7} className="text-black sm:size-9 " />,
     label: 'Email us',
-    value: 'youremail@gmail.com',
-    href: 'mailto:johnny.kyorov@gmail.com',
+    value: 'Visaganarumugam@epicautomations.co.in',
+    href: 'mailto:Visaganarumugam@epicautomations.co.in',
   },
   {
     icon: <IconPhone size={25} stroke={1.7} className="text-black sm:size-9" />,
     label: 'Call us',
-    value: '(+91) 9876543210',
-    href: 'tel:9876543210',
+    value: '(+91) 7402143821',
+    href: 'tel:7402143821',
   },
   {
     icon: <IconMapPin size={25} stroke={1.7} className="text-black sm:size-9" />,
     label: 'Our location',
-    value: 'Crosby Street, NY, US',
+    value: 'Epic Automations, Coimbatore',
     href: 'https://maps.google.com',
   },
 ];

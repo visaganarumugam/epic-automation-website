@@ -3,32 +3,46 @@
 import { IconMail, IconPhone, IconMapPin, IconArrowUpRight } from '@tabler/icons-react';
 import ContactForm from '../components/ContactForm';
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AnimatedSection, FadeUpSection } from '../components/AnimatedSection';
 
 const contactInfo = [
   {
-    icon: <IconMail size={35} stroke={1.7} className="text-[#ff4f0f]" />,
+    icon: <IconMail size={25} stroke={1.7} className="text-black sm:size-9 " />,
     label: 'Email us',
-    value: 'youremail@gmail.com',
-    href: 'mailto:youremail@gmail.com',
+    value: 'Visaganarumugam@epicautomations.co.in',
+    href: 'mailto:Visaganarumugam@epicautomations.co.in',
   },
   {
-    icon: <IconPhone size={35} stroke={1.7} className="text-[#ff4f0f]" />,
+    icon: <IconPhone size={25} stroke={1.7} className="text-black sm:size-9" />,
     label: 'Call us',
-    value: '(+91) 9876543210',
-    href: 'tel:9876543210',
+    value: '(+91) 7402143821',
+    href: 'tel:7402143821',
   },
   {
-    icon: <IconMapPin size={35} stroke={1.7} className="text-[#ff4f0f]" />,
+    icon: <IconMapPin size={25} stroke={1.7} className="text-black sm:size-9" />,
     label: 'Our location',
-    value: 'Crosby Street, NY, US',
+    value: 'Epic Automations, Coimbatore',
     href: 'https://maps.google.com',
   },
 ];
 
 
 export default function About() {
-  const [activeCard, setActiveCard] = useState(1); // Start with center card (index 1) as active
+  const [activeCard, setActiveCard] = useState(1);
+  const navigate = useNavigate();
+
+  const handleMeetTeamClick = () => {
+    navigate('/help-center#helpcenter-contact-form');
+  };
+
+  const handleExploreInnovationsClick = () => {
+    // Scroll to carousel section on the same page
+    const carouselSection = document.getElementById('carousel-section');
+    if (carouselSection) {
+      carouselSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }; // Start with center card (index 1) as active
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [currentX, setCurrentX] = useState(0);
@@ -177,24 +191,24 @@ export default function About() {
       
     },
     {
-      bgImage: '/images/logos/ola.avif',
+      bgImage: '/images/carousel/rotorline.png',
       logo: '/images/logos/ola.png',
-      title: 'Research & Development',
-      description: 'An automation line, or automated production line, is a manufacturing system that uses technology to perform tasks previously done by humans, increasing efficiency and reducing costs. These lines integrate various machines, robots, and technologies to automate a sequence of manufacturing tasks with minimal human intervention.',
+      title: 'Rotor Line Automation',
+      description: 'OLA’s mega-factory upgraded 20 ABB robots in the rotor assembly line with the latest software, enhancing speed, precision, and reliability. Integrated with OLA’s AI-driven platform, the system enables real-time performance monitoring, remote diagnostics, and automated error detection.',
       
     },
     {
-      bgImage: '/images/excellence.png',
-      logo: '/images/logos/lmw.png',
-      title: 'Quality Assurance',
-      description: 'Award-winning robotics solutions',
+      bgImage: '/images/carousel/statorlineautomation.png',
+      logo: '/images/logos/ola.png',
+      title: 'STATOR LINE AUTOMATION',
+      description: 'OLA’s stator line, integral to electric motor assembly, underwent a comprehensive reprogramming initiative to boost reliability across all machines.60 machines were individually updated with the latest software and process logic to standardize operations and enhance performance throughout the production cycle.',
       
     },
     {
-      bgImage: '/images/integrity.png',
-      logo: '/images/logos/ola.png',
-      title: 'Secure Solutions',
-      description: 'Reliable and secure automation systems',
+      bgImage: '/images/carousel/motorassembly.png',
+      logo: '/images/logos/ABB.png',
+      title: 'Motor Assembly Line',
+      description: 'Five ABB robots on the motor assembly line were upgraded with advanced control logic and optimized programs, enhancing performance and reliability. Using ABB RobotStudio, updates were seamlessly deployed, with thorough testing ensuring consistent quality, improved safety, diagnostics, and adaptive workflows.',
       
     }
   ];
@@ -245,10 +259,16 @@ export default function About() {
               </p>
             
               <div className="flex  flex-col justify-center items-center sm:flex-row gap-4 sm:w-full mb-2">
-                <button className="bg-[#ff4f0f] cursor-pointer text-white px-16 py-3 rounded-full font-semibold text-base sm:text-lg shadow hover:bg-[#333333] transition font-gilroy">
+                <button 
+                  onClick={handleMeetTeamClick}
+                  className="bg-[#ff4f0f] cursor-pointer text-white px-16 py-3 rounded-full font-semibold text-base sm:text-lg shadow hover:bg-[#333333] transition font-gilroy"
+                >
                   Meet Our Team
                 </button>
-                <button className="border-2 border-[#ff4f0f] cursor-pointer text-white bg-transparent px-8 py-3 rounded-full font-semibold text-base sm:text-lg hover:bg-black hover:text-white transition font-gilroy">
+                <button 
+                  onClick={handleExploreInnovationsClick}
+                  className="border-2 border-[#ff4f0f] cursor-pointer text-white bg-transparent px-8 py-3 rounded-full font-semibold text-base sm:text-lg hover:bg-black hover:text-white transition font-gilroy"
+                >
                 Explore Our Innovations
                 </button>
               </div>
@@ -369,7 +389,7 @@ export default function About() {
         </div>
         
         {/* Featured Companies Carousel Section */}
-        <div className="w-full py-4 sm:py-20 bg-[#ffe7b6] relative overflow-hidden">
+        <div id="carousel-section" className="w-full py-4 sm:py-20 bg-[#ffe7b6] relative overflow-hidden">
           <div className="w-full max-w-full mx-auto px-4">
             {/* Section Heading */}
             <div className="text-center mb-8 sm:mb-12 md:mb-16">
