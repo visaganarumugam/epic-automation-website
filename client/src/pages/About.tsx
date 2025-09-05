@@ -187,7 +187,7 @@ export default function About() {
       bgImage: '/images/collaboration.png',
       logo: '/images/logos/lmw.png',
       title: 'MCB Automation',
-      description: 'MCB assembly automation involves using machines and automated systems to handle the various steps of assembling electronic components onto printed circuit boards (PCBs), replacing manual labor for increased speed, precision, and efficiency. This automation extends from component placement and soldering to testing and inspection.',
+      description: 'MCB assembly automation involves using machines and automated systems to handle the various steps of assembling electronic components onto printed circuit boards (MCBs), replacing manual labor for increased speed, precision, and efficiency. This automation extends from component placement and soldering to testing and inspection.',
       
     },
     {
@@ -425,7 +425,7 @@ export default function About() {
               <div className="w-full flex justify-center items-center py-6  sm:py-8 md:py-12">
                 <div 
                   ref={carouselRef}
-                  className={`relative w-[95vw] sm:w-[90vw] md:w-[80vw] h-[60vh] sm:h-[70vh] md:h-[80vh] overflow-visible flex items-center justify-center mx-auto cursor-grab active:cursor-grabbing select-none ${isDragging ? 'pointer-events-none' : ''}`}
+                  className={`relative w-[95vw] sm:w-[90vw] md:w-[80vw] h-[650px] sm:h-[70vh] md:h-[80vh] overflow-visible flex items-center justify-center mx-auto cursor-grab active:cursor-grabbing select-none ${isDragging ? 'pointer-events-none' : ''}`}
                   onTouchStart={handleTouchStart}
                   onTouchMove={handleTouchMove}
                   onTouchEnd={handleTouchEnd}
@@ -504,33 +504,32 @@ export default function About() {
                           pointerEvents: pos === 2 ? 'auto' : 'none',
                         }}
                       >
-                        <div className="w-full h-full bg-white rounded-xl sm:rounded-2xl shadow-lg overflow-hidden relative flex flex-col md:flex-row">
+                        <div className="w-full h-[650px] sm:h-full bg-white rounded-xl sm:rounded-2xl shadow-lg overflow-hidden relative flex flex-col md:flex-row">
                           {/* Left Section - Content (Image-inspired UI) */}
-                          <div className="flex-1 flex flex-col justify-between p-4 sm:p-6 md:p-10 min-h-[300px] sm:min-h-[350px] md:min-h-[400px]">
+                          <div className="flex-1 flex flex-col justify-between p-6 sm:p-6 md:p-10 h-[350px] sm:min-h-[350px] md:min-h-[400px]">
                             <div>
                               {/* Pill label */}
                               <div className="inline-block px-3 sm:px-4 md:px-5 py-1 mb-3 sm:mb-4 md:mb-6 rounded-lg sm:rounded-xl border border-gray-300 bg-white text-gray-700 text-sm sm:text-base md:text-xl font-semibold shadow-sm">
                                 Our Service
                               </div>
                               {/* Heading */}
-                              <h3 className="font-serif font-bold text-2xl md:text-4xl lg:text-7xl leading-tight text-transparent bg-clip-text bg-gradient-to-br from-orange-600 via-black to-orange-600 mb-3 sm:mb-4 md:mb-6" style={{lineHeight: '1.1'}}>
+                              <h3 className="font-serif font-bold text-2xl md:text-4xl lg:text-7xl leading-tight text-transparent bg-clip-text bg-gradient-to-br from-orange-600 via-black to-orange-600 mb-4 sm:mb-4 md:mb-6" style={{lineHeight: '1.1'}}>
                                 {cardData[idx].title}
                               </h3>
                               {/* Description */}
-                              <p className="text-black text-base md:text-lg lg:text-3xl font-semibold max-w-xl leading-tight">
+                              <p className="text-black text-base md:text-lg lg:text-3xl font-semibold max-w-xl leading-tight mb-4">
                                 {cardData[idx].description}
                               </p>
                             </div>
                             {/* Logo */}
-                            <div className="mt-2 sm:mt-8 md:mt-10">
-                              
-                                <img src={cardData[idx].logo} alt="Logo" className="h-8 sm:h-10 md:h-15 bg-white p-1 mr-2 rounded" />
-                               
-                              
+                            <div className="mt-4 sm:mt-8 md:mt-10">
+                              <div className="flex items-center">
+                                <img src={cardData[idx].logo} alt="Logo" className="h-10 sm:h-12 md:h-15 bg-white p-2 mr-3 rounded shadow-sm" />
+                              </div>
                             </div>
                           </div>
                           {/* Right Section - Image or Video */}
-                          <div className="flex-1 h-full flex items-center justify-center p-4 pt-0 sm:pt-6 sm:p-6  md:p-10">
+                          <div className="flex-1 h-[300px] sm:h-full flex items-center justify-center p-6 pt-0 sm:pt-6 sm:p-6  md:p-10">
                             {idx === 0 ? (
                               <video
                                 ref={videoRef0}
@@ -539,7 +538,7 @@ export default function About() {
                                 loop
                                 muted
                                 playsInline
-                                className="w-full h-[235px] sm:h-full object-cover rounded-xl shadow-lg shadow-black/50"
+                                className="w-full h-[280px] sm:h-full object-cover rounded-xl shadow-lg shadow-black/50"
                                 poster={cardData[idx].bgImage}
                               />
                             ) : idx === 1 ? (
@@ -550,7 +549,7 @@ export default function About() {
                                 loop
                                 muted
                                 playsInline
-                                className="w-full h-full object-cover rounded-xl shadow-lg shadow-black/50"
+                                className="w-full h-[280px] sm:h-full object-cover rounded-xl shadow-lg shadow-black/50"
                                 poster={cardData[idx].bgImage}
                               />
                             )  : idx === 5 ? (
@@ -561,7 +560,7 @@ export default function About() {
                                 loop
                                 muted
                                 playsInline
-                                className="w-full h-full object-cover rounded-xl shadow-lg shadow-black/50"
+                                className="w-full h-[280px] sm:h-full object-cover rounded-xl shadow-lg shadow-black/50"
                                 poster={cardData[idx].bgImage}
                               />
                             ) : idx === 6 ? (
@@ -572,14 +571,14 @@ export default function About() {
                                 loop
                                 muted
                                 playsInline
-                                className="w-full h-full object-cover rounded-xl shadow-lg shadow-black/50"
+                                className="w-full h-[280px] sm:h-full object-cover rounded-xl shadow-lg shadow-black/50"
                                 poster={cardData[idx].bgImage}
                               />
                             ) : (
                               <img
                                 src={cardData[idx].bgImage}
                                 alt={cardData[idx].title}
-                                className="w-full h-[230px] sm:h-full object-cover rounded-xl shadow-lg mb-10 shadow-black/50"
+                                className="w-full h-[280px] sm:h-full object-cover rounded-xl shadow-lg mb-10 shadow-black/50"
                               />
                             )}
                           </div>
@@ -636,7 +635,7 @@ export default function About() {
                   </span>
                   <div className="flex flex-col">
                     <span className="text-black text-lg sm:text-xl font-semibold">{item.label}</span>
-                    <span className="text-black text-base sm:text-lg">{item.value}</span>
+                    <span className="text-black text-base sm:text-lg break-all sm:break-normal">{item.value}</span>
                   </div>
                 </div>
                 <span className="bg-[#23272b] rounded-2xl p-2 ml-4 group-hover:bg-[#ff4f0f] transition-colors">

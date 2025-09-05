@@ -18,7 +18,7 @@ export default function Footer() {
 
   const legalItems = [
     { name: 'Terms & Conditions', path: '/terms-and-conditions' },
-    { name: 'Privacy Policy', path: '/privacy-policy' }
+    { name: 'Privacy Policy', path: '/terms-and-conditions?tab=privacy' }
   ];
 
   // Navigation handlers
@@ -39,13 +39,17 @@ export default function Footer() {
 
   // External link handlers
   const handleLinkedIn = () => {
-    window.open('https://linkedin.com/company/epic-automations', '_blank');
+    window.open('https://www.linkedin.com/company/epic-automations-robotics/', '_blank');
   };
 
   
 
   const handleEmail = (email: string) => {
     window.open(`mailto:${email}`, '_blank');
+  };
+
+  const handlePhone = (phone: string) => {
+    window.open(`tel:${phone}`, '_blank');
   };
 
   return (
@@ -117,7 +121,7 @@ export default function Footer() {
 
       <footer className="w-full min-h-[500px] sm:min-h-[500px] md:min-h-[620px] bg-[#18181a] flex flex-col items-center justify-end relative overflow-hidden px-4 sm:px-6 md:px-8 py-6 sm:py-8">
         {/* Large blurred brand name above the card */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 -mt-3 sm:-mt-4 md:-mt-10 w-full flex justify-center pointer-events-none select-none z-0">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 -mt-3 sm:-mt-4 md:-mt-0 w-full flex justify-center pointer-events-none select-none z-0">
           <span className="text-[11vw] sm:text-[10vw] md:text-[8vw] font-black uppercase text-transparent bg-clip-text bg-yellow-400 opacity-90 tracking-tighter" >
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff5900] mr-1 sm:mr-2 to-yellow-400">E</span>
             <span className="text-transparent mr-1 sm:mr-2 bg-clip-text bg-gradient-to-r from-[#ff5900] to-yellow-400">p</span>
@@ -147,13 +151,13 @@ export default function Footer() {
                     <span className="truncate">Special Purpose Machines</span>
                     <span className="ml-2 text-base sm:text-lg group-hover:translate-x-1 transition flex-shrink-0">→</span>
                   </button>
-                  <button 
+                  {/* <button 
                     onClick={() => handleNavigation('/services')}
                     className="border border-[#FEB130] text-white font-semibold px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base hover:bg-[#232325] transition flex items-center justify-between group"
                   >
                     <span className="truncate">Customized Solutions</span>
                     <span className="ml-2 text-base sm:text-lg text-[#FEB130] group-hover:translate-x-1 transition flex-shrink-0">→</span>
-                  </button>
+                  </button> */}
                 </div>
               </div>
               
@@ -203,10 +207,16 @@ export default function Footer() {
                   <span className="text-white text-lg sm:text-xl md:text-2xl font-semibold">Contact Us</span>
                 </div>
                 <span 
-                  onClick={() => handleEmail('contact@epicautomations.com')}
+                  onClick={() => handleEmail('Sales@epicautoamtions.co.in')}
                   className="text-gray-300 text-sm sm:text-lg mb-2 opacity-70 break-all cursor-pointer hover:text-[#FEB130] transition-colors"
                 >
-                  contact@epicautomations.com
+                  Sales@epicautoamtions.co.in
+                </span>
+                <span 
+                  onClick={() => handlePhone('+917402143821')}
+                  className="text-gray-300 text-sm sm:text-lg mb-2 opacity-70 break-all cursor-pointer hover:text-[#FEB130] transition-colors"
+                >
+                  +917402143821
                 </span>
                 <div className="flex flex-col gap-2 sm:gap-3">
                   <button 
@@ -228,7 +238,7 @@ export default function Footer() {
                   </div>
                   <span 
                     onClick={() => handleEmail('Visaganarumugam@epicautomations.co.in')}
-                    className="text-gray-300 text-sm sm:text-lg mb-2 opacity-70 break-all cursor-pointer hover:text-[#FEB130] transition-colors"
+                    className="text-gray-300 text-sm sm:text-lg mb-2 opacity-70 break-all sm:break-normal cursor-pointer hover:text-[#FEB130] transition-colors"
                   >
                     Visaganarumugam@epicautomations.co.in
                   </span>

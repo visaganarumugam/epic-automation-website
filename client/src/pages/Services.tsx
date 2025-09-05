@@ -409,8 +409,8 @@ export default function Services() {
                     className={`
                       relative bg-white h-[600px] sm:h-[700px] lg:h-[800px] flex flex-col
                       backdrop-blur-xl border-2 border-[#1A1A1A]/10 rounded-xl sm:rounded-2xl overflow-hidden
-                      transition-all duration-500 group-hover:border-[#E85A2B]/40 shadow-xl shadow-[#1A1A1A]/30
-                      ${isHovered ? 'transform scale-105 rotate-1 shadow-2xl shadow-[#E85A2B]/20' : ''}
+                      transition-all duration-500 group-hover:border-[#E85A2B]/70 shadow-xl shadow-[#1A1A1A]/30
+                      ${isHovered ? 'transform scale-105 shadow-2xl shadow-[#E85A2B]/20' : ''}
                     `}
                     // style={{
                     //   background: isHovered ? 
@@ -634,7 +634,7 @@ export default function Services() {
                       </span>
                       <div className="flex flex-col">
                         <span className="text-black text-lg sm:text-xl font-semibold">{item.label}</span>
-                        <span className="text-black text-base sm:text-lg">{item.value}</span>
+                        <span className="text-black text-base sm:text-lg break-all sm:break-normal">{item.value}</span>
                       </div>
                     </div>
                     <span className="bg-[#23272b] rounded-2xl p-2 ml-4 group-hover:bg-[#ff4f0f] transition-colors">

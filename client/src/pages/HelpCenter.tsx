@@ -176,7 +176,6 @@ export default function HelpCenter() {
               style={{ border: 0 }}
           ></iframe>
         </div>
-          
         </div>
       </AnimatedSection>
     </div>
