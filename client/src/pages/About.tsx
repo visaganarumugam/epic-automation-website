@@ -200,7 +200,7 @@ export default function About() {
     {
       bgImage: '/images/carousel/statorlineautomation.png',
       logo: '/images/logos/ola.png',
-      title: 'STATOR LINE AUTOMATION',
+      title: 'Stator Line Automation',
       description: 'OLA’s stator line, integral to electric motor assembly, underwent a comprehensive reprogramming initiative to boost reliability across all machines.60 machines were individually updated with the latest software and process logic to standardize operations and enhance performance throughout the production cycle.',
       
     },
