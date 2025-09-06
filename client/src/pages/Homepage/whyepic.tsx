@@ -137,18 +137,18 @@ export default function WhyEpic() {
         >
           <h2 className="text-3xl sm:text-2xl md:text-3xl text-center lg:text-6xl font-bold text-[#18181a] leading-tight mb-4 sm:mb-6 sm:text-center md:text-left">
             From precision automation to remote system monitoring to{' '}
-            <span className="text-[#4b4b4b] font-normal">fulfilling the <br className="hidden sm:block" /> promise of tomorrow's technology.</span>
+            <span className="text-[#4b4b4b] xl:text-6xl 2xl:text-6xl font-normal">fulfilling the <br className="hidden 2xl:block" /> promise of tomorrow's technology.</span>
           </h2>
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
             {/* Avatars */}
             <div className="flex -space-x-3 mb-8 sm:mb-0">
-              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team 1" className="w-15 h-15 sm:w-12 sm:h-12 md:w-15 md:h-15 rounded-full border-2 border-white shadow" />
-              <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Team 2" className="w-15 h-15 sm:w-12 sm:h-12 md:w-15 md:h-15 rounded-full border-2 border-white shadow" />
-              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Team 3" className="w-15 h-15 sm:w-12 sm:h-12 md:w-15 md:h-15 rounded-full border-2 border-white shadow" />
-              <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Team 4" className="w-15 h-15 sm:w-12 sm:h-12 md:w-15 md:h-15 rounded-full border-2 border-white shadow" />
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team 1" className="w-15 h-15 sm:w-12 sm:h-12 md:w-15 md:h-15 rounded-full border-2 border-white shadow" loading="lazy" />
+              <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Team 2" className="w-15 h-15 sm:w-12 sm:h-12 md:w-15 md:h-15 rounded-full border-2 border-white shadow" loading="lazy" />
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Team 3" className="w-15 h-15 sm:w-12 sm:h-12 md:w-15 md:h-15 rounded-full border-2 border-white shadow" loading="lazy" />
+              <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Team 4" className="w-15 h-15 sm:w-12 sm:h-12 md:w-15 md:h-15 rounded-full border-2 border-white shadow" loading="lazy" />
             </div>
-            <div className="text-[#222] text-lg sm:text-xl text-center md:text-2xl lg:text-3xl font-semibold ml-0 sm:ml-8 md:ml-20 max-w-full md:max-w-45xl md:text-center sm:text-left">
-            Epic Automations designs and manufactures custom, cost-<br className="hidden sm:block" />effective machines, specializing in automation solutions <br className="hidden sm:block" /> that boost productivity, reduce costs, and maintain <br className="hidden sm:block" /> high-quality standards across various industries.
+            <div className="text-[#222] text-lg sm:text-xl text-center xl:text-right 2xl:text-center md:text-2xl lg:text-3xl font-semibold ml-0 sm:ml-8 md:ml-20 max-w-full md:max-w-45xl md:text-center sm:text-left">
+            Epic Automations designs and manufactures custom, cost-<br className="hidden 2xl:block" />effective machines, specializing in automation solutions <br className="hidden 2xl:block" /> that boost productivity, reduce costs, and maintain <br className="hidden 2xl:block" /> high-quality standards across various industries.
             </div>
           </div>
         </AnimatedSection>
@@ -160,17 +160,17 @@ export default function WhyEpic() {
         customAnimation={{ y: 30, opacity: 0, duration: 0.5, stagger: 0.05 }}
       >
         {stats.map((stat) => (
-          <div key={stat.title} data-animate-child className={`group bg-white/50 backdrop-blur-[15px] shadow-2xl rounded-xl flex flex-col items-center justify-between px-4 sm:px-6 md:px-8 py-6 sm:py-8 min-h-[180px] sm:min-h-[200px] md:min-h-[220px] transition-all duration-300 hover:scale-105 ${stat.hoverBorder} ${stat.hoverCardShadow}`}>
+          <div key={stat.title} data-animate-child className={`group bg-white/50 backdrop-blur-[15px] shadow-2xl rounded-xl flex flex-col items-center  px-4 sm:px-6 md:px-8 py-6 sm:py-8 min-h-[180px] sm:min-h-[200px] md:min-h-[220px] transition-all duration-300 hover:scale-105 ${stat.hoverBorder} ${stat.hoverCardShadow}`}>
             {/* Top: Number and Title */}
             <div className="flex flex-col items-center w-full mb-2">
               <div className="flex items-center gap-2">
-                <UpCount end={stat.end} className={`text-4xl md:text-5xl lg:text-6xl font-bold text-[#ff4f0f] transition-all duration-300`} start={statsVisible} />
-                <span className={`text-3xl md:text-4xl lg:text-6xl text-[#ff4f0f] font-normal ml-1 transition-all duration-300`}>+</span>
+                <UpCount end={stat.end} className={`text-4xl md:text-5xl 2xl:text-6xl font-bold text-[#ff4f0f] transition-all duration-300`} start={statsVisible} />
+                <span className={`text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl text-[#ff4f0f] font-normal ml-1 transition-all duration-300`}>+</span>
               </div>
-              <div className={`text-[#ff4f0f] text-xl md:text-2xl lg:text-4xl font-semibold text-center mt-2 transition-all duration-300`}>{stat.title}</div>
+              <div className={`text-[#ff4f0f] text-xl md:text-2xl xl:text-3xl 2xl:text-4xl font-semibold text-center mt-2 transition-all duration-300`}>{stat.title}</div>
             </div>
             {/* Bottom: Description */}
-            <div className="text-black text-base md:text-lg lg:text-[24px] font-semibold max-w-md text-center">{stat.desc}</div>
+            <div className="text-black text-base md:text-lg  2xl:text-[24px] font-semibold max-w-md text-center">{stat.desc}</div>
           </div>
         ))}
       </AnimatedSection>

@@ -9,12 +9,12 @@ export default function Newsletter() {
     const hasShownPopup = sessionStorage.getItem('newsletterPopupShown');
     
     if (!hasShownPopup) {
-      // Show popup after 15 seconds
+      // Show popup after 70 seconds
       const timer = setTimeout(() => {
         setShowPopup(true);
         // Mark as shown in session storage
         sessionStorage.setItem('newsletterPopupShown', 'true');
-      }, 15000); // 15 seconds
+      }, 70000); // 70 seconds
 
       return () => {
         clearTimeout(timer);
@@ -84,6 +84,7 @@ export default function Newsletter() {
               <div className="relative">
                 <img 
                   src="https://randomuser.me/api/portraits/women/44.jpg" 
+                  loading="lazy"
                   alt="User 1" 
                   className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-full border-2 border-white shadow" 
                 />
@@ -99,6 +100,7 @@ export default function Newsletter() {
             <div className="absolute left-12 sm:left-14 md:left-16 lg:left-20 xl:left-24 top-0 z-20">
               <img 
                 src="https://randomuser.me/api/portraits/men/32.jpg" 
+                loading="lazy"
                 alt="User 2" 
                 className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full border-2 border-white shadow" 
               />
@@ -109,6 +111,7 @@ export default function Newsletter() {
               <div className="relative">
                 <img 
                   src="https://randomuser.me/api/portraits/men/33.jpg" 
+                  loading="lazy"
                   alt="User 3" 
                   className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 xl:w-20 xl:h-20 rounded-full border-2 border-white shadow" 
                 />
@@ -160,6 +163,7 @@ export default function Newsletter() {
                    <div className="relative">
                      <img 
                        src="https://randomuser.me/api/portraits/women/44.jpg" 
+                       loading="lazy"
                        alt="User 1" 
                        className="w-8 h-8 rounded-full border-2 border-white shadow" 
                      />
@@ -175,6 +179,7 @@ export default function Newsletter() {
                  <div className="absolute left-12 top-0 z-20">
                    <img 
                      src="https://randomuser.me/api/portraits/men/32.jpg" 
+                     loading="lazy"
                      alt="User 2" 
                      className="w-10 h-10 rounded-full border-2 border-white shadow" 
                    />
@@ -185,6 +190,7 @@ export default function Newsletter() {
                    <div className="relative">
                      <img 
                        src="https://randomuser.me/api/portraits/men/33.jpg" 
+                       loading="lazy"
                        alt="User 3" 
                        className="w-12 h-12 rounded-full border-2 border-white shadow" 
                      />

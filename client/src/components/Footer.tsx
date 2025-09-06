@@ -135,18 +135,18 @@ export default function Footer() {
         <div className="relative z-10 w-full max-w-8xl mt-10 sm:mt-1 sm:mx-auto rounded-2xl sm:rounded-3xl bg-[#111112]/90 shadow-2xl  sm:px-0 sm:py-0 flex flex-col items-center">
           {/* Shiny border */}
           <div className="rounded-2xl sm:rounded-3xl p-[2px] bg-gradient-to-r from-[#FEB130] via-[#fcd48f] to-[#FEB130] w-full">
-            <div className="rounded-[18px] sm:rounded-[22px] bg-[#111112]/95 px-4 sm:px-6 md:px-8 lg:px-16 py-8 sm:py-10 md:py-12 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 sm:gap-6 lg:gap-8 items-start justify-between">
+            <div className="rounded-[18px] sm:rounded-[22px] bg-[#111112]/95 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-8 2xl:px-16 py-8 sm:py-10 md:py-12 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-5 gap-8 sm:gap-6 lg:gap-8 xl:gap-1 2xl:gap-8 items-start justify-between">
               
               {/* 1. CTA */}
-              <div className="flex flex-col gap-4 min-w-0 sm:min-w-[200px] max-w-full sm:max-w-xs col-span-1 sm:col-span-2 lg:col-span-1">
+              <div className="flex flex-col gap-4 min-w-0 xl:min-w-[160px] max-w-full xl:max-w-[200px] 2xl:max-w-xs col-span-1 sm:col-span-2 lg:col-span-1 xl:col-span-1 2xl:col-span-1">
                 <div className="flex items-center gap-2">
-                  <span className="text-white text-2xl md:text-2xl font-semibold leading-tight">Ready to automate your future? Book a robotics consultation!</span>
+                  <span className="text-white text-2xl md:text-2xl xl:text-lg 2xl:text-2xl font-semibold leading-tight">Ready to automate your future? Book a robotics consultation!</span>
                 </div>
                 <p className="text-gray-200 text-md mb-2 opacity-70 leading-relaxed">Discover how intelligent automation can transform your business.</p>
                 <div className="flex flex-col gap-2 mt-2">
                   <button 
                     onClick={() => handleNavigation('/services#spm')}
-                    className="bg-[#FEB130] text-black font-bold px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base shadow hover:bg-[#fddca4] transition flex items-center justify-between group"
+                    className="bg-[#FEB130] text-black font-bold px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm xl:text-xs 2xl:text-base shadow hover:bg-[#fddca4] transition flex items-center justify-between group"
                   >
                     <span className="truncate">Special Purpose Machines</span>
                     <span className="ml-2 text-base sm:text-lg group-hover:translate-x-1 transition flex-shrink-0">→</span>
@@ -162,9 +162,9 @@ export default function Footer() {
               </div>
               
               {/* 2. Navigation */}
-              <div className="flex flex-col gap-2 min-w-0 sm:min-w-[150px] max-w-full sm:max-w-xs pl-0 sm:pl-10">
+              <div className="flex flex-col gap-2 min-w-0 xl:min-w-[100px] max-w-full xl:max-w-[130px] 2xl:max-w-xs pl-0 sm:pl-10 xl:pl-1 2xl:pl-10">
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-white text-lg sm:text-xl md:text-2xl font-semibold">Navigation</span>
+                  <span className="text-white text-lg sm:text-xl md:text-2xl xl:text-lg 2xl:text-2xl font-semibold">Navigation</span>
                 </div>
                 <ul className="text-gray-300 text-base sm:text-lg space-y-1.5 sm:space-y-2 opacity-90">
                   {navigationItems.map((item) => (
@@ -182,9 +182,9 @@ export default function Footer() {
               </div>
               
               {/* 3. Legal Info */}
-              <div className="flex flex-col gap-2 min-w-0 sm:min-w-[140px] max-w-full sm:max-w-xs">
+              <div className="flex flex-col gap-2 min-w-0 xl:min-w-[80px] max-w-full xl:max-w-[110px] 2xl:max-w-xs">
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-white text-lg sm:text-xl md:text-2xl font-semibold">Legal</span>
+                  <span className="text-white text-lg sm:text-xl md:text-2xl xl:text-lg 2xl:text-2xl font-semibold">Legal</span>
                 </div>
                 <ul className="text-gray-300 text-base sm:text-lg space-y-1.5 sm:space-y-2 opacity-90">
                   {legalItems.map((item) => (
@@ -202,9 +202,9 @@ export default function Footer() {
               </div>
               
               {/* 4. Contact */}
-              <div className="flex flex-col gap-2 min-w-0 sm:min-w-[180px] max-w-full sm:max-w-xs col-span-1 sm:col-span-2 lg:col-span-1">
+              <div className="flex flex-col gap-2 min-w-0 xl:min-w-[140px] max-w-full xl:max-w-[180px] 2xl:max-w-xs col-span-1 sm:col-span-2 lg:col-span-1 xl:col-span-1 2xl:col-span-1">
                 <div className="flex items-center gap-2">
-                  <span className="text-white text-lg sm:text-xl md:text-2xl font-semibold">Contact Us</span>
+                  <span className="text-white text-lg sm:text-xl md:text-2xl xl:text-lg 2xl:text-2xl font-semibold">Contact Us</span>
                 </div>
                 <span 
                   onClick={() => handleEmail('Sales@epicautoamtions.co.in')}
@@ -231,18 +231,18 @@ export default function Footer() {
               </div>
               
               {/* 5. Made by/Follow/Scroll to top */}
-              <div className="flex flex-col gap-2 min-w-0 sm:min-w-[180px] max-w-full sm:max-w-xs items-start sm:items-end justify-between col-span-1 sm:col-span-2 lg:col-span-1">
+              <div className="flex flex-col gap-2 min-w-0 xl:min-w-[180px] xl:ml-15 2xl:ml-0 max-w-full xl:max-w-[240px] 2xl:max-w-xs items-start sm:items-end  col-span-1 sm:col-span-2 lg:col-span-1 xl:col-span-1 2xl:col-span-1">
                 <div className="w-full sm:w-auto">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-white text-lg sm:text-xl md:text-2xl font-semibold leading-tight">Powered by Epic Automations</span>
+                    <span className="text-white text-lg sm:text-xl md:text-2xl xl:text-lg 2xl:text-2xl font-semibold leading-tight">Powered by Epic Automations</span>
                   </div>
                   <span 
                     onClick={() => handleEmail('Visaganarumugam@epicautomations.co.in')}
                     className="text-gray-300 text-sm sm:text-lg mb-2 opacity-70 break-all sm:break-normal cursor-pointer hover:text-[#FEB130] transition-colors"
                   >
-                    Visaganarumugam@epicautomations.co.in
+                    Visaganarumugam@<br/>epicautomations.co.in
                   </span>
-                  <div className="flex flex-col mt-10 gap-2 sm:gap-0">
+                  <div className="flex flex-col xl:w-[220px] 2xl:w-full mt-10 gap-2 sm:gap-0">
                     <button 
                       onClick={handleLinkedIn}
                       className="border border-[#FEB130] mt-4 text-white font-semibold px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base hover:bg-[#232325] transition flex items-center justify-between group"

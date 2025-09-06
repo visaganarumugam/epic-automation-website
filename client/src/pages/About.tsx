@@ -177,14 +177,14 @@ export default function About() {
       
     },
     {
-      bgImage: '/images/products.jpg',
+      bgImage: '/images/prodsrtjhucts.jpg',
       logo: '/images/logos/Ammarun-Foundries.jpg',
       title: 'Pre Machining',
       description: 'Power Press for Industrial Use — Upgrade with advanced Cross Shaft Power Press machines. Efficiency and precision! Call Us. Enhance Production with Cross Shaft Power Presses. Durable and precise machinery. Call Us. Boost Productivity Now.',
       
     },
     {
-      bgImage: '/images/collaboration.png',
+      bgImage: '/images/collabosrtjration.png',
       logo: '/images/logos/lmw.png',
       title: 'MCB Automation',
       description: 'MCB assembly automation involves using machines and automated systems to handle the various steps of assembling electronic components onto printed circuit boards (MCBs), replacing manual labor for increased speed, precision, and efficiency. This automation extends from component placement and soldering to testing and inspection.',
@@ -240,21 +240,22 @@ export default function About() {
               src="/images/Image_4.webp"
               alt="Heading Background"
               className="w-full h-[1300px] object-cover object-center  select-none pointer-events-none"
+              loading="lazy"
               draggable="false"
             />
           </div>
-          <FadeUpSection className="w-full flex flex-col items-center justify-center bg-transparent rounded-none md:rounded-2xl px-4 md:px-10 sm:py-10 mb-5 pt-25 sm:pt-30 relative z-10">
+          <FadeUpSection className="w-full flex flex-col items-center justify-center bg-transparent rounded-none md:rounded-2xl px-4 md:px-10 xl:px-16 2xl:px-10 sm:py-10 mb-5 pt-25 sm:pt-30 relative z-10">
             <AnimatedSection
               customAnimation={{ y: 50, opacity: 0, duration: 1, delay: 0.2 }}
             >
-              <h1 className="w-full text-center text-3xl md:text-[5.1rem] font-bold leading-tight mb-6 md:mb-6 font-gilroy text-white">
-                Discover How Epic Automation's Robotics<br className='hidden sm:block' /> Innovation Are Transforming<br className='hidden sm:block' /> The Future
+              <h1 className="w-full text-center text-3xl md:text-[5.1rem] xl:text-[4.2rem] 2xl:text-[5.1rem] font-bold leading-tight mb-6 md:mb-6 font-gilroy text-white">
+                Discover How Epic Automation's Robotics<br className='hidden 2xl:block' /> Innovation Are Transforming<br className='hidden sm:block' /> The Future
               </h1>
             </AnimatedSection>
             <AnimatedSection
               customAnimation={{ y: 30, opacity: 0, duration: 0.8, delay: 0.4 }}
             >
-              <p className="text-white text-center text-base md:text-3xl mx-5 sm:mx-0 mb-8 font-semibold font-gilroy">
+              <p className="text-white text-center text-base md:text-3xl xl:text-2xl 2xl:text-3xl mx-5 sm:mx-0 mb-8 font-semibold font-gilroy">
               At Epic Automations, we pioneer AI-driven robotics, creating adaptive, efficient, <br className='hidden sm:block' /> ethical solutions for real‑world challenges.
               </p>
             
@@ -332,14 +333,14 @@ export default function About() {
       <div className="w-full flex justify-center bg-[#ffe7b6]">
             
         <AnimatedSection 
-          className="w-full max-w-full px-4 sm:px-8 md:px-20 flex flex-col gap-6 sm:gap-8 md:gap-10 mt-4"
+          className="w-full max-w-full px-4 sm:px-8 md:px-20 xl:px-16 2xl:px-20 flex flex-col gap-6 sm:gap-8 md:gap-10 xl:gap-8 2xl:gap-10 mt-4"
           customAnimation={{ y: 50, opacity: 0, duration: 1, delay: 1.0 }}
         >
           {/* Our Story Card */}
           <div className="w-full sm:h-[60vh]  rounded-4xl  flex flex-col md:flex-row items-stretch overflow-hidden px-0 py-0" style={{minHeight:'270px'}}>
             <div className="flex-1 flex flex-col items-start justify-center px-8 py-10 md:py-8">
-              <h3 className="bg-gradient-to-bl from-orange-600 via-black to-orange-600 bg-clip-text text-transparent text-4xl md:text-6xl font-bold sm:font-semibold mb-6">The People Behind the Magic</h3>
-              <p className="text-gray-700 text-lg font-semibold md:text-2xl mb-8 max-w-full">
+              <h3 className="bg-gradient-to-bl from-orange-600 via-black to-orange-600 bg-clip-text text-transparent text-4xl md:text-6xl xl:text-5xl 2xl:text-6xl font-bold sm:font-semibold mb-6">The People Behind the Magic</h3>
+              <p className="text-gray-700 text-lg font-semibold md:text-2xl xl:text-xl 2xl:text-2xl mb-8 max-w-full">
                 Founded with a vision to revolutionize industries, Epic Automations harnesses the power of robotics and AI to create intelligent, adaptive solutions. Our journey began with a passion for innovation—designing robots that not only automate tasks but also learn, collaborate, and transform the way businesses operate. From manufacturing floors to smart warehouses, our story is one of relentless pursuit of excellence in robotics.
               </p>
               {/* <ShimmerButton className="shadow-2xl mt-2">
@@ -355,8 +356,9 @@ export default function About() {
                 loop
                 muted
                 playsInline
+                preload="none"
                 className="w-full h-full object-cover object-center shadow-lg shadow-black/50 rounded-4xl"
-                poster="/images/bdg.jpg"
+                poster="/images/bdscg.jpg"
               />
             </div>
           </div>
@@ -369,6 +371,7 @@ export default function About() {
                 loop
                 muted
                 playsInline
+                preload="none"
                 className="w-full h-full object-cover object-center shadow-lg shadow-black/50 rounded-4xl"
                 poster="/images/desigfgn.jpg"
               />
@@ -504,32 +507,31 @@ export default function About() {
                           pointerEvents: pos === 2 ? 'auto' : 'none',
                         }}
                       >
-                        <div className="w-full h-[650px] sm:h-full bg-white rounded-xl sm:rounded-2xl shadow-lg overflow-hidden relative flex flex-col md:flex-row">
+                        <div className="w-full h-[650px] sm:h-full xl:h-[580px] 2xl:h-full bg-white rounded-xl sm:rounded-2xl shadow-lg overflow-hidden relative flex flex-col md:flex-row">
+                          {/* Logo - Positioned at left bottom of entire card */}
+                          <div className="absolute bottom-4 left-4 z-10">
+                            <img src={cardData[idx].logo} alt="Logo" className="h-8 sm:h-10 md:h-12 2xl:h-15 bg-white p-1 rounded shadow-md" loading="lazy" />
+                          </div>
+                          
                           {/* Left Section - Content (Image-inspired UI) */}
-                          <div className="flex-1 flex flex-col justify-between p-6 sm:p-6 md:p-10 h-[350px] sm:min-h-[350px] md:min-h-[400px]">
+                          <div className="flex-1 flex flex-col justify-start p-6 sm:p-6 md:p-10 xl:p-8 2xl:p-10 h-[350px] sm:min-h-[350px] md:min-h-[400px] xl:min-h-[350px] 2xl:min-h-[400px]">
                             <div>
                               {/* Pill label */}
                               <div className="inline-block px-3 sm:px-4 md:px-5 py-1 mb-3 sm:mb-4 md:mb-6 rounded-lg sm:rounded-xl border border-gray-300 bg-white text-gray-700 text-sm sm:text-base md:text-xl font-semibold shadow-sm">
                                 Our Service
                               </div>
                               {/* Heading */}
-                              <h3 className="font-serif font-bold text-2xl md:text-4xl lg:text-7xl leading-tight text-transparent bg-clip-text bg-gradient-to-br from-orange-600 via-black to-orange-600 mb-4 sm:mb-4 md:mb-6" style={{lineHeight: '1.1'}}>
+                              <h3 className="font-serif font-bold text-2xl md:text-4xl lg:text-7xl xl:text-5xl 2xl:text-7xl leading-tight text-transparent bg-clip-text bg-gradient-to-br from-orange-600 via-black to-orange-600 mb-4 sm:mb-4 md:mb-6" style={{lineHeight: '1.1'}}>
                                 {cardData[idx].title}
                               </h3>
                               {/* Description */}
-                              <p className="text-black text-base md:text-lg lg:text-3xl font-semibold max-w-xl leading-tight mb-4">
+                              <p className="text-black text-base md:text-lg lg:text-3xl xl:text-2xl 2xl:text-3xl font-semibold max-w-xl leading-tight mb-4">
                                 {cardData[idx].description}
                               </p>
                             </div>
-                            {/* Logo */}
-                            <div className="mt-4 sm:mt-8 md:mt-10">
-                              <div className="flex items-center">
-                                <img src={cardData[idx].logo} alt="Logo" className="h-10 sm:h-12 md:h-15 bg-white p-2 mr-3 rounded shadow-sm" />
-                              </div>
-                            </div>
                           </div>
                           {/* Right Section - Image or Video */}
-                          <div className="flex-1 h-[300px] sm:h-full flex items-center justify-center p-6 pt-0 sm:pt-6 sm:p-6  md:p-10">
+                          <div className="flex-1 h-full flex items-center justify-center p-4 pt-0 sm:pt-6 sm:p-6  md:p-10">
                             {idx === 0 ? (
                               <video
                                 ref={videoRef0}
@@ -538,7 +540,8 @@ export default function About() {
                                 loop
                                 muted
                                 playsInline
-                                className="w-full h-[280px] sm:h-full object-cover rounded-xl shadow-lg shadow-black/50"
+                                preload="none"
+                                className="w-full h-[235px] sm:h-full object-cover rounded-xl shadow-lg shadow-black/50"
                                 poster={cardData[idx].bgImage}
                               />
                             ) : idx === 1 ? (
@@ -549,7 +552,8 @@ export default function About() {
                                 loop
                                 muted
                                 playsInline
-                                className="w-full h-[280px] sm:h-full object-cover rounded-xl shadow-lg shadow-black/50"
+                                preload="none"
+                                className="w-full h-full object-cover rounded-xl shadow-lg shadow-black/50"
                                 poster={cardData[idx].bgImage}
                               />
                             )  : idx === 5 ? (
@@ -560,7 +564,8 @@ export default function About() {
                                 loop
                                 muted
                                 playsInline
-                                className="w-full h-[280px] sm:h-full object-cover rounded-xl shadow-lg shadow-black/50"
+                                preload="none"
+                                className="w-full h-full object-cover rounded-xl shadow-lg shadow-black/50"
                                 poster={cardData[idx].bgImage}
                               />
                             ) : idx === 6 ? (
@@ -571,14 +576,16 @@ export default function About() {
                                 loop
                                 muted
                                 playsInline
-                                className="w-full h-[280px] sm:h-full object-cover rounded-xl shadow-lg shadow-black/50"
+                                preload="none"
+                                className="w-full h-full object-cover rounded-xl shadow-lg shadow-black/50"
                                 poster={cardData[idx].bgImage}
                               />
                             ) : (
                               <img
                                 src={cardData[idx].bgImage}
                                 alt={cardData[idx].title}
-                                className="w-full h-[280px] sm:h-full object-cover rounded-xl shadow-lg mb-10 shadow-black/50"
+                                className="w-full h-[230px] sm:h-full object-cover rounded-xl shadow-lg mb-10 shadow-black/50"
+                                loading="lazy"
                               />
                             )}
                           </div>

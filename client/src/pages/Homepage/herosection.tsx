@@ -12,6 +12,7 @@ const createSlides = (handleBookCallClick: () => void) => [
           loop
           muted
           playsInline
+          preload="metadata"
           className="absolute inset-0 w-full h-full bg-[#ffe7b6] object-fill z-0"
         >
           <source src="/videos/Slide1_bg_video1.mp4" type="video/mp4" />

@@ -41,13 +41,13 @@ export default function HelpCenter() {
         {/* Leftmost */}
         <div className="absolute left-4 sm:left-6 md:left-8 lg:left-24 bottom-20 sm:bottom-8 md:bottom-10 lg:top-50 z-20">
           <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full border-2 sm:border-3 md:border-4 border-white shadow-lg overflow-hidden bg-white flex items-center justify-center">
-            <img src={heroImages[0].src} alt={heroImages[0].alt} className="w-full h-full object-cover" />
+            <img src={heroImages[0].src} alt={heroImages[0].alt} className="w-full h-full object-cover" loading="lazy" />
           </div>
         </div>
         {/* Left Center */}
         <div className="absolute left-1/4 bottom-0 md:left-1/4 md:bottom-4 z-20">
           <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full border-2 sm:border-3 md:border-4 border-white shadow-lg overflow-hidden bg-white flex items-center justify-center">
-            <img src={heroImages[1].src} alt={heroImages[1].alt} className="w-full h-full object-cover" />
+            <img src={heroImages[1].src} alt={heroImages[1].alt} className="w-full h-full object-cover" loading="lazy" />
           </div>
         </div>
         {/* Center Icon */}
@@ -59,13 +59,13 @@ export default function HelpCenter() {
         {/* Right Center */}
         <div className="absolute right-1/4 bottom-0 md:right-1/6 md:top-34 z-20">
           <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full border-2 sm:border-3 md:border-4 border-white shadow-lg overflow-hidden bg-white flex items-center justify-center">
-            <img src={heroImages[3].src} alt={heroImages[3].alt} className="w-full h-full object-cover" />
+            <img src={heroImages[3].src} alt={heroImages[3].alt} className="w-full h-full object-cover" loading="lazy" />
           </div>
         </div>
         {/* Rightmost */}
         <div className="absolute right-4 sm:right-6 md:right-8 lg:right-24 bottom-17 sm:bottom-8 md:bottom-10 lg:bottom-8 z-20">
           <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full border-2 sm:border-3 md:border-4 border-white shadow-lg overflow-hidden bg-white flex items-center justify-center">
-            <img src={heroImages[4].src} alt={heroImages[4].alt} className="w-full h-full object-cover" />
+            <img src={heroImages[4].src} alt={heroImages[4].alt} className="w-full h-full object-cover" loading="lazy" />
           </div>
         </div>
         {/* Centered Content */}
@@ -92,8 +92,8 @@ export default function HelpCenter() {
           </AnimatedSection>
         </FadeUpSection>
         {/* Hero Wave (bottom) */}
-        <div ref={contactFormRef}  className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none">
-          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-[40.5px] md:h-[159px]">
+        <div ref={contactFormRef}  className="absolute -bottom-1 left-0 right-0 z-10 pointer-events-none">
+          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-[40.5px] xl:h-[116.5px] 2xl:h-[159px]">
             <path d="M0,40 Q360,120 720,60 Q1080,0 1440,80 L1440,120 L0,120 Z" fill="#fff" />
           </svg>
         </div>
@@ -104,13 +104,13 @@ export default function HelpCenter() {
         className="bg-white min-h-screen"
         customAnimation={{ y: 50, opacity: 0, duration: 1, delay: 0.8 }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 xl:px-12 2xl:px-8 py-8 sm:py-12 md:py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2 gap-8 sm:gap-10 md:gap-12 xl:gap-10 2xl:gap-12">
             
             {/* Left Column - Contact Information */}
             <div className="space-y-6 sm:space-y-8">
               <div>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">Get in touch</h2>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl xl:text-4xl 2xl:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">Get in touch</h2>
                 
                 {/* Phone */}
                 <div className="mb-4 sm:mb-6">
@@ -158,10 +158,10 @@ export default function HelpCenter() {
         </div>
         
         {/* Map Section */}
-        <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] bg-gray-100 z-10">
+        <div className="relative w-full h-[400px] sm:h-[500px] xl:h-[600px] bg-gray-100 z-10">
           {/* Map Wave (top) */}
         <div className="absolute -top-1 rotate-180 left-0 right-0 z-10 pointer-events-none">
-          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-[40.5px] md:h-[159px]">
+          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-[40.5px] xl:h-[120px] 2xl:h-[159px]">
             <path d="M0,40 Q360,120 720,60 Q1080,0 1440,80 L1440,120 L0,120 Z" fill="#fff" />
           </svg>
         </div>
