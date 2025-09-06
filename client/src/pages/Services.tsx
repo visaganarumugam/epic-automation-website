@@ -240,7 +240,7 @@ const standardServices = [
     title: "PLC & HMI Programming",
     subtitle: "Integrated control and visualization systems",
     description: "PLC and HMI programming for industrial automation control and monitoring.",
-    longDescription: "PLC and HMI programming are essential components of industrial automation, working together to control and monitor processes. PLCs (Programmable Logic Controllers) execute logic and control functions based on input signals, while HMIs (Human Machine Interfaces) provide a visual interface for operators to interact with and monitor the PLC and the system it controls.",
+    longDescription: "PLCs (Programmable Logic Controllers) handle control and logic using input signals, while HMIs (Human Machine Interfaces) offer operators a visual interface to monitor, manage, and interact with systems, ensuring effective industrial automation.",
     keyBenefit: "Unified process management",
     videoThumbnail: "/images/navdropimages/plchmi.png",
     detailImage: "/images/navdropimages/plchmi.png",
@@ -380,7 +380,7 @@ export default function Services() {
           Our Services
         </motion.h3>
         {/* Revolutionary Holographic Service Cards */}
-        <div id="services-section" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 lg:gap-12 max-w-full mx-4 sm:mx-8 lg:mx-25 mb-8 sm:mb-16">
+        <div id="services-section" className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 sm:gap-8 xl:gap-8 2xl:gap-12 max-w-full mx-4 sm:mx-8 xl:mx-12 2xl:mx-25 mb-8 sm:mb-16">
           {standardServices.map((service, index) => {
             const IconComponent = service.icon;
             const isHovered = hoveredCard === service.id;
@@ -407,11 +407,12 @@ export default function Services() {
                   {/* Main Card */}
                   <div 
                     className={`
-                      relative bg-white h-[600px] sm:h-[700px] lg:h-[800px] flex flex-col
+                      relative bg-white h-[600px] sm:h-[700px] xl:h-[750px] 2xl:h-[800px] flex flex-col cursor-pointer
                       backdrop-blur-xl border-2 border-[#1A1A1A]/10 rounded-xl sm:rounded-2xl overflow-hidden
                       transition-all duration-500 group-hover:border-[#E85A2B]/70 shadow-xl shadow-[#1A1A1A]/30
-                      ${isHovered ? 'transform scale-105 shadow-2xl shadow-[#E85A2B]/20' : ''}
+                      ${isHovered ? 'transform scale-110 shadow-2xl shadow-[#E85A2B]/20' : ''}
                     `}
+                    onClick={() => setSelectedService(service)}
                     // style={{
                     //   background: isHovered ? 
                     //     'linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(232, 90, 43, 0.04), rgba(44, 90, 160, 0.04))' :
@@ -423,7 +424,7 @@ export default function Services() {
                       <ImageWithFallback
                         src={service.videoThumbnail}
                         alt={`${service.title} technology`}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        className="w-full h-full object-cover group-hover:scale-125 transition-transform duration-700"
                       />
                       {/* Holographic Icon */}
                       <motion.div
@@ -658,7 +659,7 @@ export default function Services() {
             onClick={() => setSelectedService(null)}
           >
             <motion.div
-              className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white rounded-2xl border border-gray-800 shadow-2xl"
+              className="relative w-full max-w-4xl max-h-[90vh] mt-10 overflow-y-auto bg-white rounded-2xl border border-gray-800 shadow-2xl"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }} 

@@ -129,7 +129,7 @@ function Card({ title, desc, gradient, className, titleColor, descColor }: CardP
     <div className={`${gradient} rounded-2xl sm:rounded-3xl shadow-lg pt-4 sm:pt-5 md:pt-6 pl-4 sm:pl-5 md:pl-6 pr-4 sm:pr-5 md:pr-6 flex flex-col justify-between relative ${className} transform hover:scale-105 hover:z-10 transition-transform duration-300`}>
       <div>
         <div className={`text-2xl lg:text-4xl font-bold uppercase mb-2 ${titleColor}`}>{title}</div>
-        <div className={`text-base md:text-lg lg:text-[1.7rem] font-semibold mb-2 sm:mb-3 md:mb-4 ${descColor}`}>{desc.split('.')[0]}</div>
+        <div className={`text-base md:text-lg xl:text-[1.3rem] 2xl:text-[1.7rem] font-semibold mb-2 sm:mb-3 md:mb-4 ${descColor}`}>{desc.split('.')[0]}</div>
         <div className={`text-sm md:text-base mb-2 sm:mb-3 md:mb-4 ${descColor}/90`}>{desc.split('.').slice(1).join('.')}</div>
       </div>
     </div>

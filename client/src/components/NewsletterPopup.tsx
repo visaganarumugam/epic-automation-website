@@ -20,7 +20,7 @@ export default function NewsletterPopup({
   onClose: externalOnClose, 
   onSubscribeSuccess,
   autoShow = true,
-  delay = 15000
+  delay = 70000
 }: NewsletterPopupProps) {
   const [internalIsOpen, setInternalIsOpen] = useState(false);
   const [email, setEmail] = useState('');
@@ -45,7 +45,7 @@ export default function NewsletterPopup({
       
       if (!hasShownPopup) {
         console.log(`Setting timer for ${delay}ms (${delay/1000} seconds)...`);
-        // Show popup after specified delay (default 15 seconds)
+        // Show popup after specified delay (default 70 seconds)
         const timer = setTimeout(() => {
           console.log('Timer completed! Showing popup...');
           setInternalIsOpen(true);

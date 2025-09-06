@@ -388,6 +388,7 @@ export default function Career() {
             src="/images/herosecImages/epicbghero1.png" 
             alt="Epic Automations Hero Background"
             className="w-full h-full object-cover"
+            loading="lazy"
           />
           {/* Overlay for better text readability */}
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
@@ -562,6 +563,7 @@ export default function Career() {
                       src="/images/plc_and_hmi.jpg" 
                       alt="Industrial Automation Course"
                       className="w-full h-68 object-cover"
+                      loading="lazy"
                     />
                     <div className="absolute top-4 left-4">
                       <span className="bg-gray-800 text-white text-xs font-semibold px-3 py-1 rounded-full">
@@ -617,6 +619,7 @@ export default function Career() {
                       src="/images/Robot_Programming.jpg" 
                       alt="Professional Diploma Course"
                       className="w-full h-68 object-cover"
+                      loading="lazy"
                     />
                     <div className="absolute top-4 left-4">
                       <span className="bg-gray-800 text-white text-xs font-semibold px-3 py-1 rounded-full">
@@ -672,6 +675,7 @@ export default function Career() {
                       src="/images/Automation-Control-Panels.jpg" 
                       alt="Certified Engineer Course"
                       className="w-full h-68 object-cover"
+                      loading="lazy"
                     />
                     <div className="absolute top-4 left-4">
                       <span className="bg-gray-800 text-white text-xs font-semibold px-3 py-1 rounded-full">
@@ -728,6 +732,7 @@ export default function Career() {
                       src="/images/navdropimages/deburring.png" 
                       alt="Industrial Automation Course"
                       className="w-full h-68 object-cover"
+                      loading="lazy"
                     />
                     <div className="absolute top-4 left-4">
                       <span className="bg-gray-800 text-white text-xs font-semibold px-3 py-1 rounded-full">
@@ -782,6 +787,7 @@ export default function Career() {
                       src="/images/navdropimages/CNC_Automation.jpg" 
                       alt="Professional Diploma Course"
                       className="w-full h-68 object-cover"
+                      loading="lazy"
                     />
                     <div className="absolute top-4 left-4">
                       <span className="bg-gray-800 text-white text-xs font-semibold px-3 py-1 rounded-full">
@@ -836,6 +842,7 @@ export default function Career() {
                       src="/images/courses/industrial-automation-3.jpg" 
                       alt="Certified Engineer Course"
                       className="w-full h-48 object-cover"
+                      loading="lazy"
                     />
                     <div className="absolute top-4 left-4">
                       <span className="bg-gray-800 text-white text-xs font-semibold px-3 py-1 rounded-full">
@@ -1111,6 +1118,7 @@ function LogoSliderRow({ logos, toRight = false, duration = 20 }: { logos: Logo[
               <img
                 src={logo.img}
                 alt={logo.name}
+                loading="lazy"
                 style={{ 
                   width: logo.size?.w, 
                   height: logo.size?.h, 

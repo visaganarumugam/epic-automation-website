@@ -67,6 +67,7 @@ function LogoSliderRow({ logos, toRight = false, duration = 20 }: { logos: Logo[
               <img
                 src={logo.img}
                 alt={logo.name}
+                loading="lazy"
                 style={{ 
                   width: logo.size?.w, 
                   height: logo.size?.h, 

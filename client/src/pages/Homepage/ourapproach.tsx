@@ -95,7 +95,7 @@ export default function WhatUrGoodAt() {
                 style={visibleSteps[idx] ? { animation: `riseup 1s cubic-bezier(0.23, 1, 0.32, 1) forwards`, animationDelay: `${0.1 + idx * 0.15}s` } : {}}
               >
                 <div className="mb-2 px-2 sm:px-0">
-                  <h3 className="text-[#ff4f0f] text-[1.7rem] lg:text-3xl font-bold mb-1">{step.title}</h3>
+                  <h3 className="text-[#ff4f0f] text-[1.7rem] 2xl:text-3xl xl:leading-tight font-bold mb-1">{step.title}</h3>
                   <p className="text-[#000000] text-[1.2rem] lg:text-[1.3rem] font-semibold max-w-[370px] md:max-w-[400px] mx-auto">{step.desc}</p>
                 </div>
                 <div className={`${step.lineHeight} w-0.5 bg-gradient-to-b from-[#ff4f0f] to-transparent mb-1 hidden sm:block`}></div>
@@ -103,8 +103,8 @@ export default function WhatUrGoodAt() {
               {/* steps (no transition) */}
               <div className="flex items-center justify-center relative z-10 mt-1">
                 {/* steps */}
-                <div className="flex items-center bg-[#ff4f0f] backdrop-blur-xl rounded-lg px-4 sm:px-5 md:px-7 py-2 sm:py-2.5 md:py-3 shadow-lg shadow-[#fbe6bf] border border-[#fdda9d]">
-                  <span className="text-white text-base md:text-lg lg:text-2xl font-semibold">{step.time}</span>
+                <div className="flex items-center bg-[#ff4f0f] backdrop-blur-xl rounded-lg px-4 sm:px-5 md:px-7 py-2 sm:py-2.5 2xl:py-3 shadow-lg shadow-[#fbe6bf] border border-[#fdda9d]">
+                  <span className="text-white text-base md:text-lg xl:text-xl 2xl:text-2xl font-semibold">{step.time}</span>
                   <span className="ml-2 sm:ml-3 w-4 h-4 sm:w-5 sm:h-5 rounded-md bg-[#ffb398] flex items-center justify-center shadow-lg"></span>
                 </div>
               </div>

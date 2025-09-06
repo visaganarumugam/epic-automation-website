@@ -62,17 +62,17 @@ export default function FeaturesSectionDemo() {
   return (
     <div id="your-benefits" className="bg-[#ffe7b6] ">
       <FadeUpSection>
-        <h2 className="bg-gradient-to-bl from-orange-600 via-black to-orange-600 bg-clip-text text-transparent text-4xl lg:text-[5.2rem] font-bold sm:font-semibold text-center pt-8 sm:pt-10 md:pt-12 mb-2 px-4 sm:px-6 md:px-0">From Human to Hybrid: <br className="block sm:hidden" />  Your Gains</h2>
+        <h2 className="bg-gradient-to-bl from-orange-600 via-black to-orange-600 bg-clip-text text-transparent text-4xl lg:text-[5.2rem] xl:text-[4.2rem] 2xl:text-[5.2rem] font-bold sm:font-semibold text-center pt-8 sm:pt-10 md:pt-12 mb-2 px-4 sm:px-6 md:px-0">From Human to Hybrid: <br className="block sm:hidden" />  Your Gains</h2>
       </FadeUpSection>
       <AnimatedSection
         customAnimation={{ y: 30, opacity: 0, duration: 0.8, delay: 0.2 }}
       >
-        <p className="text-black font-semibold leading-tight mt-5 text-lg lg:text-3xl text-center mb-5 px-4 sm:px-6 md:px-0">
+        <p className="text-black font-semibold leading-tight mt-5 text-lg lg:text-3xl xl:text-2xl 2xl:text-3xl text-center mb-5 px-4 sm:px-6 md:px-0">
         Epic Automations delivers smart robotics that merge physical precision  <br className="hidden sm:block" /> with adaptive digital intelligence.
         </p>
       </AnimatedSection>
       <AnimatedSection 
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 relative z-10 py-6 sm:py-8 md:py-10 max-w-full px-4 sm:px-6 md:px-10"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 relative z-10 py-6 sm:py-8 md:py-10 max-w-full px-4 sm:px-6 md:px-10 xl:px-16 2xl:px-10"
         customAnimation={{ y: 50, opacity: 0, duration: 1, delay: 0.4, stagger: 0.1 }}
       >
         {features.map((feature, index) => (

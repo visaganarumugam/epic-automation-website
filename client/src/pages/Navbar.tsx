@@ -422,7 +422,7 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
       <NavbarContent>
         <NavbarBrand>
           <RouterLink to="/home">
-            <img src={logo} alt="Logo" className="h-13 w-auto max-w-[200px] sm:max-w-[250px] lg:max-w-[300px] rounded-2xl p-2 sm:px-4" /> 
+            <img src={logo} alt="Logo" className="h-13 w-auto max-w-[200px] sm:max-w-[250px] lg:max-w-[300px] rounded-2xl p-2 sm:px-4" loading="eager" /> 
           </RouterLink>
           
         </NavbarBrand>
@@ -644,6 +644,7 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
                           src={item.image} 
                           alt={item.title} 
                           className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" 
+                          loading="lazy"
                         />
                         <div className="absolute inset-0 bg-black/60"></div>
                         <div className="relative h-full flex flex-col justify-end p-6 text-white">
@@ -693,7 +694,7 @@ export default function TopNavbar({ isScrolled }: { isScrolled?: boolean }) {
           <div className="menu-overlay md:hidden" onClick={() => setIsMenuOpen(false)} />
           <nav className="menu-sidebar md:hidden">
             <div className="flex items-center justify-between mb-6">
-                              <img src={logo} alt="Logo" className="h-6 w-auto max-w-[80px] sm:w-15 sm:h-8" />
+                              <img src={logo} alt="Logo" className="h-6 w-auto max-w-[80px] sm:w-15 sm:h-8" loading="eager" />
               <button onClick={() => setIsMenuOpen(false)} className="text-white text-2xl sm:text-3xl hover:text-[#F56E0F] cursor-pointer">
                 <FiX />
               </button>

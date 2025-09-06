@@ -8,10 +8,10 @@ export function useNewsletterPopup() {
     const isSubscribed = localStorage.getItem('newsletterSubscribed') === 'true';
     
     if (!isSubscribed) {
-      // Show popup after 15 seconds for better UX
+      // Show popup after 70 seconds for better UX
       const timer = setTimeout(() => {
         setShowPopup(true);
-      }, 15000); // 15 seconds delay
+      }, 70000); // 70 seconds delay
 
       return () => clearTimeout(timer);
     }
