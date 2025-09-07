@@ -7,20 +7,33 @@ import { getFirestore, collection, addDoc, serverTimestamp, query, orderBy, limi
 import type { User } from "firebase/auth";
 
 // Debug: Check if environment variables are loaded
-console.log("Environment variables check:");
-console.log("API Key:", import.meta.env.VITE_FIREBASE_API_KEY);
-console.log("Auth Domain:", import.meta.env.VITE_FIREBASE_AUTH_DOMAIN);
-console.log("Project ID:", import.meta.env.VITE_FIREBASE_PROJECT_ID);
+// Environment variables are validated below - no logging for security
+
+// Validate that all required environment variables are present
+const requiredEnvVars = [
+  'VITE_FIREBASE_API_KEY',
+  'VITE_FIREBASE_AUTH_DOMAIN',
+  'VITE_FIREBASE_PROJECT_ID',
+  'VITE_FIREBASE_STORAGE_BUCKET',
+  'VITE_FIREBASE_MESSAGING_SENDER_ID',
+  'VITE_FIREBASE_APP_ID'
+];
+
+requiredEnvVars.forEach(envVar => {
+  if (!import.meta.env[envVar]) {
+    throw new Error(`Missing required environment variable: ${envVar}`);
+  }
+});
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyAVZmEM8PJhnHdks8KFx2dtDkyiKXUT9X4",
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "epic-signup-auth.firebaseapp.com",
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "epic-signup-auth",
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "epic-signup-auth.firebasestorage.app",
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "743836494256",
-  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:743836494256:web:31097062c72f463e0d8e75",
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || "G-X3P08GLP12"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
@@ -178,10 +191,10 @@ export const uploadFile = async (file: File): Promise<{ url: string; error: stri
     const formData = new FormData();
     formData.append('file', file);
     formData.append('upload_preset', 'enquiry-uploads');
-    formData.append('cloud_name', 'df2x2nu9p');
+    formData.append('cloud_name', 'dmd4xxvmy');
     formData.append('folder', 'enquiry-files');
 
-    const response = await fetch(`https://api.cloudinary.com/v1_1/df2x2nu9p/auto/upload`, {
+    const response = await fetch(`https://api.cloudinary.com/v1_1/dmd4xxvmy/auto/upload`, {
       method: 'POST',
       body: formData,
     });
