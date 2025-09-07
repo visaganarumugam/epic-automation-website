@@ -287,7 +287,7 @@ export default function About() {
                   
                   }}
               >
-                <span className="text-3xl md:text-6xl  font-semibold text-white ">10K+</span>
+                <span className="text-3xl md:text-6xl  font-semibold text-white ">10+</span>
                 <span className="text-white text-2xl mt-1">Employee</span>
               </div>
               <div className="flex flex-col items-center flex-1 border rounded-2xl sm:border-r p-3" 
