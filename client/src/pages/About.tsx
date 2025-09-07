@@ -287,7 +287,7 @@ export default function About() {
                   
                   }}
               >
-                <span className="text-3xl md:text-6xl  font-semibold text-white ">50K+</span>
+                <span className="text-3xl md:text-6xl  font-semibold text-white ">10K+</span>
                 <span className="text-white text-2xl mt-1">Employee</span>
               </div>
               <div className="flex flex-col items-center flex-1 border rounded-2xl sm:border-r p-3" 
@@ -297,7 +297,7 @@ export default function About() {
                       borderImageSlice: 1,
                       
                       }}>
-                <span className="text-3xl md:text-6xl  font-semibold text-white ">05M+</span>
+                <span className="text-3xl md:text-6xl  font-semibold text-white ">01K+</span>
                 <span className="text-white text-2xl mt-1">Users in globally</span>
               </div>
               <div className="flex flex-col items-center flex-1 border rounded-2xl sm:border-r p-3"
@@ -319,7 +319,7 @@ export default function About() {
                   
                   }}
               >
-                <span className="text-3xl md:text-6xl  font-semibold text-white ">15+</span>
+                <span className="text-3xl md:text-6xl  font-semibold text-white ">05+</span>
                 <span className="text-white text-2xl mt-1">Years in business</span>
               </div>
             </div>
