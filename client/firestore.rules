@@ -1,0 +1,35 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Allow newsletter subscriptions
+    match /newsletter_subscribers/{document} {
+      allow read, write: if true;
+    }
+    
+    // Contact submissions
+    match /contactSubmissions/{document} {
+      allow create: if true;  // Anyone can create
+      allow read: if false;   // No one can read
+    }
+    
+    // Users (only authenticated owner can access)
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Allow test documents
+    match /test/{document} {
+      allow read, write: if true;
+    }
+    
+    // Service enquiries
+    match /serviceEnquiries/{docId} {
+      allow read: if true;           // adjust as needed
+      allow create: if
+        request.resource.data.keys().hasAll([
+          'name','email','message','phone','country','state','course','source'
+        ]);
+    }
+  }
+}
