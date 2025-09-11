@@ -28,6 +28,7 @@ export default function NewsletterPopup({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+  const location = useLocation();
 
   // Determine if popup should be open
   const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
