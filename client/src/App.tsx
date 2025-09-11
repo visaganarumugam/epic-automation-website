@@ -61,7 +61,7 @@ function AppContent() {
         <NavigationLoadingScreen onLoadingComplete={() => {}} minLoadTime={1500} />
       )}
 
-      {/* Main App Content */}
+      {/* Main App Content Component*/}
       {!isLoading && !isNavigating && (
         <>
           {!hideNavAndFooter && <TopNavbar isScrolled={scrolled} />}
