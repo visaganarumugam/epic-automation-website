@@ -144,7 +144,7 @@ export default function ContactForm({ source, className = '', variant = 'default
       className="absolute z-30 top-1/2 left-1/2 bg-white p-6 rounded-lg shadow-lg max-w-xs mx-auto text-center"
       style={{
         transform: 'translate(-50%, -50%)',
-        border: '2px solid black'  // Add this line for thick black border
+        border: '1px solid black'  // Add this line for thick black border
       }}
     >
       <h3 className="font-semibold text-red-600 mb-2">Submission Error</h3>
@@ -344,7 +344,7 @@ export default function ContactForm({ source, className = '', variant = 'default
       className="absolute z-30 top-1/2 left-1/2 bg-white p-6 rounded-lg shadow-lg max-w-xs mx-auto text-center "
       style={{
         transform: 'translate(-50%, -50%)',
-        border: '5px solid black'  // Add this line for thick black border
+        border: '1px solid black'  // Add this line for thick black border
       }}
     >
       <h3 className="font-semibold text-red-600 mb-2">Submission Error</h3>
