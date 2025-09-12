@@ -19,6 +19,7 @@ export default function ContactForm({ source, className = '', variant = 'default
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -58,7 +59,7 @@ export default function ContactForm({ source, className = '', variant = 'default
       return false;
     }
     if (formData.message.trim().length < 10) {
-      setErrorMessage('Message must be at least 10 characters long');
+      setErrorMessage('Message box contains at least 10 words .');
       return false;
     }
     return true;
@@ -68,12 +69,14 @@ export default function ContactForm({ source, className = '', variant = 'default
     e.preventDefault();
     
     if (!validateForm()) {
+      setShowErrorPopup(true);
       return;
     }
 
     setIsSubmitting(true);
     setSubmitStatus('idle');
     setErrorMessage('');
+    setShowErrorPopup(false);
 
     try {
       const contactData: ContactFormData = {
@@ -90,6 +93,7 @@ export default function ContactForm({ source, className = '', variant = 'default
       if (result.error) {
         setSubmitStatus('error');
         setErrorMessage(result.error);
+        setShowErrorPopup(true);
       } else {
         setSubmitStatus('success');
         // Reset form
@@ -108,13 +112,54 @@ export default function ContactForm({ source, className = '', variant = 'default
     } catch (error: any) {
       setSubmitStatus('error');
       setErrorMessage(error.message || 'An unexpected error occurred');
+      setShowErrorPopup(true);
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  // Popup close handler
+  const closeErrorPopup = () => setShowErrorPopup(false);
+
   if (variant === 'help-center') {
     return (
+
+      <div className='relative'>
+          {/* Blur overlay, shown only when error popup is visible */}
+    {showErrorPopup && (
+      <div
+        className="absolute inset-0 z-20"
+        style={{
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
+          background: 'rgba(255, 255, 255, 0.2)',
+          pointerEvents: 'none'
+        }}
+      />
+    )}
+
+    {/* Popup dialog */}
+  {showErrorPopup && (
+    <div
+      className="absolute z-30 top-1/2 left-1/2 bg-white p-6 rounded-lg shadow-lg max-w-xs mx-auto text-center"
+      style={{
+        transform: 'translate(-50%, -50%)',
+        border: '2px solid black'  // Add this line for thick black border
+      }}
+    >
+      <h3 className="font-semibold text-red-600 mb-2">Submission Error</h3>
+      <p className="mb-4">{errorMessage}</p>
+      {/* <p className="mb-4 text-sm text-gray-700">
+        Ensure all required fields are correctly filled. Then try submitting again.
+      </p> */}
+      <button
+        className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"
+        onClick={closeErrorPopup}
+      >
+        Close
+      </button>
+    </div>
+  )}
       <div className={`bg-white rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 md:p-8 border border-gray-100 ${className}`}>
         <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
           {/* Success Message */}
@@ -128,6 +173,7 @@ export default function ContactForm({ source, className = '', variant = 'default
               </div>
             </div>
           )}
+
 
           {/* Error Message */}
           {submitStatus === 'error' && (
@@ -153,7 +199,7 @@ export default function ContactForm({ source, className = '', variant = 'default
                 <input 
                   id="firstname" 
                   name="firstName"
-                  placeholder="Mike" 
+                  placeholder="First name here ..." 
                   type="text" 
                   value={formData.firstName}
                   onChange={handleInputChange}
@@ -174,7 +220,7 @@ export default function ContactForm({ source, className = '', variant = 'default
                 <input 
                   id="lastname" 
                   name="lastName"
-                  placeholder="Type name" 
+                  placeholder="Last name here ..." 
                   type="text" 
                   value={formData.lastName}
                   onChange={handleInputChange}
@@ -197,7 +243,7 @@ export default function ContactForm({ source, className = '', variant = 'default
               <input 
                 id="email" 
                 name="email"
-                placeholder="Type email" 
+                placeholder="Type your email here ..." 
                 type="email" 
                 value={formData.email}
                 onChange={handleInputChange}
@@ -219,7 +265,7 @@ export default function ContactForm({ source, className = '', variant = 'default
               <input 
                 id="phone" 
                 name="phone"
-                placeholder="Type phone number" 
+                placeholder="Type your phone number here ..." 
                 type="tel" 
                 value={formData.phone}
                 onChange={handleInputChange}
@@ -240,7 +286,7 @@ export default function ContactForm({ source, className = '', variant = 'default
               <textarea 
                 id="message" 
                 name="message"
-                placeholder="Type message" 
+                placeholder="Message must be more than ten words ..." 
                 rows={3}
                 value={formData.message}
                 onChange={handleInputChange}
@@ -270,11 +316,52 @@ export default function ContactForm({ source, className = '', variant = 'default
           </button>
         </form>
       </div>
+      </div>
     );
   }
 
   // Default variant (for homepage, about, services pages)
   return (
+    <div className="relative"> {/* Add this wrapper */}
+
+
+    {/* Blur overlay, shown only when error popup is visible */}
+    {showErrorPopup && (
+      <div
+        className="absolute inset-0 z-20"
+        style={{
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
+          background: 'rgba(255, 255, 255, 0.2)',
+          pointerEvents: 'none'
+        }}
+      />
+    )}
+
+    {/* Popup dialog */}
+  {showErrorPopup && (
+    <div
+      className="absolute z-30 top-1/2 left-1/2 bg-white p-6 rounded-lg shadow-lg max-w-xs mx-auto text-center "
+      style={{
+        transform: 'translate(-50%, -50%)',
+        border: '5px solid black'  // Add this line for thick black border
+      }}
+    >
+      <h3 className="font-semibold text-red-600 mb-2">Submission Error</h3>
+      <p className="mb-4">{errorMessage}</p>
+      <p className="mb-4 text-sm text-gray-700">
+        Please check your internet connection and ensure all required fields are correctly filled. Then try submitting again.
+      </p>
+      <button
+        className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"
+        onClick={closeErrorPopup}
+      >
+        Close
+      </button>
+    </div>
+  )}
+
+
     <form onSubmit={handleSubmit} className={`flex flex-col gap-2 bg-white/25 backdrop-blur-[15px] border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-2xl p-2 w-full ${className}`}>
       {/* Success Message */}
       {submitStatus === 'success' && (
@@ -287,6 +374,7 @@ export default function ContactForm({ source, className = '', variant = 'default
           </div>
         </div>
       )}
+
 
       {/* Error Message */}
       {submitStatus === 'error' && (
@@ -352,5 +440,8 @@ export default function ContactForm({ source, className = '', variant = 'default
         )}
       </button>
     </form>
+
+        {/* Your existing popup modal container should remain outside this wrapper */}
+  </div>
   );
 }
