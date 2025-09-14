@@ -3,7 +3,7 @@ import { submitContactForm } from '../lib/firebase';
 import type { ContactFormData } from '../lib/firebase';
 
 interface ContactFormProps {
-  source: string; // To track which page the form was submitted from
+  source: string;
   className?: string;
   variant?: 'default' | 'help-center';
 }
@@ -19,7 +19,13 @@ export default function ContactForm({ source, className = '', variant = 'default
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
-  const [showErrorPopup, setShowErrorPopup] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -27,56 +33,92 @@ export default function ContactForm({ source, className = '', variant = 'default
       ...prev,
       [name]: value
     }));
+    // Clear field error when user starts typing
+    if (fieldErrors[name as keyof typeof fieldErrors]) {
+      setFieldErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
   };
 
   const validateForm = () => {
+    const errors = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      message: ''
+    };
+
+    let isValid = true;
+
     if (variant === 'help-center') {
       if (!formData.firstName.trim()) {
-        setErrorMessage('First name is required');
-        return false;
+        errors.firstName = 'First name is required';
+        isValid = false;
+      } else if (!/^[a-zA-Z\s]+$/.test(formData.firstName.trim())) {
+        errors.firstName = 'First name should contain only letters';
+        isValid = false;
       }
+
       if (!formData.lastName.trim()) {
-        setErrorMessage('Last name is required');
-        return false;
+        errors.lastName = 'Last name is required';
+        isValid = false;
+      } else if (!/^[a-zA-Z\s]+$/.test(formData.lastName.trim())) {
+        errors.lastName = 'Last name should contain only letters';
+        isValid = false;
+      }
+
+      if (formData.phone.trim() && !/^\d{10}$/.test(formData.phone.trim())) {
+        errors.phone = 'Phone number must be exactly 10 digits';
+        isValid = false;
       }
     } else {
       if (!formData.firstName.trim()) {
-        setErrorMessage('Name is required');
-        return false;
+        errors.firstName = 'Name is required';
+        isValid = false;
+      } else if (!/^[a-zA-Z\s]+$/.test(formData.firstName.trim())) {
+        errors.firstName = 'Name should contain only letters';
+        isValid = false;
       }
     }
-    
+
     if (!formData.email.trim()) {
-      setErrorMessage('Email is required');
-      return false;
+      errors.email = 'Email is required';
+      isValid = false;
+    } else if (!formData.email.includes('@')) {
+      errors.email = 'Please enter a valid email address';
+      isValid = false;
     }
-    if (!formData.email.includes('@')) {
-      setErrorMessage('Please enter a valid email address');
-      return false;
-    }
+
     if (!formData.message.trim()) {
-      setErrorMessage('Message is required');
-      return false;
+      errors.message = 'Message is required';
+      isValid = false;
+    } else if (formData.message.trim().split(' ').length < 5) {
+      errors.message = 'Message must contain at least 5 words';
+      isValid = false;
     }
-    if (formData.message.trim().length < 10) {
-      setErrorMessage('Message box contains at least 10 words .');
-      return false;
+
+    setFieldErrors(errors);
+
+    if (!isValid) {
+      setErrorMessage('Please fix the errors below');
     }
-    return true;
+
+    return isValid;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!validateForm()) {
-      setShowErrorPopup(true);
       return;
     }
 
     setIsSubmitting(true);
     setSubmitStatus('idle');
     setErrorMessage('');
-    setShowErrorPopup(false);
 
     try {
       const contactData: ContactFormData = {
@@ -93,10 +135,8 @@ export default function ContactForm({ source, className = '', variant = 'default
       if (result.error) {
         setSubmitStatus('error');
         setErrorMessage(result.error);
-        setShowErrorPopup(true);
       } else {
         setSubmitStatus('success');
-        // Reset form
         setFormData({
           firstName: '',
           lastName: '',
@@ -104,7 +144,13 @@ export default function ContactForm({ source, className = '', variant = 'default
           phone: '',
           message: ''
         });
-        // Reset success message after 5 seconds
+        setFieldErrors({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          message: ''
+        });
         setTimeout(() => {
           setSubmitStatus('idle');
         }, 5000);
@@ -112,54 +158,13 @@ export default function ContactForm({ source, className = '', variant = 'default
     } catch (error: any) {
       setSubmitStatus('error');
       setErrorMessage(error.message || 'An unexpected error occurred');
-      setShowErrorPopup(true);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  // Popup close handler
-  const closeErrorPopup = () => setShowErrorPopup(false);
-
   if (variant === 'help-center') {
     return (
-
-      <div className='relative'>
-          {/* Blur overlay, shown only when error popup is visible */}
-    {showErrorPopup && (
-      <div
-        className="absolute inset-0 z-20"
-        style={{
-          backdropFilter: 'blur(8px)',
-          WebkitBackdropFilter: 'blur(8px)',
-          background: 'rgba(255, 255, 255, 0.2)',
-          pointerEvents: 'none'
-        }}
-      />
-    )}
-
-    {/* Popup dialog */}
-  {showErrorPopup && (
-    <div
-      className="absolute z-30 top-1/2 left-1/2 bg-white p-6 rounded-lg shadow-lg max-w-xs mx-auto text-center"
-      style={{
-        transform: 'translate(-50%, -50%)',
-        border: '1px solid black'  // Add this line for thick black border
-      }}
-    >
-      <h3 className="font-semibold text-red-600 mb-2">Submission Error</h3>
-      <p className="mb-4">{errorMessage}</p>
-      {/* <p className="mb-4 text-sm text-gray-700">
-        Ensure all required fields are correctly filled. Then try submitting again.
-      </p> */}
-      <button
-        className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"
-        onClick={closeErrorPopup}
-      >
-        Close
-      </button>
-    </div>
-  )}
       <div className={`bg-white rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 md:p-8 border border-gray-100 ${className}`}>
         <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
           {/* Success Message */}
@@ -173,7 +178,6 @@ export default function ContactForm({ source, className = '', variant = 'default
               </div>
             </div>
           )}
-
 
           {/* Error Message */}
           {submitStatus === 'error' && (
@@ -199,7 +203,7 @@ export default function ContactForm({ source, className = '', variant = 'default
                 <input 
                   id="firstname" 
                   name="firstName"
-                  placeholder="First name here ..." 
+                  placeholder="First Name here ..." 
                   type="text" 
                   value={formData.firstName}
                   onChange={handleInputChange}
@@ -208,6 +212,7 @@ export default function ContactForm({ source, className = '', variant = 'default
                   required
                 />
               </div>
+              {fieldErrors.firstName && <p className="text-red-500 text-xs mt-1">{fieldErrors.firstName}</p>}
             </div>
             <div>
               <label htmlFor="lastname" className="text-sm sm:text-md font-semibold text-gray-700 mb-1 sm:mb-2 block">
@@ -220,7 +225,7 @@ export default function ContactForm({ source, className = '', variant = 'default
                 <input 
                   id="lastname" 
                   name="lastName"
-                  placeholder="Last name here ..." 
+                  placeholder="Last Name here ..." 
                   type="text" 
                   value={formData.lastName}
                   onChange={handleInputChange}
@@ -229,6 +234,7 @@ export default function ContactForm({ source, className = '', variant = 'default
                   required
                 />
               </div>
+              {fieldErrors.lastName && <p className="text-red-500 text-xs mt-1">{fieldErrors.lastName}</p>}
             </div>
           </div>
 
@@ -243,7 +249,7 @@ export default function ContactForm({ source, className = '', variant = 'default
               <input 
                 id="email" 
                 name="email"
-                placeholder="Type your email here ..." 
+                placeholder="Type your email ..." 
                 type="email" 
                 value={formData.email}
                 onChange={handleInputChange}
@@ -252,6 +258,7 @@ export default function ContactForm({ source, className = '', variant = 'default
                 required
               />
             </div>
+            {fieldErrors.email && <p className="text-red-500 text-xs mt-1">{fieldErrors.email}</p>}
           </div>
 
           <div>
@@ -265,7 +272,7 @@ export default function ContactForm({ source, className = '', variant = 'default
               <input 
                 id="phone" 
                 name="phone"
-                placeholder="Type your phone number here ..." 
+                placeholder="Type your phone number .." 
                 type="tel" 
                 value={formData.phone}
                 onChange={handleInputChange}
@@ -273,6 +280,7 @@ export default function ContactForm({ source, className = '', variant = 'default
                 className="w-full pl-8 sm:pl-10 pr-3 h-10 sm:h-12 border border-gray-300 placeholder:font-semibold placeholder:text-sm sm:placeholder:text-lg text-sm sm:text-base rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
+            {fieldErrors.phone && <p className="text-red-500 text-xs mt-1">{fieldErrors.phone}</p>}
           </div>
 
           <div>
@@ -286,7 +294,7 @@ export default function ContactForm({ source, className = '', variant = 'default
               <textarea 
                 id="message" 
                 name="message"
-                placeholder="Message must be more than ten words ..." 
+                placeholder="Type message with more than five words ...." 
                 rows={3}
                 value={formData.message}
                 onChange={handleInputChange}
@@ -295,6 +303,7 @@ export default function ContactForm({ source, className = '', variant = 'default
                 required
               />
             </div>
+            {fieldErrors.message && <p className="text-red-500 text-xs mt-1">{fieldErrors.message}</p>}
           </div>
 
           <button
@@ -316,52 +325,11 @@ export default function ContactForm({ source, className = '', variant = 'default
           </button>
         </form>
       </div>
-      </div>
     );
   }
 
   // Default variant (for homepage, about, services pages)
   return (
-    <div className="relative"> {/* Add this wrapper */}
-
-
-    {/* Blur overlay, shown only when error popup is visible */}
-    {showErrorPopup && (
-      <div
-        className="absolute inset-0 z-20"
-        style={{
-          backdropFilter: 'blur(8px)',
-          WebkitBackdropFilter: 'blur(8px)',
-          background: 'rgba(255, 255, 255, 0.2)',
-          pointerEvents: 'none'
-        }}
-      />
-    )}
-
-    {/* Popup dialog */}
-  {showErrorPopup && (
-    <div
-      className="absolute z-30 top-1/2 left-1/2 bg-white p-6 rounded-lg shadow-lg max-w-xs mx-auto text-center "
-      style={{
-        transform: 'translate(-50%, -50%)',
-        border: '1px solid black'  // Add this line for thick black border
-      }}
-    >
-      <h3 className="font-semibold text-red-600 mb-2">Submission Error</h3>
-      <p className="mb-4">{errorMessage}</p>
-      <p className="mb-4 text-sm text-gray-700">
-        Please check your internet connection and ensure all required fields are correctly filled. Then try submitting again.
-      </p>
-      <button
-        className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"
-        onClick={closeErrorPopup}
-      >
-        Close
-      </button>
-    </div>
-  )}
-
-
     <form onSubmit={handleSubmit} className={`flex flex-col gap-2 bg-white/25 backdrop-blur-[15px] border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-2xl p-2 w-full ${className}`}>
       {/* Success Message */}
       {submitStatus === 'success' && (
@@ -375,7 +343,6 @@ export default function ContactForm({ source, className = '', variant = 'default
         </div>
       )}
 
-
       {/* Error Message */}
       {submitStatus === 'error' && (
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-4">
@@ -388,39 +355,51 @@ export default function ContactForm({ source, className = '', variant = 'default
         </div>
       )}
 
-      <input
-        type="text"
-        name="firstName"
-        placeholder="Name"
-        value={formData.firstName}
-        onChange={handleInputChange}
-        disabled={isSubmitting}
-        className="bg-white/25 backdrop-blur-[15px] border border-white/20 text-lg h-[12%] shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 py-6 sm:py-4 text-black placeholder-gray-800 focus:outline-none focus:border-[#ff4f0f] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-        style={{fontFamily: 'Gilroy'}}
-        required
-      />
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={formData.email}
-        onChange={handleInputChange}
-        disabled={isSubmitting}
-        className="bg-white/25 backdrop-blur-[15px] border border-white/20 text-lg h-[12%] shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 py-6 sm:py-4 text-black placeholder-gray-800 focus:outline-none focus:border-[#ff4f0f] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-        style={{fontFamily: 'Gilroy'}}
-        required
-      />
-      <textarea
-        name="message"
-        placeholder="Message"
-        rows={6}
-        value={formData.message}
-        onChange={handleInputChange}
-        disabled={isSubmitting}
-        className="h-[70%] bg-white/25 backdrop-blur-[15px] border border-white/20 text-lg shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 pt-4 sm:pt-0 py-6 sm:py-4 text-black placeholder-gray-800 focus:outline-none focus:border-[#ff4f0f] transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed"
-        style={{fontFamily: 'Gilroy'}}
-        required
-      />
+      <div>
+        <input
+          type="text"
+          name="firstName"
+          placeholder="Name"
+          value={formData.firstName}
+          onChange={handleInputChange}
+          disabled={isSubmitting}
+          className="bg-white/25 backdrop-blur-[15px] border border-white/20 text-lg h-[12%] shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 py-6 sm:py-4 text-black placeholder-gray-800 focus:outline-none focus:border-[#ff4f0f] transition-all disabled:opacity-50 disabled:cursor-not-allowed w-full"
+          style={{fontFamily: 'Gilroy'}}
+          required
+        />
+        {fieldErrors.firstName && <p className="text-red-500 text-xs mt-1">{fieldErrors.firstName}</p>}
+      </div>
+
+      <div>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleInputChange}
+          disabled={isSubmitting}
+          className="bg-white/25 backdrop-blur-[15px] border border-white/20 text-lg h-[12%] shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 py-6 sm:py-4 text-black placeholder-gray-800 focus:outline-none focus:border-[#ff4f0f] transition-all disabled:opacity-50 disabled:cursor-not-allowed w-full"
+          style={{fontFamily: 'Gilroy'}}
+          required
+        />
+        {fieldErrors.email && <p className="text-red-500 text-xs mt-1">{fieldErrors.email}</p>}
+      </div>
+
+      <div>
+        <textarea
+          name="message"
+          placeholder="Message"
+          rows={6}
+          value={formData.message}
+          onChange={handleInputChange}
+          disabled={isSubmitting}
+          className="h-[70%] bg-white/25 backdrop-blur-[15px] border border-white/20 text-lg shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-lg px-4 pt-4 sm:pt-0 py-6 sm:py-4 text-black placeholder-gray-800 focus:outline-none focus:border-[#ff4f0f] transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed w-full"
+          style={{fontFamily: 'Gilroy'}}
+          required
+        />
+        {fieldErrors.message && <p className="text-red-500 text-xs mt-1">{fieldErrors.message}</p>}
+      </div>
+
       <button
         type="submit"
         disabled={isSubmitting}
@@ -440,8 +419,5 @@ export default function ContactForm({ source, className = '', variant = 'default
         )}
       </button>
     </form>
-
-        {/* Your existing popup modal container should remain outside this wrapper */}
-  </div>
   );
 }
