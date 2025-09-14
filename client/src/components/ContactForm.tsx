@@ -193,7 +193,7 @@ export default function ContactForm({ source, className = '', variant = 'default
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
             <div>
-              <label htmlFor="firstname" className="text-sm sm:text-md font-semibold text-gray-700 mb-1 sm:mb-2 block">
+              <label htmlFor="firstname" className="text-lg sm:text-md font-semibold text-gray-700 mb-1 sm:mb-2 block">
                 First name
               </label>
               <div className="relative">
@@ -215,7 +215,7 @@ export default function ContactForm({ source, className = '', variant = 'default
               {fieldErrors.firstName && <p className="text-red-500 text-xs mt-1">{fieldErrors.firstName}</p>}
             </div>
             <div>
-              <label htmlFor="lastname" className="text-sm sm:text-md font-semibold text-gray-700 mb-1 sm:mb-2 block">
+              <label htmlFor="lastname" className="text-lg sm:text-md font-semibold text-gray-700 mb-1 sm:mb-2 block">
                 Last name
               </label>
               <div className="relative">
@@ -239,7 +239,7 @@ export default function ContactForm({ source, className = '', variant = 'default
           </div>
 
           <div>
-            <label htmlFor="email" className="text-sm sm:text-md font-semibold text-gray-700 mb-1 sm:mb-2 block">
+            <label htmlFor="email" className="text-lg sm:text-md font-semibold text-gray-700 mb-1 sm:mb-2 block">
               Email
             </label>
             <div className="relative">
@@ -262,7 +262,7 @@ export default function ContactForm({ source, className = '', variant = 'default
           </div>
 
           <div>
-            <label htmlFor="phone" className="text-sm sm:text-md font-semibold text-gray-700 mb-1 sm:mb-2 block">
+            <label htmlFor="phone" className="text-lg sm:text-md font-semibold text-gray-700 mb-1 sm:mb-2 block">
               Phone number
             </label>
             <div className="relative">
@@ -284,7 +284,7 @@ export default function ContactForm({ source, className = '', variant = 'default
           </div>
 
           <div>
-            <label htmlFor="message" className="text-sm sm:text-md font-semibold text-gray-700 mb-1 sm:mb-2 block">
+            <label htmlFor="message" className="text-lg sm:text-md font-semibold text-gray-700 mb-1 sm:mb-2 block">
               Message
             </label>
             <div className="relative">
