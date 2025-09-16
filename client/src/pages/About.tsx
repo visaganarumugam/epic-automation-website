@@ -206,7 +206,7 @@ export default function About() {
     },
     {
       bgImage: '/images/carousel/motorassembly.png',
-      logo: '/images/logos/ABB.png',
+      logo: '/images/logos/ola.png',
       title: 'Motor Assembly Line',
       description: 'Five ABB robots on the motor assembly line were upgraded with advanced control logic and optimized programs, enhancing performance and reliability. Using ABB RobotStudio, updates were seamlessly deployed, with thorough testing ensuring consistent quality, improved safety, diagnostics, and adaptive workflows.',
       

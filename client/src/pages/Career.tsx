@@ -560,7 +560,7 @@ export default function Career() {
                 <div className="bg-white rounded-xl shadow-lg overflow-hidden">
                   <div className="relative">
                     <img 
-                      src="/images/plc_and_hmi.jpg" 
+                      src="/images/hp_.webp" 
                       alt="Industrial Automation Course"
                       className="w-full h-68 object-cover"
                       loading="lazy"
