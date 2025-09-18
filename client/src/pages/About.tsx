@@ -500,24 +500,24 @@ export default function About() {
                     return (
                       <div
                         key={idx}
-                        className={`absolute top-0 left-1/2 h-[100%] sm:h-full flex items-center justify-center transition-all duration-1000 ease-in-out ${scale} ${blur} ${width} ${extra} ${opacity}`}
+                        className={`absolute top-0 left-1/2 h-[100%] bg-[#ffecc7] sm:h-full flex items-center justify-center transition-all duration-1000 ease-in-out ${scale} ${blur} ${width} ${extra} ${opacity}`}
                         style={{
                           transform: `translate(-50%, 0) ${transform}`,
                           zIndex: z,
                           pointerEvents: pos === 2 ? 'auto' : 'none',
                         }}
                       >
-                        <div className="w-full h-[650px] sm:h-full xl:h-[580px] 2xl:h-full bg-white rounded-xl sm:rounded-2xl shadow-lg overflow-hidden relative flex flex-col md:flex-row">
+                        <div className="w-full h-[650px] sm:h-full xl:h-[580px] 2xl:h-full bg-white/25 rounded-xl sm:rounded-2xl shadow-lg overflow-hidden relative flex flex-col md:flex-row">
                           {/* Logo - Positioned at left bottom of entire card */}
                           <div className="absolute bottom-4 left-4 z-10">
-                            <img src={cardData[idx].logo} alt="Logo" className="h-8 sm:h-10 md:h-12 2xl:h-15 bg-white p-1 rounded shadow-md" loading="lazy" />
+                            <img src={cardData[idx].logo} alt="Logo" className="h-8 sm:h-10 md:h-12 2xl:h-15  p-1 rounded" loading="lazy" />
                           </div>
                           
                           {/* Left Section - Content (Image-inspired UI) */}
                           <div className="flex-1 flex flex-col justify-start p-6 sm:p-6 md:p-10 xl:p-8 2xl:p-10 h-[350px] sm:min-h-[350px] md:min-h-[400px] xl:min-h-[350px] 2xl:min-h-[400px]">
                             <div>
                               {/* Pill label */}
-                              <div className="inline-block px-3 sm:px-4 md:px-5 py-1 mb-3 sm:mb-4 md:mb-6 rounded-lg sm:rounded-xl border border-gray-300 bg-white text-gray-700 text-sm sm:text-base md:text-xl font-semibold shadow-sm">
+                              <div className="inline-block px-3 sm:px-4 md:px-5 py-1 mb-3 sm:mb-4 md:mb-6 rounded-lg sm:rounded-xl border border-gray-300  text-gray-700 text-sm sm:text-base md:text-xl font-semibold shadow-sm">
                                 Our Service
                               </div>
                               {/* Heading */}
